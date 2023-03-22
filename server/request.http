@@ -1,0 +1,25 @@
+@urlApi = http://localhost:5000
+
+### get all users
+GET {{urlApi}}/users
+
+### create a user
+POST {{urlApi}}/users
+Content-Type: application/json
+
+{
+  "name":"Juan",
+  "eMail":"juan@gmail.com",
+  "lastName":"Perez",
+  "image":"https://okdiario.com/img/2020/01/27/razas-de-perros_-el-pastor-mallorquin.jpg"
+}
+
+### get single user
+GET {{urlApi}}/users/641b5dd9b3b8c53f9264d81a
+
+### banear single user
+POST {{urlApi}}/users/641b5dd9b3b8c53f9264d81a
+
+
+
+
