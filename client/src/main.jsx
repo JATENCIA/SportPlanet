@@ -1,21 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 import "./index.css";
+import App from "../App";
+import React from "react";
+import axios from "axios";
+import { store } from "./Store";
+import { Provider } from "react-redux";
+import ReactDOM from "react-dom/client";
+import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar/Navbar";
-import Produts from "./Components/Produts/Produts";
-import ProductsDetaild from "./Components/Produts/ProductsDetaild";
+
+axios.defaults.baseURL = "http://localhost:5000";
+//axios.defaults.baseURL = "deploy"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <Provider store={store}>
     <BrowserRouter>
-      <Navbar />
-      <div className="container p-4">
-        <Routes>
-          <Route path="/" Component={Produts}></Route>
-          <Route path="/detaild" Component={ProductsDetaild}></Route>
-        </Routes>
-      </div>
+      <Auth0Provider
+        domain="dev-j0kao75n5a8hszfj.us.auth0.com"
+        clientId="okBJLqsiuORgexDsYLGBogOaVw0mT4Gc"
+        redirectUri={window.location.origin}
+      >
+        <App />
+      </Auth0Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  </Provider>
 );
