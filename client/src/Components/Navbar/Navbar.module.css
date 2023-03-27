@@ -1,0 +1,31 @@
+.Main_container {
+    display:grid;
+    grid-template-areas: "nav-left-top  nav-center-top  nav-right-top   " 
+    "nav-left-bottom nav-center-bottom nav-right-bottom";
+    grid-template-columns: 162px minmax(340px, 580px) minmax(350px, 390px);
+grid-template-rows: 40px 28px;
+grid-column-gap: 24px;
+/* row-gap: 12px; */
+/* grid-row-gap: 12px; */
+padding: 8px 10px 12px 10px;
+
+
+    background-color:yellow;
+    border: 2px solid black;
+ justify-content:space-around;
+ position: relative;
+ 
+    
+
+}
+
+.con1 {
+    margin-top: -2px;
+    margin-left: 440px;
+}
+
+.con2{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}

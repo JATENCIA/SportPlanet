@@ -1,0 +1,42 @@
+.slider {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider ul {
+    padding: 0;
+    display: flex;
+    width: 400%;
+    animation: cambio 15s infinite alternate;
+    
+}
+
+.slider li {
+    list-style: none;
+    width: 100%;
+    height: 180px;
+    margin-top: -20px;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes cambio {
+    0% {margin-left: 0;}
+    20% {margin-left: 0;}
+
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+
+
+}

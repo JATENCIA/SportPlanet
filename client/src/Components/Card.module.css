@@ -1,0 +1,55 @@
+.container {
+  
+    position: relative;
+   display: flex;
+/*    font-feature-settings: "cfar"; */
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   flex-direction: column;
+
+   align-items: center;
+   background-color:white;
+   border: 1px solid white;
+   padding: 1px;
+   margin: 30px;
+   width: 250px;
+   height: 202px;
+/*    border-radius: 20px; */
+   box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+     -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+   cursor: pointer;
+   transition: 0.4s;
+   overflow: hidden;
+ }
+  
+  
+  
+  
+  
+
+   .container img {
+    width: 200px;
+    height: 120px;
+   }
+
+   .p {
+    color: green;
+    margin: 3%;
+    font-size: small;
+   }
+
+   .p1 {
+    margin: -4%;
+    color: green;
+    font-size: small;
+   }
+/*  */
+/* .h :hover{ */
+  /*   transform: scale(1.1); */
+/* box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25), */
+/*   -5px -5px 30px 15px rgba(0, 0, 0, 0.22); */
+/* } */
+
+
+
+
+

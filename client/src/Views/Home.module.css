@@ -1,0 +1,8 @@
+.container {
+    background-color: lightgray;
+}
+
+.con1 {
+    display: flex;
+    flex-wrap: wrap;
+}

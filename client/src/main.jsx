@@ -5,6 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import Produts from "./Components/Produts/Produts";
 import ProductsDetaild from "./Components/Produts/ProductsDetaild";
+import Home from "./Views/Home"
+
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -12,8 +15,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Navbar />
       <div className="container p-4">
         <Routes>
-          <Route path="/" Component={Produts}></Route>
+          <Route exact path="/produts" Component={Produts}></Route>
           <Route path="/detaild" Component={ProductsDetaild}></Route>
+          <Route exact path="/home" Component={Home}></Route>
         </Routes>
       </div>
     </BrowserRouter>
