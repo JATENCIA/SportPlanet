@@ -66,6 +66,17 @@ const userSchema = mongoose.Schema(
       default: false,
     },
 
+  ],
+  payment: [
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'Payments'
+      }
+  ]
+});
+
+
+
     store: [
       {
         type: mongoose.Types.ObjectId,
