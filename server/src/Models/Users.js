@@ -71,6 +71,12 @@ const userSchema = new Schema({
       ref: "Store",
     },
   ],
+  payment: [
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'Payments'
+      }
+  ]
 });
 
 module.exports = model("Users", userSchema);
