@@ -1,63 +1,97 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
 
-const productsSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-    minLength: 3,
-    maxLength: 50,
-  },
-
-  image: {
-    type: Array,
-    required: true,
-  },
-
-  price: {
-    type: Number,
-    required: true,
-    default: 0,
-    min: 0,
-  },
-
-  baneado: {
-    type: Boolean,
-    default: false,
-  },
-
-  discount: {
-    type: Number,
-    default: 0,
-    min: 0,
-    max: 99,
-  },
-
-  description: {
-    type: String,
-    required: true,
-    minLength: 30,
-    maxLength: 500,
-  },
-
-  store: {
-    type: Schema.Types.ObjectId,
-    ref: "Stores",
-  },
-
-  season: {
-    type: Number,
-  },
-
-  review: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Reviews",
+const productsSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      minLength: 3,
+      maxLength: 50,
     },
-  ],
 
-  size: {
-    type: String,
+    image: {
+      type: Array,
+      required: true,
+    },
+
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+      min: 0,
+    },
+
+    baneado: {
+      type: Boolean,
+      default: false,
+    },
+
+    discount: {
+      type: Number,
+      default: 0,
+      min: 0,
+      max: 99,
+    },
+
+    description: {
+      type: String,
+      required: true,
+      minLength: 30,
+      maxLength: 500,
+    },
+
+    store: {
+      type: mongoose.Types.ObjectId,
+      ref: "Stores",
+    },
+
+    season: {
+      type: Number,
+    },
+
+    review: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Reviews",
+      },
+    ],
+
+    size: {
+      type: Array,
+    },
+
+    category: {
+      type: String,
+      enum: [
+        "tshirts",
+        "pants",
+        "footwear",
+        "balls",
+        "supplements",
+        "accessories",
+        "sets",
+      ],
+      default: "accessories",
+    },
+
+    gender: {
+      type: String,
+      enum: ["men", "women", "unisex"],
+      default: "unisex",
+    },
+
+    state: {
+      type: "String",
+      enum: ["new", "used"],
+      default: "new",
+    },
   },
-});
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
 
-module.exports = model("Products", productsSchema);
+module.exports = mongoose.model("Products", productsSchema);
+
+// camisetas, pantalones, calzados, pelotas, suplementos y accesorios

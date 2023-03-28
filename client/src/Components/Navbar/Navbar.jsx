@@ -20,22 +20,27 @@ import { postUser } from "../../Actions";
 export const NavBar = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user, logout } = useAuth0();
+  const [userE, setUserE] = useState({});
+  console.log("🚀 ~ file: Navbar.jsx:24 ~ NavBar ~ userE:", userE);
+
   useEffect(() => {
     if (user && isAuthenticated) {
       axios.get("/users").then((element) => {
         const userDb = element.data.find(
           (element) => element.eMail === user.email
         );
-        console.log(userDb);
-        if (userDb) {
-          return false;
-        } else {
+        if (!userDb) {
           const newUser = {
-            name: user.name,
-            lastname: user.family_name,
+            name: user.given_name || user.name,
+            lastName: user.family_name,
             eMail: user.email,
+            image: user.picture,
+            roll: "user",
           };
           dispatch(postUser(newUser));
+        } else {
+          setUserE(userDb);
+          return false;
         }
       });
     }
@@ -62,7 +67,7 @@ export const NavBar = () => {
                         alt={user.name}
                         className="w-6 h-6 object-cover rounded-full"
                       />
-                      <span>Hi! {user.name}</span>
+                      <span>Hi! {user.given_name || user.name} </span>
                       <RiArrowDownSLine />
                     </MenuButton>
                   }

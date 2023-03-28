@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_USER, POST_USER } from "./actionsExport";
+import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER } from "./actionsExport";
 
 export const getAllUser = () => async (dispatch) => {
   try {
@@ -22,6 +22,19 @@ export const postUser = (payload) => async (dispatch) => {
       payload: userCreated,
     });
   } catch (e) {
+    return { messaje: `${error}` };
+    console.log({ messaje: `${error}` });
+  }
+};
+
+export const getAllProduct = () => async (dispatch) => {
+  try {
+    const { data } = await axios.get("/products");
+    dispatch({
+      type: GET_ALL_PRODUCT,
+      payload: data,
+    });
+  } catch (error) {
     return { messaje: `${error}` };
     console.log({ messaje: `${error}` });
   }

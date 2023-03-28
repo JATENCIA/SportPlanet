@@ -1,6 +1,6 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
 
-const userSchema = new Schema(
+const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -42,6 +42,7 @@ const userSchema = new Schema(
     roll: {
       type: String,
       enum: ["admin", "user", "superAdmin"],
+      default: ["user"],
     },
 
     baneado: {
@@ -51,7 +52,7 @@ const userSchema = new Schema(
 
     review: [
       {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "Reviews",
       },
     ],
@@ -67,7 +68,7 @@ const userSchema = new Schema(
 
     store: [
       {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "Stores",
       },
     ],
@@ -78,4 +79,4 @@ const userSchema = new Schema(
   }
 );
 
-module.exports = model("Users", userSchema);
+module.exports = mongoose.model("Users", userSchema);

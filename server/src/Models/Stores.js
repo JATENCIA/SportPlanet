@@ -1,6 +1,6 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
 
-const StoreSchema = new Schema(
+const StoreSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -15,14 +15,16 @@ const StoreSchema = new Schema(
     },
 
     user: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: "Users",
     },
 
-    product: {
-      type: Schema.Types.ObjectId,
-      ref: "Products",
-    },
+    product: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Products",
+      },
+    ],
 
     image: {
       type: String,
@@ -44,4 +46,4 @@ const StoreSchema = new Schema(
   }
 );
 
-module.exports = model("Stores", StoreSchema);
+module.exports = mongoose.model("Stores", StoreSchema);
