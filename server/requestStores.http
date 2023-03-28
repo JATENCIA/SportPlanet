@@ -1,0 +1,33 @@
+@urlApi = http://localhost:5000
+
+### get all stores
+GET {{urlApi}}/stores
+
+### get name a stores
+GET {{urlApi}}/stores?name=Zone
+
+### create a store
+POST {{urlApi}}/stores
+Content-Type: application/json
+
+{
+  "name":"Sport Zone",
+  "location":"Cl. 63a #23-25, Colombia",
+  "user":"641cce5bbde0ae9ff43ed02f",
+  "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB5fOsM_q0M4B2c_3GyAxXzq9GXPZyq1i2ZLQZ8cV5lKopNjfeHNPl9y5XE_BfPIVam7g&usqp=CAU",
+  "eMail":"sportzone@gmail.com"
+}
+
+### banear single store
+POST {{urlApi}}/stores/641ce9e6defd52f01bc596e1
+
+### get single store id
+GET {{urlApi}}/stores/641ce9e6defd52f01bc596e1
+
+### update a user
+PUT {{urlApi}}/stores/641ce9e6defd52f01bc596e1
+Content-Type: application/json
+
+{
+  "location":"Cl. 63a #23-25, Bogota Colombia"
+}
