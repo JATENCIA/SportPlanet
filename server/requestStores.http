@@ -1,0 +1,33 @@
+@urlApi = http://localhost:5000
+
+### get all stores
+GET {{urlApi}}/stores
+
+### get name a stores
+GET {{urlApi}}/stores?name=Zone
+
+### create a store
+POST {{urlApi}}/stores
+Content-Type: application/json
+
+{
+  "name":"Sports World",
+  "location":"Cl. 89a #253-265, Argentina",
+  "user":"64220b9cef020ad40ed789a4",
+  "image":"https://www.sportsworld.com.mx/uploads/es/images/og_image.jpg",
+  "eMail":"sportword@gmail.com"
+}
+
+### banear single store
+POST {{urlApi}}/stores/641ce9e6defd52f01bc596e1
+
+### get single store id
+GET {{urlApi}}/stores/641ce9e6defd52f01bc596e1
+
+### update a user
+PUT {{urlApi}}/stores/641ce9e6defd52f01bc596e1
+Content-Type: application/json
+
+{
+  "location":"Cl. 63a #23-25, Bogota Colombia"
+}
