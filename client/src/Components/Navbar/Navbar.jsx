@@ -15,7 +15,7 @@ import "@szhsin/react-menu/dist/transitions/slide.css";
 import { LoginButton } from "../Auth0/LoginButton";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { postUser } from "../../Actions";
+import { postUser } from '../../redux/Actions/actions';
 
 export const NavBar = () => {
   const dispatch = useDispatch();
