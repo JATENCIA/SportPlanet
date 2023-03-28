@@ -1,4 +1,3 @@
-const Products = require("../Models/Products");
 const Users = require("../Models/Users");
 
 /**
@@ -10,17 +9,8 @@ const Users = require("../Models/Users");
  */
 const getUsers = async (req, res) => {
   try {
-    const users = await Users.find({});
-
-    const { name } = req.query;
-
-    if (name) {
-      let user = users.filter((elem) =>
-        elem.name.toLowerCase().includes(name.toLowerCase())
-      );
-
-      user.length ? res.status(200).json(user) : res.status(204).json({});
-    } else res.status(200).json(users);
+    const user = await Users.find({});
+    res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });
   }
@@ -80,7 +70,6 @@ const createUser = async (req, res) => {
       telephone: user.telephone || iNumber.toString(),
       location: user.location || "",
       image: user.image || "http://cdn.onlinewebfonts.com/svg/img_141364.png",
-      roll: user.roll || "user",
     });
 
     const saveUser = await newUser.save();
@@ -96,7 +85,6 @@ const createUser = async (req, res) => {
  * @param req - the request object
  * @param res - response
  */
-
 const deleteUser = async (req, res) => {
   try {
     const user = await Users.findById(req.params.id);
@@ -104,23 +92,21 @@ const deleteUser = async (req, res) => {
     if (user) {
       if (baneado === false) baneado = true;
       else baneado = false;
-    } else res.status(204).json({});
+    } else
+      res.status(201).json({
+        message: "the user you are trying to search for does not exist",
+      });
     await Users.updateOne({ _id: req.params.id }, { $set: { baneado } });
 
     baneado
-      ? res.status(200).json({
-          message: `The user *** ${user.name} *** is temporarily or permanently disabled.`,
-          baneado: baneado,
-        })
-      : res.status(200).json({
-          message: `the user *** ${user.name} *** is enabled`,
-          baneado: baneado,
-        });
+      ? res
+          .status(200)
+          .json({ message: "The user is temporarily or permanently disabled." })
+      : res.status(200).json({ message: "the user is enabled" });
   } catch (error) {
     res.status(500).json({ messaje: `${error}` });
   }
 };
-
 /**
  * It finds a user by id and updates it with the new data
  * @param req - The request object. This contains information about the HTTP request that raised the
@@ -138,35 +124,6 @@ const updateUser = async (req, res) => {
     res.status(200).json(userUpdate);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });
-  }
-};
-/**
- * This function is used to add or remove a restaurant from the user's favorites list
- * @param req - The request object.
- * @param res - The response object.
- */
-
-const getFavorite = async (req, res) => {
-  try {
-    const { id, eMail } = req.body;
-    let users = await Users.find({ eMail: eMail });
-    let product = await Products.findById({ _id: id });
-    let favorites = users.favorites;
-
-    let flag = [];
-    if (favorites) {
-      favorites.map((element, index) => {
-        if (JSON.stringify(element._id) === JSON.stringify(id)) {
-          flag.push(element);
-          users.favorites.splice(index, 1);
-        }
-      });
-      if (flag.length === 0) favorites.push(restaurant);
-    } else favorites.push(restaurant);
-    await Users.updateOne({ _id: users[0].id }, { $set: favorites });
-    res.status(200).json(users.favorites);
-  } catch (error) {
-    res.status(500).send(`{messaje: ${error}}`);
   }
 };
 
