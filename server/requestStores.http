@@ -11,11 +11,11 @@ POST {{urlApi}}/stores
 Content-Type: application/json
 
 {
-  "name":"Sport Zone",
-  "location":"Cl. 63a #23-25, Colombia",
-  "user":"641cce5bbde0ae9ff43ed02f",
-  "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB5fOsM_q0M4B2c_3GyAxXzq9GXPZyq1i2ZLQZ8cV5lKopNjfeHNPl9y5XE_BfPIVam7g&usqp=CAU",
-  "eMail":"sportzone@gmail.com"
+  "name":"Sports World",
+  "location":"Cl. 89a #253-265, Argentina",
+  "user":"64220b9cef020ad40ed789a4",
+  "image":"https://www.sportsworld.com.mx/uploads/es/images/og_image.jpg",
+  "eMail":"sportword@gmail.com"
 }
 
 ### banear single store
