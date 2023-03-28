@@ -11,9 +11,9 @@ POST {{urlApi}}/users
 Content-Type: application/json
 
 {
-  "name":"Aslan",
-  "eMail":"aslan@gmail.com",
-  "lastName":"Narnia",
+  "name":"Maria",
+  "eMail":"maaria@gmail.com",
+  "lastName":"Santa",
   "image":"https://okdiario.com/img/2020/01/27/razas-de-perros_-el-pastor-mallorquin.jpg"
 }
 
