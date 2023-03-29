@@ -77,6 +77,12 @@ const userSchema = mongoose.Schema(
         ref: "Stores",
       },
     ],
+    review: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "ProductReview",
+      },
+    ],
   },
   {
     timestamps: true,

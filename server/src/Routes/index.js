@@ -13,10 +13,12 @@ router.use("/payments", paymentsRoutes);
 const usersRoutes = require("./usersRoutes");
 const storesRoutes = require("./storesRoutes");
 const productsRoutes = require("./productsRoutes");
+const productReviewRoutes = require("./productReviewRoutes");
 
 router.use("/users", usersRoutes);
 router.use("/stores", storesRoutes);
 router.use("/products", productsRoutes);
+router.use("/productReview", productReviewRoutes);
 
 
 module.exports = router;
