@@ -11,6 +11,7 @@ const Produts = () => {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.allProducts);
+  console.log("1", allProducts)
 
   const filterProducts = allProducts.filter(
     (product) => product.baneado === false
