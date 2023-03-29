@@ -4,7 +4,7 @@ const router = Router();
 const usersRoutes = require("./usersRoutes");
 // const storesRoutes = require("./storesRoutes");
 const productsRoutes = require("./productsRoutes");
-const productReviewRoutes = require("./productsReviewRoutes");
+const productReviewRoutes = require("./productReviewRoutes");
 
 router.use("/users", usersRoutes);
 // router.use("/stores", storesRoutes);
