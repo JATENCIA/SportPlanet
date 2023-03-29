@@ -1,0 +1,52 @@
+.navContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+
+/* SEARCH */
+.searchDiv{
+    position: relative;
+    display: inline-block;
+    margin-left: 50px;
+}
+
+.inputSearch{
+    display: flex;
+    justify-content: center;
+    padding-left: 30px;
+    border-radius: 25px;
+    width: 250px;
+}
+.inputSearch:focus{
+    outline: 0;
+}
+
+.btnSearch{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    cursor: pointer;
+}
+/* SEARCH */
+
+.img{
+    height: 50px;
+    width: auto;
+}
+
+.divLogin{
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.carrito{
+    margin-right: 50px;
+}
