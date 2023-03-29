@@ -1,10 +1,10 @@
-const ProductReview = require("../Models/ProductReview");
+const UserReview = require("../Models/UserReview");
 const Users = require("../Models/Users");
 const Products = require("../Models/Products");
 
-const getProductReview = async (req, res) => {
+const getUserReview = async (req, res) => {
   try {
-    const productReview = await ProductReview.find({})
+    const UserReview = await UserReview.find({})
       .populate("user", {
         name: 1,
         image: 1,
@@ -16,7 +16,7 @@ const getProductReview = async (req, res) => {
     const { name } = req.query;
 
     if (name) {
-      const result = productReview.filter((elem) =>
+      const result = UserReview.filter((elem) =>
         elem.name.toLowerCase().includes(name.toLowerCase())
       );
       name.length ? res.status(200).json(result) : res.status(204).json({});
@@ -26,50 +26,46 @@ const getProductReview = async (req, res) => {
   }
 };
 
-const createProductReview = async (req, res) => {
+const createUserReview = async (req, res) => {
   try {
-    const productReview = new ProductReview({
-      quality: req.body.quality,
-      comfort: req.body.comfort,
-      recommended: req.body.recommended,
+    const UserReview = new UserReview({
+      attention: req.body.attention,
+      deliveryOnTime: req.body.deliveryOnTime,
       comment: req.body.comment,
       product: req.body.product,
       user: req.body.user,
     });
     const product = await Products.findById(req.body.product);
     const user = await Users.findById(req.body.user);
-    const saveProductReview = await productReview.save();
-    user.review = user.review.concat(saveProductReview._id);
+    const saveUserReview = await userReview.save();
+    user.review = user.review.concat(saveUserReview._id);
     await user.save();
-    product.review = product.review.concat(saveProductReview._id);
-    await product.save();
+    user.review = user.review.concat(saveUserReview._id);
+    await user.save();
 
-    res.status(201).json(saveProductReview);
+    res.status(201).json(saveUserReview);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });
   }
 };
 
-const deleteProductReviewByid = async (req, res) => {
+const deleteUserReviewByid = async (req, res) => {
   try {
-    const productReview = await ProductReview.findById(req.params.id);
-    let baneado = productReview?.baneado;
-    if (productReview) {
+    const userReview = await -userReview.findById(req.params.id);
+    let baneado = userReview?.baneado;
+    if (userReview) {
       if (baneado === false) baneado = true;
       else baneado = false;
     } else res.status(204).json({});
-    await ProductReview.updateOne(
-      { _id: req.params.id },
-      { $set: { baneado } }
-    );
+    await UserReview.updateOne({ _id: req.params.id }, { $set: { baneado } });
 
     baneado
       ? res.status(200).json({
-          message: `The Product Review *** ${product.name.ProductReview} *** is temporarily or permanently disabled.`,
+          message: `The User Review *** ${user.name.UserReview} *** is temporarily or permanently disabled.`,
           baneado: baneado,
         })
       : res.status(200).json({
-          message: `the Product Review *** ${product.name.productReview} *** is enabled`,
+          message: `the User Review *** ${user.name.userReview} *** is enabled`,
           baneado: baneado,
         });
   } catch (error) {
@@ -77,16 +73,16 @@ const deleteProductReviewByid = async (req, res) => {
   }
 };
 
-const updateProductReview = async (req, res) => {
+const updateUserReview = async (req, res) => {
   try {
-    const productReviewUpdate = await ProductReview.findByIdAndUpdate(
+    const userReviewUpdate = await UserReview.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
         new: true,
       }
     );
-    if (!productReviewUpdate) return res.status(204).json({});
+    if (!userReviewUpdate) return res.status(204).json({});
     res.status(200).json(storeUpdate);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });
@@ -94,8 +90,8 @@ const updateProductReview = async (req, res) => {
 };
 
 module.exports = {
-  getProductReview,
-  createProductReview,
-  deleteProductReviewByid,
-  updateProductReview,
+  getUserReview,
+  createUserReview,
+  deleteUserReviewByid,
+  updateUserReview,
 };
