@@ -58,13 +58,11 @@ const createPayment = async (req, res) => {
     
     const charge = await stripe.paymentIntents.create({
       amount: amount,
-       
       currency: currency, 
       description,
       payment_method: payment_method,
       confirm: true,
     })
-    console.log(charge + "holaaa")
     const savePayment = await payment.save();
     userId.payment = userId.payment.concat(savePayment._id)
     userId.save()

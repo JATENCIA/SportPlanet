@@ -8,6 +8,8 @@ const {
   updateUser,
 } = require("../Controllers/usersController");
 
+
+
 /* A route that is listening for a get request to the root of the server. */
 router.get("/", getUsers);
 /* This is a route that is listening for a get request to the root of the server. */
