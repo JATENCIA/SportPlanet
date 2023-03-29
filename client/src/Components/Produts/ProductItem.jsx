@@ -1,4 +1,7 @@
 import React from "react";
+import styled from "./ProductItem.module.css"
+
+
 
 export const ProductItem = ({
   name,
@@ -12,32 +15,26 @@ export const ProductItem = ({
   console.log("🚀 ~ file: ProductItem.jsx:12 ~ size:", size);
 
   return (
-    <div className="mt-20">
+    <div className={styled.maincontainer}>
+    <div className={styled.container}>
+    <div className="flex">
+ <img className="w-70 h-60" src={image[1]} alt="" />
+ </div>
+{/*  <div className="bg-black w-30 h-4"></div> */}
+<div className={styled.p1}>
       <div>
-        <h1 className="text-3xl">{name}</h1>
+        <h1 className="text-3xl text-lg">{name}</h1>
       </div>
-      <div className="text-blue-500">{description}</div>
-      <div>$ {price}</div>
+      <div className="text-blue-500 text-xs">{description}</div>
+      
       <div>{gender}</div>
       <div>{state}</div>
-      <div>
-        {image.map((elem) => {
-          return <img src={elem} alt="" />;
-        })}
+      
+      
+      
+       <div>$ {price}</div>
+       <p className={styled.p}>Envio Gratis!!</p>
       </div>
-      <div>
-        {size.map((elem) => {
-          for (const key in elem) {
-            if (Object.hasOwnProperty.call(elem, key)) {
-              const element = elem[key];
-              return (
-                <ul key={crypto.randomUUID()}>
-                  <li key={crypto.randomUUID()}>{`${key} ${element}`}</li>
-                </ul>
-              );
-            }
-          }
-        })}
       </div>
     </div>
   );
