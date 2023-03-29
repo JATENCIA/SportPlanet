@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.landingContainer {
+    background-image: url('../../images/background.jpg');
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.landingContainer h1 {
+    font-size: 80px;
+    position: relative;
+    font-family: SportWorld;
+    font-weight: 0;
+    top: 70px;
+    left: 50px;
+    animation: fadeInAnimation ease 6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 1px rgb(238, 230, 230);
+}
+
+.slogan {
+    position: relative;
+    top: 120px;
+    left: 130px;
+    font-family: SportWorld;
+    text-align: justify;
+}
+
+.buttonToHome {
+    position: relative;
+    top: 190px;
+    left: 240px;
+}
+.buttonToHome{
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .buttonToHome:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .buttonToHome:focus {
+    outline: none;
+  }
+  
+  .buttonToHome{
+    background-image: linear-gradient(
+      to right,
+      #25aae1,
+      #4481eb,
+      #04befe,
+      #3f86ed
+    );
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+  }
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+
+
+  
