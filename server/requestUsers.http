@@ -24,11 +24,11 @@ GET {{urlApi}}/users/641cc89444400c0d8a723244
 POST {{urlApi}}/users/641cc89444400c0d8a723244
 
 ### update a user
-PUT {{urlApi}}/users/641cc89444400c0d8a723244
+PUT {{urlApi}}/users/642383a9afc7672526531bdd
 Content-Type: application/json
 
 {
-  "dni":2222222
+  "roll":"superAdmin"
 }
 
 
