@@ -65,18 +65,12 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-
-  ],
   payment: [
     {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: 'Payments'
       }
-  ]
-});
-
-
-
+  ],
     store: [
       {
         type: mongoose.Types.ObjectId,

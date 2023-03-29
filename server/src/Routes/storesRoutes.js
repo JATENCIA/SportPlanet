@@ -8,6 +8,7 @@ const {
   deleteStore,
 } = require("../Controllers/storesController");
 
+
 /* A route that is listening for a get request to the root route. */
 router.get("/", getStores);
 /* This is a route that is listening for a get request to the root route. */
