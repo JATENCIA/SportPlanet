@@ -79,7 +79,7 @@ const userSchema = mongoose.Schema(
     ],
     review: [
       {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "ProductReview",
       },
     ],
