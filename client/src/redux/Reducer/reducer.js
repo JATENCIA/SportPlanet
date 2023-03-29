@@ -1,9 +1,10 @@
-import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER } from "../Actions";
+import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, GET_PRODUCT_DETAIL } from "../Actions";
 
 const initialState = {
   users: [],
   allUsers: [],
   allProducts: [],
+  productDetail: []
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -25,6 +26,12 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allProducts: action.payload,
       };
+
+    case GET_PRODUCT_DETAIL:
+      return {
+        ...state,
+        productDetail: action.payload,
+      }
 
     default:
       return state;

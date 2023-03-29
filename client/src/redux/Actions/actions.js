@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER } from "./actionsTypes";
+import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, GET_PRODUCT_DETAIL } from "./actionsTypes";
 
 export const getAllUser = () => async (dispatch) => {
   try {
@@ -39,3 +39,17 @@ export const getAllProduct = () => async (dispatch) => {
     console.log({ messaje: `${error}` });
   }
 };
+
+
+// Detail of a product
+export const getProductDetail = (id) => async (dispatch) => {
+  try {
+    const { data } = await axios.get(`/products/${id}`)
+    dispatch({
+      type: GET_PRODUCT_DETAIL,
+      payload: data
+    })
+  } catch (error) {
+    return { messaje: `${error}` };
+  }
+}
