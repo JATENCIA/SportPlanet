@@ -22,24 +22,25 @@ const productReviewSchema = mongoose.Schema({
     defaultValue: 1,
     allowNull: false,
   },
-  Comment: {
+  comment: {
     type: String,
     minLenght: 5,
     maxLenght: 140,
     allowNull: false,
   },
-  Product: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Products",
-    },
-  ],
-  User: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "Users",
-    },
-  ],
+  baneado: {
+    type: Boolean,
+    default: false,
+  },
+  product: {
+    type: Array(mongoose.Types.ObjectId),
+    ref: "Products",
+  },
+
+  user: {
+    type: Array(mongoose.Types.ObjectId),
+    ref: "Users",
+  },
 });
 
 module.exports = mongoose.model("ProductReview", productReviewSchema);

@@ -1,0 +1,20 @@
+@urlApi = http://localhost:5000
+
+### get all productsReview
+GET {{urlApi}}/productReview
+
+### create a productReview
+POST {{urlApi}}/productReview
+Content-Type: application/json
+
+{
+  "queality" : 5,
+  "comfort" : 3,
+  "recommended" : 4,
+  "baneado" : true,
+  "comment" : "hola como andas",
+  "product" : "64234dc20377d0762abb4cce",
+  "user" : "64220b78ef020ad40ed789a0"
+}
+### get single productReview id
+GET {{urlApi}}/users/641cc89444400c0d8a723244
