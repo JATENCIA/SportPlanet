@@ -49,13 +49,6 @@ const userSchema = new Schema(
       default: false,
     },
 
-    review: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Reviews",
-      },
-    ],
-
     favorites: {
       type: Array,
     },
@@ -69,6 +62,12 @@ const userSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "Stores",
+      },
+    ],
+    review: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "ProductReview",
       },
     ],
   },
