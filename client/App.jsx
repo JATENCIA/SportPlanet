@@ -7,6 +7,9 @@ import ProductCard from "./src/Components/ProductCard/ProductCard";
 import LandingPage from "./src/views/LandingPage/LandingPage";
 import { Home } from "./src/views/Home/Home";
 import Detail from "./src/views/Detail/Detail";
+import { Profile } from "./src/views/Profile";
+import { Admin } from "./src/views/Admin";
+import { SupAdmin } from "./src/views/SupAdmin";
 
 // Fonts
 import "./src/fonts/SportsWorld.ttf";
@@ -20,6 +23,9 @@ const App = () => {
           <Route exact path="/" Component={LandingPage} />
           <Route path="/home" Component={Home} />
           <Route path="/detail/:id" Component={Detail} />
+          <Route path="/profile" Component={Profile} />
+          <Route path="/dashboard" Component={Admin} />
+          <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
         </Routes>
       </div>
     </>
