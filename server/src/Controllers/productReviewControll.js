@@ -4,7 +4,15 @@ const Products = require("../Models/Products");
 
 const getProductReview = async (req, res) => {
   try {
-    const productReview = await ProductReview.find({});
+    const productReview = await ProductReview.find({})
+      .populate("user", {
+        name: 1,
+        image: 1,
+        lastName: 1,
+        eMail: 1,
+        telephone: 1,
+      })
+      .populate("product", { name: 1, image: 1 });
     const { name } = req.query;
 
     if (name) {
@@ -20,7 +28,14 @@ const getProductReview = async (req, res) => {
 
 const createProductReview = async (req, res) => {
   try {
-    const productReview = new ProductReview(req.body);
+    const productReview = new ProductReview({
+      queality: req.body.queality,
+      comfort: req.body.comfort,
+      recommended: req.body.recommended,
+      comment: req.body.comment,
+      product: req.body.product,
+      user: req.body.user,
+    });
     const product = await Products.findById(req.body.product);
     const user = await Users.findById(req.body.user);
     const saveProductReview = await productReview.save();
@@ -38,8 +53,8 @@ const createProductReview = async (req, res) => {
 const deleteProductReviewByid = async (req, res) => {
   try {
     const productReview = await ProductReview.findById(req.params.id);
-    let baneado = product?.baneado;
-    if (product) {
+    let baneado = productReview?.baneado;
+    if (productReview) {
       if (baneado === false) baneado = true;
       else baneado = false;
     } else res.status(204).json({});
@@ -50,11 +65,11 @@ const deleteProductReviewByid = async (req, res) => {
 
     baneado
       ? res.status(200).json({
-          message: `The store *** ${product.name.ProductReview} *** is temporarily or permanently disabled.`,
+          message: `The Product Review *** ${product.name.ProductReview} *** is temporarily or permanently disabled.`,
           baneado: baneado,
         })
       : res.status(200).json({
-          message: `the store *** ${product.name.productReview} *** is enabled`,
+          message: `the Product Review *** ${product.name.productReview} *** is enabled`,
           baneado: baneado,
         });
   } catch (error) {
