@@ -1,3 +1,10 @@
+body{
+  /* background-image: url('./images/fondo.jpg'); */
+  background-color: #bbbce2;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @font-face {
   font-family: "SportWorld"; /*Can be any text*/
   src: local("SportWorld"), url("./fonts/SportsWorld.ttf") format("truetype");
