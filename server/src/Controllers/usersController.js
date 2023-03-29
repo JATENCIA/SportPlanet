@@ -40,7 +40,13 @@ const getUsers = async (req, res) => {
  */
 const getUser = async (req, res) => {
   try {
-    const user = await Users.findById(req.params.id);
+    const user = await Users.findById(req.params.id).populate("store", {
+      name: 1,
+      location: 1,
+      image: 1,
+      eMail: 1,
+      baneado: 1,
+    });
     if (!user) return res.status(204).json({});
     res.status(200).json(user);
   } catch (error) {

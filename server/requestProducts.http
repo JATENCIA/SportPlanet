@@ -19,9 +19,9 @@ Content-Type: application/json
  "price":22.99,
  "discount":0,
  "description":"Argentinian T-shirt main Tribute 86",
- "store":"64220cacef020ad40ed789a8",
+ "store":"64244f23ac73e72dae8e9c43",
  "season":1986 ,
- "size":[{"XS":30},{"S":30},{"M":30},{"L":30},{"X":30},{"XL":30},{"XXL":30}],
+ "size":[{"XS":25},{"S":12},{"M":16},{"L":30},{"X":6},{"XL":14},{"XXL":21}],
  "category": "tshirts",
  "gender":"men"
 }
@@ -36,7 +36,7 @@ Content-Type: application/json
  "price":15,
  "discount":0,
  "description":"Soccer ball championg league season 2021",
- "store":"64220cacef020ad40ed789a8",
+ "store":"64244f23ac73e72dae8e9c43",
  "season":2021 ,
  "size":[{"amount":35}],
  "category": "balls",
@@ -48,15 +48,23 @@ POST {{urlApi}}/products
 Content-Type: application/json
 
 {
-  "name":"Jersey Boca Juniors",
- "image":["https://cf.shopee.com.co/file/sg-11134201-22100-7zk0r4o2lqivd8","https://empilchameshop.com/wp-content/uploads/2023/01/0732E6B1-E241-4167-9069-FCCE7E91AB85.jpeg","https://cf.shopee.com.co/file/14f01a7c7c285deb94221c5dcff6a828"],
- "price":19.000,
+  "name":"X Speedportal boots",
+ "image":["dbyzf0kvhsKlNQiKFUch9T1MyxBAiIkgREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQD","http://elmarketingdeportivo.com/wp-content/uploads/2022/11/Captura-de-Pantalla-2022-11-19-a-las-10.25.22-a.-m..png","https://depor.com/resizer/Pa9_Atfhl4feh9u6FZFEycVcDJI=/1200x1200/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/JK63DESKYFBUHNWYBDUXLGSVDA.jpg"],
+ "price":1000,
  "discount":0,
- "description":"Soccer Jersey 2023 Boca Juniors",
- "store":"64220cacef020ad40ed789a8",
- "season":2023 ,
- "size":[{"X":1}],
- "category": "tshirts",
+ "description":"Adidas showed the world the X Speedportal Legend boots that the Argentine star will wear in the World Cup",
+ "store":"64244f23ac73e72dae8e9c43",
+ "season":2022 ,
+ "size":[{"7":9},{"7'5":6},{"8":5}],
+ "category": "footwear",
  "gender":"men",
- "state":"used"
+ "state":"new"
+}
+
+### update a product
+PUT {{urlApi}}/products/64244f96ac73e72dae8e9c46
+Content-Type: application/json
+
+{
+  "name":"argentina 86 retro jersey"
 }

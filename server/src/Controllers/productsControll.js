@@ -39,7 +39,13 @@ const getProducts = async (req, res) => {
  */
 const getProduct = async (req, res) => {
   try {
-    const store = await Products.findById(req.params.id);
+    const store = await Products.findById(req.params.id).populate("store", {
+      name: 1,
+      location: 1,
+      user: 1,
+      eMail: 1,
+      baneado: 1,
+    });
     if (!store) return res.status(204).json({});
     res.status(200).json(store);
   } catch (error) {
@@ -54,7 +60,20 @@ const getProduct = async (req, res) => {
  */
 const createProduct = async (req, res) => {
   try {
-    const product = new Products(req.body);
+    const Product = req.body;
+    const product = new Products({
+      name: Product.name.toUpperCase(),
+      image: Product.image,
+      price: Product.price,
+      discount: Product.discount,
+      description: Product.description,
+      store: Product.store,
+      season: Product.season,
+      size: Product.size,
+      category: Product.category,
+      gender: Product.gender,
+      state: Product.state,
+    });
     const store = await Stores.findById(req.body.store);
     const saveProduct = await product.save();
     store.product = store.product.concat(saveProduct._id);
@@ -81,7 +100,7 @@ const updateProduct = async (req, res) => {
       }
     );
     if (!productUpdate) return res.status(204).json({});
-    res.status(200).json(storeUpdate);
+    res.status(200).json(productUpdate);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });
   }
