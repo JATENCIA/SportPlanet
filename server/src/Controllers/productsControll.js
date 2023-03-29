@@ -1,4 +1,5 @@
 const Products = require("../Models/Products");
+const Stores = require("../Models/Stores");
 
 /**
  * It returns a list of products, if the name query parameter is present, it filters the list of
@@ -9,7 +10,13 @@ const Products = require("../Models/Products");
  */
 const getProducts = async (req, res) => {
   try {
-    const products = await Products.find({});
+    const products = await Products.find({}).populate("store", {
+      name: 1,
+      location: 1,
+      user: 1,
+      eMail: 1,
+      baneado: 1,
+    });
     const { name } = req.query;
 
     if (name) {
@@ -48,7 +55,10 @@ const getProduct = async (req, res) => {
 const createProduct = async (req, res) => {
   try {
     const product = new Products(req.body);
+    const store = await Stores.findById(req.body.store);
     const saveProduct = await product.save();
+    store.product = store.product.concat(saveProduct._id);
+    await store.save();
     res.status(201).json(saveProduct);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });

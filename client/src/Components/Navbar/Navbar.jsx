@@ -15,27 +15,32 @@ import "@szhsin/react-menu/dist/transitions/slide.css";
 import { LoginButton } from "../Auth0/LoginButton";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { postUser } from "../../Actions";
+import { postUser } from "../../redux/Actions/actions";
 
 export const NavBar = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user, logout } = useAuth0();
+  const [userE, setUserE] = useState({});
+  console.log("🚀 ~ file: Navbar.jsx:24 ~ NavBar ~ userE:", userE);
+
   useEffect(() => {
     if (user && isAuthenticated) {
       axios.get("/users").then((element) => {
         const userDb = element.data.find(
           (element) => element.eMail === user.email
         );
-        console.log(userDb);
-        if (userDb) {
-          return false;
-        } else {
+        if (!userDb) {
           const newUser = {
-            name: user.name,
-            lastname: user.family_name,
+            name: user.given_name || user.name,
+            lastName: user.family_name,
             eMail: user.email,
+            image: user.picture,
+            roll: "user",
           };
           dispatch(postUser(newUser));
+        } else {
+          setUserE(userDb);
+          return false;
         }
       });
     }
@@ -62,7 +67,7 @@ export const NavBar = () => {
                         alt={user.name}
                         className="w-6 h-6 object-cover rounded-full"
                       />
-                      <span>Hi! {user.name}</span>
+                      <span>Hi! {user.given_name || user.name} </span>
                       <RiArrowDownSLine />
                     </MenuButton>
                   }
@@ -92,12 +97,28 @@ export const NavBar = () => {
                   </MenuItem>
                   <hr className="my-4 border-gray-500" />
                   <MenuItem className="p-0 hover:bg-transparent">
-                    <Link
-                      to="/profile/my-dates"
-                      className="rounded-lg transition-colors text-gray-300 hover:bg-secondary-900 flex items-center gap-x-4 py-2 px-6 flex-1"
-                    >
-                      <RiProfileLine /> My Profile
-                    </Link>
+                    {userE.roll === "admin" ? (
+                      <Link
+                        to="/dashboard"
+                        className="rounded-lg transition-colors text-gray-300 hover:bg-secondary-900 flex items-center gap-x-4 py-2 px-6 flex-1"
+                      >
+                        <RiProfileLine /> Admin
+                      </Link>
+                    ) : userE.roll === "superAdmin" ? (
+                      <Link
+                        to="/dashboardSuperAdmin"
+                        className="rounded-lg transition-colors text-gray-300 hover:bg-secondary-900 flex items-center gap-x-4 py-2 px-6 flex-1"
+                      >
+                        <RiProfileLine /> Sup_Admin
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/profile"
+                        className="rounded-lg transition-colors text-gray-300 hover:bg-secondary-900 flex items-center gap-x-4 py-2 px-6 flex-1"
+                      >
+                        <RiProfileLine /> My Profile
+                      </Link>
+                    )}
                   </MenuItem>
                   <MenuItem className="p-0 hover:bg-transparent">
                     <Link
