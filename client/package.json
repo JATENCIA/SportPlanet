@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.0.1",
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "@redux-devtools/extension": "^3.2.5",
     "@reduxjs/toolkit": "^1.9.3",
     "@szhsin/react-menu": "^3.5.2",
