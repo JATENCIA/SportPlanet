@@ -20,6 +20,7 @@ const getStores = async (req, res) => {
         telephone: 1,
         baneado: 1,
         isSeller: 1,
+        roll: 1,
       })
       .populate("product", {
         name: 1,
