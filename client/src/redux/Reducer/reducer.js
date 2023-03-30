@@ -8,7 +8,7 @@ import {
   GET_ALL_USER,
   POST_USER,
   GET_PRODUCT_DETAIL,
-  GET_SEARCHED_PRODUCTS
+  GET_SEARCHED_PRODUCTS,
 } from "../Actions";
 
 const initialState = {
@@ -53,7 +53,6 @@ export const rootReducer = (state = initialState, action) => {
               return 0;
             });
 
-<<<<<<< HEAD
       return {
         ...state,
         allProducts: productsSorted,
@@ -134,11 +133,11 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allProducts: productBySeason,
       };
-      case GET_SEARCHED_PRODUCTS:
-      return{
+    case GET_SEARCHED_PRODUCTS:
+      return {
         ...state,
         searchedProducts: action.payload,
-      }
+      };
     default:
       return {
         ...state,
