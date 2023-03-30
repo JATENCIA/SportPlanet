@@ -57,54 +57,6 @@ export default function Detail() {
 
     const ShowProduct = () => {
         return (
-            // <div className="container">
-            //     <div className="box">
-            //         <div className="images">
-            //             <div className="img-holder active">
-            //                 <img src={sliderImg} alt="" />
-            //             </div>
-            //             {
-            //                 image.map((im, i) => {
-            //                     return (
-            //                         <div className="img-holder">
-            //                             <img src={im} alt="" key={i} onClick={() => handleClick(i)} />
-            //                         </div>
-            //                     )
-            //                 })
-            //             }
-            //         </div>
-            //         <div className="basic-info">
-            //             <h1 className="h1">{name}</h1>
-            //             <div className="rate">
-            //                 <i><MdOutlineStar /></i>
-            //                 <i><MdOutlineStar /></i>
-            //                 <i><MdOutlineStar /></i>
-            //                 <i><MdOutlineStar /></i>
-            //                 <i><MdOutlineStar /></i>
-            //             </div>
-            //             <span>${price}</span>
-            //             <div className="sizes">
-            //                 <select>
-            //                     <option disabled selected defaultValue>Size</option>
-            //                     {
-            //                         ziseArr.map((s, i) => {
-            //                             return (
-            //                                 <option value={s} key={i}>{s}</option>
-            //                             )
-            //                         })
-            //                     }
-            //                 </select>
-            //             </div>
-            //             <div className="options">
-            //                 <button>Buy It Now</button>
-            //                 <button className="button2">Add to Cart</button>
-            //             </div>
-            //         </div>
-            //         <div className="description">
-            //             <p>{description}</p>
-            //         </div>
-            //     </div>
-            // </div>
             <>
                 <div className="container">
                     <main>
