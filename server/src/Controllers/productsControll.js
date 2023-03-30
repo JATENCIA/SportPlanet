@@ -66,9 +66,8 @@ const getProduct = async (req, res) => {
  */
 const createProduct = async (req, res) => {
   try {
-    console.log(req.body)
     const product = new Products(req.body);
-    
+
     const store = await Stores.findById(req.body.store);
     const saveProduct = await product.save();
     store.product = store.product.concat(saveProduct._id);
@@ -95,7 +94,7 @@ const updateProduct = async (req, res) => {
       }
     );
     if (!productUpdate) return res.status(204).json({});
-    res.status(200).json(storeUpdate);
+    res.status(200).json(productUpdate);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });
   }
