@@ -3,19 +3,20 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetail } from "../../redux/Actions";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsCart } from "react-icons/bs";
+// import "./styles/Detail2.css";
 import "./styles/detail.css";
-import { MdOutlineStar } from "react-icons/md";
+import { GrNext, GrPrevious, GrCart, GrClose } from "react-icons/gr";
+import { BiMinus, BiPlus } from "react-icons/bi";
 
 export default function Detail() {
 
     const dispatch = useDispatch();
     const { id } = useParams();
-
-    useEffect(() => {
-        dispatch(getProductDetail(id))
+    const [loading, setLoading] = useState(false)
+    useEffect(async () => {
+        setLoading(true)
+        await dispatch(getProductDetail(id));
+        setLoading(false)
     }, [dispatch, id])
 
     const product = useSelector(store => store.productDetail)
@@ -27,15 +28,26 @@ export default function Detail() {
         price = product.price
         description = product.description,
             category = product.category,
-            size = product.size,
             gender = product.gender
 
         if (product.image) {
             image = [...product.image]
         }
+
+        if (product.size) {
+            size = [...product.size]
+        }
     }
 
-    const [ sliderImg, setSliderImg ] = useState(image[0])
+    const sizeArr = []
+
+    for (let i = 0; i < size.length; i++) {
+        const key = Object.keys(size[i]).join();
+        sizeArr.push(key)
+    }
+
+
+    const [sliderImg, setSliderImg] = useState(image[0])
 
     const handleClick = (index) => {
         console.log(index);
@@ -43,57 +55,155 @@ export default function Detail() {
         setSliderImg(slider)
     }
 
-    return (
+    const ShowProduct = () => {
+        return (
+            // <div className="container">
+            //     <div className="box">
+            //         <div className="images">
+            //             <div className="img-holder active">
+            //                 <img src={sliderImg} alt="" />
+            //             </div>
+            //             {
+            //                 image.map((im, i) => {
+            //                     return (
+            //                         <div className="img-holder">
+            //                             <img src={im} alt="" key={i} onClick={() => handleClick(i)} />
+            //                         </div>
+            //                     )
+            //                 })
+            //             }
+            //         </div>
+            //         <div className="basic-info">
+            //             <h1 className="h1">{name}</h1>
+            //             <div className="rate">
+            //                 <i><MdOutlineStar /></i>
+            //                 <i><MdOutlineStar /></i>
+            //                 <i><MdOutlineStar /></i>
+            //                 <i><MdOutlineStar /></i>
+            //                 <i><MdOutlineStar /></i>
+            //             </div>
+            //             <span>${price}</span>
+            //             <div className="sizes">
+            //                 <select>
+            //                     <option disabled selected defaultValue>Size</option>
+            //                     {
+            //                         ziseArr.map((s, i) => {
+            //                             return (
+            //                                 <option value={s} key={i}>{s}</option>
+            //                             )
+            //                         })
+            //                     }
+            //                 </select>
+            //             </div>
+            //             <div className="options">
+            //                 <button>Buy It Now</button>
+            //                 <button className="button2">Add to Cart</button>
+            //             </div>
+            //         </div>
+            //         <div className="description">
+            //             <p>{description}</p>
+            //         </div>
+            //     </div>
+            // </div>
+            <>
+                <div className="container">
+                    <main>
+                        {/* thumbnails */}
 
-        <div className="flex-box">
-            <div className="left">
-                <div className="big-img">
-                    <img src={sliderImg} alt=""/>
-                </div>
-                <div className="images">
-                    {
-                        image.map((im, i) => {
-                            return (
-                                <div className="small-img" key={i}>
-                                    <img src={im} alt="" onClick={() => handleClick(i)}/>
+                        <section className="thumbnails">
+                            <img src={sliderImg} alt="product" className="main-thumbnail invisible-mob" />
+                            <div className="mobile-thumb hidden">
+                                <img src={image[0]} alt="product" />
+                                <button id="next">
+                                    <GrNext />
+                                </button>
+                                <button id="previous">
+                                    <GrPrevious />
+                                </button>
+                            </div>
+                            <div className="preview">
+                                {/* <img src={sliderImg} alt="" className="selected" /> */}
+                                {/* <img src={image[1]} alt="" />
+                                <img src={image[2]} alt="" /> */}
+                                {
+                                    image.map((im, i) => {
+                                        return (
+                                            <img src={im} alt="" key={i} onClick={() => handleClick(i)} />
+                                        )
+                                    })
+                                }
+                            </div>
+                        </section>
+                        {/* content */}
+
+                        <section className="content">
+                            <p className="company">Sport Planet</p>
+                            <h1 className="title">{name}</h1>
+                            <p className="info">{description}</p>
+                            <div className="price">
+                                <div className="new-price">
+                                    <p className="now">${price}</p>
                                 </div>
-                            )
-                        })
-                    }
+                            </div>
+                            <div className="sizes">
+                                <select>
+                                    <option disabled selected defaultValue>Size</option>
+                                    {
+                                         sizeArr.map((s,i) => {
+                                            return (
+                                                <option value={s} key={i}>{s}</option>
+                                            )
+                                         })
+                                    }
+                                </select>
+                            </div>
+                            <div className="buttons">
+                                <div className="amount-btn">
+                                    <button id="minus">
+                                        <BiMinus />
+                                    </button>
+                                    <p className="amount">0</p>
+                                    <button id="plus">
+                                        <BiPlus />
+                                    </button>
+                                </div>
+                                <button className="add_btn">
+                                    <GrCart />
+                                    Add to cart
+                                </button>
+                            </div>
+                        </section>
+                    </main>
+                </div>
 
+                <div className="lightbox invisible">
+                    <div className="lightbox-container">
+                        <button className="close-lightbox">
+                            <GrClose />
+                        </button>
+                        <img src={image[0]} alt="" className="main-thumbnail invisible-mob" />
+                        <div className="preview">
+                            <img src={image[0]} alt="" className="selected" />
+                            <img src={image[1]} alt="" />
+                            <img src={image[2]} alt="" />
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </>
 
-            <div className="rigth">
-                <div className="pname">{name}</div>
-                <div className="ratings">
-                    <MdOutlineStar />
-                    <MdOutlineStar />
-                    <MdOutlineStar />
-                    <MdOutlineStar />
-                    <MdOutlineStar />
-                </div>
-                <div className="price">${price}</div>
-                <div className="size">
-                    <p>Size: </p>
-                    <div className="psize active">XS</div>
-                    <div className="psize">S</div>
-                    <div className="psize">M</div>
-                    <div className="psize">L</div>
-                    <div className="psize">X</div>
-                    <div className="psize">XL</div>
-                    <div className="psize">XXL</div>
-                </div>
-                <div className="quantity">
-                    <p>Quantity: </p>
-                    <input type="number" min="1" max="5" value="1"/>
-                </div>
-                <div className="btn-box">
-                    <button className="cart-btn">Add to cart</button>
-                    <button className="buy-btn">Buy Now</button>
-                </div>
-            </div>
+        )
+    }
+
+
+
+
+
+
+    return (
+        <div>
+            {
+                loading ? <h1>Loading...</h1> : <ShowProduct />
+            }
         </div>
-
     )
 } 
