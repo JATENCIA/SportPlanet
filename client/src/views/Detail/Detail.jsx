@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetail } from "../../redux/Actions";
-// import "./styles/Detail2.css";
 import "./styles/detail.css";
 import { GrNext, GrPrevious, GrCart, GrClose } from "react-icons/gr";
 import { BiMinus, BiPlus } from "react-icons/bi";
@@ -27,8 +26,8 @@ export default function Detail() {
         name = product.name
         price = product.price
         description = product.description,
-            category = product.category,
-            gender = product.gender
+        category = product.category,
+        gender = product.gender
 
         if (product.image) {
             image = [...product.image]
@@ -145,11 +144,6 @@ export default function Detail() {
 
         )
     }
-
-
-
-
-
 
     return (
         <div>
