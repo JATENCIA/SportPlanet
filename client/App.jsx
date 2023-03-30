@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { NavBar } from "./src/Components/Navbar";
 
 import ProductCard from "./src/Components/ProductCard/ProductCard";
@@ -13,12 +13,15 @@ import { SupAdmin } from "./src/views/SupAdmin";
 
 // Fonts
 import "./src/fonts/SportsWorld.ttf";
+import Tshirts from "./src/Components/Categories/Tshirts/Tshirts";
 
 const App = () => {
+  const location = useLocation()
   return (
     <>
-      <NavBar />
+     {/*  <NavBar /> */}
       <div className="container p-4">
+      {location.pathname !== "/" && <NavBar/>}
         <Routes>
           <Route exact path="/" Component={LandingPage} />
           <Route path="/home" Component={Home} />
@@ -26,6 +29,7 @@ const App = () => {
           <Route path="/profile" Component={Profile} />
           <Route path="/dashboard" Component={Admin} />
           <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
+           <Route path="/home/categories/tShirts" Component={Tshirts}/> 
         </Routes>
       </div>
     </>
