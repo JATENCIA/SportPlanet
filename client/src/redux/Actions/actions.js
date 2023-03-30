@@ -66,3 +66,11 @@ export const filterByGender = (payload) => {
     payload: payload
   }
 }
+
+export const filterBySeason = (payload) => {
+  return {
+    type: FILTER_BY_SEASON,
+    payload: payload
+  }
+  
+}
