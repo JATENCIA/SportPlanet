@@ -12,9 +12,9 @@ export default function Detail() {
     const dispatch = useDispatch();
     const { id } = useParams();
     const [loading, setLoading] = useState(false)
-    useEffect(async () => {
+    useEffect(() => {
         setLoading(true)
-        await dispatch(getProductDetail(id));
+        dispatch(getProductDetail(id));
         setLoading(false)
     }, [dispatch, id])
 
