@@ -1,35 +1,28 @@
 .slider {
     width: 100%;
     height: 220px;
-  /*   height: 300px; */
     margin-top:auto;
     overflow: hidden;
-/*     background-color: orange; */
-   
-   
+    border-radius: 5px;
+    margin-bottom: 50px;
 }
 
 .slider ul {
     padding: 0;
     display: flex;
     width: 400%;
-
     animation: cambio 20s infinite alternate;
-
 }
 
 .slider li {
     list-style: none;
     width: 100%;
-
-
-  
 }
 
 .slider img {
    width: 100%;
    height: 220px;
-margin: auto;
+   margin: auto;
 }
 
 @keyframes cambio {
