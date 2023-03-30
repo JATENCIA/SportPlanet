@@ -37,7 +37,7 @@ const createUserReview = async (req, res) => {
     });
     const product = await Products.findById(req.body.product);
     const user = await Users.findById(req.body.user);
-    const saveUserReview = await userReview.save();
+    const saveUserReview = await UserReview.save();
     user.review = user.review.concat(saveUserReview._id);
     await user.save();
     user.review = user.review.concat(saveUserReview._id);
@@ -51,7 +51,7 @@ const createUserReview = async (req, res) => {
 
 const deleteUserReviewByid = async (req, res) => {
   try {
-    const userReview = await -userReview.findById(req.params.id);
+    const userReview = await userReview.findById(req.params.id);
     let baneado = userReview?.baneado;
     if (userReview) {
       if (baneado === false) baneado = true;
@@ -61,11 +61,11 @@ const deleteUserReviewByid = async (req, res) => {
 
     baneado
       ? res.status(200).json({
-          message: `The User Review *** ${user.name.UserReview} *** is temporarily or permanently disabled.`,
+          message: `The User Review *** ${userReview} *** is temporarily or permanently disabled.`,
           baneado: baneado,
         })
       : res.status(200).json({
-          message: `the User Review *** ${user.name.userReview} *** is enabled`,
+          message: `the User Review *** ${userReview} *** is enabled`,
           baneado: baneado,
         });
   } catch (error) {
