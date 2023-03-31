@@ -29,7 +29,8 @@ const App = () => {
           <Route path="/profile" Component={Profile} />
           <Route path="/dashboard" Component={Admin} />
           <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
-           <Route path="/home/categories/tShirts" Component={Tshirts}/> 
+           <Route path="/home/categories/tShirts" Component={Tshirts}/>
+           <Route path="products/:product" Component={SearchedProducts}/>
         </Routes>
       </div>
     </>
