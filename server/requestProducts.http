@@ -53,9 +53,9 @@ Content-Type: application/json
  "price":1000,
  "discount":0,
  "description":"Adidas showed the world the X Speedportal Legend boots that the Argentine star will wear in the World Cup",
- "store":"64244f23ac73e72dae8e9c43",
+ "user":"jjj",
  "season":2022 ,
- "size":[{"7":9},{"7'5":6},{"8":5}],
+ "size":[{"7":9}],
  "category": "footwear",
  "gender":"men",
  "state":"new"

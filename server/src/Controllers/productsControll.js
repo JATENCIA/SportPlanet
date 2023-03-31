@@ -1,5 +1,5 @@
 const Products = require("../Models/Products");
-const Stores = require("../Models/Stores");
+const Users = require("../Models/Users");
 
 /**
  * It returns a list of products, if the name query parameter is present, it filters the list of
@@ -19,6 +19,8 @@ const getProducts = async (req, res) => {
       location: 1,
       telephone: 1,
       baneado: 1,
+      isSeller: 1,
+      roll: 1,
     });
     const { name } = req.query;
 
@@ -51,6 +53,8 @@ const getProduct = async (req, res) => {
       location: 1,
       telephone: 1,
       baneado: 1,
+      isSeller: 1,
+      roll: 1,
     });
     if (!store) return res.status(204).json({});
     res.status(200).json(store);
@@ -68,10 +72,10 @@ const createProduct = async (req, res) => {
   try {
     const product = new Products(req.body);
 
-    const store = await Stores.findById(req.body.store);
+    const user = await Users.findById(req.body.user);
     const saveProduct = await product.save();
-    store.product = store.product.concat(saveProduct._id);
-    await store.save();
+    user.product = user.product.concat(saveProduct._id);
+    await user.save();
     res.status(201).json(saveProduct);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });

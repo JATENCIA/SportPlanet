@@ -77,7 +77,17 @@ const createUser = async (req, res) => {
   try {
     const userFound = await Users.findOne({ eMail: req.body.eMail });
     if (userFound)
-      return res.status(301).json({ message: "this URL already exits" });
+      return res.status(301).json({ message: "this eMail already exits" });
+
+    const userFoundDni = await Users.findOne({ dni: req.body.dni });
+    if (userFoundDni)
+      return res.status(301).json({ message: "this DNI already exits" });
+
+    const userFoundTele = await Users.findOne({
+      telephone: req.body.telephone,
+    });
+    if (userFoundTele)
+      return res.status(301).json({ message: "this Telephone already exits" });
 
     const usersc = await Users.find({});
     let iNumber = 0;

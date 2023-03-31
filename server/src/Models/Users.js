@@ -36,7 +36,8 @@ const userSchema = mongoose.Schema(
     telephone: {
       type: String,
       unique: true,
-      minLength: 9,
+      minLength: 7,
+      maxLength: 10,
     },
 
     roll: {
@@ -50,20 +51,20 @@ const userSchema = mongoose.Schema(
       default: false,
     },
 
-    review: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "Reviews",
-      },
-    ],
-
     favorites: {
       type: Array,
     },
 
+    payment: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Payments",
+      },
+    ],
     product: [
       {
         type: mongoose.Types.ObjectId,
+        ref: "Products",
         ref: "Products",
       },
     ],
