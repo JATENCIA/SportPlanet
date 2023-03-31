@@ -36,12 +36,12 @@ const App = () => {
           <Route path="/profile" Component={Profile} />
           <Route path="/dashboard" Component={Admin} />
           <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
-           <Route path="/home/categories/tShirts" Component={Tshirts}/>
-          <Route path="/home/categories/balls" Component={Balls} />
-          <Route path="/home/categories/shoes" Component={Shoes} />
-          <Route path="/home/categories/accesories" Component={Accesories} />
-          <Route path="/home/categories/supplements" Component={Supplements} />
-          <Route path="/home/categories/pants" Component={Pants} />   
+           <Route path="/category/tShirts" Component={Tshirts}/>
+          <Route path="/category/balls" Component={Balls} />
+          <Route path="/category/shoes" Component={Shoes} />
+          <Route path="/category/accessories" Component={Accesories} />
+          <Route path="/category/supplements" Component={Supplements} />
+          <Route path="/category/pants" Component={Pants} />   
         </Routes>
       </div>
     </>
