@@ -11,6 +11,7 @@ import styled from "./Tshirts.module.css"
 
 
 
+
 function Tshirts() {
 
     const dispatch = useDispatch();
@@ -36,7 +37,7 @@ function Tshirts() {
 
   return (
     <div>
-        <SlidePromos/>
+     <SlidePromos/>
        <div>
         <ul>
             <li  className={styled.li}><img className={styled.img}  src="https://http2.mlstatic.com/D_NQ_NP_688479-MLA50108897628_052022-B.jpg"  alt="" /></li>

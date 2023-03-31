@@ -34,8 +34,11 @@ export const ProductItem = ({
       
        <div>$ {price}</div>
        <p className={styled.p}>Envio Gratis!!</p>
+       
       </div>
       </div>
+      <button>Add to cart</button>
     </div>
+    
   );
 };
