@@ -8,29 +8,34 @@ export default function Categories() {
       <div>
         <h2 className={style.Name}>Product Categories</h2>
       </div>
-      <div className={style.cointainer}>
-        <Link className={style.TShirtsContainer} to="/home/categories/tShirts">
+
+      <div className={style.container}>
+        <Link className={style.CategoryContainer} to="/category/tShirts">
           <div className={style.names}>T-Shirts</div>
         </Link>
-        <Link className={style.PantsContainer} to="/home/categories/pants">
+        <Link className={style.CategoryContainer} to="/category/pants">
           <div className={style.names}>Pants</div>
         </Link>
-        <Link className={style.ShoesContainer} to="/home/categories/shoes">
+        <Link className={style.CategoryContainer} to="/category/shoes">
           <div className={style.names}>Shoes</div>
         </Link>
-        <div className={style.cointainer}>
-          <Link className={style.BallsContainer} to="/home/categories/balls">
+        <div className={style.container}>
+          <Link className={style.CategoryContainer} to="/category/balls">
             <div className={style.names}>Balls</div>
           </Link>
           <Link
-            className={style.SupplementsContainer}
-            to="/home/categories/supplements"
+            className={style.CategoryContainer}
+            to="/category/supplements"
           >
             <div className={style.names}>Supplements</div>
           </Link>
           <Link
-            className={style.AccessoriesContainer}
-            to="/home/categories/accesories"
+
+           
+
+            className={style.CategoryContainer}
+            to="/category/accessories"
+
           >
             <div className={style.names}>Accessories</div>
           </Link>

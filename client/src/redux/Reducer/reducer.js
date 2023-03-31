@@ -1,10 +1,20 @@
-import { FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SIZE, FILTER_BY_USED, GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, GET_PRODUCT_DETAIL } from "../Actions";
+import {
+  FILTER_BY_GENDER,
+  FILTER_BY_SEASON,
+  FILTER_BY_PRICE,
+  FILTER_BY_SIZE,
+  FILTER_BY_USED,
+  GET_ALL_PRODUCT,
+  GET_ALL_USER,
+  POST_USER,
+  GET_PRODUCT_DETAIL,
+} from "../Actions";
 
 const initialState = {
   users: [],
   allUsers: [],
   allProducts: [],
-  productDetail: []
+  productDetail: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -26,59 +36,105 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allProducts: action.payload,
       };
-      
+
     case FILTER_BY_PRICE:
-      let productsSorted = action.payload === "min_weight" ? state.allProducts.sort((a, b) => {
-        if (a.price > b.price) return 1;
-        if (b.price> a.price) return -1;
-        return 0;
-      })
-    : state.allProducts.sort((a, b) => {
-        if (a.price > b.price) return -1;
-        if (b.price > a.price) return 1;
-        return 0;
-      });
+      let productsSorted =
+        action.payload === "min_weight"
+          ? state.allProducts.sort((a, b) => {
+              if (a.price > b.price) return 1;
+              if (b.price > a.price) return -1;
+              return 0;
+            })
+          : state.allProducts.sort((a, b) => {
+              if (a.price > b.price) return -1;
+              if (b.price > a.price) return 1;
+              return 0;
+            });
 
       return {
         ...state,
-        allProducts: productsSorted
-      }
+        allProducts: productsSorted,
+      };
 
     case FILTER_BY_USED:
-      let productsFiltered = action.payload === "new" ? state.allProducts.filter(product => {
-        return product.state === "new"
-      })
-      : state.allProducts.filter(product => product.state === "used")
+      let productsFiltered =
+        action.payload === "new"
+          ? state.allProducts.filter((product) => {
+              return product.state === "new";
+            })
+          : state.allProducts.filter((product) => product.state === "used");
       return {
         ...state,
-        allProducts: productsFiltered
-      }
-      
+        allProducts: productsFiltered,
+      };
+
     case FILTER_BY_GENDER:
-      let productsByGender = []
-      if(action.payload === "men"){
-        productsByGender = state.allProducts.filter(product => product.gender === "men")
-      }
-      else if(action.payload === "women"){
-        productsByGender = state.allProducts.filter(product => product.gender === "women")
-      }
-      else if(action.payload === "unisex"){
-        productsByGender = state.allProducts.filter(product => product.gender === "unisex")
-      }
-      else {
-        productsByGender = allProducts
+      let productsByGender = [];
+      if (action.payload === "men") {
+        productsByGender = state.allProducts.filter(
+          (product) => product.gender === "men"
+        );
+      } else if (action.payload === "women") {
+        productsByGender = state.allProducts.filter(
+          (product) => product.gender === "women"
+        );
+      } else if (action.payload === "unisex") {
+        productsByGender = state.allProducts.filter(
+          (product) => product.gender === "unisex"
+        );
+      } else {
+        productsByGender = allProducts;
       }
       return {
         ...state,
-        allProducts: [...productsByGender]
-      }
-      
+        allProducts: [...productsByGender],
+      };
+
     case GET_PRODUCT_DETAIL:
       return {
         ...state,
-        productDetail: action.payload
-      }
+        productDetail: action.payload,
+      };
+    case FILTER_BY_SIZE:
+      let productBySize = state.allProducts
+        .sort((a, b) => {
+          const sizeValues = { small: 1, medium: 2, large: 2, xlarge: 4 };
+          const aSizeValues = sizeValues[a.size];
+          const bSizeValues = sizeValues[b.size];
+          return aSizeValues - bSizeValues;
+        })
+        .filter((product) => product.size === action.payload);
+      return {
+        ...state,
+        allProducts: productBySize,
+      };
+
+    case FILTER_BY_SEASON:
+      let productBySeason = state.allProducts.filter((product) => {
+        const year = parseInt(product.year);
+        switch (action.payload) {
+          case "70s":
+            return year >= 1970 && year <= 1979;
+          case "80s":
+            return year >= 1980 && year <= 1989;
+          case "90s":
+            return year >= 1990 && year <= 1999;
+          case "00s":
+            return year >= 2000 && year <= 2009;
+          case "10s":
+            return year >= 2010 && year <= 2019;
+          case "20s":
+            return year >= 2020 && year <= 2023;
+        }
+      });
+      return {
+        ...state,
+        allProducts: productBySeason,
+      };
+      
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 };
