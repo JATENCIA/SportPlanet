@@ -61,15 +61,16 @@ const userSchema = mongoose.Schema(
       type: Array,
     },
 
-    isSeller: {
-      type: Boolean,
-      default: false,
-    },
-
-    store: [
+    product: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "Stores",
+        ref: "Products",
+      },
+    ],
+    payment: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Payments",
       },
     ],
     review: [
