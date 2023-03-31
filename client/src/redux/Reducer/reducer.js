@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 import { FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SIZE, FILTER_BY_USED, GET_ALL_PRODUCT, GET_ALL_USER, POST_USER } from "../Actions";
+=======
+import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, GET_PRODUCT_DETAIL } from "../Actions";
+>>>>>>> c205d0a (detail page no acabada)
 
 const initialState = {
   users: [],
   allUsers: [],
   allProducts: [],
+  productDetail: []
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -38,6 +43,7 @@ export const rootReducer = (state = initialState, action) => {
         return 0;
       });
 
+<<<<<<< HEAD
       return {
         ...state,
         allProducts: productsSorted
@@ -71,6 +77,14 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allProducts: [...productsByGender]
       }  
+=======
+    case GET_PRODUCT_DETAIL:
+      return {
+        ...state,
+        productDetail: action.payload,
+      }
+
+>>>>>>> c205d0a (detail page no acabada)
     default:
       return state;
   }

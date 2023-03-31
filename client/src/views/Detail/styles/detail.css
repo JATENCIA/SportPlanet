@@ -1,0 +1,122 @@
+.flex-box {
+    display: flex;
+    width: 1000px;
+    /* margin: 20px auto; */
+    margin-top: 20%;
+    margin-left: 35%;
+}
+
+.left {
+    width: 50%;
+}
+
+.big-img {
+    /* width: 250px; */
+    width: 300px;
+}
+
+.big-img img {
+    width: inherit
+}
+
+.images {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 15px;
+    margin-left: 25px;
+}
+
+.small-img {
+    width: 50px;
+    overflow: hidden;
+    border: 1.5px solid black;
+}
+
+.small-img img {
+    width: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.small-img:hover img{
+    transform: scale(1.2)
+}
+
+.pname {
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    /* margin-top: 50px; */
+}
+
+.ratings {
+    color: orangered;
+    display: flex;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.size {
+    display:flex;
+}
+
+.psize {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ff5e00;
+    color: #000;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.psize .active {
+    border-width: 1.5px;
+    color: #ff5e00;
+    font-weight: 500;
+}
+
+.quantity {
+    display: flex;
+    margin: 20px 0;
+}
+
+.quantity p{
+    font-size:18px;
+    font-weight: 600;
+}
+
+.quantity input {
+    width: 40px;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    margin-left: 15px;
+}
+
+.btn-box {
+    display: flex;
+    margin-top: 40px;
+}
+
+.btn-box button {
+    font-size: 18px;
+    padding: 8px 25px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cart-btn {
+    background-color: #ff5e00;
+    margin-right: 20px;
+}
+
+.buy-btn {
+    background-color: aqua;
+}

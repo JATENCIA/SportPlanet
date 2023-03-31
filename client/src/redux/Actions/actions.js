@@ -1,5 +1,9 @@
 import axios from "axios";
+<<<<<<< HEAD
 import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SEASON, FILTER_BY_USED, FILTER_BY_SIZE } from "./actionsTypes";
+=======
+import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, GET_PRODUCT_DETAIL } from "./actionsTypes";
+>>>>>>> c205d0a (detail page no acabada)
 
 export const getAllUser = () => async (dispatch) => {
   try {
@@ -40,6 +44,7 @@ export const getAllProduct = () => async (dispatch) => {
   }
 };
 
+<<<<<<< HEAD
 export const filterByPrice = (payload) => {
   return {
     type: FILTER_BY_PRICE,
@@ -66,3 +71,18 @@ export const filterByGender = (payload) => {
     payload: payload
   }
 }
+=======
+
+// Detail of a product
+export const getProductDetail = (id) => async (dispatch) => {
+  try {
+    const { data } = await axios.get(`/products/${id}`)
+    dispatch({
+      type: GET_PRODUCT_DETAIL,
+      payload: data
+    })
+  } catch (error) {
+    return { messaje: `${error}` };
+  }
+}
+>>>>>>> c205d0a (detail page no acabada)
