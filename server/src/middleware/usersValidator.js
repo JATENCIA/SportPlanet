@@ -3,7 +3,7 @@ const { validateUsersResult } = require("../helpers/usersHelper");
 const Users = require("../Models/Users");
 
 const validateUsersCreate = [
-  check("name") /* User */
+  check("name")
     .exists()
     .withMessage("Name is required")
     .not()
