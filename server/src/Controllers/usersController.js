@@ -10,13 +10,7 @@ const Users = require("../Models/Users");
  */
 const getUsers = async (req, res) => {
   try {
-    const users = await Users.find({}).populate("store", {
-      name: 1,
-      location: 1,
-      image: 1,
-      eMail: 1,
-      baneado: 1,
-    });
+    const users = await Users.find({}).populate("product");
 
     const { name } = req.query;
 

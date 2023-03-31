@@ -40,9 +40,9 @@ const productsSchema = mongoose.Schema(
       maxLength: 500,
     },
 
-    store: {
+    user: {
       type: mongoose.Types.ObjectId,
-      ref: "Stores",
+      ref: "Users",
     },
 
     season: {
