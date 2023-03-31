@@ -28,7 +28,7 @@ export const NavBar = () => {
 
       <div className={style.divLogin}> <Login /> </div>
 
-      <button className={style.carrito}> <i class="fas fa-shopping-cart"></i> </button> 
+      <button className={style.carrito}> <i className="fas fa-shopping-cart"></i> </button> 
     </div>
   );
 };

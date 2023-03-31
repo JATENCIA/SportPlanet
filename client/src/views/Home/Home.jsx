@@ -8,7 +8,8 @@ import FeaturedCardContainer from "../../Components/FeaturedCardContainer/Featur
 export const Home = () => {
   return (
     <div className={style.main}>
-      <SlidePromos />
+       <SlidePromos />
+   
       <hr></hr>
       <Categories />
       <hr></hr>
@@ -18,16 +19,17 @@ export const Home = () => {
       <div className={style.brandSection}>
           <h1 className={style.brandTitle}>Our Brands</h1>
           <div className={style.brandContainer}>
-            <div className={style.brand}>BRAND</div>
-            <div className={style.brand}>BRAND</div>
-            <div className={style.brand}>BRAND</div>
+            <div className={style.brand}><img src="" alt="" /></div>
+            <div className={style.brand}></div>
+            <div className={style.brand}></div>
           </div>
           <div className={style.brandContainer}>
-            <div className={style.brand}>BRAND</div>
-            <div className={style.brand}>BRAND</div>
-            <div className={style.brand}>BRAND</div>
+            <div className={style.brand}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/1000px-Adidas_Logo.svg.png" alt="" /></div>
+            <div className={style.brand}></div>
+            <div className={style.brand}></div>
           </div>
         </div>
+        
         <hr></hr>
         <h1 className={style.aboutUsTitle}>About Us</h1>
         <div className={style.aboutUsDescription}>

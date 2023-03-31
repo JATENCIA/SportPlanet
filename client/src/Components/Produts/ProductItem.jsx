@@ -12,7 +12,10 @@ export const ProductItem = ({
   size,
   image,
 }) => {
-  console.log("🚀 ~ file: ProductItem.jsx:12 ~ size:", size);
+ /*  console.log("🚀 ~ file: ProductItem.jsx:12 ~ size:", size); */
+
+
+
 
   return (
     <div className={styled.maincontainer}>
@@ -37,7 +40,7 @@ export const ProductItem = ({
        
       </div>
       </div>
-      <button>Add to cart</button>
+      <button className="Add">Add to cart</button>
     </div>
     
   );
