@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 
 export default function Categories(){
     return (
-        <div className={style.containerName}> 
-        <div>
-        <h2 className={style.Name}>Popular Categories</h2>
-        </div>
-     <div className={style.cointainer}>
-<Link className={style.TShirtsContainer} to= "/category/tShirts"><div className={style.names}>T-Shirts</div></Link>
-            <Link className={style.PantsContainer} to='/category/pants'><div className={style.names} >Pants</div></Link>
-            <Link className={style.ShoesContainer} to='/category/shoes'><div className={style.names}>Shoes</div></Link>
-            <div className={style.cointainer}> 
-            <Link className={style.BallsContainer} to='/category/balls'><div className={style.names}>Balls</div></Link>
-            <Link className={style.SupplementsContainer} to='/category/supplements'><div className={style.names}>Supplements</div></Link>
-           <Link className={style.AccessoriesContainer} to='/category/accessories'><div className={style.names}>Accessories</div></Link>
+        <div className={style.Namecontainer}>
+        <span className={style.NameTitle}>Popular Categories</span>
+
+    <main className={style.cointainer}>
+   <Link className={style.item1} to= "/category/tShirts"><div className={style.names}>T-Shirts</div></Link>
+            <Link className={style.item2} to='/category/pants'><div className={style.names} >Pants</div></Link>
+            <Link className={style.item3} to='/category/shoes'><div className={style.names}>Shoes</div></Link>
+            <Link className={style.item4} to='/category/balls'><div className={style.names}>Balls</div></Link>
+            <Link className={style.item5} to='/category/supplements'><div className={style.names}>Supplements</div></Link>
+           <Link className={style.item6} to='/category/accessories'><div className={style.names}>Accessories</div></Link>
+
+    </main>      
  </div>  
- </div>
-</div>
+  
+
 
       
     )

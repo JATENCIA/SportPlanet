@@ -1,134 +1,154 @@
-.containerName {
-    padding-top: 140px;
-    font-size: 26px;
-    font-weight: 300;
-    margin: 0 0 0 8px;
+.Namecontainer {
+    font-size: 22px;
+font-weight: bold;
+text-align: center;
+        padding-top: 0px;
+        font-size: 36px;
+        font-weight: 200;
+        margin: 0 0 0 -20px;
+        width: 100%;
+    }
+    
+
+.NameTitle {
+    font-size: 32px;
+font-weight: bold;
+margin: 40px;
+    justify-content: center;
+    display: flex;
+
+}
+
+.names {
+    
+    font-size: 20px;
+font-family:Arial, Helvetica, sans-serif;
+margin: 20px;
+    justify-content: center;
+    display: flex;
+
+}
+
+.Namecontainer {
+font-size: 22px;
+font-weight: bold;
+text-align: center;
+    padding-top: 0px;
+    font-size: 36px;
+    font-weight: 200;
+    margin: 0 0 0 -20px;
     width: 100%;
 }
-
-.Name {
-    display: flex;
-    padding-left: 10px
-}
-
-
 
 .cointainer {
-    width: 100%;
-    column-count: 3;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding-top: 30px;
-    margin-bottom: 220px;
-    }
-    
-    
-    .TShirtsContainer {
-        display: flex;
-        flex-direction: column;
-       width: 200px;
-        height: 200px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        background: rgba(255, 255, 255, 0.486);
-        border-radius: 5px;
-        justify-content: space-between;
-        align-items: center;
-        text-decoration: none;
-        box-shadow: 7px 7px 15px rgba(231, 231, 236, 0.3);
-        transition: all 300ms ease;
-        cursor: pointer;
-        
-    }
-    
-    .names {
-padding-top: 120px;
+display: flex;
+flex-wrap: wrap;
+margin: 80px;
     }
 
-    .PantsContainer {
-        display: flex;
-        flex-direction: column;
-       width: 200px;
-        height: 200px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        background: rgba(255, 255, 255, 0.486);
-        border-radius: 5px;
-        justify-content: space-between;
-        align-items: center;
-        text-decoration: none;
-        box-shadow: 7px 7px 15px rgba(231, 231, 236, 0.3);
-        transition: all 300ms ease;
-        cursor: pointer;
-    }
-
-    .ShoesContainer {
-        display: flex;
-        flex-direction: column;
-       width: 200px;
-        height: 200px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        background: rgba(255, 255, 255, 0.486);
-        border-radius: 5px;
-        justify-content: space-between;
-        align-items: center;
-        text-decoration: none;
-        box-shadow: 7px 7px 15px rgba(231, 231, 236, 0.3);
-        transition: all 300ms ease;
-        cursor: pointer;
-    }
-
-    .BallsContainer {
-        display: flex;
-        flex-direction: column;
-       width: 200px;
-        height: 200px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        background: rgba(255, 255, 255, 0.486);
-        border-radius: 5px;
-        justify-content: space-between;
-        align-items: center;
-        text-decoration: none;
-        box-shadow: 7px 7px 15px rgba(231, 231, 236, 0.3);
-        transition: all 300ms ease;
-        cursor: pointer;
-        
-    }
-
-    .SupplementsContainer {
-        display: flex;
-        flex-direction: column;
-       width: 200px;
-        height: 200px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        background: rgba(255, 255, 255, 0.486);
-        border-radius: 5px;
-        justify-content: space-between;
-        align-items: center;
-        text-decoration: none;
-        box-shadow: 7px 7px 15px rgba(231, 231, 236, 0.3);
-        transition: all 300ms ease;
-        cursor: pointer;
-    }
     
-    .AccessoriesContainer {
-        display: flex;
-        flex-direction: column;
-       width: 200px;
-        height: 200px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        background: rgba(255, 255, 255, 0.486);
-        border-radius: 5px;
-        justify-content: space-between;
-        align-items: center;
-        text-decoration: none;
-        box-shadow: 7px 7px 15px rgba(231, 231, 236, 0.3);
-        transition: all 300ms ease;
-        cursor: pointer;
-         
-    }
+    .item1 {
+width: calc(33.33% - 10px);
+margin: 5px;
+background-color: #f7f7f7bb;
+border: 1px solid #ccc;
+aspect-ratio: 1 / 1;
+border-radius: 10px;
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+transition: all 0.3s ease;
+}
+
+.item1:hover {
+background-color: #0051ff88;
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+transform: translateY(-5px);
+}
+
+
+.item2 {
+width: calc(33.33% - 10px);
+margin: 5px;
+background-color: #f7f7f7bb;
+border: 1px solid #ccc;
+aspect-ratio: 1 / 1;
+border-radius: 10px;
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+transition: all 0.3s ease;
+}
+
+
+.item2:hover {
+background-color: #0051ff88;
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+transform: translateY(-5px);
+}
+
+
+.item3 {
+width: calc(33.33% - 10px);
+margin: 5px;
+background-color: #f7f7f7bb;
+border: 1px solid #ccc;
+aspect-ratio: 1 / 1;
+border-radius: 10px;
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+transition: all 0.3s ease;
+}
+
+.item3:hover {
+background-color: #0051ff88;
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+transform: translateY(-5px);
+}
+
+.item4 {
+width: calc(33.33% - 10px);
+margin: 5px;
+background-color: #f7f7f7bb;
+border: 1px solid #ccc;
+aspect-ratio: 1 / 1;
+border-radius: 10px;
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+transition: all 0.3s ease;
+}
+.item4:hover {
+background-color: #0051ff88;
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+transform: translateY(-5px);
+}
+
+
+.item5 {
+width: calc(33.33% - 10px);
+margin: 5px;
+background-color: #f7f7f7bb;
+border: 1px solid #ccc;
+aspect-ratio: 1 / 1;
+border-radius: 10px;
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+transition: all 0.3s ease;
+}
+
+
+.item5:hover {
+background-color: #0051ff88;
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+transform: translateY(-5px);
+}
+
+.item6 {
+width: calc(33.33% - 10px);
+margin: 5px;
+background-color: #f7f7f7bb;
+border: 1px solid #ccc;
+aspect-ratio: 1 / 1;
+border-radius: 10px;
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+transition: all 0.3s ease;
+}
+
+.item6:hover {
+background-color: #0051ff88;
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+transform: translateY(-5px);
+}

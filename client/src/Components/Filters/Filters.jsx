@@ -47,6 +47,12 @@ export default function Filters() {
       <option value="" selected disabled hidden>
             Season Filter
       </option>
+      <option value="70s">1979-1970</option>
+      <option value="80s">1989-1980</option>
+      <option value="90s">1999-1990</option>
+        <option value="00s ">2009-2000</option>
+        <option value="10s">2019-2010</option>
+        <option value="20s">2023-2020</option>
       </select>
     </div>
   );

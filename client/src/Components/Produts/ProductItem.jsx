@@ -23,7 +23,7 @@ export const ProductItem = ({
 {/*  <div className="bg-black w-30 h-4"></div> */}
 <div className={styled.p1}>
       <div>
-        <h1 className="text-3xl text-lg">{name}</h1>
+        <h1 className="text-3xl text">{name}</h1>
       </div>
       <div className="text-blue-500 text-xs">{description}</div>
       
