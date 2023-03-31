@@ -6,7 +6,7 @@ import { getAllProduct } from '../../../redux/Actions';
 import { ProductItem } from '../../Produts';
 import { Paginate } from '../../Paginate/Paginate';
 import styled from "./Tshirts.module.css"
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -45,15 +45,17 @@ function Tshirts() {
        </div>
        {products?.map((product) => {
     return (
-      <ProductItem
-        key={crypto.randomUUID()}
-        _id={product._id}
-        name={product.name}
-        image={product.image}
-        size={product.size}
-        price={product.price}
-        description={product.description}
-      />
+      <Link to={`/detail/${product._id}`}>
+        <ProductItem
+          key={crypto.randomUUID()}
+          _id={product._id}
+          name={product.name}
+          image={product.image}
+          size={product.size}
+          price={product.price}
+          description={product.description}
+        />
+      </Link>
     );
   })}
 

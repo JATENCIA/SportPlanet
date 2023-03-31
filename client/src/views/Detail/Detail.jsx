@@ -37,6 +37,7 @@ export default function Detail() {
         }
     }
 
+
     const sizeArr = []
 
     for (let i = 0; i < size.length; i++) {

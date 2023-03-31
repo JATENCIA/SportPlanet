@@ -13,7 +13,13 @@ import { SupAdmin } from "./src/views/SupAdmin";
 
 // Fonts
 import "./src/fonts/SportsWorld.ttf";
+
+// Categories
 import Tshirts from "./src/Components/Categories/Tshirts/Tshirts";
+import Balls from "./src/Components/Categories/Balls/Balls";
+import Shoes from "./src/Components/Categories/Shoes/Shoes";
+import Accesories from "./src/Components/Categories/Accesories/Accesories";
+import Supplements from "./src/Components/Categories/Supplements/Supplements";
 
 const App = () => {
   const location = useLocation()
@@ -29,7 +35,11 @@ const App = () => {
           <Route path="/profile" Component={Profile} />
           <Route path="/dashboard" Component={Admin} />
           <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
-           <Route path="/home/categories/tShirts" Component={Tshirts}/> 
+           <Route path="/home/categories/tShirts" Component={Tshirts}/>
+          <Route path="/home/categories/balls" Component={Balls} />
+          <Route path="/home/categories/shoes" Component={Shoes} />
+          <Route path="/home/categories/accesories" Component={Accesories} />
+          <Route path="/home/categories/supplements" Component={Supplements} />   
         </Routes>
       </div>
     </>
