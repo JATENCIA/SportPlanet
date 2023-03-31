@@ -40,6 +40,7 @@ export const getAllProduct = () => async (dispatch) => {
   }
 };
 
+<<<<<<< HEAD
 export const filterByPrice = (payload) => {
   return {
     type: FILTER_BY_PRICE,

@@ -53,6 +53,7 @@ export const rootReducer = (state = initialState, action) => {
               return 0;
             });
 
+<<<<<<< HEAD
       return {
         ...state,
         allProducts: productsSorted,
