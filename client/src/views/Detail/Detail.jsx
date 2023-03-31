@@ -153,7 +153,7 @@ export default function Detail() {
                                 </div>
                             </div>
                             <div className="sizes">
-                                <select>
+                                <select className="select">
                                     <option disabled selected defaultValue>Size</option>
                                     {
                                          sizeArr.map((s,i) => {
