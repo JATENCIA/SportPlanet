@@ -29,7 +29,7 @@ const validateUsersCreate = [
       /^$|^(http(s?):\/\/)([0-9a-zA-Z]+\.)+[a-zA-Z]{2,}(:[0-9]+)?(\/[^\s]*)?$/
     )
     .withMessage(`Invalid image URL format. Must be a valid URL or empty.`),
-    
+
   check("eMail")
     .exists()
     .withMessage("Email already exists")
