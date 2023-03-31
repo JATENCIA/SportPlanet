@@ -8,6 +8,7 @@ import {
   GET_ALL_USER,
   POST_USER,
   GET_PRODUCT_DETAIL,
+  GET_SEARCHED_PRODUCTS
 } from "../Actions";
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   allUsers: [],
   allProducts: [],
   productDetail: [],
+  searchedProducts: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -131,7 +133,11 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allProducts: productBySeason,
       };
-      
+      case GET_SEARCHED_PRODUCTS:
+      return{
+        ...state,
+        searchedProducts: action.payload,
+      }
     default:
       return {
         ...state,
