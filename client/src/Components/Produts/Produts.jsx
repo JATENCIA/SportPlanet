@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { getAllProduct } from "../../redux/Actions";
 import { ProductItem } from "./ProductItem";
 
@@ -21,6 +22,7 @@ const Produts = () => {
     <div>
       {filterProducts?.map((product) => {
         return (
+          <Link to={`/detail/${product._id}`}>
           <ProductItem
             key={crypto.randomUUID()}
             _id={product._id}
@@ -30,6 +32,7 @@ const Produts = () => {
             price={product.price}
             description={product.description}
           />
+          </Link>
         );
       })}
     </div>

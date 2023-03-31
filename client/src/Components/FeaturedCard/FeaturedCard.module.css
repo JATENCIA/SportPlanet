@@ -1,0 +1,15 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 400px;
+    height: 300px;
+}
+
+.imgContainer {
+    width: 350px;
+    height: 230px;
+    border: 1px solid black;
+}
