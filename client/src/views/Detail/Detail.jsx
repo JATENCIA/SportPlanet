@@ -12,9 +12,9 @@ export default function Detail() {
     const dispatch = useDispatch();
     const { id } = useParams();
     const [loading, setLoading] = useState(false)
-    useEffect(async () => {
+    useEffect(() => {
         setLoading(true)
-        await dispatch(getProductDetail(id));
+        dispatch(getProductDetail(id));
         setLoading(false)
     }, [dispatch, id])
 
@@ -62,7 +62,7 @@ export default function Detail() {
                         {/* thumbnails */}
 
                         <section className="thumbnails">
-                            <img src={sliderImg} alt="product" className="main-thumbnail invisible-mob" />
+                            <img src={sliderImg || image[0]} alt="product" className="main-thumbnail invisible-mob" />
                             <div className="mobile-thumb hidden">
                                 <img src={image[0]} alt="product" />
                                 <button id="next">
