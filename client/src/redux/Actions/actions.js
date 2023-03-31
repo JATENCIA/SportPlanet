@@ -79,3 +79,10 @@ export const getProductDetail = (id) => async (dispatch) => {
   }
 }
 
+export const filterBySeason = (payload) => {
+  return {
+    type: FILTER_BY_SEASON,
+    payload: payload
+  }
+}
+
