@@ -40,9 +40,9 @@ const productsSchema = mongoose.Schema(
       maxLength: 500,
     },
 
-    store: {
+    user: {
       type: mongoose.Types.ObjectId,
-      ref: "Stores",
+      ref: "Users",
     },
 
     season: {
@@ -84,6 +84,10 @@ const productsSchema = mongoose.Schema(
       type: "String",
       enum: ["new", "used"],
       default: "new",
+    },
+    brands: {
+      type: "String",
+      enum: ["PUMA", "ADIDAS", "REBOOK", "COLUMBIA", "NIKE", "UNDER ARMOUR"],
     },
   },
   {

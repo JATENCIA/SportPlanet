@@ -10,13 +10,7 @@ const Stores = require("../Models/Stores");
  */
 const getProducts = async (req, res) => {
   try {
-    const products = await Products.find({}).populate("store", {
-      name: 1,
-      location: 1,
-      user: 1,
-      eMail: 1,
-      baneado: 1,
-    });
+    const products = await Products.find({}).populate("user");
     const { name } = req.query;
 
     if (name) {
@@ -39,7 +33,7 @@ const getProducts = async (req, res) => {
  */
 const getProduct = async (req, res) => {
   try {
-    const store = await Products.findById(req.params.id);
+    const store = await Products.findById(req.params.id).populate("user");
     if (!store) return res.status(204).json({});
     res.status(200).json(store);
   } catch (error) {

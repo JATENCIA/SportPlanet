@@ -1,6 +1,6 @@
 const Payments = require("../Models/Payments");
-require("dotenv").config();
-const stripe = require("stripe")(process.env.STRIPE_SECRET_PASSWORD);
+require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_PASSWORD);
 const Users = require("../Models/Users");
 /**
  * It's an async function that uses the mongoose model to find all the payments in the database and
@@ -15,8 +15,7 @@ const getPayments = async (req, res) => {
     res.status(200).json(payment);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });
-  }
-};
+  }};
 /**
  * It gets a payment from the database by its id
  * @param req - The request object.
@@ -35,7 +34,7 @@ const getPayment = async (req, res) => {
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
-};
+}
 /**
  * It creates a new payment in the database
  * @param req - The request object represents the HTTP request and has properties for the request query
@@ -44,37 +43,37 @@ const getPayment = async (req, res) => {
  * @returns a user object.
  */
 const createPayment = async (req, res) => {
-  try {
-    const { amount, currency, description, payment_method, user } = req.body;
-    const userId = await Users.findById(user);
+  try{
+    const {amount, currency, description, payment_method, 
+     user} = req.body;
+    const userId = await Users.findById(user)
+    
 
-    const payment = new Payments({
-      amount: amount,
-      currency: currency,
-      description: description,
-
-      payment_method: payment_method,
-      user: userId,
-    });
-
+    const payment = new Payments({ 
+      amount: amount, currency: 
+      currency, description: description, 
+       
+      payment_method: payment_method, user: userId,
+    })
+    
     const charge = await stripe.paymentIntents.create({
       amount: amount,
-      currency: currency,
+       
+      currency: currency, 
       description,
       payment_method: payment_method,
       confirm: true,
-    });
-
+    })
+    console.log(charge + "holaaa")
     const savePayment = await payment.save();
-    userId.payment = userId.payment.concat(savePayment._id);
-    userId.save();
-    res.status(200).json(savePayment);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    userId.payment = userId.payment.concat(savePayment._id)
+    userId.save()
+    res.status(200).json(savePayment)
+  }catch(error){
+    res.status(500).json({message: error.message})
   }
-};
+}
 module.exports = {
-  getPayments,
-  getPayment,
-  createPayment,
-};
+    getPayments,
+    getPayment,
+    createPayment,}

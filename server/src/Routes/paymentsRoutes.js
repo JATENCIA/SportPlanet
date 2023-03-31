@@ -3,7 +3,6 @@ const {
     getPayments, getPayment, createPayment
 } = require("../Controllers/paymentsController");
 
-
 const router = Router();
 
 /* A route that is listening for a get request to the root of the server. */
