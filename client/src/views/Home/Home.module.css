@@ -1,4 +1,84 @@
 .main {
-    margin-top: 50px;
+    margin-top: -10px;
     margin-left: 32px;
+}
+.main hr {
+    border: 1px solid rgb(124, 119, 119);
+}
+
+.secondContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutUsTitle {
+    font-size: 40px;
+    font-family: SportWorld;
+    color: rgb(23, 22, 22)
+}
+
+.aboutUsDescription {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font-size: small;
+    color: rgb(72, 78, 78);
+}
+
+.brandSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.brandContainer {
+    margin-top: 30px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+}
+
+.brandTitle {
+    font-size: 40px;
+    font-family: SportWorld;
+    color: rgb(21, 20, 20)
+}
+
+.brand {
+    border: 1px solid black;
+    background: lightblue;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 90px;
+    font-family: SportWorld;
+}
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color:#c7c7bc;
+    height: 1px;
+    margin-top: 20px;
+}
+
+.footer {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: small;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: rgb(92, 86, 86);
+    padding-bottom: 0;
 }
