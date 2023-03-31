@@ -1,17 +1,21 @@
 .containerName {
-    padding-top: 140px;
+    padding-top: 100px;
     font-size: 26px;
     font-weight: 300;
     margin: 0 0 0 8px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .Name {
-    display: flex;
-    padding-left: 10px
+    font-family: SportWorld;
+    font-size: 40px;
+    font-weight: 0;
 }
-
-
 
 .cointainer {
     width: 100%;
@@ -21,8 +25,8 @@
     justify-content: space-around;
     margin-left: -30px;
     padding-top: 30px;
-    margin-bottom: 220px;
-    }
+    margin-bottom: 30px;
+}
     
     
     .TShirtsContainer {
