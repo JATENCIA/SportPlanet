@@ -72,6 +72,19 @@ const userSchema = mongoose.Schema(
         ref: "Stores",
       },
     ],
+
+    store: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Store",
+      },
+    ],
+    payment: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Payments",
+      },
+    ],
   },
   {
     timestamps: true,
