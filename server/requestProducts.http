@@ -48,18 +48,27 @@ POST {{urlApi}}/products
 Content-Type: application/json
 
 {
-  "name":"X Speedportal boots",
- "image":["dbyzf0kvhsKlNQiKFUch9T1MyxBAiIkgREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQD","http://elmarketingdeportivo.com/wp-content/uploads/2022/11/Captura-de-Pantalla-2022-11-19-a-las-10.25.22-a.-m..png","https://depor.com/resizer/Pa9_Atfhl4feh9u6FZFEycVcDJI=/1200x1200/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/JK63DESKYFBUHNWYBDUXLGSVDA.jpg"],
- "price":1000,
+  "name":"shirts retro",
+ "image":["https://lanumero12.com.ar/wp-content/uploads/2021/08/Nueva-camiseta-de-Boca-2021-22.jpg","https://assets.adidas.com/images/w_600,f_auto,q_auto/42f6e0d4f39047e8b476aee60109bc4c_9366/Camiseta_Titular_River_Plate_22-23_Blanco_GB7592_01_laydown.jpg","https://todosobrecamisetas.com/wp-content/uploads/tercera-camiseta-umbro-america-de-cali-2021-22-1.jpg"],
+ "price":30,
  "discount":0,
+<<<<<<< HEAD
  "description":"Adidas showed the world the X Speedportal Legend boots that the Argentine star will wear in the World Cup",
  "user":"jjj",
  "season":2022 ,
  "size":[{"7":9}],
  "category": "footwear",
+=======
+ "description":"T-shirt main Tribute retro boca, river and america",
+ "store":"6424aa384acaeeac5f552e0e",
+ "season":2000 ,
+ "size":[{"XS":10},{"S":20},{"M":20},{"L":20},{"X":20},{"XL":30},{"XXL":40}],
+ "category": "tshirts",
+>>>>>>> b278243 (update)
  "gender":"men",
  "state":"new"
 }
+
 
 ### update a product
 PUT {{urlApi}}/products/64244f96ac73e72dae8e9c46
