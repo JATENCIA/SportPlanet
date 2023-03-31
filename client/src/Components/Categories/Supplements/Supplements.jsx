@@ -4,7 +4,7 @@ import { getAllProduct } from '../../../redux/Actions';
 import { ProductItem } from '../../Produts';
 import { Paginate } from '../../Paginate/Paginate';
 
-export default function () {
+export default function Supplements() {
 
     const dispatch = useDispatch();
     useEffect(() => {

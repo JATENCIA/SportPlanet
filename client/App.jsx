@@ -20,6 +20,7 @@ import Balls from "./src/Components/Categories/Balls/Balls";
 import Shoes from "./src/Components/Categories/Shoes/Shoes";
 import Accesories from "./src/Components/Categories/Accesories/Accesories";
 import Supplements from "./src/Components/Categories/Supplements/Supplements";
+import Pants from "./src/Components/Categories/Pants/Pants";
 
 const App = () => {
   const location = useLocation()
@@ -39,7 +40,8 @@ const App = () => {
           <Route path="/home/categories/balls" Component={Balls} />
           <Route path="/home/categories/shoes" Component={Shoes} />
           <Route path="/home/categories/accesories" Component={Accesories} />
-          <Route path="/home/categories/supplements" Component={Supplements} />   
+          <Route path="/home/categories/supplements" Component={Supplements} />
+          <Route path="/home/categories/pants" Component={Pants} />   
         </Routes>
       </div>
     </>

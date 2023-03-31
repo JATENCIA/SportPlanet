@@ -5,7 +5,7 @@ import { ProductItem } from '../../Produts';
 import { Paginate } from '../../Paginate/Paginate';
 import { Link } from 'react-router-dom';
 
-export default function () {
+export default function Accesories() {
 
     const dispatch = useDispatch();
     useEffect(() => {

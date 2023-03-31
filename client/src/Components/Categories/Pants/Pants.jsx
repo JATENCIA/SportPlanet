@@ -5,7 +5,8 @@ import { ProductItem } from '../../Produts';
 import { Paginate } from '../../Paginate/Paginate';
 import { Link } from 'react-router-dom';
 
-export default function Shoes() {
+
+export default function Pants() {
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -14,7 +15,7 @@ export default function Shoes() {
 
     const allProducts = useSelector((state) => state.allProducts)
     const filterProducts = allProducts.filter(product => {
-        return product.category === "footwear"
+        return product.category === "pants"
     })
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +27,6 @@ export default function Shoes() {
     const setPagination = (page) => {
         return setCurrentPage(page);
     };
-
 
 
     return (

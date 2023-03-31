@@ -12,7 +12,7 @@ export default function Categories() {
         <Link className={style.TShirtsContainer} to="/home/categories/tShirts">
           <div className={style.names}>T-Shirts</div>
         </Link>
-        <Link className={style.PantsContainer} to="/category/pants">
+        <Link className={style.PantsContainer} to="/home/categories/pants">
           <div className={style.names}>Pants</div>
         </Link>
         <Link className={style.ShoesContainer} to="/home/categories/shoes">
