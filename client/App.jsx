@@ -10,7 +10,7 @@ import Detail from "./src/views/Detail/Detail";
 import { Profile } from "./src/views/Profile";
 import { Admin } from "./src/views/Admin";
 import { SupAdmin } from "./src/views/SupAdmin";
-
+import SearchedProducts from './src/views/SearchedProducts/SearchedProducts'
 // Fonts
 import "./src/fonts/SportsWorld.ttf";
 import Tshirts from "./src/Components/Categories/Tshirts/Tshirts";
@@ -30,6 +30,7 @@ const App = () => {
           <Route path="/dashboard" Component={Admin} />
           <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
            <Route path="/home/categories/tShirts" Component={Tshirts}/> 
+           <Route path="products/:product" Component={SearchedProducts}/>
         </Routes>
       </div>
     </>

@@ -1,14 +1,21 @@
 import React, {useState} from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getSearchedProducts } from "../../redux/Actions/actions";
 import Login from './Login'
 import style from './navBar.module.css'
 
 export const NavBar = () => {
-  const [ search, setSearch ] = useState('');
+  const dispatch = useDispatch();
+  const [ product, setProduct ] = useState('');
 
   const changeHandler = (e) => {
-    setSearch(e.target.value)
+    setProduct(e.target.value)
   }
+
+  const searchHandler = () => {
+    dispatch(getSearchedProducts(product))
+  } 
 
   return (
     <div className={style.navContainer}>
@@ -20,15 +27,17 @@ export const NavBar = () => {
       </div>
 
       <div className={style.searchDiv}>
-        <button type="submit" className={style.btnSearch}>
+        <Link to={`/products/${product}`}>
+        <button type="submit" className={style.btnSearch} onClick={searchHandler}>
           <i className="fas fa-search"/>
         </button>
-        <input type='search' value={search} onChange={changeHandler} className={style.inputSearch} placeholder="Search Product..."/>
+        </Link>
+        <input type='search' value={product} onChange={changeHandler} className={style.inputSearch} placeholder="Search Product..."/>
       </div>
 
       <div className={style.divLogin}> <Login /> </div>
 
-      <button className={style.carrito}> <i class="fas fa-shopping-cart"></i> </button> 
+      <button className={style.carrito}> <i className="fas fa-shopping-cart"></i> </button> 
     </div>
   );
 };

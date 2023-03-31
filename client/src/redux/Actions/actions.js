@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SEASON, FILTER_BY_USED, FILTER_BY_SIZE, GET_PRODUCT_DETAIL } from "./actionsTypes";
+import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SEASON, FILTER_BY_USED, FILTER_BY_SIZE, GET_PRODUCT_DETAIL, GET_SEARCHED_PRODUCTS} from "./actionsTypes";
 
 export const getAllUser = () => async (dispatch) => {
   try {
@@ -74,6 +74,20 @@ export const getProductDetail = (id) => async (dispatch) => {
       type: GET_PRODUCT_DETAIL,
       payload: data
     })
+  } catch (error) {
+    return { messaje: `${error}` };
+  }
+}
+
+export const getSearchedProducts = (product) => async (dispatch) => {
+  try {
+    const { data } = await axios.get(`/products?name=${product}`)
+    console.log(product, 'llega');
+    dispatch({
+      type: GET_SEARCHED_PRODUCTS,
+      payload: data,
+    });
+    
   } catch (error) {
     return { messaje: `${error}` };
   }

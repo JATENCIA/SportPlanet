@@ -1,10 +1,11 @@
-import { FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SIZE, FILTER_BY_USED, GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, GET_PRODUCT_DETAIL } from "../Actions";
+import { FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SIZE, FILTER_BY_USED, GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, GET_PRODUCT_DETAIL, GET_SEARCHED_PRODUCTS } from "../Actions";
 
 const initialState = {
   users: [],
   allUsers: [],
   allProducts: [],
-  productDetail: []
+  productDetail: [],
+  searchedProducts: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -78,6 +79,12 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         productDetail: action.payload
       }
+    case GET_SEARCHED_PRODUCTS:
+      return{
+        ...state,
+        searchedProducts: action.payload,
+      }
+      
     default:
       return state;
   }
