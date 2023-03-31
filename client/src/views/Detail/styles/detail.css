@@ -26,32 +26,35 @@ main {
     flex-direction: column;
     margin-left: 40%;
   }
-  .main-thumbnail {
+
+   .main-thumbnail {
     border-radius: 10px;
-    /* width: 1100px; */
     cursor: pointer;
-  }
-  .preview {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+  } 
+ .preview {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
-  }
-  .preview img {
+  } 
+   .preview img {
     width: 90px;
     border-radius: 10px;
     cursor: pointer;
   }
   .preview img:hover {
     opacity: 60%;
-  }
+  } 
   
-  .selected {
+  /* .selected {
     border: 2px solid #B2A4FF;
     opacity: 50%;
-  }
+  } */
   .content {
     margin-left: 3rem;
-    margin-bottom: 200px;
+    margin-bottom: 117px;
   }
   .company {
     color: black;
@@ -179,7 +182,48 @@ main {
   .lightbox .main-thumbnail {
     width: 400px;
   }
+
+  .select {
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1rem;
+    color: #fff;
+    background-color: #6096B4;
+    background-image: none;
+    cursor: pointer;
+  }
   
+  .select::-ms-expand {
+    display: none;
+  }
+
+  .sizes {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    border-radius: .25em;
+    overflow: hidden;
+  }
+
+  .sizes::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: #93BFCF;
+    transition: .25s all ease;
+    pointer-events: none;
+  }
+
+  .sizes:hover::after {
+    color: #f39c12;
+  }
+
   @media screen and (max-width: 700px) {
     /* visibility actions */
     .hidden {
