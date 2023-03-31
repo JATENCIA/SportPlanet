@@ -8,6 +8,7 @@ import {
   GET_ALL_USER,
   POST_USER,
   GET_PRODUCT_DETAIL,
+  GET_SEARCHED_PRODUCTS
 } from "../Actions";
 
 const initialState = {
