@@ -10,7 +10,19 @@ const Users = require("../Models/Users");
  */
 const getUsers = async (req, res) => {
   try {
-    const users = await Users.find({}).populate("product");
+    const users = await Users.find({}).populate("product", {
+      name: 1,
+      image: 1,
+      price: 1,
+      baneado: 1,
+      discount: 1,
+      description: 1,
+      season: 1,
+      review: 1,
+      size: 1,
+      category: 1,
+      gender: 1,
+    });
 
     const { name } = req.query;
 
@@ -34,7 +46,19 @@ const getUsers = async (req, res) => {
  */
 const getUser = async (req, res) => {
   try {
-    const user = await Users.findById(req.params.id);
+    const user = await Users.findById(req.params.id).populate("product", {
+      name: 1,
+      image: 1,
+      price: 1,
+      baneado: 1,
+      discount: 1,
+      description: 1,
+      season: 1,
+      review: 1,
+      size: 1,
+      category: 1,
+      gender: 1,
+    });
     if (!user) return res.status(204).json({});
     res.status(200).json(user);
   } catch (error) {

@@ -85,6 +85,11 @@ const productsSchema = mongoose.Schema(
       enum: ["new", "used"],
       default: "new",
     },
+
+    brands: {
+      type: "String",
+      enum: ["PUMA", "ADIDAS", "REBOOK", "COLUMBIA", "NIKE", "UNDER ARMOUR"],
+    },
   },
   {
     timestamps: true,

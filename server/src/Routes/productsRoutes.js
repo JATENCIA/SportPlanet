@@ -9,6 +9,7 @@ const {
   deleteProductByid,
 } = require("../Controllers/productsControll");
 
+
 /* A route that is listening for a get request to the root of the server. */
 router.get("/", getProducts);
 /* This is a route that is listening for a get request to the root of the server. */

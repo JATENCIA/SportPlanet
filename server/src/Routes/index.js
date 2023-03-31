@@ -10,11 +10,11 @@ router.use("/users", usersRoutes);
 router.use("/products", productsRoutes);
 
 // Importar todos los routers;
-const UsersRoutes = require("./usersRoutes");
-const PaymentsRoutes = require("./paymentsRoutes");
+//const UsersRoutes = require("./usersRoutes");
+const paymentsRoutes = require("./paymentsRoutes");
 
 // Configurar los routers
-router.use("/users", UsersRoutes);
-router.use("/payments", PaymentsRoutes);
+//router.use("/users", UsersRoutes);
+router.use("/payments", paymentsRoutes);
 
 module.exports = router;
