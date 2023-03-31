@@ -15,6 +15,11 @@ import SearchedProducts from './src/views/SearchedProducts/SearchedProducts'
 // Fonts
 import "./src/fonts/SportsWorld.ttf";
 import Tshirts from "./src/Components/Categories/Tshirts/Tshirts";
+import Pants from "./src/Components/Categories/Pants/Pants";
+import Shoes from "./src/Components/Categories/Shoes/Shoes";
+import Balls from "./src/Components/Categories/Balls/Balls";
+import Supplements from "./src/Components/Categories/Suplements/Suplements";
+import Accesories from "./src/Components/Categories/Accesories/Accesories";
 
 const App = () => {
   const location = useLocation()
@@ -30,8 +35,13 @@ const App = () => {
           <Route path="/profile" Component={Profile} />
           <Route path="/dashboard" Component={Admin} />
           <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
-           <Route path="/home/categories/tShirts" Component={Tshirts}/>
+           <Route path="/category/tShirts" Component={Tshirts}/>
            <Route path="products/:product" Component={SearchedProducts}/>
+           <Route path="/category/tShirts" Component={Pants}/>
+           <Route path="/category/shoes" Component={Shoes}/>
+           <Route path="/category/balls" Component={Balls}/>
+           <Route path="/category/supplements" Component={Supplements}/>
+           <Route path="/category/accessories" Component={Accesories}/>
         </Routes>
       </div>
     </>
