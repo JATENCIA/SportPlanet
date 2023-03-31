@@ -26,33 +26,32 @@ main {
     flex-direction: column;
     margin-left: 40%;
   }
-  .main-thumbnail {
+
+   .main-thumbnail {
     border-radius: 10px;
-    /* width: 1100px; */
     cursor: pointer;
-    width: 420px;
-    height: 420px;
+    width: 500px;
+    height: 500px;
     object-fit: cover;
-  }
-  .preview {
+  } 
+ .preview {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
-    margin-left: 30px;
-  }
-  .preview img {
+  } 
+   .preview img {
     width: 90px;
     border-radius: 10px;
     cursor: pointer;
   }
   .preview img:hover {
     opacity: 60%;
-  }
+  } 
   
-  .selected {
+  /* .selected {
     border: 2px solid #B2A4FF;
     opacity: 50%;
-  }
+  } */
   .content {
     margin-left: 3rem;
     margin-bottom: 117px;

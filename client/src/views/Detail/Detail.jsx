@@ -7,15 +7,14 @@ import "./styles/detail.css";
 import { GrNext, GrPrevious, GrCart, GrClose } from "react-icons/gr";
 import { BiMinus, BiPlus } from "react-icons/bi";
 
+
 export default function Detail() {
 
     const dispatch = useDispatch();
     const { id } = useParams();
-    const [loading, setLoading] = useState(false)
+    
     useEffect(() => {
-        setLoading(true)
-        dispatch(getProductDetail(id));
-        setLoading(false)
+        dispatch(getProductDetail(id))
     }, [dispatch, id])
 
     const product = useSelector(store => store.productDetail)
@@ -45,14 +44,74 @@ export default function Detail() {
         sizeArr.push(key)
     }
 
+    useEffect(() => {
+        const thumbnails = document.querySelector(".thumbnails");
+        const mainThumbnail = document.querySelector(".main-thumbnail");
+        const lightbox = document.querySelector(".lightbox");
+        const lightboxContainer = document.querySelector(".lightbox-container");
+        const closeLightbox = document.querySelector(".close-lightbox");
+        const nextBtn = document.querySelector("#next");
+        const prevBtn = document.querySelector("#previous");
+        const amount = document.querySelector(".amount");
+        const plusBtn = document.querySelector("#plus");
+        const minusBtn = document.querySelector("#minus");
 
-    const [sliderImg, setSliderImg] = useState(image[0])
+        thumbnails
+        thumbnails.addEventListener("click", function (e) {
+            const target = e.target;
+            if (target.classList.contains("preview")) {
+                return;
+            }
+            const selected = document.querySelector(".selected");
+            selected.classList.remove("selected");
+            target.classList.add("selected");
+            const src = target.src;
+            mainThumbnail.src = src;
+            // lightboxImage.src = src;
+        });
 
-    const handleClick = (index) => {
-        console.log(index);
-        const slider = image[index];
-        setSliderImg(slider)
-    }
+        lightbox
+        mainThumbnail.addEventListener("click", function () {
+            lightbox.classList.remove("invisible");
+            lightboxContainer.classList.remove("invisible");
+        });
+        closeLightbox.addEventListener("click", function () {
+            lightbox.classList.add("invisible");
+            lightboxContainer.classList.add("invisible");
+        });
+  
+
+
+        // next and previous
+        nextBtn.addEventListener("click", function () {
+            const selected = document.querySelector(".selected");
+            if (selected.nextElementSibling) {
+                selected.nextElementSibling.click();
+            }
+        });
+        prevBtn.addEventListener("click", function () {
+            const selected = document.querySelector(".selected");
+            if (selected.previousElementSibling) {
+                selected.previousElementSibling.click();
+            }
+        });
+
+        // amount
+        plusBtn.addEventListener("click", function () {
+            let amountValue = amount.textContent;
+            amountValue++;
+            amount.textContent = amountValue;
+        });
+        minusBtn.addEventListener("click", function () {
+            let amountValue = amount.textContent;
+            if (amountValue > 0) {
+                amountValue--;
+                amount.textContent = amountValue;
+            }
+        });
+
+    })
+        
 
     const ShowProduct = () => {
         return (
@@ -62,7 +121,7 @@ export default function Detail() {
                         {/* thumbnails */}
 
                         <section className="thumbnails">
-                            <img src={sliderImg || image[0]} alt="product" className="main-thumbnail invisible-mob" />
+                            <img src={image[0]} alt="product" className="main-thumbnail invisible-mob" />
                             <div className="mobile-thumb hidden">
                                 <img src={image[0]} alt="product" />
                                 <button id="next">
@@ -73,13 +132,10 @@ export default function Detail() {
                                 </button>
                             </div>
                             <div className="preview">
-                                {/* <img src={sliderImg} alt="" className="selected" /> */}
-                                {/* <img src={image[1]} alt="" />
-                                <img src={image[2]} alt="" /> */}
                                 {
                                     image.map((im, i) => {
                                         return (
-                                            <img src={im} alt="" key={i} onClick={() => handleClick(i)} />
+                                            <img src={im} alt="" key={i} />
                                         )
                                     })
                                 }
@@ -147,9 +203,8 @@ export default function Detail() {
 
     return (
         <div>
-            {
-                loading ? <h1>Loading...</h1> : <ShowProduct />
-            }
+            <ShowProduct />
         </div>
     )
+    
 } 
