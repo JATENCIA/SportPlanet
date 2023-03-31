@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   return (
-    <div className={style.landingContainer}>
+    <div className={style.welcomeContainer}>
       <h1>SPORT PLANET</h1>
       <p className={style.slogan}>FIND ALL YOUR DEPORTIVE PRODUCTS HERE</p>
       <Link to="/home">
