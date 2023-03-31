@@ -13,34 +13,35 @@ import "@szhsin/react-menu/dist/transitions/slide.css";
 import { LoginButton } from "../Auth0/LoginButton";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { postUser } from "../../redux/Actions/actions";
+import { getAllUser, postUser } from "../../redux/Actions/actions";
 
 const Login = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user, logout } = useAuth0();
   const [userE, setUserE] = useState({});
-  //console.log("🚀 ~ file: Navbar.jsx:24 ~ NavBar ~ userE:", userE);
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
 
   useEffect(() => {
     if (user && isAuthenticated) {
-      axios.get("/users").then((element) => {
-        const userDb = element.data.find(
-          (element) => element.eMail === user.email
-        );
-        if (!userDb) {
-          const newUser = {
-            name: user.given_name || user.name,
-            lastName: user.family_name,
-            eMail: user.email,
-            image: user.picture,
-            roll: "user",
-          };
-          dispatch(postUser(newUser));
-        } else {
-          setUserE(userDb);
-          return false;
-        }
-      });
+      const userDb = allUsers?.find((element) => element.eMail === user.email);
+      if (!userDb) {
+        const newUser = {
+          name: user.given_name || user.name,
+          lastName: user.family_name,
+          eMail: user.email,
+          image: user.picture,
+          roll: "user",
+        };
+        dispatch(postUser(newUser));
+      } else {
+        setUserE(userDb);
+        return false;
+      }
     }
   }, [user]);
 
