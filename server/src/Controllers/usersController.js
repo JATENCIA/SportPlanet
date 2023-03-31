@@ -10,12 +10,18 @@ const Users = require("../Models/Users");
  */
 const getUsers = async (req, res) => {
   try {
-    const users = await Users.find({}).populate("store", {
+    const users = await Users.find({}).populate("product", {
       name: 1,
-      location: 1,
       image: 1,
-      eMail: 1,
+      price: 1,
       baneado: 1,
+      discount: 1,
+      description: 1,
+      season: 1,
+      review: 1,
+      size: 1,
+      category: 1,
+      gender: 1,
     });
 
     const { name } = req.query;
@@ -40,13 +46,7 @@ const getUsers = async (req, res) => {
  */
 const getUser = async (req, res) => {
   try {
-    const user = await Users.findById(req.params.id).populate("store", {
-      name: 1,
-      location: 1,
-      image: 1,
-      eMail: 1,
-      baneado: 1,
-    });
+    const user = await Users.findById(req.params.id).populate("product");
     if (!user) return res.status(204).json({});
     res.status(200).json(user);
   } catch (error) {
@@ -65,7 +65,17 @@ const createUser = async (req, res) => {
   try {
     const userFound = await Users.findOne({ eMail: req.body.eMail });
     if (userFound)
-      return res.status(301).json({ message: "this URL already exits" });
+      return res.status(301).json({ message: "this eMail already exits" });
+
+    const userFoundDni = await Users.findOne({ dni: req.body.dni });
+    if (userFoundDni)
+      return res.status(301).json({ message: "this DNI already exits" });
+
+    const userFoundTele = await Users.findOne({
+      telephone: req.body.telephone,
+    });
+    if (userFoundTele)
+      return res.status(301).json({ message: "this Telephone already exits" });
 
     const usersc = await Users.find({});
     let iNumber = 0;
