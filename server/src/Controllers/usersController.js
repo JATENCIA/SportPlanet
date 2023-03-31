@@ -34,7 +34,7 @@ const getUsers = async (req, res) => {
       user.length ? res.status(200).json(user) : res.status(204).json({});
     } else res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ mensage: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 
@@ -62,7 +62,7 @@ const getUser = async (req, res) => {
     if (!user) return res.status(204).json({});
     res.status(200).json(user);
   } catch (error) {
-    res.status(500).json({ mensage: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 /**
@@ -77,7 +77,7 @@ const createUser = async (req, res) => {
   try {
     const userFound = await Users.findOne({ eMail: req.body.eMail });
     if (userFound)
-      return res.status(301).json({ messge: "this URL already exits" });
+      return res.status(301).json({ message: "this URL already exits" });
 
     const usersc = await Users.find({});
     let iNumber = 0;
@@ -110,7 +110,7 @@ const createUser = async (req, res) => {
     const saveUser = await newUser.save();
     res.status(200).json(saveUser);
   } catch (error) {
-    res.status(500).json({ mensage: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 
@@ -141,7 +141,7 @@ const deleteUser = async (req, res) => {
           baneado: baneado,
         });
   } catch (error) {
-    res.status(500).json({ messaje: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 
@@ -161,7 +161,7 @@ const updateUser = async (req, res) => {
     if (!userUpdate) return res.status(204).json({});
     res.status(200).json(userUpdate);
   } catch (error) {
-    res.status(500).json({ mensage: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 /**
@@ -190,7 +190,7 @@ const getFavorite = async (req, res) => {
     await Users.updateOne({ _id: users[0].id }, { $set: favorites });
     res.status(200).json(users.favorites);
   } catch (error) {
-    res.status(500).send(`{messaje: ${error}}`);
+    res.status(500).send(`{message: ${error}}`);
   }
 };
 
