@@ -10,6 +10,18 @@ import {
   GET_PRODUCT_DETAIL,
   GET_SEARCHED_PRODUCTS,
 } from "../Actions";
+import {
+  FILTER_BY_GENDER,
+  FILTER_BY_SEASON,
+  FILTER_BY_PRICE,
+  FILTER_BY_SIZE,
+  FILTER_BY_USED,
+  GET_ALL_PRODUCT,
+  GET_ALL_USER,
+  POST_USER,
+  GET_PRODUCT_DETAIL,
+  GET_SEARCHED_PRODUCTS,
+} from "../Actions";
 
 const initialState = {
   users: [],
