@@ -1,17 +1,21 @@
 .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 70px;
     margin-left: 32px;
 }
 .main hr {
-    border: 1px solid rgb(124, 119, 119);
+    border: 1px solid rgb(0, 0, 0);
 }
 
 .featuredTitle {
-    position: relative; 
-    left: 30%;
-    font-size: 40px;
+    padding-top: 40px;
+    font-size: 50px;
     font-family: SportWorld;
-    color: rgb(23, 22, 22)
+    color: rgb(26, 24, 24);
+    text-shadow: 3px 3px 3px rgb(89, 87, 243);
 }
 
 .secondContainer {
@@ -22,9 +26,12 @@
 }
 
 .aboutUsTitle {
-    font-size: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 50px;
     font-family: SportWorld;
-    color: rgb(23, 22, 22)
+    color: rgb(23, 22, 22);
+    text-shadow: 3px 3px 3px rgb(89, 87, 243);
 }
 
 .aboutUsDescription {
@@ -32,6 +39,7 @@
     text-align: center;
     font-size: small;
     color: rgb(72, 78, 78);
+    padding-bottom: ;
 }
 
 .brandSection {
@@ -54,9 +62,10 @@
 }
 
 .brandTitle {
-    font-size: 40px;
+    font-size: 50px;
     font-family: SportWorld;
-    color: rgb(21, 20, 20)
+    color: rgb(21, 20, 20);
+    text-shadow: 3px 3px 3px rgb(89, 87, 243);
 }
 
 .brand {

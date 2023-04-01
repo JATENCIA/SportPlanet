@@ -5,10 +5,12 @@ export default function FeaturedCard({ name, image, price }) {
   return (
     <div className={style.cardContainer}>
       <div className={style.imgContainer}>
-        <img src={image}/>
+        <img src={image} />
       </div>
-        <h2>{name}</h2>
-        <h3>{price}</h3>
+      <div className={style.descriptionContainer}>
+        <h2 className={style.productName}>{name}</h2>
+        <h3 className={style.productPrice}>${price}</h3>
+      </div>
     </div>
   );
 }
