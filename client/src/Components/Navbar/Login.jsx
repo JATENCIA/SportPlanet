@@ -78,7 +78,7 @@ const Login = () => {
                 className="w-8 h-8 object-cover rounded-full"
               />
               <div className="flex flex-col text-sm">
-                <span className="text-sm">
+                <span className="text-red-500">
                   The user {user.name} is temporarily or permanently disabled.
                 </span>
               </div>

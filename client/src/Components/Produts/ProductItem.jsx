@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "./ProductItem.module.css";
-import styled from "./ProductItem.module.css";
 
 export const ProductItem = ({
   name,
