@@ -21,7 +21,7 @@ Content-Type: application/json
 GET {{urlApi}}/users/641cc89444400c0d8a723244
 
 ### banear single user
-POST {{urlApi}}/users/641cc89444400c0d8a723244
+POST {{urlApi}}/users/64237b50afc7672526531b9a
 
 ### update a user
 PUT {{urlApi}}/users/642383a9afc7672526531bdd
