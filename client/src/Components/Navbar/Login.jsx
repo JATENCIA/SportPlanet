@@ -18,6 +18,7 @@ import { getAllUser, postUser } from "../../redux/Actions/actions";
 const Login = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user, logout } = useAuth0();
+
   const [userE, setUserE] = useState({});
 
   useEffect(() => {
@@ -47,7 +48,44 @@ const Login = () => {
 
   return (
     <>
-      {isAuthenticated ? (
+      {userE.baneado === true ? (
+        <Menu
+          menuButton={
+            <MenuButton className="flex bg-primary items-center gap-x-2 hover:bg-[#219EBC] p-2 rounded-lg transition-colors">
+              <img
+                src={user.picture}
+                alt={user.name}
+                className="w-6 h-6 object-cover rounded-full"
+              />
+              <span>⚠️</span>
+              <RiArrowDownSLine />
+            </MenuButton>
+          }
+          align="end"
+          arrow
+          arrowClassName="bg-secondary-100"
+          transition
+          menuClassName="bg-secondary-100 p-4"
+        >
+          <MenuItem className="p-0 hover:bg-transparent">
+            <Link
+              to="/profile/my-dates"
+              className="rounded-lg transition-colors text-gray-300 hover:bg-secondary-900 flex items-center gap-x-4 py-2 px-6 flex-1"
+            >
+              <img
+                src={user.picture}
+                alt={user.name}
+                className="w-8 h-8 object-cover rounded-full"
+              />
+              <div className="flex flex-col text-sm">
+                <span className="text-sm">
+                  The user {user.name} is temporarily or permanently disabled.
+                </span>
+              </div>
+            </Link>
+          </MenuItem>
+        </Menu>
+      ) : isAuthenticated ? (
         <>
           {" "}
           <nav>

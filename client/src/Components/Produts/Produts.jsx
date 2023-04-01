@@ -12,7 +12,7 @@ const Produts = () => {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.allProducts);
-  console.log("1", allProducts)
+  console.log("1", allProducts);
 
   const filterProducts = allProducts.filter(
     (product) => product.baneado === false
@@ -23,15 +23,15 @@ const Produts = () => {
       {filterProducts?.map((product) => {
         return (
           <Link to={`/detail/${product._id}`}>
-          <ProductItem
-            key={crypto.randomUUID()}
-            _id={product._id}
-            name={product.name}
-            image={product.image}
-            size={product.size}
-            price={product.price}
-            description={product.description}
-          />
+            <ProductItem
+              key={crypto.randomUUID()}
+              _id={product._id}
+              name={product.name}
+              image={product.image}
+              size={product.size}
+              price={product.price}
+              description={product.description}
+            />
           </Link>
         );
       })}
