@@ -12,6 +12,8 @@ const productsSchema = mongoose.Schema(
     image: {
       type: Array,
       required: true,
+      minLength: 1,
+      maxLength: 3,
     },
 
     price: {
@@ -69,7 +71,6 @@ const productsSchema = mongoose.Schema(
         "balls",
         "supplements",
         "accessories",
-        "sets",
       ],
       default: "accessories",
     },
@@ -85,9 +86,10 @@ const productsSchema = mongoose.Schema(
       enum: ["new", "used"],
       default: "new",
     },
-    brands: {
+    brands: { //Se requiere la marca - validaciones
       type: "String",
-      enum: ["PUMA", "ADIDAS", "REBOOK", "COLUMBIA", "NIKE", "UNDER ARMOUR"],
+      enum: ["ADIDAS", "COLUMBIA", "NIKE", "PUMAS", "REEBOK", "UNDER ARMOUR", "OTHER"],
+      default: "OTHER"
     },
   },
   {

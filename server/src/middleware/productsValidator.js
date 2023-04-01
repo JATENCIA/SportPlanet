@@ -41,6 +41,18 @@ const validateProductsCreate = [
     .withMessage("Description must be a string")
     .isLength({ min: 30, max: 500 })
     .withMessage("Description length must be between 30 and 500 characters"),
+    check('brands')
+    .not()
+    .isEmpty()
+    .withMessage('Brand is required')
+    .isString()
+    .withMessage('Brand must be a string')
+    .custom((value) => {
+      if (/\d/.test(value)) {
+        throw new Error('Brand cannot contain numbers');
+      }
+      return true;
+    }),
   (req, res, next) => {
     validateProductsResult(req, res, next);
   },
