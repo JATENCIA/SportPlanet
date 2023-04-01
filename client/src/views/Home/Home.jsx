@@ -12,11 +12,12 @@ export const Home = () => {
       <hr></hr>
       <Categories />
       <hr></hr>
+      <h1 className={style.featuredTitle}>FEATURED PRODUCTS</h1>
       <FeaturedCardContainer />
       <hr></hr>
       <div className={style.secondContainer}>
       <div className={style.brandSection}>
-          <h1 className={style.brandTitle}>Our Brands</h1>
+          <h1 className={style.brandTitle}>OUR BRANDS</h1>
           <div className={style.brandContainer}>
             <div className={style.brand}>BRAND</div>
             <div className={style.brand}>BRAND</div>
@@ -29,7 +30,7 @@ export const Home = () => {
           </div>
         </div>
         <hr></hr>
-        <h1 className={style.aboutUsTitle}>About Us</h1>
+        <h1 className={style.aboutUsTitle}>ABOUT SPORT PLANET</h1>
         <div className={style.aboutUsDescription}>
           <p>
             SportPlanet hosts a large online commerce of sport articules in

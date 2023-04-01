@@ -8,7 +8,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #bbbce2;
+    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
@@ -50,10 +50,18 @@
 }
 
 .divLogin{
+    font-weight: bold;
+    color: white;
     margin-left: auto;
     margin-right: 20px;
+    transition: transform .2s;
+}
+
+.divLogin:hover {
+    transform: scale(.9)
 }
 
 .carrito{
+    color: white;
     margin-right: 50px;
 }
