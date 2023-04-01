@@ -86,10 +86,18 @@ const productsSchema = mongoose.Schema(
       enum: ["new", "used"],
       default: "new",
     },
-    brands: { //Se requiere la marca - validaciones
+    brands: {
       type: "String",
-      enum: ["ADIDAS", "COLUMBIA", "NIKE", "PUMAS", "REEBOK", "UNDER ARMOUR", "OTHER"],
-      default: "OTHER"
+      enum: [
+        "PUMA",
+        "ADIDAS",
+        "REBOOK",
+        "COLUMBIA",
+        "NIKE",
+        "UNDER ARMOUR",
+        "OTHER",
+      ],
+      default: "OTHER",
     },
   },
   {
