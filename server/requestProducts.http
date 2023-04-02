@@ -15,16 +15,16 @@ POST {{urlApi}}/products
 Content-Type: application/json
 
 {
- "name":"Jersey Boca Juniors",
- "image":["https://cf.shopee.com.co/file/sg-11134201-22100-7zk0r4o2lqivd8","https://empilchameshop.com/wp-content/uploads/2023/01/0732E6B1-E241-4167-9069-FCCE7E91AB85.jpeg","https://cf.shopee.com.co/file/14f01a7c7c285deb94221c5dcff6a828"],
- "price":19.000,
+ "name":"sneakers under Armour",
+ "image":["https://cdn-ci.nyc3.cdn.digitaloceanspaces.com/ci-cl/webp-products/54_3001.webp","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTk7i0i01fhCBOHYIjN5H460jGG9K5RiYfRGh2IO-wH7qyF5XUjUS4w4vwhZ_t8fWyK48&usqp=CAU","https://underarmour.scene7.com/is/image/Underarmour/1278819-100_DEFAULT?bgc=f0f0f0&wid=640&hei=480&size=440,420"],
+ "price":20.000,
  "discount":0,
- "description":"Soccer Jersey 2023 Boca Juniors",
- "user":"64220cacef020ad40ed789a8",
- "season":2023 ,
- "size":[{"X":1}],
- "category": "tshirts",
+ "description":"It used to take time to get soccer cleats to fit and feel right. Not anymore. The UA Magnetico Select 2.0 do not need any type of adaptation, so they fit perfectly.",
+ "user":"6428ba39de408ecca1645d45",
+ "season":2022 ,
+ "size":[{"amount":7}],
+ "category": "footwear",
  "gender":"men",
- "state":"used",
- "brands":"PUMA"
+ "state":"new",
+ "brands":"UNDER ARMOUR"
 }
