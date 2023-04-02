@@ -19,7 +19,6 @@ const getStores = async (req, res) => {
         location: 1,
         telephone: 1,
         baneado: 1,
-        isSeller: 1,
       })
       .populate("product", {
         name: 1,
@@ -44,7 +43,7 @@ const getStores = async (req, res) => {
       result.length ? res.status(200).json(result) : res.status(204).json({});
     } else res.status(200).json(stores);
   } catch (error) {
-    res.status(500).json({ mensage: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 
@@ -61,7 +60,7 @@ const getStore = async (req, res) => {
     if (!store) return res.status(204).json({});
     res.status(200).json(store);
   } catch (error) {
-    res.status(500).json({ mensage: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 
@@ -83,7 +82,7 @@ const createStore = async (req, res) => {
     if (storeFound)
       return res
         .status(301)
-        .json({ messge: `this Store name ${req.body.name} already exits` });
+        .json({ message: `this Store name ${req.body.name} already exits` });
 
     const store = new Stores(req.body);
     const saveStore = await store.save();
@@ -91,7 +90,7 @@ const createStore = async (req, res) => {
     user.save();
     res.status(201).json(saveStore);
   } catch (error) {
-    res.status(500).json({ mensage: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 
@@ -113,7 +112,7 @@ const updateStore = async (req, res) => {
     if (!storeUpdate) return res.status(204).json({});
     res.status(200).json(storeUpdate);
   } catch (error) {
-    res.status(500).json({ mensage: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 
@@ -144,7 +143,7 @@ const deleteStore = async (req, res) => {
           baneado: baneado,
         });
   } catch (error) {
-    res.status(500).json({ messaje: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 

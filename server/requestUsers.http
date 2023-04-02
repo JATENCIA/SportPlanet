@@ -11,17 +11,17 @@ POST {{urlApi}}/users
 Content-Type: application/json
 
 {
-  "name":"Maria",
-  "eMail":"maaria@gmail.com",
-  "lastName":"Santa",
-  "image":"https://okdiario.com/img/2020/01/27/razas-de-perros_-el-pastor-mallorquin.jpg"
+  "name":"Carlo Alberto",
+  "eMail":"albertosuarez@gmail.com",
+  "lastName":"Suarez Perez",
+  "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq7dDqaApR0N2jhw8SQglWnx41KEY1P1D1cg&usqp=CAU"
 }
 
 ### get single user id
 GET {{urlApi}}/users/641cc89444400c0d8a723244
 
 ### banear single user
-POST {{urlApi}}/users/64237b50afc7672526531b9a
+POST {{urlApi}}/users/6428a374de408ecca1645d36
 
 ### update a user
 PUT {{urlApi}}/users/642383a9afc7672526531bdd
