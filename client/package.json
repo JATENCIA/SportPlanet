@@ -9,15 +9,36 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.0.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@mui/material": "^5.11.15",
+    "@mui/styled-engine": "^5.11.11",
+    "@mui/styled-engine-sc": "^5.11.11",
+    "@redux-devtools/extension": "^3.2.5",
+    "@reduxjs/toolkit": "^1.9.3",
+    "@szhsin/react-menu": "^3.5.2",
     "axios": "^1.3.4",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.9.0"
+    "react-icons": "^4.8.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.9.0",
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
+    "styled-components": "^5.3.9",
+    "sweetalert2": "^11.7.3",
+    "typescript": "^5.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.0",
     "vite": "^4.2.0"
   }
 }
