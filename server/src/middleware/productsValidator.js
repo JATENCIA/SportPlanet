@@ -8,16 +8,16 @@ const validateProductsCreate = [
     .not()
     .isEmpty()
     .withMessage("Name cannot be empty")
-    .matches(/^[A-Za-z]+$/)
+    .matches(/^[A-Za-z ]+$/)
     .withMessage("Name must contain only letters"),
-  check("image")
-    .optional()
-    .isURL()
-    .withMessage("Invalid image URL format")
-    .matches(
-      /^$|^(http(s?):\/\/)([0-9a-zA-Z]+\.)+[a-zA-Z]{2,}(:[0-9]+)?(\/[^\s]*)?$/
-    )
-    .withMessage(`Invalid image URL format. Must be a valid URL or empty.`),
+  // check("image")
+  //   .optional()
+  //   .isURL()
+  //   .withMessage("Invalid image URL format")
+  //   .matches(
+  //     /^$|^(http(s?):\/\/)([0-9a-zA-Z]+\.)+[a-zA-Z]{2,}(:[0-9]+)?(\/[^\s]*)?$/
+  //   )
+  //   .withMessage(`Invalid image URL format. Must be a valid URL or empty.`),
   check("price")
     .exists()
     .withMessage("Price is required")
@@ -41,15 +41,15 @@ const validateProductsCreate = [
     .withMessage("Description must be a string")
     .isLength({ min: 30, max: 500 })
     .withMessage("Description length must be between 30 and 500 characters"),
-    check('brands')
+  check("brands")
     .not()
     .isEmpty()
-    .withMessage('Brand is required')
+    .withMessage("Brand is required")
     .isString()
-    .withMessage('Brand must be a string')
+    .withMessage("Brand must be a string")
     .custom((value) => {
       if (/\d/.test(value)) {
-        throw new Error('Brand cannot contain numbers');
+        throw new Error("Brand cannot contain numbers");
       }
       return true;
     }),

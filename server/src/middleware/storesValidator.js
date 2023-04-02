@@ -9,7 +9,7 @@ const validateStoresCreate = [
     .not()
     .isEmpty()
     .withMessage("Name cannot be empty")
-    .matches(/^[A-Za-z-]+$/)
+    .matches(/^[A-Za-z- ]+$/)
     .withMessage("Name must contain only letters and hyphens"),
   check("image")
     .optional()
