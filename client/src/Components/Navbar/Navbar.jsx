@@ -3,10 +3,12 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSearchedProducts } from "../../redux/Actions/actions";
 import Login from './Login'
+import { useNavigate } from 'react-router-dom'
 import style from './navBar.module.css'
 
 export const NavBar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [ product, setProduct ] = useState('');
 
   const changeHandler = (e) => {
@@ -14,8 +16,16 @@ export const NavBar = () => {
   }
 
   const searchHandler = () => {
-    dispatch(getSearchedProducts(product))
+    dispatch(getSearchedProducts(product));
+    setProduct('');
   } 
+
+  const enterHandler = (e) => {
+    if(e.key === "Enter"){
+      searchHandler();
+      navigate(`/products/${product}`);
+    }
+  };
 
   return (
     <div className={style.navContainer}>
@@ -32,7 +42,7 @@ export const NavBar = () => {
           <i className="fas fa-search"/>
         </button>
         </Link>
-        <input type='search' value={product} onChange={changeHandler} className={style.inputSearch} placeholder="Search Product..."/>
+        <input type='search' value={product} onChange={changeHandler} className={style.inputSearch} placeholder="Search Product..." onKeyDown={enterHandler}/>
       </div>
 
       <div className={style.divLogin}> <Login /> </div>
