@@ -9,7 +9,7 @@ const validateUsersCreate = [
     .not()
     .isEmpty()
     .withMessage("Name cannot be empty")
-    .matches(/^[A-Za-z]+$/)
+    .matches(/^[A-Za-z ]+$/)
     .withMessage("Name must contain only letters"),
 
   check("lastName")
@@ -45,43 +45,43 @@ const validateUsersCreate = [
       }
       return true;
     }),
-  check("dni")
-    .exists()
-    .withMessage("DNI is required")
-    .matches(/^[0-9]+$/)
-    .withMessage("DNI must contain only numbers")
-    .not()
-    .isEmpty()
-    .withMessage("DNI cannot be empty")
-    .isLength({ min: 7, max: 7 })
-    .withMessage("DNI must have exactly 7 digits")
-    .custom(async (value, { req }) => {
-      const existingUser = await Users.findOne({ dni: value });
-      if (existingUser && existingUser._id.toString() !== req.params.userId) {
-        throw new Error("DNI already in use");
-      }
-      return true;
-    }),
-  check("telephone")
-    .exists()
-    .withMessage("Telephone number is required")
-    .not()
-    .isEmpty()
-    .withMessage("Telephone number cannot be empty")
-    .matches(/^[0-9]+$/)
-    .withMessage("Telephone number must contain only numbers")
-    .isLength({ min: 9, max: 9 })
-    .withMessage("Telephone number must have exactly 9 digits")
-    .custom(async (value, { req }) => {
-      const existingUser = await Users.findOne({ telephone: value });
-      if (existingUser && existingUser._id.toString() !== req.params.userId) {
-        throw new Error("Telephone number already in use");
-      }
-      return true;
-    }),
-  (req, res, next) => {
-    validateUsersResult(req, res, next);
-  },
+  // check("dni")
+  //   .exists()
+  //   .withMessage("DNI is required")
+  //   .matches(/^[0-9]+$/)
+  //   .withMessage("DNI must contain only numbers")
+  //   .not()
+  //   .isEmpty()
+  //   .withMessage("DNI cannot be empty")
+  //   .isLength({ min: 7, max: 7 })
+  //   .withMessage("DNI must have exactly 7 digits")
+  //   .custom(async (value, { req }) => {
+  //     const existingUser = await Users.findOne({ dni: value });
+  //     if (existingUser && existingUser._id.toString() !== req.params.userId) {
+  //       throw new Error("DNI already in use");
+  //     }
+  //     return true;
+  //   }),
+  // check("telephone")
+  //   .exists()
+  //   .withMessage("Telephone number is required")
+  //   .not()
+  //   .isEmpty()
+  //   .withMessage("Telephone number cannot be empty")
+  //   .matches(/^[0-9]+$/)
+  //   .withMessage("Telephone number must contain only numbers")
+  //   .isLength({ min: 9, max: 9 })
+  //   .withMessage("Telephone number must have exactly 9 digits")
+  //   .custom(async (value, { req }) => {
+  //     const existingUser = await Users.findOne({ telephone: value });
+  //     if (existingUser && existingUser._id.toString() !== req.params.userId) {
+  //       throw new Error("Telephone number already in use");
+  //     }
+  //     return true;
+  //   }),
+  // (req, res, next) => {
+  //   validateUsersResult(req, res, next);
+  // },
 ];
 
 module.exports = { validateUsersCreate };

@@ -10,14 +10,14 @@ const validateProductsCreate = [
     .withMessage("Name cannot be empty")
     .matches(/^[A-Za-z ]+$/)
     .withMessage("Name must contain only letters"),
-  check("image")
-    .optional()
-    .isURL()
-    .withMessage("Invalid image URL format")
-    .matches(
-      /^$|^(http(s?):\/\/)([0-9a-zA-Z]+\.)+[a-zA-Z]{2,}(:[0-9]+)?(\/[^\s]*)?$/
-    )
-    .withMessage(`Invalid image URL format. Must be a valid URL or empty.`),
+  // check("image")
+  //   .optional()
+  //   .isURL()
+  //   .withMessage("Invalid image URL format")
+  //   .matches(
+  //     /^$|^(http(s?):\/\/)([0-9a-zA-Z]+\.)+[a-zA-Z]{2,}(:[0-9]+)?(\/[^\s]*)?$/
+  //   )
+  //   .withMessage(`Invalid image URL format. Must be a valid URL or empty.`),
   check("price")
     .exists()
     .withMessage("Price is required")
