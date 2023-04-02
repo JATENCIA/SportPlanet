@@ -100,4 +100,4 @@ const productsSchema = mongoose.Schema(
 
 module.exports = mongoose.model("Products", productsSchema);
 
-// camisetas, pantalones, calzados, pelotas, suplementos y accesorios
+
