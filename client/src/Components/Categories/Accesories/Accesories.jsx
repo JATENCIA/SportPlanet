@@ -4,6 +4,12 @@ import { getAllProduct } from "../../../redux/Actions";
 import { ProductItem } from "../../Produts";
 import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProduct } from "../../../redux/Actions";
+import { ProductItem } from "../../Produts";
+import { Paginate } from "../../Paginate/Paginate";
+import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 
@@ -28,6 +34,23 @@ export default function Accesories() {
     return setCurrentPage(page);
   };
 
+  return (
+    <div>
+      {products?.map((product) => {
+        return (
+          <Link to={`/detail/${product._id}`}>
+            <ProductItem
+              key={crypto.randomUUID()}
+              _id={product._id}
+              name={product.name}
+              image={product.image}
+              size={product.size}
+              price={product.price}
+              description={product.description}
+            />
+          </Link>
+        );
+      })}
   return (
     <div>
       <NavBar />

@@ -2,7 +2,7 @@ import "./index.css";
 import App from "../App";
 import React from "react";
 import axios from "axios";
-import { store } from "./redux/Store/store"
+import { store } from "./redux/Store/store";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";

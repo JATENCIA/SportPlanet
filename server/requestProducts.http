@@ -15,16 +15,16 @@ POST {{urlApi}}/products
 Content-Type: application/json
 
 {
- "name":"sneakers under Armour",
- "image":["https://cdn-ci.nyc3.cdn.digitaloceanspaces.com/ci-cl/webp-products/54_3001.webp","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTk7i0i01fhCBOHYIjN5H460jGG9K5RiYfRGh2IO-wH7qyF5XUjUS4w4vwhZ_t8fWyK48&usqp=CAU","https://underarmour.scene7.com/is/image/Underarmour/1278819-100_DEFAULT?bgc=f0f0f0&wid=640&hei=480&size=440,420"],
- "price":20.000,
+ "name":"INLIFE Whey Protein Powder",
+ "image":["https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/713cJLNB1SL._SY450_.jpg","https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81aYxr6vPVL._SL1500_.jpg","https://ultimatefitnessbirmingham.co.uk/wp-content/uploads/2018/07/Gym-supplements-at-Ultimate-Fitness-Birmingham.jpg"],
+ "price":25.000,
  "discount":0,
- "description":"It used to take time to get soccer cleats to fit and feel right. Not anymore. The UA Magnetico Select 2.0 do not need any type of adaptation, so they fit perfectly.",
- "user":"6428ba39de408ecca1645d45",
- "season":2022 ,
- "size":[{"amount":7}],
- "category": "footwear",
+ "description":"Gym Supplements form a crucial part of the dietary intake of most passionate athletes. There are thousands of different types of gym supplements available, each made up of a variety of different ingredients and nutrients, and each offering varying benefits.",
+ "user":"642a17406d976304462646e8",
+ "season":2023 ,
+ "size":[{"amount":11}],
+ "category": "supplements",
  "gender":"men",
  "state":"new",
- "brands":"UNDER ARMOUR"
+ "brands":"OTHER"
 }
