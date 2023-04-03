@@ -7,6 +7,7 @@ import "./styles/detail.css";
 import { GrNext, GrPrevious, GrCart, GrClose } from "react-icons/gr";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { NavBar } from "../../Components/Navbar";
+import { Searched } from "../../views/SearchedProducts/SearchedProducts"
 
 
 export default function Detail() {
