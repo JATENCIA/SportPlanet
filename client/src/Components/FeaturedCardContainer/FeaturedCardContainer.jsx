@@ -13,7 +13,7 @@ export default function FeaturedCardContainer() {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.allProducts);
-  const filterProducts = allProducts.filter((product) => product.price >= 1000);
+  const filterProducts = allProducts.filter((product) => product.price >= 15);
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 3;

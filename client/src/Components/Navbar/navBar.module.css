@@ -1,67 +1,82 @@
 .navContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  height: 103px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
 /* SEARCH */
-.searchDiv{
-    position: relative;
-    display: inline-block;
-    margin-left: 50px;
+.searchDiv {
+  border: 1px solid rgb(215, 210, 210);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  margin-left: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.inputSearch{
-    display: flex;
-    justify-content: center;
-    padding-left: 30px;
-    border-radius: 25px;
-    width: 250px;
+.inputSearch {
+  font-size: 14px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  border-radius: 2px;
+  width: 400px;
+  height: 40px;
+  border: none;
+  padding-left: 15px;
 }
-.inputSearch:focus{
-    outline: 0;
-}
-
-.btnSearch{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    cursor: pointer;
-}
-/* SEARCH */
-
-.img{
-    height: 50px;
-    width: auto;
+.inputSearch:focus {
+  outline: 0;
 }
 
-.divLogin{
-    font-weight: bold;
-    color: white;
-    margin-left: auto;
-    margin-right: 20px;
-    transition: transform .2s;
+.btnSearch {
+  background-color: rgb(43, 40, 40);
+  color: white;
+  padding: 0 10px;
+  cursor: pointer;
+  height: 40px;
+}
+
+.img {
+  height: 80px;
+  width: auto;
+}
+
+.divLogin {
+  position: absolute;
+  right: 500px;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgb(43, 40, 40);
+  transition: transform 0.2s;
 }
 
 .divLogin:hover {
-    transform: scale(.9)
+  transform: scale(0.9);
 }
 
-.carrito{
-    color: white;
-    margin-right: 50px;
+.carrito {
+  position: absolute;
+  right: 350px;
+  font-size: 18px;
+  color: rgb(43, 40, 40);
+}
+
+.cartSpan {
+  font-weight: bold;
+  font-size: smaller;
+  padding-left: 10px;
+}
+
+.logo {
+  position: absolute;
+  left: 23%;
 }
