@@ -11,10 +11,10 @@ POST {{urlApi}}/users
 Content-Type: application/json
 
 {
-  "name":"Carlo Alberto",
-  "eMail":"albertosuarez@gmail.com",
-  "lastName":"Suarez Perez",
-  "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq7dDqaApR0N2jhw8SQglWnx41KEY1P1D1cg&usqp=CAU"
+  "name":"Santiago",
+  "eMail":"smassuh@gmail.com",
+  "lastName":"Massuh",
+  "image":""
 }
 
 ### get single user id

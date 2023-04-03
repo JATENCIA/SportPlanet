@@ -15,16 +15,16 @@ POST {{urlApi}}/products
 Content-Type: application/json
 
 {
- "name":"sneakers under Armour",
- "image":["https://cdn-ci.nyc3.cdn.digitaloceanspaces.com/ci-cl/webp-products/54_3001.webp","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTk7i0i01fhCBOHYIjN5H460jGG9K5RiYfRGh2IO-wH7qyF5XUjUS4w4vwhZ_t8fWyK48&usqp=CAU","https://underarmour.scene7.com/is/image/Underarmour/1278819-100_DEFAULT?bgc=f0f0f0&wid=640&hei=480&size=440,420"],
- "price":20.000,
+ "name":"Adidas Women's Casual Running Shoe",
+ "image":["https://m.media-amazon.com/images/I/81zc8i+8qfL._AC_UX679_.jpg","https://m.media-amazon.com/images/I/71q3fQj8KjL._AC_UY500_.jpg", "https://m.media-amazon.com/images/I/61GHYB6wuNL._AC_UX522_.jpg"],
+ "price":36.73,
+  "user":"642adccfcc3e57ada68f51d3",
  "discount":0,
- "description":"It used to take time to get soccer cleats to fit and feel right. Not anymore. The UA Magnetico Select 2.0 do not need any type of adaptation, so they fit perfectly.",
- "user":"6428ba39de408ecca1645d45",
- "season":2022 ,
- "size":[{"amount":7}],
+ "description":"Explore your surroundings. These adidas running-inspired shoes feature a foot-hugging knit upper and a female-friendly fit. Soft midsole cushioning adds comfort as you head out for coffee or discover a busy side street.",
+ "season":2021 ,
+ "size":[{"6'5":3}, {"6'6":5} , {"7":12} ],
  "category": "footwear",
- "gender":"men",
+ "gender":"women",
  "state":"new",
- "brands":"UNDER ARMOUR"
+ "brands":"ADIDAS"
 }
