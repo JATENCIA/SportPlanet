@@ -1,38 +1,48 @@
 import React from "react";
 import style from "./Categories.module.css";
 import { Link } from "react-router-dom";
+import pantsLogo from "../../images/pantsLogo.jpg";
+import ballsLogo from "../../images/ballsLogo.jpg";
+import suplementsLogo from "../../images/suplementsLogo.jpg";
+import tshirt from "../../images/tshirt.jpg";
+import shoesLogo from "../../images/shoesLogo.jpg";
+import accesoriesLogo from "../../images/accesoriesLogo.jpeg";
 
 export default function Categories() {
   return (
     <div className={style.containerName}>
-      <div>
-        <h2 className={style.Name}>Product Categories</h2>
-      </div>
+      <h2 className={style.Name}>PRODUCT CATEGORIES</h2>
       <div className={style.container}>
-        <Link className={style.CategoryContainer} to="/category/tShirts">
-          <div className={style.names}>T-Shirts</div>
+        <Link to="/category/tShirts">
+          <div className={style.CategoryContainer}>
+            <img src={tshirt} />
+          </div>
         </Link>
-        <Link className={style.CategoryContainer} to="/category/pants">
-          <div className={style.names}>Pants</div>
+        <Link to="/category/pants">
+          <div className={style.CategoryContainer}>
+            <img src={pantsLogo} />
+          </div>
         </Link>
-        <Link className={style.CategoryContainer} to="/category/shoes">
-          <div className={style.names}>Shoes</div>
+        <Link to="/category/shoes">
+          <div className={style.CategoryContainer}>
+            <img src={shoesLogo} />
+          </div>
         </Link>
         <div className={style.container}>
-          <Link className={style.CategoryContainer} to="/category/balls">
-            <div className={style.names}>Balls</div>
+          <Link to="/category/balls">
+            <div className={style.CategoryContainer}>
+              <img src={ballsLogo} />
+            </div>
           </Link>
-          <Link
-            className={style.CategoryContainer}
-            to="/category/supplements"
-          >
-            <div className={style.names}>Supplements</div>
+          <Link to="/category/supplements">
+            <div className={style.CategoryContainer}>
+              <img src={suplementsLogo} />
+            </div>
           </Link>
-          <Link
-            className={style.CategoryContainer}
-            to="/category/accessories"
-          >
-            <div className={style.names}>Accessories</div>
+          <Link to="/category/accessories">
+            <div className={style.CategoryContainer}>
+              <img src={accesoriesLogo} />
+            </div>
           </Link>
         </div>
       </div>

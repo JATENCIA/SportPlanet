@@ -24,15 +24,17 @@ main {
 .thumbnails {
     display: flex;
     flex-direction: column;
-    margin-left: 40%;
+    margin-left: 35%;
+    
   }
 
    .main-thumbnail {
     border-radius: 10px;
     cursor: pointer;
-    width: 500px;
+    width: 2000px;
     height: 500px;
     object-fit: cover;
+    margin-top: 5%;
   } 
  .preview {
     display: flex;
@@ -55,6 +57,7 @@ main {
   .content {
     margin-left: 3rem;
     margin-bottom: 117px;
+    
   }
   .company {
     color: black;

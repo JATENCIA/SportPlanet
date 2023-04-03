@@ -4,6 +4,7 @@ import FeaturedCard from "../FeaturedCard/FeaturedCard.jsx";
 import style from "./FeaturedCardContainer.module.css";
 import { getAllProduct } from "../../redux/Actions/actions.js";
 import { Paginate } from "../Paginate/Paginate.jsx";
+import { Link } from "react-router-dom";
 
 export default function FeaturedCardContainer() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export default function FeaturedCardContainer() {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.allProducts);
-  const filterProducts = allProducts.filter((product) => product.price >= 1000);
+  const filterProducts = allProducts.filter((product) => product.price >= 15);
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 3;
@@ -30,11 +31,13 @@ export default function FeaturedCardContainer() {
       <div className={style.productsContainer}>
         {products?.map((product) => {
           return (
+            <Link to={`/detail/${product._id}`}>
             <FeaturedCard
               image={product.image[1]}
               name={product.name}
               price={product.price}
             />
+            </Link>
           );
         })}
       </div>

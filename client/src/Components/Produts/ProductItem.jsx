@@ -23,7 +23,7 @@ export const ProductItem = ({
           </div>
           <div className={styled.name}>{state}</div>
           <div className={styled.name}>$ {price}</div>
-          <p className={styled.p}>Envio Gratis</p>
+          <p className={styled.p}>Free shipping</p>
         </div>
       </div>
     </div>
