@@ -1,61 +1,61 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllProduct } from '../../../redux/Actions';
-import { ProductItem } from '../../Produts';
-import { Paginate } from '../../Paginate/Paginate';
-import { Link } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProduct } from "../../../redux/Actions";
+import { ProductItem } from "../../Produts";
+import { Paginate } from "../../Paginate/Paginate";
+import { Link } from "react-router-dom";
 
 export default function Pants() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllProduct());
+  }, [dispatch]);
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getAllProduct());
-    }, [dispatch])
+  const allProducts = useSelector((state) => state.allProducts);
+  console.log("🚀 ~ file: Pants.jsx:17 ~ Pants ~ allProducts:", allProducts);
+  const filterProducts = allProducts.filter((product) => {
+    return product.category === "pants";
+  });
+  console.log(
+    "🚀 ~ file: Pants.jsx:19 ~ filterProducts ~ filterProducts:",
+    filterProducts
+  );
 
-    const allProducts = useSelector((state) => state.allProducts)
-    const filterProducts = allProducts.filter(product => {
-        return product.category === "pants"
-    })
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
+  const ultimo = currentPage * productsPerPage;
+  const primero = ultimo - productsPerPage;
+  const products = filterProducts.slice(primero, ultimo);
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const productsPerPage = 10;
-    const ultimo = currentPage * productsPerPage;
-    const primero = ultimo - productsPerPage;
-    const products = filterProducts.slice(primero, ultimo);
+  const setPagination = (page) => {
+    return setCurrentPage(page);
+  };
 
-    const setPagination = (page) => {
-        return setCurrentPage(page);
-    };
-
-
-    return (
-        <div>
-            {
-                products?.map(product => {
-                    return (
-                        <Link to={`/detail/${product._id}`}>
-                            <ProductItem
-                                key={crypto.randomUUID()}
-                                _id={product._id}
-                                name={product.name}
-                                image={product.image}
-                                size={product.size}
-                                price={product.price}
-                                description={product.description}
-                            />
-                        </Link>
-                    )
-                })
-            }
-
-            <Paginate
-                productsPerPage={productsPerPage}
-                allProducts={filterProducts.length}
-                setPagination={setPagination}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
+  return (
+    <div>
+      {products?.map((product) => {
+        return (
+          <Link to={`/detail/${product._id}`}>
+            <ProductItem
+              key={crypto.randomUUID()}
+              _id={product._id}
+              name={product.name}
+              image={product.image}
+              size={product.size}
+              price={product.price}
+              description={product.description}
             />
-        </div>
-    )
+          </Link>
+        );
+      })}
+
+      <Paginate
+        productsPerPage={productsPerPage}
+        allProducts={filterProducts.length}
+        setPagination={setPagination}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </div>
+  );
 }

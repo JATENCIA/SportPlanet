@@ -10,24 +10,24 @@ import Detail from "./src/views/Detail/Detail";
 import { Profile } from "./src/views/Profile";
 import { Admin } from "./src/views/Admin";
 import { SupAdmin } from "./src/views/SupAdmin";
-import SearchedProducts from './src/views/SearchedProducts/SearchedProducts'
-import SellProduct from './src/views/Forms/SellProduct/SellProduct'
+import SearchedProducts from "./src/views/SearchedProducts/SearchedProducts";
+import SellProduct from "./src/views/Forms/SellProduct/SellProduct";
 // Fonts
 import "./src/fonts/SportsWorld.ttf";
 import Tshirts from "./src/Components/Categories/Tshirts/Tshirts";
-import Pants from "./src/Components/Categories/Pants/Pants";
 import Shoes from "./src/Components/Categories/Shoes/Shoes";
 import Balls from "./src/Components/Categories/Balls/Balls";
 import Supplements from "./src/Components/Categories/Suplements/Suplements";
 import Accesories from "./src/Components/Categories/Accesories/Accesories";
+import Pants from "./src/Components/Categories/Pants/Pants";
 
 const App = () => {
-  const location = useLocation()
+  const location = useLocation();
   return (
     <>
-     {/*  <NavBar /> */}
+      {/*  <NavBar /> */}
       <div className="container p-4">
-      {location.pathname !== "/" && <NavBar/>}
+        {location.pathname !== "/" && <NavBar />}
         <Routes>
           <Route exact path="/" Component={LandingPage} />
           <Route path="/home" Component={Home} />
@@ -35,14 +35,14 @@ const App = () => {
           <Route path="/profile" Component={Profile} />
           <Route path="/dashboard" Component={Admin} />
           <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
-           <Route path="/category/tShirts" Component={Tshirts}/>
-           <Route path="products/:product" Component={SearchedProducts}/>
-           <Route path="/category/tShirts" Component={Pants}/>
-           <Route path="/category/shoes" Component={Shoes}/>
-           <Route path="/category/balls" Component={Balls}/>
-           <Route path="/category/supplements" Component={Supplements}/>
-           <Route path="/category/accessories" Component={Accesories}/>
-           <Route path='/post/product' Component={SellProduct}/>
+          <Route path="/category/tShirts" Component={Tshirts} />
+          <Route path="products/:product" Component={SearchedProducts} />
+          <Route path="/category/pants" Component={Pants} />
+          <Route path="/category/shoes" Component={Shoes} />
+          <Route path="/category/balls" Component={Balls} />
+          <Route path="/category/supplements" Component={Supplements} />
+          <Route path="/category/accessories" Component={Accesories} />
+          <Route path="/post/product" Component={SellProduct} />
         </Routes>
       </div>
     </>
