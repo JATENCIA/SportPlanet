@@ -4,6 +4,8 @@ import { getAllProduct } from "../../../redux/Actions";
 import { ProductItem } from "../../Produts";
 import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
+import { NavBar } from "../../Navbar/Navbar";
+import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 
 export default function Pants() {
   const dispatch = useDispatch();
@@ -12,14 +14,9 @@ export default function Pants() {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.allProducts);
-  console.log("🚀 ~ file: Pants.jsx:17 ~ Pants ~ allProducts:", allProducts);
   const filterProducts = allProducts.filter((product) => {
     return product.category === "pants";
   });
-  console.log(
-    "🚀 ~ file: Pants.jsx:19 ~ filterProducts ~ filterProducts:",
-    filterProducts
-  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -48,7 +45,35 @@ export default function Pants() {
           </Link>
         );
       })}
+      return (
+      <div>
+        <NavBar />
+        <FilterNavBar />
+        {products?.map((product) => {
+          return (
+            <Link to={`/detail/${product._id}`}>
+              <ProductItem
+                key={crypto.randomUUID()}
+                _id={product._id}
+                name={product.name}
+                image={product.image}
+                size={product.size}
+                price={product.price}
+                description={product.description}
+              />
+            </Link>
+          );
+        })}
 
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
+      );
       <Paginate
         productsPerPage={productsPerPage}
         allProducts={filterProducts.length}

@@ -13,7 +13,7 @@ export default function Accesories() {
 
   const allProducts = useSelector((state) => state.allProducts);
   const filterProducts = allProducts.filter((product) => {
-    return product.category === "accessories";
+    return product.category === "accesories";
   });
 
   const [currentPage, setCurrentPage] = useState(1);

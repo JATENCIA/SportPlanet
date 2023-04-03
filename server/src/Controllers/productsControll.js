@@ -23,7 +23,7 @@ const getProducts = async (req, res) => {
 
     const { name } = req.query;
     const filterProducts = products.filter(
-      (product) => product.user.baneado === false
+      (product) => product.user?.baneado === false
     );
 
     if (name) {

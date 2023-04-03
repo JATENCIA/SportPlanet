@@ -8,8 +8,10 @@ const validateProductsCreate = [
     .not()
     .isEmpty()
     .withMessage("Name cannot be empty")
-    .matches(/^[A-Za-z ]+$/)
-    .withMessage("Name must contain only letters"),
+    .matches(/^[A-Za-z0-9 \-\.,_\/'"`]+$/)
+    .withMessage(
+      "Name must contain only letters, digits, spaces, hyphens, periods, commas, underscores, forward slashes, and quotes"
+    ),
   // check("image")
   //   .optional()
   //   .isURL()

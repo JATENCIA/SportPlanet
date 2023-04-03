@@ -1,27 +1,28 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSearchedProducts } from "../../redux/Actions/actions";
-import Login from './Login'
-import { useNavigate } from 'react-router-dom'
-import style from './navBar.module.css'
+import { useNavigate } from "react-router-dom";
+import Login from "./Login";
+import style from "./navBar.module.css";
 
 export const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [ product, setProduct ] = useState('');
+  const [product, setProduct] = useState("");
 
   const changeHandler = (e) => {
-    setProduct(e.target.value)
-  }
+    setProduct(e.target.value);
+  };
 
   const searchHandler = () => {
     dispatch(getSearchedProducts(product));
-    setProduct('');
-  } 
+    dispatch(getSearchedProducts(product));
+    setProduct("");
+  };
 
   const enterHandler = (e) => {
-    if(e.key === "Enter"){
+    if (e.key === "Enter") {
       searchHandler();
       navigate(`/products/${product}`);
     }
@@ -29,26 +30,46 @@ export const NavBar = () => {
 
   return (
     <div className={style.navContainer}>
-
-      <div>
-       <Link to="/home">
-        <img src="https://i.postimg.cc/kGPCgB7C/logo.png" alt="logo" className={style.img}/>
-       </Link>
+      <div className={style.logo}>
+        <Link to="/home">
+          <img
+            src="https://i.postimg.cc/kGPCgB7C/logo.png"
+            alt="logo"
+            className={style.img}
+          />
+        </Link>
       </div>
 
       <div className={style.searchDiv}>
+        <input
+          type="search"
+          value={product}
+          onChange={changeHandler}
+          className={style.inputSearch}
+          placeholder="What are you looking for?"
+          onKeyDown={enterHandler}
+        />
         <Link to={`/products/${product}`}>
-        <button type="submit" className={style.btnSearch} onClick={searchHandler}>
-          <i className="fas fa-search"/>
-        </button>
+          <button
+            type="submit"
+            className={style.btnSearch}
+            onClick={searchHandler}
+          >
+            <i className="fas fa-search" />
+          </button>
         </Link>
-        <input type='search' value={product} onChange={changeHandler} className={style.inputSearch} placeholder="Search Product..." onKeyDown={enterHandler}/>
       </div>
 
-      <div className={style.divLogin}> <Login /> </div>
+      <div className={style.divLogin}>
+        {" "}
+        <Login />{" "}
+      </div>
 
-      <button className={style.carrito}> <i className="fas fa-shopping-cart"></i> </button> 
+      <button className={style.carrito}>
+        {" "}
+        <i className="fas fa-shopping-cart"></i>
+        <span className={style.cartSpan}>MY CART</span>
+      </button>
     </div>
   );
 };
-
