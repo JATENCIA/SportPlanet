@@ -1,47 +1,26 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByGender, filterByPrice, filterBySeason, filterBySize, filterByUsed } from "../../redux/Actions";
+import { filterByPrice } from "../../redux/Actions";
 import style from "./Filters.module.css";
 
 export default function Filters() {
   const dispatch = useDispatch();
 
-  const selectHandlerPrice = (event) => {
+  const selectHandler = (event) => {
     let value = event.target.value;
     dispatch(filterByPrice(value));
   };
 
-  const selectHandlerWeared = (event) => {
-    let value = event.target.value;
-    dispatch(filterByUsed(value));
-  };
-
-  const selectHandlerGender = (event) => {
-    let value = event.target.value;
-    dispatch(filterByGender(value));
-  };
-
-  const selectHandlerSeason = (event) => {
-    let value = event.target.value;
-    dispatch(filterBySeason(value));
-  };
-
-  const selectHandlerSize = (event) => {
-    let value = event.target.value;
-    dispatch(filterBySize(value));
-  };
-
-
   return (
     <div className={style.filtersContainer}>
-      <select onChange={selectHandlerPrice} className={style.select}>
+      <select onChange={selectHandler} className={style.select}>
         <option value="" selected disabled hidden>
           Price Filter
         </option>
         <option value="lowerToHigher">Lower to Higher</option>
         <option value="higherToLower">Higher to Lower</option>
       </select>
-      <select onChange={selectHandlerSize} className={style.select}>
+      <select onChange={selectHandler} className={style.select}>
         <option value="" selected disabled hidden>
           Size Filter
         </option>
@@ -50,22 +29,21 @@ export default function Filters() {
         <option value="large">L</option>
         <option value="xlarge">XL</option>
       </select>
-      <select onChange={selectHandlerWeared} className={style.select}>
+      <select onChange={selectHandler} className={style.select}>
         <option value="" selected disabled hidden>
           Weared Filter
         </option>
         <option value="new">New</option>
         <option value="used">Used</option>
       </select>
-      <select onChange={selectHandlerGender} className={style.select}>
+      <select onChange={selectHandler} className={style.select}>
         <option value="" selected disabled hidden>
           Gender Filter
         </option>
         <option value="men">Men</option>
         <option value="women">Women</option>
-        <option value="unisex">Unisex</option>
       </select>
-      <select onChange={selectHandlerSeason} className={style.select}>
+      <select onChange={selectHandler} className={style.select}>
         <option value="" selected disabled hidden>
           Season Filter
         </option>

@@ -17,7 +17,6 @@ const initialState = {
   allProducts: [],
   productDetail: [],
   searchedProducts: [],
-  filteredProducts: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -37,19 +36,18 @@ export const rootReducer = (state = initialState, action) => {
     case GET_ALL_PRODUCT:
       return {
         ...state,
-        allProducts: action.payload, 
-        filteredProducts: action.payload,
+        allProducts: action.payload,
       };
 
     case FILTER_BY_PRICE:
       let productsSorted =
-        action.payload === "lowerToHigher"
-          ? [...state.allProducts].sort((a, b) => {
+        action.payload === "min_weight"
+          ? state.allProducts.sort((a, b) => {
               if (a.price > b.price) return 1;
               if (b.price > a.price) return -1;
               return 0;
             })
-          : [...state.allProducts].sort((a, b) => {
+          : state.allProducts.sort((a, b) => {
               if (a.price > b.price) return -1;
               if (b.price > a.price) return 1;
               return 0;
@@ -57,33 +55,33 @@ export const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-       filteredProducts: productsSorted,
+        allProducts: productsSorted,
       };
 
     case FILTER_BY_USED:
       let productsFiltered =
         action.payload === "new"
-          ? [...state.allProducts].filter((product) => {
+          ? state.allProducts.filter((product) => {
               return product.state === "new";
             })
-          : [...state.allProducts].filter((product) => product.state === "used");
+          : state.allProducts.filter((product) => product.state === "used");
       return {
         ...state,
-        filteredProducts: productsFiltered,
+        allProducts: productsFiltered,
       };
 
     case FILTER_BY_GENDER:
       let productsByGender = [];
       if (action.payload === "men") {
-        productsByGender = [...state.allProducts].filter(
+        productsByGender = state.allProducts.filter(
           (product) => product.gender === "men"
         );
       } else if (action.payload === "women") {
-        productsByGender = [...state.allProducts].filter(
+        productsByGender = state.allProducts.filter(
           (product) => product.gender === "women"
         );
       } else if (action.payload === "unisex") {
-        productsByGender = [...state.allProducts].filter(
+        productsByGender = state.allProducts.filter(
           (product) => product.gender === "unisex"
         );
       } else {
@@ -91,7 +89,7 @@ export const rootReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        filteredProducts: [...productsByGender],
+        allProducts: [...productsByGender],
       };
 
     case GET_PRODUCT_DETAIL:
@@ -100,7 +98,7 @@ export const rootReducer = (state = initialState, action) => {
         productDetail: action.payload,
       };
     case FILTER_BY_SIZE:
-      let productBySize = [...state.allProducts]
+      let productBySize = state.allProducts
         .sort((a, b) => {
           const sizeValues = { small: 1, medium: 2, large: 2, xlarge: 4 };
           const aSizeValues = sizeValues[a.size];
@@ -110,12 +108,12 @@ export const rootReducer = (state = initialState, action) => {
         .filter((product) => product.size === action.payload);
       return {
         ...state,
-        filteredProducts: productBySize,
-      }
+        allProducts: productBySize,
+      };
 
     case FILTER_BY_SEASON:
-      let productBySeason = [...state.allProducts].filter((product) => {
-        const year = parseInt(product.season);
+      let productBySeason = state.allProducts.filter((product) => {
+        const year = parseInt(product.year);
         switch (action.payload) {
           case "70s":
             return year >= 1970 && year <= 1979;
@@ -133,7 +131,7 @@ export const rootReducer = (state = initialState, action) => {
       });
       return {
         ...state,
-       filteredProducts: productBySeason
+        allProducts: productBySeason,
       };
       case GET_SEARCHED_PRODUCTS:
       return{

@@ -9,14 +9,13 @@ import styled from "./Tshirts.module.css";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import Filter from "../../Filters/Filters"
 
 function Tshirts() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
-  const allProducts = useSelector((state) => state.filteredProducts);
+  const allProducts = useSelector((state) => state.allProducts);
   console.log("1", allProducts);
   const filterProducts = allProducts.filter(
     (product) => product.category === "tshirts"
@@ -36,7 +35,6 @@ function Tshirts() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filter/>
       {products?.map((product) => {
         return (
           <Link to={`/detail/${product._id}`}>
