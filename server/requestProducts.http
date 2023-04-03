@@ -14,17 +14,106 @@ POST {{urlApi}}/products/642237fc8186e2e058d00515
 POST {{urlApi}}/products
 Content-Type: application/json
 
+//Footwear
 {
- "name":"sneakers under Armour",
- "image":["https://cdn-ci.nyc3.cdn.digitaloceanspaces.com/ci-cl/webp-products/54_3001.webp","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTk7i0i01fhCBOHYIjN5H460jGG9K5RiYfRGh2IO-wH7qyF5XUjUS4w4vwhZ_t8fWyK48&usqp=CAU","https://underarmour.scene7.com/is/image/Underarmour/1278819-100_DEFAULT?bgc=f0f0f0&wid=640&hei=480&size=440,420"],
- "price":20.000,
+ "name":"PUMA Future 1.4 FG AG Orange Football Boots",
+"image":["https://m.media-amazon.com/images/I/61IoGTVTxEL._AC_UL1200_.jpg", "https://m.media-amazon.com/images/I/61wNrxy1kfL._AC_UL1200_.jpg", "https://m.media-amazon.com/images/I/61EoVQqR2IL._AC_UL1200_.jpg"],
+ "price":40.000,
  "discount":0,
- "description":"It used to take time to get soccer cleats to fit and feel right. Not anymore. The UA Magnetico Select 2.0 do not need any type of adaptation, so they fit perfectly.",
- "user":"6428ba39de408ecca1645d45",
- "season":2022 ,
- "size":[{"amount":7}],
+ "description":"More adaptable and comfortable than ever before, the advanced FUTURE Z is an explosive, progressive boot for players who shape the game to their vision and skill.",
+ "user":"642a17626d976304462646ed",
+ "season":2022, 
+ "size":[{"10":21}, {"8'5":10} , {"9":9}],
  "category": "footwear",
  "gender":"men",
  "state":"new",
- "brands":"UNDER ARMOUR"
+ "brands":"PUMA"
+}
+
+//Tshirts
+# {
+#  "name":"Real Madrid Women's T-shirt",
+#  "image":["https://cdn.shopify.com/s/files/1/0614/8489/2414/products/real-madrid-i-2022-2023-feminina-51-170dce3b4577f9137516524591954204-640-0.jpg?v=1658964611",
+#  "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202205/19/00132435218402____3__640x640.jpg", 
+#  "https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202205/19/00132435218402____2__640x640.jpg"],
+#  "price":20.000,
+# "discount":0,
+#  "description":"Official Adidas jersey of the Real Madrid",
+#  "user":"642a183a6d97630446264706",
+#  "season":2022,
+#  "size": [
+# 		  {
+# 		 		"S": 9
+# 		  },
+# 			{
+# 				"M": 8
+# 			},
+# 			{
+# 				"L": 7
+# 			},
+# 		{
+# 			"X": 6
+# 		},
+#       {
+# 			"XL": 5
+# 		  }
+# 		],
+#  "category": "tshirts",
+# "gender":"women",
+#  "state":"new",
+#  "brands":"ADIDAS"
+# }
+
+//Pants
+
+//{
+ //"name":"Short Chelsea FC",
+ //"image":["https://images.footballfanatics.com/chelsea/chelsea-home-stadium-shorts-2022-23_ss4_p-13303294+u-chpj7hateemsk9h1373q+v-dac73c6eaad14dd1831e0f53b64fb09c.jpg?_hv=2&w=900", "https://images.footballfanatics.com/chelsea/chelsea-home-stadium-shorts-2022-23_ss4_p-13303294+pv-1+u-chpj7hateemsk9h1373q+v-3b1664489e8945a7b7b7ca4f6fe9d262.jpg?_hv=2&w=900", "https://images.footballfanatics.com/chelsea/chelsea-home-stadium-shorts-2022-23_ss4_p-13303294+pv-2+u-chpj7hateemsk9h1373q+v-a656a469e87445e28a10fb8596488ec0.jpg?_hv=2&w=900"],
+ //"price":13.000,   //15.000
+ //"discount":0,
+ //"description":"Official Short Chelsea FC.",
+ //"user":"642a17626d976304462646ed",
+ //"season":2022,
+ //"size": [
+	// 	  {
+		 	//	"S": 9
+		  //},
+		//	{
+		//		"M": 8
+		//	},
+		//	{
+		//		"L": 7
+		//},
+		//	{
+		//	"X": 6
+		//	},
+	 //	  {
+	//			"XL": 5
+	//	}
+	//	],
+ //"category": "pants",
+ //"gender":"men",
+ //"state":"new",
+//"brands":"NIKE"
+//}
+
+
+
+//Balls
+
+
+{
+ "name":"Ball Nike Magic Match Ball",
+ "image":["https://d3ugyf2ht6aenh.cloudfront.net/stores/001/220/451/products/633193-mla45395643123_032021-f-89f5310287887e438d16183760016948-640-0.jpg",
+  "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/220/451/products/995458-mla45395623601_032021-f-fc9cc4a843d7e8972116183760063483-640-0.jpg",
+   "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/220/451/products/854591-mla45395643080_032021-f-e0c3e66089d28692be16183759937210-640-0.jpg"],
+ "price":10.000,
+"discount":0,
+ "description":"The NIKE MAGIA soccer ball incorporates AEROW TRAC technology that gives it better behavior in the air. For its part, the high-contrast design makes it very easy to identify it in the field.",
+ "user":"642a18176d97630446264701",
+ "season":2018,
+ "size":[{"amount":9}],
+ "category": "balls",
+ "state":"new",
+ "brands":"NIKE"
 }

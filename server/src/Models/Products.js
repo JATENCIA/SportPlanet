@@ -68,7 +68,7 @@ const productsSchema = mongoose.Schema(
         "tshirts",
         "pants",
         "footwear",
-        "balls",
+        "balls", 
         "supplements",
         "accessories",
       ],
