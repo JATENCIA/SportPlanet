@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const router = Router();
 const {
   createUser,
   deleteUser,
@@ -7,6 +6,8 @@ const {
   getUsers,
   updateUser,
 } = require("../Controllers/usersController");
+
+const router = Router();
 
 /* A route that is listening for a get request to the root of the server. */
 router.get("/", getUsers);
