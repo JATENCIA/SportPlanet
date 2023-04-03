@@ -6,6 +6,7 @@ import { getProductDetail } from "../../redux/Actions";
 import "./styles/detail.css";
 import { GrNext, GrPrevious, GrCart, GrClose } from "react-icons/gr";
 import { BiMinus, BiPlus } from "react-icons/bi";
+import { NavBar } from "../../Components/Navbar";
 
 
 export default function Detail() {
@@ -13,20 +14,22 @@ export default function Detail() {
     const dispatch = useDispatch();
     const { id } = useParams();
     
+    
     useEffect(() => {
-        dispatch(getProductDetail(id))
+        dispatch(getProductDetail(id))    
     }, [dispatch, id])
 
     const product = useSelector(store => store.productDetail)
 
-    let name, image = [], price, size = [], description, category, gender;
+    let name, image = [], price, size = [], description, category, gender, brands;
 
     if (product) {
         name = product.name
         price = product.price
         description = product.description,
         category = product.category,
-        gender = product.gender
+        gender = product.gender,
+        brands = product.brands
 
         if (product.image) {
             image = [...product.image]
@@ -37,13 +40,6 @@ export default function Detail() {
         }
     }
 
-
-    const sizeArr = []
-
-    for (let i = 0; i < size.length; i++) {
-        const key = Object.keys(size[i]).join();
-        sizeArr.push(key)
-    }
 
     useEffect(() => {
         const thumbnails = document.querySelector(".thumbnails");
@@ -122,7 +118,7 @@ export default function Detail() {
                         {/* thumbnails */}
 
                         <section className="thumbnails">
-                            <img src={image[0]} alt="product" className="main-thumbnail invisible-mob" />
+                            <img src={image[0]} alt="product" className="main-thumbnail invisible-mob"/>
                             <div className="mobile-thumb hidden">
                                 <img src={image[0]} alt="product" />
                                 <button id="next">
@@ -145,7 +141,7 @@ export default function Detail() {
                         {/* content */}
 
                         <section className="content">
-                            <p className="company">Sport Planet</p>
+                            <p className="company">{brands}</p>
                             <h1 className="title">{name}</h1>
                             <p className="info">{description}</p>
                             <div className="price">
@@ -157,9 +153,9 @@ export default function Detail() {
                                 <select className="select">
                                     <option disabled selected defaultValue>Size</option>
                                     {
-                                         sizeArr.map((s,i) => {
+                                         size.map((s,i) => {
                                             return (
-                                                <option value={s} key={i}>{s}</option>
+                                                <option value={s} key={i}>{Object.keys(s)}: {Object.values(s)}</option>
                                             )
                                          })
                                     }
@@ -203,9 +199,13 @@ export default function Detail() {
     }
 
     return (
-        <div>
+        <>
+        <NavBar />
             <ShowProduct />
-        </div>
+        </>
     )
+
+    
+
     
 }
