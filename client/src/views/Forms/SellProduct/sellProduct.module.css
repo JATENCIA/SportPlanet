@@ -1,0 +1,38 @@
+.formContainer{
+    margin: 0 auto;
+    width: 55%;
+    height: max-content;
+    background-color: transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;    
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 25px;
+    /* border: 2px solid black; */
+    margin-top: 70px;
+}
+
+/* .label{
+    font-size: medium;
+    font-weight: bold;
+} */
+
+.input{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.sizeSelect{
+    width: 25%;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.sizeNumber{
+    width: 75%;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}

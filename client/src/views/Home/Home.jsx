@@ -4,32 +4,53 @@ import SlidePromos from "../../Components/SlidePromos/SlidePromos";
 import Categories from "../../Components/Categories/Categories";
 import style from "./Home.module.css";
 import FeaturedCardContainer from "../../Components/FeaturedCardContainer/FeaturedCardContainer";
+import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
+import { NavBar } from "../../Components/Navbar";
+import nikeLogo from "../../images/nikeLogo.jpg";
+import adidasLogo from "../../images/adidasLogo.png";
+import pumaLogo from "../../images/pumaLogo.jpeg";
+import underArmour from "../../images/underArmour.jpg";
+import filaLogo from "../../images/filaLogo.jpeg";
+import reebokLogo from "../../images/reebokLogo.jpg";
 
 export const Home = () => {
   return (
     <div className={style.main}>
+      <h1 className={style.h1Top}>FREE SHIPPING OVER $1000</h1>
+      <NavBar />
+      <FilterNavBar />
       <SlidePromos />
-      <hr></hr>
       <Categories />
-      <hr></hr>
+      <h1 className={style.featuredTitle}>FEATURED PRODUCTS</h1>
       <FeaturedCardContainer />
-      <hr></hr>
       <div className={style.secondContainer}>
-      <div className={style.brandSection}>
-          <h1 className={style.brandTitle}>Our Brands</h1>
+        <div className={style.brandSection}>
+          <h1 className={style.brandTitle}>OUR BRANDS</h1>
           <div className={style.brandContainer}>
-            <div className={style.brand}>BRAND</div>
-            <div className={style.brand}>BRAND</div>
-            <div className={style.brand}>BRAND</div>
+            <div className={style.brand}>
+              <img src={nikeLogo} className={style.brandImg} />
+            </div>
+            <div className={style.brand}>
+              <img src={adidasLogo} className={style.brandImg} />
+            </div>
+            <div className={style.brand}>
+              <img src={pumaLogo} className={style.brandImg} />
+            </div>
           </div>
           <div className={style.brandContainer}>
-            <div className={style.brand}>BRAND</div>
-            <div className={style.brand}>BRAND</div>
-            <div className={style.brand}>BRAND</div>
+            <div className={style.brand}>
+              <img src={underArmour} className={style.brandImg} />
+            </div>
+            <div className={style.brand}>
+              <img src={filaLogo} />
+            </div>
+            <div className={style.brand}>
+              <img src={reebokLogo} />
+            </div>
           </div>
         </div>
         <hr></hr>
-        <h1 className={style.aboutUsTitle}>About Us</h1>
+        <h1 className={style.aboutUsTitle}>ABOUT SPORT PLANET</h1>
         <div className={style.aboutUsDescription}>
           <p>
             SportPlanet hosts a large online commerce of sport articules in

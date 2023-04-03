@@ -1,5 +1,5 @@
 const Products = require("../Models/Products");
-const Stores = require("../Models/Stores");
+const Users = require("../Models/Users");
 
 /**
  * It returns a list of products, if the name query parameter is present, it filters the list of
@@ -10,15 +10,28 @@ const Stores = require("../Models/Stores");
  */
 const getProducts = async (req, res) => {
   try {
-    const products = await Products.find({}).populate("user");
+    const products = await Products.find({}).populate("user", {
+      name: 1,
+      image: 1,
+      lastName: 1,
+      dni: 1,
+      eMail: 1,
+      location: 1,
+      telephone: 1,
+      baneado: 1,
+    });
+
     const { name } = req.query;
+    const filterProducts = products.filter(
+      (product) => product.user.baneado === false
+    );
 
     if (name) {
-      const result = products.filter((elem) =>
+      const result = filterProducts.filter((elem) =>
         elem.name.toLowerCase().includes(name.toLowerCase())
       );
       name.length ? res.status(200).json(result) : res.status(204).json({});
-    } else res.status(200).json(products);
+    } else res.status(200).json(filterProducts);
   } catch (error) {
     res.status(500).json({ messaje: `${error}` });
   }
@@ -48,11 +61,17 @@ const getProduct = async (req, res) => {
  */
 const createProduct = async (req, res) => {
   try {
+    console.log(req.body);
     const product = new Products(req.body);
-    const store = await Stores.findById(req.body.store);
+
+    const user = await Users.findById(req.body.user);
+    console.log(
+      "🚀 ~ file: productsControll.js:68 ~ createProduct ~ user:",
+      user
+    );
     const saveProduct = await product.save();
-    store.product = store.product.concat(saveProduct._id);
-    await store.save();
+    user.product = user.product.concat(saveProduct._id);
+    await user.save();
     res.status(201).json(saveProduct);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });

@@ -9,54 +9,22 @@ GET {{urlApi}}/products?name=boca
 ### banear single user
 POST {{urlApi}}/products/642237fc8186e2e058d00515
 
-### create a product
-POST {{urlApi}}/products
-Content-Type: application/json
-
-{
-  "name":"argentina 86 retro jersey",
- "image":["https://http2.mlstatic.com/D_NQ_NP_646753-CBT53904382894_022023-V.jpg","https://i.pinimg.com/originals/f2/c2/b9/f2c2b9ff28162035746c8e5a1fe1b3b5.jpg","https://http2.mlstatic.com/D_NQ_NP_739726-MLA49972629880_052022-O.jpg"],
- "price":22.99,
- "discount":0,
- "description":"Argentinian T-shirt main Tribute 86",
- "store":"64220cacef020ad40ed789a8",
- "season":1986 ,
- "size":[{"XS":30},{"S":30},{"M":30},{"L":30},{"X":30},{"XL":30},{"XXL":30}],
- "category": "tshirts",
- "gender":"men"
-}
 
 ### create a product
 POST {{urlApi}}/products
 Content-Type: application/json
 
 {
-  "name":"soccer ball champion league",
- "image":["https://okdiario.com/img/2020/04/01/champions-balon-655x368.jpg","https://www.voetbalshirts.com/media/32192/champions-league-bal-2019-2020.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Adidas_Finale_2019.jpg/800px-Adidas_Finale_2019.jpg"],
- "price":15,
+ "name":"sneakers under Armour",
+ "image":["https://cdn-ci.nyc3.cdn.digitaloceanspaces.com/ci-cl/webp-products/54_3001.webp","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTk7i0i01fhCBOHYIjN5H460jGG9K5RiYfRGh2IO-wH7qyF5XUjUS4w4vwhZ_t8fWyK48&usqp=CAU","https://underarmour.scene7.com/is/image/Underarmour/1278819-100_DEFAULT?bgc=f0f0f0&wid=640&hei=480&size=440,420"],
+ "price":20.000,
  "discount":0,
- "description":"Soccer ball championg league season 2021",
- "store":"64220cacef020ad40ed789a8",
- "season":2021 ,
- "size":[{"amount":35}],
- "category": "balls",
- "gender":"unisex"
-}
-
-### create a product
-POST {{urlApi}}/products
-Content-Type: application/json
-
-{
-  "name":"Jersey Boca Juniors",
- "image":["https://cf.shopee.com.co/file/sg-11134201-22100-7zk0r4o2lqivd8","https://empilchameshop.com/wp-content/uploads/2023/01/0732E6B1-E241-4167-9069-FCCE7E91AB85.jpeg","https://cf.shopee.com.co/file/14f01a7c7c285deb94221c5dcff6a828"],
- "price":19.000,
- "discount":0,
- "description":"Soccer Jersey 2023 Boca Juniors",
- "store":"64220cacef020ad40ed789a8",
- "season":2023 ,
- "size":[{"X":1}],
- "category": "tshirts",
+ "description":"It used to take time to get soccer cleats to fit and feel right. Not anymore. The UA Magnetico Select 2.0 do not need any type of adaptation, so they fit perfectly.",
+ "user":"6428ba39de408ecca1645d45",
+ "season":2022 ,
+ "size":[{"amount":7}],
+ "category": "footwear",
  "gender":"men",
- "state":"used"
+ "state":"new",
+ "brands":"UNDER ARMOUR"
 }

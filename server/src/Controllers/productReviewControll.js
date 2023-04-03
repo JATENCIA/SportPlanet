@@ -65,11 +65,11 @@ const deleteProductReviewByid = async (req, res) => {
 
     baneado
       ? res.status(200).json({
-          message: `The Product Review *** ${product.name.ProductReview} *** is temporarily or permanently disabled.`,
+          message: `The Product Review *** ${productReview} *** is temporarily or permanently disabled.`,
           baneado: baneado,
         })
       : res.status(200).json({
-          message: `the Product Review *** ${product.name.productReview} *** is enabled`,
+          message: `the Product Review *** ${productReview} *** is enabled`,
           baneado: baneado,
         });
   } catch (error) {
