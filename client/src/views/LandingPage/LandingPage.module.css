@@ -4,97 +4,89 @@
 }
 
 .welcomeContainer {
-    background-image: url('../../images/background.jpg');
-    background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    animation: fadeInAnimation ease 3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    position:absolute;
-    top:0px;
-    right:0px;
-    bottom:0px;
-    left:0px;
-    overflow-x:hidden;
+  background-image: url("../../images/background1.jpg");
+  background-repeat: no-repeat;
+  backdrop-filter: blur(25px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  overflow-x: hidden;
 }
 
 .welcomeContainer h1 {
-    font-size: 80px;
-    position: relative;
-    font-family: SportWorld;
-    font-weight: 0;
-    top: 120px;
-    left: 50px;
-    animation: fadeInAnimation ease 6s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    color: rgb(255, 255, 255);
-    text-shadow: 5px 5px 5px rgb(15, 15, 15);
+  font-size: 120px;
+  position: relative;
+  font-family: aBlackLives;
+  font-weight: 0;
+  animation: fadeInAnimation ease 6s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  color: rgb(255, 255, 255);
+  text-shadow: 5px 5px 5px rgb(15, 15, 15);
+  padding-bottom: 30px;
 }
 
 .slogan {
-    position: relative;
-    top: 150px;
-    left: 150px;
-    font-family: SportWorld;
-    text-align: justify;
+  font-family: aBlackLives;
+  font-size: 20px;
+  color: #babbbe;
+  text-shadow: 5px 5px 5px rgb(15, 15, 15);
+  padding-bottom: 30px;
 }
 
 .buttonToHome {
-    position: relative;
-    top: 190px;
-    left: 240px;
+  width: 160px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  text-shadow: 1px 1px 1px black;
+  background-image: linear-gradient(
+    to right,
+    #4b4f51,
+    #a3a5aa,
+    #a6aeb0,
+    #ffffff
+  );
+  box-shadow: 3px 0px 10px rgba(230, 223, 230, 0.9);
 }
-.buttonToHome{
-    width: 160px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-    margin: 20px;
-    height: 55px;
-    text-align:center;
-    border: none;
-    background-size: 300% 100%;
-    border-radius: 50px;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-    text-shadow: 1px 1px 1px black;
-  }
-  
-  .buttonToHome:hover {
-    background-position: 100% 0;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-  }
-  
-  .buttonToHome:focus {
-    outline: none;
-  }
-  
-  .buttonToHome{
-    background-image: linear-gradient(
-      to right,
-      #25aae1,
-      #4481eb,
-      #04befe,
-      #3f86ed
-    );
-    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
-  }
+
+.buttonToHome:hover {
+  background-position: 100% 0;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.buttonToHome:focus {
+  outline: none;
+}
 
 @keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
   }
-
-
-  
+  100% {
+    opacity: 1;
+  }
+}
