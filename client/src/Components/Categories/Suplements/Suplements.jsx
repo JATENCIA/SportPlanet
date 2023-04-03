@@ -5,6 +5,7 @@ import { ProductItem } from "../../Produts";
 import { Paginate } from "../../Paginate/Paginate";
 import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
+import { Link } from "react-router-dom";
 
 export default function Supplements() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ export default function Supplements() {
       <FilterNavBar />
       {products?.map((product) => {
         return (
+          <Link to={`/detail/${product._id}`}>
           <ProductItem
             key={crypto.randomUUID()}
             _id={product._id}
@@ -42,6 +44,7 @@ export default function Supplements() {
             price={product.price}
             description={product.description}
           />
+          </Link>
         );
       })}
 
