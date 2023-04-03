@@ -11,7 +11,7 @@ import { Profile } from "./src/views/Profile";
 import { Admin } from "./src/views/Admin";
 import { SupAdmin } from "./src/views/SupAdmin";
 import SearchedProducts from './src/views/SearchedProducts/SearchedProducts'
-
+import SellProduct from './src/views/Forms/SellProduct/SellProduct'
 // Fonts
 import "./src/fonts/SportsWorld.ttf";
 import Tshirts from "./src/Components/Categories/Tshirts/Tshirts";
@@ -42,6 +42,7 @@ const App = () => {
            <Route path="/category/balls" Component={Balls}/>
            <Route path="/category/supplements" Component={Supplements}/>
            <Route path="/category/accessories" Component={Accesories}/>
+           <Route path='/post/product' Component={SellProduct}/>
         </Routes>
       </div>
     </>
