@@ -65,10 +65,7 @@ const createProduct = async (req, res) => {
     const product = new Products(req.body);
 
     const user = await Users.findById(req.body.user);
-    console.log(
-      "🚀 ~ file: productsControll.js:68 ~ createProduct ~ user:",
-      user
-    );
+
     const saveProduct = await product.save();
     user.product = user.product.concat(saveProduct._id);
     await user.save();
