@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { getSearchedProducts } from "../../redux/Actions/actions";
-import style from './searchedProducts.module.css'
+import { ProductItem } from "../../Components/Produts/ProductItem"
+import { NavBar } from "../../Components/Navbar";
+import  FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
+import { Link } from "react-router-dom";
 
 const SearchedProducts = () => {
     const dispatch = useDispatch();
@@ -16,16 +19,23 @@ const SearchedProducts = () => {
     },[dispatch, product])
 
     return(
-        <div className={style.container}>
-            {searchedProducts.map((product, index) => {
-            return(
-                <div key={index}>
-                    <img src={product.image[0]} alt='Product Image'/>
-                    <h1>{product.name}</h1>
-                    <h3>{product.price}</h3>
-                </div>
-            )
-            })}
+        <div>
+            <NavBar />
+<FilterNavBar />
+            {searchedProducts.map((product) => (
+                <Link to={`/detail/${product._id}`}>
+                <ProductItem
+                    key={product.id} 
+                    name={product.name}
+                    description={product.description}
+                    price={product.price}
+                    gender={product.gender}
+                    state={product.state}
+                    size={product.size}
+                    image={product.image}
+                />
+               </Link>
+            ))}
         </div>
     )
 }
