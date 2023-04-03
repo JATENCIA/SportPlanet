@@ -9,7 +9,7 @@ import style from "./navBar.module.css";
 export const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [product, setProduct] = useState("");
+  const [product, setProduct] = useState('');
 
   const changeHandler = (e) => {
     setProduct(e.target.value);
@@ -18,11 +18,18 @@ export const NavBar = () => {
   const searchHandler = () => {
     dispatch(getSearchedProducts(product));
     dispatch(getSearchedProducts(product));
-    setProduct("");
+    setProduct('');
   };
 
   const enterHandler = (e) => {
     if (e.key === "Enter") {
+      searchHandler();
+      navigate(`/products/${product}`);
+    }
+  };
+
+  const enterHandler = (e) => {
+    if(e.key === "Enter"){
       searchHandler();
       navigate(`/products/${product}`);
     }

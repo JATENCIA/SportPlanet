@@ -11,6 +11,7 @@ import { Profile } from "./src/views/Profile";
 import { Admin } from "./src/views/Admin";
 import { SupAdmin } from "./src/views/SupAdmin";
 import SearchedProducts from "./src/views/SearchedProducts/SearchedProducts";
+import SellProduct from './src/views/Forms/SellProduct/SellProduct'
 
 // Fonts
 import "./src/fonts/SportsWorld.ttf";
