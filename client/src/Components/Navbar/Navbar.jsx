@@ -17,19 +17,11 @@ export const NavBar = () => {
 
   const searchHandler = () => {
     dispatch(getSearchedProducts(product));
-    dispatch(getSearchedProducts(product));
     setProduct('');
   };
 
   const enterHandler = (e) => {
     if (e.key === "Enter") {
-      searchHandler();
-      navigate(`/products/${product}`);
-    }
-  };
-
-  const enterHandler = (e) => {
-    if(e.key === "Enter"){
       searchHandler();
       navigate(`/products/${product}`);
     }
