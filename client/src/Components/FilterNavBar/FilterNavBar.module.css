@@ -1,0 +1,25 @@
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  width: 100%;
+  background-color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  height: 50px;
+}
+
+.navContainer button {
+  color: rgb(229, 226, 226);
+  font-family: Seriously;
+  transition: transform 0.2s;
+  font-weight: bold;
+}
+
+.navContainer button:hover {
+  color: white;
+  font-weight: bold;
+  transform: scale(1.05);
+  text-shadow: 0px 0px 1px rgb(120, 115, 252);
+}

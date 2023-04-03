@@ -57,7 +57,7 @@ const Login = () => {
                 alt={user.name}
                 className="w-6 h-6 object-cover rounded-full"
               />
-              <span>⚠️</span>
+              <span>🚫</span>
               <RiArrowDownSLine />
             </MenuButton>
           }
@@ -82,6 +82,15 @@ const Login = () => {
                   The user {user.name} is temporarily or permanently disabled.
                 </span>
               </div>
+            </Link>
+          </MenuItem>
+          <MenuItem className="p-0 hover:bg-transparent">
+            <Link
+              to="#"
+              onClick={() => logout({ returnTo: window.location.origin })}
+              className="rounded-lg transition-colors text-gray-300 hover:bg-secondary-900 flex items-center gap-x-4 py-2 px-6 flex-1"
+            >
+              <RiLogoutCircleRLine /> Log Out
             </Link>
           </MenuItem>
         </Menu>
