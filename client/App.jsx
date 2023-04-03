@@ -1,9 +1,8 @@
 import React from "react";
 import "./App.css";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { NavBar } from "./src/Components/Navbar";
-import SellProduct from "./src/views/Forms/SellProduct/SellProduct";
-import ProductCard from "./src/Components/ProductCard/ProductCard";
+// import { NavBar } from "./src/Components/Navbar";
+// import ProductCard from "./src/Components/ProductCard/ProductCard";
 import LandingPage from "./src/views/LandingPage/LandingPage";
 import { Home } from "./src/views/Home/Home";
 import Detail from "./src/views/Detail/Detail";
