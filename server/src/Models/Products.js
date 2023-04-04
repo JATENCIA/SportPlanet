@@ -71,6 +71,7 @@ const productsSchema = mongoose.Schema(
         "balls", 
         "supplements",
         "accessories",
+        "gym",
       ],
       default: "accessories",
     },
@@ -87,17 +88,7 @@ const productsSchema = mongoose.Schema(
       default: "new",
     },
     brands: {
-      type: "String",
-      enum: [
-        "PUMA",
-        "ADIDAS",
-        "REBOOK",
-        "COLUMBIA",
-        "NIKE",
-        "UNDER ARMOUR",
-        "OTHER",
-      ],
-      default: "OTHER",
+      type: "String"
     },
   },
   {
