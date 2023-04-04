@@ -15,14 +15,14 @@ POST {{urlApi}}/products
 Content-Type: application/json
 
 {
- "name":"Adidas Women's Casual Running Shoe",
- "image":["https://m.media-amazon.com/images/I/81zc8i+8qfL._AC_UX679_.jpg","https://m.media-amazon.com/images/I/71q3fQj8KjL._AC_UY500_.jpg", "https://m.media-amazon.com/images/I/61GHYB6wuNL._AC_UX522_.jpg"],
- "price":36.73,
+ "name":"Adidas Originals Women's Zx 1k Boost Sneaker",
+ "image":["https://m.media-amazon.com/images/I/71sIcQ9h-yS._AC_UX500_.jpg","https://m.media-amazon.com/images/I/516bFD5-7GS._AC_UY625_.jpg", "https://m.media-amazon.com/images/I/71Qbs23dMcS._AC_UX500_.jpg"],
+ "price":50.00,
   "user":"642adccfcc3e57ada68f51d3",
  "discount":0,
- "description":"Explore your surroundings. These adidas running-inspired shoes feature a foot-hugging knit upper and a female-friendly fit. Soft midsole cushioning adds comfort as you head out for coffee or discover a busy side street.",
+ "description":"adidas Originals Women's ZX 1K Boost",
  "season":2021 ,
- "size":[{"6'5":3}, {"6'6":5} , {"7":12} ],
+ "size":[{"6'5":2}, {"6'5":5} , {"7":10} ],
  "category": "footwear",
  "gender":"women",
  "state":"new",
