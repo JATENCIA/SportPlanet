@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   RiArrowDownSLine,
   RiLogoutCircleRLine,
@@ -17,15 +17,28 @@ import { getAllUser, postUser } from "../../redux/Actions/actions";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+
   const { isAuthenticated, user, logout } = useAuth0();
 
   const [userE, setUserE] = useState({});
 
   useEffect(() => {
     dispatch(getAllUser());
-  }, [dispatch]);
+  }, [dispatch, location]);
 
   const allUsers = useSelector((state) => state.allUsers);
+
+  try {
+    const { user } = useAuth0();
+    // const allUsers = useSelector((state) => state.allUsers);
+    let idUser = "";
+    allUsers.map((uS) => (uS.eMail === user.email ? (idUser = uS._id) : null));
+    localStorage.setItem(
+      "user",
+      user.email + "|" + user.picture + "|" + idUser
+    );
+  } catch (error) {}
 
   useEffect(() => {
     if (user && isAuthenticated) {
@@ -41,7 +54,6 @@ const Login = () => {
         dispatch(postUser(newUser));
       } else {
         setUserE(userDb);
-        return false;
       }
     }
   }, [user]);
