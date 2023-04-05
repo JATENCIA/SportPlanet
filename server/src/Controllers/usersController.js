@@ -1,5 +1,6 @@
 const Products = require("../Models/Products");
 const Users = require("../Models/Users");
+const { eMail } = require("../NodeMailer/welcomeMailer");
 
 /**
  * It's an async function that uses the mongoose model to find all the users in the database and
@@ -84,6 +85,7 @@ const createUser = async (req, res) => {
     });
 
     const saveUser = await newUser.save();
+    eMail(user.eMail);
     res.status(200).json(saveUser);
   } catch (error) {
     res.status(500).json({ message: `${error}` });
