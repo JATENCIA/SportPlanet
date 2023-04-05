@@ -32,3 +32,11 @@ Content-Type: application/json
 }
 
 
+### favorite a user
+POST {{urlApi}}/users/favorite
+Content-Type: application/json
+
+{
+  "user":"642a18f86d9763044626471f",
+  "product":"642a37d06d9763044626479b" 
+}
