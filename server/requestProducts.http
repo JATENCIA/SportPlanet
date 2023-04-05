@@ -14,6 +14,7 @@ POST {{urlApi}}/products/642237fc8186e2e058d00515
 POST {{urlApi}}/products
 Content-Type: application/json
 
+//Footwear
 {
  "name":"INLIFE Whey Protein Powder",
  "image":["https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/713cJLNB1SL._SY450_.jpg","https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81aYxr6vPVL._SL1500_.jpg","https://ultimatefitnessbirmingham.co.uk/wp-content/uploads/2018/07/Gym-supplements-at-Ultimate-Fitness-Birmingham.jpg"],
@@ -27,4 +28,20 @@ Content-Type: application/json
  "gender":"men",
  "state":"new",
  "brands":"OTHER"
+}
+
+
+
+{
+ "name":"Multi-gym Enerfit 970 - Chest Dorsals Legs",
+ "image":["https://http2.mlstatic.com/D_NQ_NP_849456-MLA27281733010_052018-O.webp", "https://http2.mlstatic.com/D_NQ_NP_611529-MLA31020009771_062019-O.webp", "https://http2.mlstatic.com/D_NQ_NP_989927-MLA31020016657_062019-O.webp"],
+ "price":40.000,
+"discount":0,
+ "description":"ENERFIT 970 PROFESSIONAL MULTIGYM. 3 Modules: MODULE 1: Dorsal, butterfly, high pulley, low pulley, rowing, triceps, biceps, quadriceps, among other exercises (Includes SCOTT accessory). MODULE 2: Press. MODULE 3: Lower structure triceps, abdominals. Includes long bar for lats and short bar for biceps, triceps, rowing. ",
+ "user":"642a187a6d9763044626470b",
+ "season":2020,
+ "size":[{"amount":10}],
+ "category": "gym",
+ "state":"new",
+ "brands":"ENERFIT"
 }
