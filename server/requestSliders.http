@@ -1,0 +1,18 @@
+@urlApi = http://localhost:5000
+
+### get all sliders
+GET {{urlApi}}/sliders
+
+### get single sliders id
+GET {{urlApi}}/sliders/642d7077bb658af24ab09679
+
+### create a store
+POST {{urlApi}}/sliders
+Content-Type: application/json
+
+{
+    "image": "https://www.wonderplugin.com/wp-content/uploads/2019/05/sydney-opera-house.jpg"
+}
+
+### banear single slider
+POST {{urlApi}}/sliders/642d7077bb658af24ab09679

@@ -146,24 +146,27 @@ const updateUser = async (req, res) => {
  * @param res - The response object.
  */
 
-const getFavorite = async (req, res) => {
+const postFavorite = async (req, res) => {
   try {
-    const { id, eMail } = req.body;
-    let users = await Users.find({ eMail: eMail });
-    let product = await Products.findById({ _id: id });
+    let users = await Users.findById(req.body.user);
+    let product = await Products.findById(req.body.product);
+
+    if (!users || !product) return res.status(204).json({});
+
     let favorites = users.favorites;
 
     let flag = [];
     if (favorites) {
       favorites.map((element, index) => {
-        if (JSON.stringify(element._id) === JSON.stringify(id)) {
+        if (JSON.stringify(element._id) === JSON.stringify(req.body.product)) {
           flag.push(element);
           users.favorites.splice(index, 1);
         }
       });
-      if (flag.length === 0) favorites.push(restaurant);
-    } else favorites.push(restaurant);
-    await Users.updateOne({ _id: users[0].id }, { $set: favorites });
+      if (flag.length === 0) favorites.push(product);
+    } else favorites.push(product);
+    await Users.updateOne({ _id: users._id }, { $set: favorites });
+    await users.save();
     res.status(200).json(users.favorites);
   } catch (error) {
     res.status(500).send(`{message: ${error}}`);
@@ -176,4 +179,5 @@ module.exports = {
   createUser,
   deleteUser,
   updateUser,
+  postFavorite,
 };

@@ -13,7 +13,10 @@ Content-Type: application/json
   "recommended" : 4,
   "comment" : "probando el crear desde de las condiciones",
   "product" : "642a43f5b8bea9a9ad7bf2f4",
-  "user" : "642a183a6d97630446264706"
+  "user" : "642a183a6d97630446264706",
+  "attention":5,
+  "deliveryOnTime":3,
+  "packaging":4
 }
 ### get single productReview id
 GET {{urlApi}}/productReview

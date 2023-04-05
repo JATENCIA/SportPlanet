@@ -11,13 +11,15 @@ const usersRoutes = require("./usersRoutes");
 // const storesRoutes = require("./storesRoutes");
 const productsRoutes = require("./productsRoutes");
 const productReviewRoutes = require("./productReviewRoutes");
-// const userReviewRoutes = require("./userReviewRoutes");
+const paymentsRoutes = require("./paymentsRoutes");
+const slidersRoutes = require("./slidersRoutes");
 
 router.use("/users", usersRoutes);
 // router.use("/stores", storesRoutes);
 router.use("/products", productsRoutes);
 router.use("/productReview", productReviewRoutes);
-// router.use("/userReview", userReviewRoutes);
+router.use("/payments", paymentsRoutes);
+router.use("/sliders", slidersRoutes);
 
 // Importar todos los routers;
 const UsersRoutes = require("./usersRoutes");
