@@ -4,9 +4,10 @@
   flex-wrap: wrap;
   margin-top:10px;
   margin-left:30px;
+ }
 
-  
- }.container {
+
+ .container {
   position:relative;
  display: flex;
 justify-content: center;
@@ -27,6 +28,15 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
  transition: 0.4s;
  overflow: hidden;
 }
+
+.container:hover {
+  background-color: #91949b71; 
+  transform: translateY(-10px); 
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.2); 
+}
+
+
+
 .flex {
   display: flex;
   justify-content: center;
@@ -37,16 +47,15 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 height: 220px;
  }
 
-.p{
-  margin-left: 10px;
-  font-family: SportWorld;
-  color: rgb(0, 128, 49);
+
  
- }
  .name {
   margin-left: 10px;
   font-family:Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 0;
+
  }
+
+ 
 
