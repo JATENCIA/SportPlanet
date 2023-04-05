@@ -1,4 +1,3 @@
-import React from "react";
 import { Produts } from "../../Components/Produts";
 import SlidePromos from "../../Components/SlidePromos/SlidePromos";
 import Categories from "../../Components/Categories/Categories";
@@ -12,8 +11,19 @@ import pumaLogo from "../../images/pumaLogo.jpeg";
 import underArmour from "../../images/underArmour.jpg";
 import filaLogo from "../../images/filaLogo.jpeg";
 import reebokLogo from "../../images/reebokLogo.jpg";
+import { getAllUser } from "../../redux/Actions";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Home = () => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch, location]);
+
   return (
     <div className={style.main}>
       <h1 className={style.h1Top}>FREE SHIPPING OVER $1000</h1>
