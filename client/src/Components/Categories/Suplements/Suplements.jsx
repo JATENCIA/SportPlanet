@@ -35,15 +35,15 @@ export default function Supplements() {
       {products?.map((product) => {
         return (
           <Link to={`/detail/${product._id}`}>
-          <ProductItem
-            key={crypto.randomUUID()}
-            _id={product._id}
-            name={product.name}
-            image={product.image}
-            size={product.size}
-            price={product.price}
-            description={product.description}
-          />
+            <ProductItem
+              key={crypto.randomUUID()}
+              _id={product._id}
+              name={product.name}
+              image={product.image}
+              size={product.size}
+              price={product.price}
+              description={product.description}
+            />
           </Link>
         );
       })}
