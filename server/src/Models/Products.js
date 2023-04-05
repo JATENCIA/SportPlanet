@@ -87,7 +87,7 @@ const productsSchema = mongoose.Schema(
       enum: [
         "PUMA",
         "ADIDAS",
-        "REBOOK",
+        "REEBOK",
         "FILA",
         "NIKE",
         "UNDER ARMOUR",
