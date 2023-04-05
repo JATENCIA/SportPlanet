@@ -28,7 +28,7 @@ const App = () => {
   const location = useLocation();
   return (
     <>
-       {/* <NavBar /> */}
+      {/*  <NavBar /> */}
       {/* {location.pathname !== "/" && <NavBar />} */}
       <Routes>
         <Route exact path="/" Component={LandingPage} />
