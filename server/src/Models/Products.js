@@ -52,7 +52,7 @@ const productsSchema = mongoose.Schema(
     review: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "Reviews",
+        ref: "ProductReview",
       },
     ],
 
@@ -87,7 +87,7 @@ const productsSchema = mongoose.Schema(
       enum: [
         "PUMA",
         "ADIDAS",
-        "REBOOK",
+        "REEBOK",
         "FILA",
         "NIKE",
         "UNDER ARMOUR",
