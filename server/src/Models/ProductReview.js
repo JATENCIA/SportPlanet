@@ -42,6 +42,30 @@ const productReviewSchema = mongoose.Schema(
       type: Array(mongoose.Types.ObjectId),
       ref: "Users",
     },
+
+    attention: {
+      type: Number,
+      min: 1,
+      max: 5,
+      default: 1,
+      required: true,
+    },
+
+    deliveryOnTime: {
+      type: Number,
+      min: 1,
+      max: 5,
+      default: 1,
+      required: true,
+    },
+
+    packaging: {
+      type: Number,
+      min: 1,
+      max: 5,
+      default: 1,
+      required: true,
+    },
   },
   {
     timestamps: true,
