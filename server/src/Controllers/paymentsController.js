@@ -14,7 +14,7 @@ const getPayments = async (req, res) => {
     const payment = await Payments.find({});
     res.status(200).json(payment);
   } catch (error) {
-    res.status(500).json({ mensage: `${error}` });
+    res.status(500).json({ error: error.message });
   }};
 /**
  * It gets a payment from the database by its id
