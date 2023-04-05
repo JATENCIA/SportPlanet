@@ -4,7 +4,6 @@ const slidersSchema = mongoose.Schema(
   {
     image: {
       type: String,
-      required: true,
     },
   },
   {
