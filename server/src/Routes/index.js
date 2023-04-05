@@ -7,7 +7,6 @@ const router = Router();
 // Configurar los routers
 //router.use("/users", UsersRoutes);
 
-
 const usersRoutes = require("./usersRoutes");
 // const storesRoutes = require("./storesRoutes");
 const productsRoutes = require("./productsRoutes");
