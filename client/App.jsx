@@ -22,6 +22,7 @@ import Balls from "./src/Components/Categories/Balls/Balls";
 import Supplements from "./src/Components/Categories/Suplements/Suplements";
 import Accesories from "./src/Components/Categories/Accesories/Accesories";
 import FilterNavBar from "./src/Components/FilterNavBar/FilterNavBar";
+import Pants from "./src/Components/Categories/Pants/Pants";
 
 const App = () => {
   const location = useLocation();
