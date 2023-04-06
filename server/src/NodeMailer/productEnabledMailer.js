@@ -40,8 +40,12 @@ const eMail = async (eMail) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2>Product Enabled</h2>
-        <p>The product has been enabled.</p>
+        <h2 style="color:#120AF0">Product Enabled</h2>
+        <p style="color:#408CF6">We are pleased to inform you that your product has been enabled and is now available on our platform. After reviewing your  case, our team has determined that your product complies with our terms and conditions.
+        We apologize for any inconvenience that this situation may have caused, and we appreciate your patience and cooperation during this process.
+        If you have any questions or concerns, please do not hesitate to contact our support team.
+        Thank you for your understanding and for choosing our platform to offer your product.
+        Best regards</p>
         
         <div style="display: flex; padding: 20px 10px 20px 10px; ">
           <div style=" padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
