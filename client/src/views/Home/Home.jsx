@@ -16,11 +16,11 @@ import reebokLogo from "../../images/reebokLogo.jpg";
 export const Home = () => {
   return (
     <div className={style.main}>
-      <h1 className={style.h1Top}>FREE SHIPPING OVER $1000</h1>
+      <h1 className={style.h1Top}>FREE SHIPPING OVER $15</h1>
       <NavBar />
       <FilterNavBar />
-      <SlidePromos />
       <Categories />
+      <SlidePromos />
       <h1 className={style.featuredTitle}>FEATURED PRODUCTS</h1>
       <FeaturedCardContainer />
       <div className={style.secondContainer}>

@@ -1,57 +1,57 @@
-.pages{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.page{
-	display: inline-block;
-	padding-left: .5rem;
-	padding-right: .5rem;
-	margin-bottom: 3rem;
+.page {
+  display: inline-block;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 3rem;
 }
 
 .page_number {
-	width: 2rem;
-	border-radius: 12px;
-	background: rgba(255,255,255,0.5);
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
-	border: 1px solid rgba(255,255,255,0.25);
+  width: 2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .page_numberactive {
-	width: 2.5rem;
-	border-radius: 12px;
-	background: rgba(240, 61, 61, 0.5);
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
-	border: 1px solid rgba(255,255,255,0.25);
+  width: 2.5rem;
+  border-radius: 12px;
+  background: rgba(240, 61, 61, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .page_number:hover {
-	background-color: white;
+  background-color: white;
 }
 
 .paginate_container {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .prev_next {
-	padding-left: 1rem;
-	padding-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .next_prev_btn {
-	background-color: black;
-	width: 5rem;
-	border-radius: 12px;
-	color: white;
+  background-color: black;
+  width: 5rem;
+  border-radius: 12px;
+  color: white;
 }
 
-.next_prev_btn:hover{
-	background-color: white;
-	border-radius: 12px;
-	color: black;
+.next_prev_btn:hover {
+  background-color: white;
+  border-radius: 12px;
+  color: black;
 }

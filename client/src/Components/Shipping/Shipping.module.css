@@ -1,0 +1,19 @@
+.shipping {
+  width: 238px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(251, 244, 244);
+  border-radius: 3px;
+  text-align: center;
+  margin-top: 10px;
+  height: 30px;
+  box-shadow: 0px 0px 11px 0px rgba(148, 141, 141, 0.27);
+  color: rgb(50, 114, 15);
+  font-size: 13px;
+  font-family: Bebas;
+}
+
+.calculate {
+  color: rgb(16, 16, 92);
+}

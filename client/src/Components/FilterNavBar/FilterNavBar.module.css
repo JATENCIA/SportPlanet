@@ -5,7 +5,12 @@
   justify-content: center;
   gap: 100px;
   width: 100%;
-  background-color: black;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(101, 101, 103, 1) 100%
+  );
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   height: 50px;
 }
