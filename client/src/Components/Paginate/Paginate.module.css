@@ -1,3 +1,25 @@
+.paginate_container {
+  display: flex;
+  justify-content: center;
+  font-family: Bebas;
+}
+
+.prev_next {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.next_prev_btn {
+  background-color: black;
+  width: 5rem;
+  border-radius: 15px;
+  color: white;
+  transition: all 200ms ease;
+}
+.next_prev_btn:hover {
+  transform: scale(0.95);
+}
+
 .pages {
   display: flex;
   justify-content: center;
@@ -9,6 +31,10 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   margin-bottom: 3rem;
+  transition: all 100ms ease;
+}
+.page:hover {
+  transform: scale(1.1);
 }
 
 .page_number {
@@ -31,23 +57,6 @@
 
 .page_number:hover {
   background-color: white;
-}
-
-.paginate_container {
-  display: flex;
-  justify-content: center;
-}
-
-.prev_next {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.next_prev_btn {
-  background-color: black;
-  width: 5rem;
-  border-radius: 12px;
-  color: white;
 }
 
 .next_prev_btn:hover {

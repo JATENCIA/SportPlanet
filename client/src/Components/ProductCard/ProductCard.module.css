@@ -12,8 +12,8 @@
 }
 
 .cardContainer:hover {
-  transform: scale(1.03);
-  box-shadow: 0px 0px 19px -3px rgb(169, 172, 176);
+  transform: scale(1.02);
+  box-shadow: 0px 0px 18px -3px rgb(186, 203, 226);
 }
 
 .cardContainer:active {
