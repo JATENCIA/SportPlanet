@@ -4,18 +4,19 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding-top: 30px;
+  padding-top: 50px;
   margin-bottom: 30px;
 }
+
 .containerName {
   font-size: 22px;
   font-weight: bold;
   text-align: center;
-  padding-top: 0px;
+  padding-top: 10px;
   font-size: 36px;
   font-weight: 200;
-  margin: 0 0 0 -20px;
   width: 100%;
+  margin-top: 1rem;
 }
 
 .Name {
@@ -26,19 +27,30 @@
   font-weight: 1000;
 }
 
+.spanCategory {
+  opacity: 1;
+  color: black;
+  font-family: aBlackLives;
+  font-weight: 0;
+  text-shadow: none;
+  font-size: large;
+  opacity: 0;
+  transition: all 200ms ease;
+}
+
 .CategoryContainer {
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 300px;
+  height: 320px;
   margin-top: 10px;
   margin-bottom: 20px;
   background: rgba(255, 255, 255, 0.486);
-  border-radius: 5px;
+  border-radius: 3px;
   justify-content: space-between;
   align-items: center;
   text-decoration: none;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 11px 0px rgba(148, 141, 141, 0.27);
   transition: all 200ms ease;
   cursor: pointer;
   justify-content: center;
@@ -46,10 +58,45 @@
 }
 
 .CategoryContainer:hover {
-  background-color: #5587f488;
-  box-shadow: 0px 10px 20px rgba(57, 57, 61, 0.3);
+  background-color: #000000;
+  box-shadow: 0px 0px 11px 0px rgba(78, 80, 81, 0.96);
   transform: translateY(-5px);
   color: white;
   text-shadow: 2px 2px 2px black;
   font-weight: bold;
+}
+
+.CategoryContainer:hover span {
+  position: absolute;
+  bottom: 5px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.CategoryContainer:hover span {
+  opacity: 1;
+  color: rgb(248, 242, 242);
+  font-family: aBlackLives;
+  font-weight: 0;
+  text-shadow: none;
+  font-size: xx-large;
+}
+
+.CategoryContainer:active {
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.96);
+  background-color: #00000088;
+  transform: scale(0.98);
+}
+
+.CategoryContainer img {
+  transition: all 200ms ease;
+}
+
+.CategoryContainer:hover img {
+  position: absolute;
+  top: 0;
+}
+
+.CategoryContainer img:active {
+  border-radius: 50%;
 }

@@ -1,6 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByGender, filterByPrice, filterBySeason, filterBySize, filterByUsed } from "../../redux/Actions";
+import {
+  filterByGender,
+  filterByPrice,
+  filterBySeason,
+  filterBySize,
+  filterByUsed,
+} from "../../redux/Actions";
 import style from "./Filters.module.css";
 
 export default function Filters() {
@@ -30,7 +36,6 @@ export default function Filters() {
     let value = event.target.value;
     dispatch(filterBySize(value));
   };
-
 
   return (
     <div className={style.filtersContainer}>

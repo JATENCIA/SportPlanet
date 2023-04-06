@@ -1,9 +1,9 @@
 .slider {
   width: 100%;
-  height: 450px;
+  height: 600px;
   margin-top: auto;
-  overflow: hidden;
-  border-radius: 1px;
+  border-radius: 5px;
+  overflow-x: hidden;
 }
 
 .slider ul {
@@ -19,8 +19,9 @@
 }
 
 .slider img {
+  border-radius: 5px;
   width: 100%;
-  height: 450px;
+  height: 600px;
   margin: auto;
 }
 
