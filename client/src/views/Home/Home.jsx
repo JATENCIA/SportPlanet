@@ -4,6 +4,7 @@ import Categories from "../../Components/Categories/Categories";
 import style from "./Home.module.css";
 import FeaturedCardContainer from "../../Components/FeaturedCardContainer/FeaturedCardContainer";
 import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 import { NavBar } from "../../Components/Navbar";
 import nikeLogo from "../../images/nikeLogo.jpg";
 import adidasLogo from "../../images/adidasLogo.png";
@@ -80,6 +81,7 @@ export const Home = () => {
           </p>
         </div>
         <hr></hr>
+        <ScrollToTop />
         <div className={style.footer}>Sport Planet ©</div>
       </div>
     </div>
