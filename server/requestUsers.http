@@ -4,7 +4,7 @@
 GET {{urlApi}}/users
 
 ### get name a users
-GET {{urlApi}}/users?name=Juan
+GET {{urlApi}}/users?name=jose
 
 ### create a user
 POST {{urlApi}}/users

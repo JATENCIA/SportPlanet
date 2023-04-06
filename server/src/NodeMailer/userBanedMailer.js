@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMailUserBaned = async (eMail) => {
+const eMailUserBaned = async (user) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -40,16 +40,16 @@ const eMailUserBaned = async (eMail) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2>User Baned</h2>
-        <p>The user has been baned.</p>
+        <h2 style='color:#1500FF'> ${user.name} ${user.lastName} has been banned</h2>
+        <p style='color:#08042B'> Dear ${user.name} ${user.lastName}, we are writing to inform you that your account has been temporarily suspended due to a violation of our terms of use. Unfortunately, we had to take this action in order to maintain a safe and respectful environment for all of our users.Thank you for your understanding and cooperation in this matter. Best regards</p>
         
         <div style="display: flex; padding: 20px 10px 20px 10px; ">
           <div style=" padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
             <img src="https://i.ibb.co/8s8Kwjc/Sports-Planet.jpg" alt="" style="width: 300px;" />
-            <p >For inquiries or support you can contact us through our digital channels sportplanet.mp@gmail.com </p>
+            <p style='color:#08042B'>For inquiries or support you can contact us through our digital channels sportplanet.mp@gmail.com </p>
           </div>
         </div>
-        <P style="margin-bottom: 10px;"><i>Sincerely:</i><br> SportPlanet </P>
+        <P style="margin-bottom: 10px; color:#08042B"><i>Sincerely:</i><br> SportPlanet </P>
         <a style="background-color: rgb(5, 23, 124); border: 2px solid rgb(8, 8, 8); color:#FFFFFF; padding: 16px 32px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px; margin: 4px 2px;
         transition-duration: 0.4s; cursor: pointer;" href="http://localhost:5173/">SportPlanet</a>
        
@@ -67,7 +67,7 @@ const eMailUserBaned = async (eMail) => {
     `;
   let mensaje = {
     from: '"SportPlanet" <sportplanet.mp@gmail.com>', // sender address
-    to: eMail, // list of receivers
+    to: user.eMail, // list of receivers
     subject: " Notification", // Subject line
     text: "User Baned", // plain text body
     html: mensaHTM,

@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMailUserEnabled = async (eMail) => {
+const eMailUserEnable = async (user) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -40,16 +40,18 @@ const eMailUserEnabled = async (eMail) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2>User Enabled</h2>
-        <p>The user has been enabled.</p>
+        <h2 style='color:#1B07FF'>${user.name} ${user.lastName} has been enabled</h2>
+        <p style='color:#08042B'>Dear ${user.name} ${user.lastName}, we are pleased to inform you that your account has been enabled and you can now access our platform again. After reviewing your case, our team has determined that your account complies with our terms and conditions.We apologize for any inconvenience that this situation may have caused, and we appreciate your patience and cooperation during this process.If you have any questions or concerns, please do not hesitate to contact our support team.
+        Thank you for your understanding and for choosing our platform to be a part of our community.
+        Best regards</p>
         
         <div style="display: flex; padding: 20px 10px 20px 10px; ">
           <div style=" padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
             <img src="https://i.ibb.co/8s8Kwjc/Sports-Planet.jpg" alt="" style="width: 300px;" />
-            <p >For inquiries or support you can contact us through our digital channels sportplanet.mp@gmail.com </p>
+            <p style='color:#08042B'>For inquiries or support you can contact us through our digital channels sportplanet.mp@gmail.com </p>
           </div>
         </div>
-        <P style="margin-bottom: 10px;"><i>Sincerely:</i><br> SportPlanet </P>
+        <P style="margin-bottom: 10px; color:#08042B"><i>Sincerely:</i><br> SportPlanet </P>
         <a style="background-color: rgb(5, 23, 124); border: 2px solid rgb(8, 8, 8); color:#FFFFFF; padding: 16px 32px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px; margin: 4px 2px;
         transition-duration: 0.4s; cursor: pointer;" href="http://localhost:5173/">SportPlanet</a>
        
@@ -67,7 +69,7 @@ const eMailUserEnabled = async (eMail) => {
     `;
   let mensaje = {
     from: '"SportPlanet" <sportplanet.mp@gmail.com>', // sender address
-    to: eMail, // list of receivers
+    to: user.eMail, // list of receivers
     subject: " Notification", // Subject line
     text: "User enable", // plain text body
     html: mensaHTM,
@@ -84,4 +86,4 @@ const eMailUserEnabled = async (eMail) => {
 
   console.log(info);
 };
-module.exports = { eMailUserEnabled };
+module.exports = { eMailUserEnable };
