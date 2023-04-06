@@ -1,6 +1,8 @@
 const Products = require("../Models/Products");
 const Users = require("../Models/Users");
 const { eMail } = require("../NodeMailer/welcomeMailer");
+const { eMailUserBaned } = require("../NodeMailer/userBanedMailer");
+const { eMailUserEnabled } = require("../NodeMailer/userEnabledMailer");
 
 /**
  * It's an async function that uses the mongoose model to find all the users in the database and
@@ -85,7 +87,7 @@ const createUser = async (req, res) => {
     });
 
     const saveUser = await newUser.save();
-    eMail(user.eMail);
+    // eMail(user.eMail);
     res.status(200).json(saveUser);
   } catch (error) {
     res.status(500).json({ message: `${error}` });
@@ -109,15 +111,19 @@ const deleteUser = async (req, res) => {
     } else res.status(204).json({});
     await Users.updateOne({ _id: req.params.id }, { $set: { baneado } });
 
-    baneado
-      ? res.status(200).json({
-          message: `The user *** ${user.name} *** is temporarily or permanently disabled.`,
-          baneado: baneado,
-        })
-      : res.status(200).json({
-          message: `the user *** ${user.name} *** is enabled`,
-          baneado: baneado,
-        });
+    if (baneado) {
+      res.status(200).json({
+        message: `The user *** ${user.name} *** is temporarily or permanently disabled.`,
+        baneado: baneado,
+      });
+      eMailUserBaned(user.eMail);
+    } else {
+      res.status(200).json({
+        message: `the user *** ${user.name} *** is enabled`,
+        baneado: baneado,
+      });
+      eMailUserEnabled(user.eMail);
+    }
   } catch (error) {
     res.status(500).json({ message: `${error}` });
   }
