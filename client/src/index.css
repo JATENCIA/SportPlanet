@@ -23,6 +23,33 @@ html body {
   src: local("aBlackLives"), url("./fonts/aBlackLives.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "RobotoThin"; /*Can be any text*/
+  src: local("RobotoThin"), url("./fonts/RobotoThin.ttf") format("truetype");
+}
+@font-face {
+  font-family: "RobotoCondensed"; /*Can be any text*/
+  src: local("RobotoCondensed"),
+    url("./fonts/RobotoCondensed.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Bebas"; /*Can be any text*/
+  src: local("Bebas"), url("./fonts/Bebas.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "MetroPoliceRegular"; /*Can be any text*/
+  src: local("MetroPoliceRegular"),
+    url("./fonts/MetroPoliceRegular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "MetroPoliceLight"; /*Can be any text*/
+  src: local("MetroPoliceLight"),
+    url("./fonts/MetroPoliceLight.otf") format("truetype");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
