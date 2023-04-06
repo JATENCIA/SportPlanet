@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  justify-content: space-around;
   width: 100%;
   top: 0;
   left: 0;
@@ -26,7 +27,7 @@
 
 .inputSearch {
   font-size: 14px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: RobotoCondensed;
   border-radius: 2px;
   width: 400px;
   height: 40px;
@@ -50,41 +51,48 @@
   width: auto;
 }
 
+.divUserContainer {
+  transition: all 200ms ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 250px;
+  font-family: Bebas;
+  font-size: large;
+}
+
 .divLogin {
-  position: absolute;
-  right: 500px;
-  font-size: 18px;
-  font-weight: bold;
-  color: rgb(43, 40, 40);
-  transition: transform 0.2s;
+  background-color: white;
+  transition: all 200ms ease;
 }
 
 .divLogin:hover {
-  transform: scale(0.9);
-}
-
-.carrito {
-  position: absolute;
-  right: 350px;
-  font-size: 18px;
-  color: rgb(43, 40, 40);
-}
-
-.sellContainer {
-  position: absolute;
-  width: 80px;
-  color: rgb(43, 40, 40);
   font-weight: bold;
-  right: 210px;
+  background-color: white;
+}
+
+.cartContainer {
+  transition: all 200ms ease;
+}
+.cartContainer:hover {
+  font-weight: bold;
+  transform: scale(1.05);
 }
 
 .cartSpan {
-  font-weight: bold;
-  font-size: smaller;
-  padding-left: 10px;
+  padding-left: 1rem;
 }
 
-.logo {
-  position: absolute;
-  left: 23%;
+.divLogin {
+  margin-left: -5rem;
+}
+
+.sellButton {
+  transition: all 200ms ease;
+}
+
+.sellButton:hover {
+  font-weight: bold;
+  transform: scale(1.05);
 }

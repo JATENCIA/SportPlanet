@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../../../redux/Actions";
+import { Link } from "react-router-dom";
+import { NavBar } from "../../Navbar";
+import FilterNavBar from "../../FilterNavBar/FilterNavBar";
+import Filter from "../../Filters/Filters";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
-import { Link } from "react-router-dom";
-import { NavBar } from "../../Navbar/Navbar";
-import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import style from "./Balls.module.css";
+import style from "./Gym.module.css";
 
-export default function Balls() {
+export default function Gym() {
   const dispatch = useDispatch();
-  useEffect(() => {
+
+  React.useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
-  const filterProducts = allProducts.filter((product) => {
-    return product.category === "balls";
-  });
+  const products = useSelector((state) => state.filteredProducts);
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 10;
   const ultimo = currentPage * productsPerPage;
   const primero = ultimo - productsPerPage;
-  const products = filterProducts.slice(primero, ultimo);
+  const filteredProducts = products.slice(primero, ultimo);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
@@ -33,6 +32,7 @@ export default function Balls() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <Filter />
 
       <div className={style.container}>
         {products?.map((product) => {
@@ -54,7 +54,7 @@ export default function Balls() {
 
       <Paginate
         productsPerPage={productsPerPage}
-        allProducts={filterProducts.length}
+        allProducts={filteredProducts.length}
         setPagination={setPagination}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

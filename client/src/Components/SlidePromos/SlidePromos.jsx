@@ -1,33 +1,26 @@
 import React from "react";
 import styled from "./SlidePromos.module.css";
+import banner1 from "../../images/banner1.jpeg";
+import banner2 from "../../images/banner2.jpeg";
+import banner3 from "../../images/banner3.jpeg";
+import banner4 from "../../images/banner4.jpeg";
+import banner5 from "../../images/banner5.jpeg";
 
 function SlidePromos() {
   return (
     <div className={styled.slider}>
       <ul>
         <li>
-          <img
-            src="https://http2.mlstatic.com/storage/splinter-admin/o:f_jpg,q_auto:best/1678969548750-home-sliderdesktop.jpg"
-            alt=""
-          />
+          <img src={banner1} alt="" />
         </li>
         <li>
-          <img
-            src="https://i.pinimg.com/736x/db/d1/31/dbd1318962e56f6009d9fdd4802aae1a.jpg"
-            alt=""
-          />
+          <img src={banner2} alt="" />
         </li>
         <li>
-          <img
-            src="https://cazaofertas.com.mx/wp-content/uploads/2021/05/Coppel-Hot-230521-01.jpg"
-            alt=""
-          />
+          <img src={banner3} alt="" />
         </li>
         <li>
-          <img
-            src="https://ss-static-01.esmsv.com/id/145657/galeriaimagenes/obtenerimagen/?id=44&tipoEscala=stretch&width=1082&height=570"
-            alt=""
-          />
+          <img src={banner4} alt="" />
         </li>
       </ul>
     </div>

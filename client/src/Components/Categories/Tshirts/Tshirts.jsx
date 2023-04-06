@@ -3,13 +3,13 @@ import SlidePromos from "../../SlidePromos/SlidePromos";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllProduct } from "../../../redux/Actions";
-import { ProductItem } from "../../Produts";
+import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
-import styled from "./Tshirts.module.css";
+import style from "./Tshirts.module.css";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import Filter from "../../Filters/Filters"
+import Filter from "../../Filters/Filters";
 
 function Tshirts() {
   const dispatch = useDispatch();
@@ -36,22 +36,25 @@ function Tshirts() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filter/>
-      {products?.map((product) => {
-        return (
-          <Link to={`/detail/${product._id}`}>
-            <ProductItem
-              key={crypto.randomUUID()}
-              _id={product._id}
-              name={product.name}
-              image={product.image}
-              size={product.size}
-              price={product.price}
-              description={product.description}
-            />
-          </Link>
-        );
-      })}
+      <Filter />
+
+      <div className={style.container}>
+        {products?.map((product) => {
+          return (
+            <Link to={`/detail/${product._id}`}>
+              <ProductCard
+                key={crypto.randomUUID()}
+                _id={product._id}
+                name={product.name}
+                image={product.image}
+                size={product.size}
+                price={product.price}
+                description={product.description}
+              />
+            </Link>
+          );
+        })}
+      </div>
 
       <Paginate
         productsPerPage={productsPerPage}

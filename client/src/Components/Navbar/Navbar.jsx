@@ -59,21 +59,23 @@ export const NavBar = () => {
         </Link>
       </div>
 
-      <div className={style.divLogin}>
-        {" "}
-        <Login />{" "}
-      </div>
+      <div className={style.divUserContainer}>
+        <div className={style.divLogin}>
+          <Login />
+        </div>
 
-      <button className={style.carrito}>
-        {" "}
-        <i className="fas fa-shopping-cart"></i>
-        <span className={style.cartSpan}>MY CART</span>
-      </button>
+        <div className={style.cartContainer}>
+          <button className={style.carrito}>
+            <i className="fas fa-shopping-cart"></i>
+            <span className={style.cartSpan}>MY CART</span>
+          </button>
+        </div>
 
-      <div className={style.sellContainer}>
-        <Link to="/post/product">
-          <button className={style.sellButton}>SELL</button>
-        </Link>
+        <div className={style.sellContainer}>
+          <Link to="/post/product">
+            <button className={style.sellButton}>SELL</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
