@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMail = async (eMail) => {
+const eMail = async (user) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -40,16 +40,16 @@ const eMail = async (eMail) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2>Welcome to SportPlanet</h2>
-        <p>We are a marketetplace oriented to the purchase and sale of sporting goods.</p>
+        <h2> ${user.name} Welcome to SportPlanet</h2>
+        <p>We are a Marketplace oriented to the purchase and sale of sporting goods.</p>
         <p>Thank you for registering on our platform</p>
         <div style="display: flex; padding: 20px 10px 20px 10px; ">
           <div style=" padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
             <img src="https://i.ibb.co/8s8Kwjc/Sports-Planet.jpg" alt="" style="width: 300px;" />
-            <p >For inquiries or support you can contact us through our digital channels sportplanet.mp@gmail.com </p>
+            <p style='color:#08042B'>For inquiries or support you can contact us through our digital channels sportplanet.mp@gmail.com </p>
           </div>
         </div>
-        <P style="margin-bottom: 10px;"><i>Sincerely:</i><br> SportPlanet </P>
+        <P style="margin-bottom: 10px; color:#08042B"><i>Sincerely:</i><br> SportPlanet </P>
         <a style="background-color: rgb(5, 23, 124); border: 2px solid rgb(8, 8, 8); color:#FFFFFF; padding: 16px 32px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px; margin: 4px 2px;
         transition-duration: 0.4s; cursor: pointer;" href="http://localhost:5173/">SportPlanet</a>
        
@@ -67,7 +67,7 @@ const eMail = async (eMail) => {
     `;
   let mensaje = {
     from: '"SportPlanet" <sportplanet.mp@gmail.com>', // sender address
-    to: eMail, // list of receivers
+    to: user.eMail, // list of receivers
     subject: " Notification", // Subject line
     text: "User created successfully ", // plain text body
     html: mensaHTM,

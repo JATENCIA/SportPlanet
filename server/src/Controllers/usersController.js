@@ -1,5 +1,7 @@
 const Products = require("../Models/Products");
 const Users = require("../Models/Users");
+const { eMailUserBaned } = require("../NodeMailer/userBanedMailer");
+const { eMailUserEnable } = require("../NodeMailer/userEnabledMailer");
 const { eMail } = require("../NodeMailer/welcomeMailer");
 
 /**
@@ -85,8 +87,8 @@ const createUser = async (req, res) => {
     });
 
     const saveUser = await newUser.save();
-    eMail(user.eMail);
     res.status(200).json(saveUser);
+    eMail(saveUser);
   } catch (error) {
     res.status(500).json({ message: `${error}` });
   }
@@ -102,6 +104,9 @@ const createUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const user = await Users.findById(req.params.id);
+
+    if (!user) return res.status(204).json({});
+
     let baneado = user?.baneado;
     if (user) {
       if (baneado === false) baneado = true;
@@ -118,6 +123,8 @@ const deleteUser = async (req, res) => {
           message: `the user *** ${user.name} *** is enabled`,
           baneado: baneado,
         });
+
+    baneado ? eMailUserBaned(user) : eMailUserEnable(user);
   } catch (error) {
     res.status(500).json({ message: `${error}` });
   }
