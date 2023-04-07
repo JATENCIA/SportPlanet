@@ -17,7 +17,6 @@ export default function LandingPage() {
   useEffect(() => {
     dispatch(getAllUser());
   }, [dispatch, location]);
-
   return (
     <>
       <div className={style.welcomeContainer}>

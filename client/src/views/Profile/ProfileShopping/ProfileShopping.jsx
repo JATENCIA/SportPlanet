@@ -1,9 +1,10 @@
 import React from "react";
-import style from "./Profile.module.css";
-import { NavBar } from "../../Components/Navbar/Navbar";
+import style from "./ProfileShopping.module.css";
+import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../../Components/ProductCard/ProductCard";
+import ProductCard from "../../../Components/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   FaShoppingBag,
   FaDollarSign,
@@ -13,7 +14,7 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 
-export const Profile = () => {
+export default function ProfileShopping() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.allProducts);
   const filteredProducts = products.filter((product) => product.price >= 25);
@@ -57,7 +58,7 @@ export const Profile = () => {
           </Link>
         </div>
         <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>YOUR PROFILE</h2>
+          <h2 className={style.productPanelTitle}>YOUR SHOPPING</h2>
           <div className={style.productsContainer}>
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => {
@@ -86,4 +87,4 @@ export const Profile = () => {
       </div>
     </div>
   );
-};
+}

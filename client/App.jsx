@@ -29,6 +29,15 @@ import Accesories from "./src/Components/Categories/Accesories/Accesories";
 import FilterNavBar from "./src/Components/FilterNavBar/FilterNavBar";
 import Gym from "./src/Components/Categories/Gym/Gym";
 import Pants from "./src/Components/Categories/Pants/Pants";
+import Puma from "./src/Components/Categories/Puma/Puma";
+import Nike from "./src/Components/Categories/Nike/Nike";
+import Adidas from "./src/Components/Categories/Adidas/Adidas";
+import UnderArmour from "./src/Components/Categories/UnderArmour/UnderArmour";
+import Fila from "./src/Components/Categories/Fila/Fila";
+import Reebok from "./src/Components/Categories/Reebok/Reebok";
+import ProfileShopping from "./src/views/Profile/ProfileShopping/ProfileShopping";
+import ProfileSales from "./src/views/Profile/ProfileSales/ProfileSales";
+import ProfileFavorites from "./src/views/Profile/ProfileFavorites/ProfileFavorites";
 
 const App = () => {
   const location = useLocation();
@@ -41,10 +50,19 @@ const App = () => {
         <Route path="/home" Component={Home} />
         <Route path="/detail/:id" Component={Detail} />
         <Route path="/profile" Component={Profile} />
+        <Route path="/profile/shopping" Component={ProfileShopping} />
+        <Route path="/profile/sales" Component={ProfileSales} />
+        <Route path="/profile/favorites" Component={ProfileFavorites} />
         <Route path="/dashboard" Component={Admin} />
         <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
         <Route path="/category/tShirts" Component={Tshirts} />
         <Route path="products/:product" Component={SearchedProducts} />
+        <Route path="/category/nike" Component={Nike} />
+        <Route path="/category/adidas" Component={Adidas} />
+        <Route path="/category/puma" Component={Puma} />
+        <Route path="/category/under-armour" Component={UnderArmour} />
+        <Route path="/category/fila" Component={Fila} />
+        <Route path="/category/reebok" Component={Reebok} />
         <Route path="/category/pants" Component={Pants} />
         <Route path="/category/gym" Component={Gym} />
         <Route path="/category/shoes" Component={Shoes} />

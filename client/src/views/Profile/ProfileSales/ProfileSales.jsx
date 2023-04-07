@@ -1,8 +1,8 @@
 import React from "react";
-import style from "./Profile.module.css";
-import { NavBar } from "../../Components/Navbar/Navbar";
+import style from "./ProfileSales.module.css";
+import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../../Components/ProductCard/ProductCard";
+import ProductCard from "../../../Components/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
 import {
   FaShoppingBag,
@@ -13,10 +13,10 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 
-export const Profile = () => {
+export default function ProfileSales() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.allProducts);
-  const filteredProducts = products.filter((product) => product.price >= 25);
+
+  const products = useSelector((state) => state.userProducts);
   return (
     <div className={style.container}>
       <NavBar />
@@ -57,10 +57,10 @@ export const Profile = () => {
           </Link>
         </div>
         <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>YOUR PROFILE</h2>
+          <h2 className={style.productPanelTitle}>YOUR SALES</h2>
           <div className={style.productsContainer}>
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => {
+            {products.length > 0 ? (
+              products.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
                     <ProductCard
@@ -86,4 +86,4 @@ export const Profile = () => {
       </div>
     </div>
   );
-};
+}

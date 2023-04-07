@@ -80,6 +80,13 @@
   border: 3px solid black;
   border-radius: 50%;
   background-color: white;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.brand img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 17px 0px rgba(119, 22, 7, 0.75);
 }
 
 hr {
