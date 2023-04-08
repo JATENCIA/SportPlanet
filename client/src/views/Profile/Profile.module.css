@@ -40,6 +40,7 @@
   justify-content: space-around;
   width: 50%;
   margin-bottom: auto;
+  flex-grow: 1;
 }
 .userPanel {
   font-family: Bebas;
@@ -51,6 +52,13 @@
   justify-content: space-between;
 }
 
+.userPanelTitle {
+  display: flex;
+  margin-bottom: -3rem;
+  padding-bottom: 0;
+  margin-top: 1rem;
+}
+
 .filterPanel {
   box-shadow: 0px 0px 7px 0px rgba(200, 195, 195, 0.75);
   width: 18%;
@@ -58,7 +66,7 @@
   display: flex;
   flex-direction: column;
   text-align: justify;
-  gap: 3rem;
+  gap: 2rem;
   padding-left: 5rem;
   padding-top: 5rem;
   border-radius: 5px;
@@ -80,6 +88,7 @@
 .filter .myShopping,
 .mySales,
 .myFavorites,
+.myReviews,
 .help {
   transition: all 200ms ease;
 }
@@ -97,6 +106,10 @@
 
 .filter:hover .help {
   color: rgb(74, 196, 220);
+}
+
+.filter:hover .myReviews {
+  color: rgb(105, 110, 112);
 }
 
 @keyframes fadeInAnimation {

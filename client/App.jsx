@@ -1,14 +1,12 @@
 import React from "react";
 import "./App.css";
 import { Route, Routes, useLocation } from "react-router-dom";
-// import { NavBar } from "./src/Components/Navbar";
-// import ProductCard from "./src/Components/ProductCard/ProductCard";
 import LandingPage from "./src/views/LandingPage/LandingPage";
 import { Home } from "./src/views/Home/Home";
 import Detail from "./src/views/Detail/Detail";
 import { Profile } from "./src/views/Profile";
-import { Admin } from "./src/views/Admin";
-import { SupAdmin } from "./src/views/SupAdmin";
+import Admin from "./src/views/Admin/Admin";
+import AdminProducts from "./src/views/Admin/AdminProducts/AdminProducts";
 import SearchedProducts from "./src/views/SearchedProducts/SearchedProducts";
 import SellProduct from "./src/views/Forms/SellProduct/SellProduct";
 
@@ -26,7 +24,6 @@ import Shoes from "./src/Components/Categories/Shoes/Shoes";
 import Balls from "./src/Components/Categories/Balls/Balls";
 import Supplements from "./src/Components/Categories/Suplements/Suplements";
 import Accesories from "./src/Components/Categories/Accesories/Accesories";
-import FilterNavBar from "./src/Components/FilterNavBar/FilterNavBar";
 import Gym from "./src/Components/Categories/Gym/Gym";
 import Pants from "./src/Components/Categories/Pants/Pants";
 import Puma from "./src/Components/Categories/Puma/Puma";
@@ -39,6 +36,13 @@ import ProfileShopping from "./src/views/Profile/ProfileShopping/ProfileShopping
 import ProfileSales from "./src/views/Profile/ProfileSales/ProfileSales";
 import ProfileFavorites from "./src/views/Profile/ProfileFavorites/ProfileFavorites";
 import ProfileProducts from "./src/views/Profile/ProfileProducts/ProfileProducts";
+import ProfileReviews from "./src/views/Profile/ProfileReviews/ProfileReviews";
+import AdminShopping from "./src/views/Admin/AdminShopping/AdminShopping";
+import AdminSales from "./src/views/Admin/AdminSales/AdminSales";
+import AdminReviews from "./src/views/Admin/AdminReviews/AdminReviews";
+import AdminFavorites from "./src/views/Admin/AdminFavorites/AdminFavorites";
+import AllUsers from "./src/views/Admin/AllUsers/AllUsers";
+import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
 
 const App = () => {
   const location = useLocation();
@@ -55,8 +59,15 @@ const App = () => {
         <Route path="/profile/sales" Component={ProfileSales} />
         <Route path="/profile/favorites" Component={ProfileFavorites} />
         <Route path="/profile/myproducts" Component={ProfileProducts} />
+        <Route path="/profile/reviews" Component={ProfileReviews} />
         <Route path="/dashboard" Component={Admin} />
-        <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
+        <Route path="/dashboard/myproducts" Component={AdminProducts} />
+        <Route path="/dashboard/shopping" Component={AdminShopping} />
+        <Route path="/dashboard/sales" Component={AdminSales} />
+        <Route path="/dashboard/reviews" Component={AdminReviews} />
+        <Route path="/dashboard/favorites" Component={AdminFavorites} />
+        <Route path="/dashboard/allusers" Component={AllUsers} />
+        <Route path="/dashboard/allproducts" Component={AllProducts} />
         <Route path="/category/tShirts" Component={Tshirts} />
         <Route path="products/:product" Component={SearchedProducts} />
         <Route path="/category/nike" Component={Nike} />

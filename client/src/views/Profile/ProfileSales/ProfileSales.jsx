@@ -1,28 +1,31 @@
 import React from "react";
 import style from "./ProfileSales.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import ProfileProductCard from "../ProfileProductCard/ProfileProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../../../Components/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
 import {
   FaShoppingBag,
   FaDollarSign,
   FaHeart,
   FaQuestionCircle,
-  FaSadTear,
   FaUserCircle,
   FaStore,
+  FaSadTear,
 } from "react-icons/fa";
 
-export default function ProfileSales() {
-  const dispatch = useDispatch();
+import { MdRateReview } from "react-icons/md";
 
-  const products = useSelector((state) => state.userProducts);
+export default function ProfileSales() {
+  const products = useSelector((state) => state.allProducts);
+  const filteredProducts = products.filter((products) => products.price >= 30);
   return (
     <div className={style.container}>
       <NavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
+          <h1 className={style.userPanelTitle}>User Panel</h1>
+          <hr />
           <Link to="/profile">
             <div className={style.filter}>
               <FaUserCircle />
@@ -51,6 +54,13 @@ export default function ProfileSales() {
             </div>
           </Link>
 
+          <Link to="/profile/reviews">
+            <div className={style.filter}>
+              <MdRateReview />
+              <h3 className={style.myReviews}>MY REVIEWS</h3>
+            </div>
+          </Link>
+
           <Link to="/profile/favorites">
             <div className={style.filter}>
               <FaHeart />
@@ -68,16 +78,15 @@ export default function ProfileSales() {
         <div className={style.productPanel}>
           <h2 className={style.productPanelTitle}>YOUR SALES</h2>
           <div className={style.productsContainer}>
-            {products.length > 0 ? (
-              products.map((product) => {
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
-                    <ProductCard
+                    <ProfileProductCard
                       key={crypto.randomUUID()}
                       _id={product._id}
                       name={product.name}
                       image={product.image}
-                      size={product.size}
                       price={product.price}
                       description={product.description}
                     />

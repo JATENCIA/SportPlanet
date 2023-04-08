@@ -11,18 +11,21 @@ import {
   FaQuestionCircle,
   FaUserCircle,
   FaStore,
-  FaEdit,
+  FaUsers,
+  FaListAlt,
 } from "react-icons/fa";
 
+import { MdRateReview } from "react-icons/md";
+
 export const Profile = () => {
-  const dispatch = useDispatch();
   const products = useSelector((state) => state.allProducts);
-  const filteredProducts = products.filter((product) => product.price >= 25);
   return (
     <div className={style.container}>
       <NavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
+          <h1 className={style.userPanelTitle}>User Panel</h1>
+          <hr />
           <Link to="/profile">
             <div className={style.filter}>
               <FaUserCircle />
@@ -48,6 +51,13 @@ export const Profile = () => {
             <div className={style.filter}>
               <FaDollarSign />
               <h3 className={style.mySales}>MY SALES</h3>
+            </div>
+          </Link>
+
+          <Link to="/profile/reviews">
+            <div className={style.filter}>
+              <MdRateReview />
+              <h3 className={style.myReviews}>MY REVIEWS</h3>
             </div>
           </Link>
 

@@ -1,26 +1,26 @@
 import React from "react";
-import style from "./ProfileShopping.module.css";
+import style from "./AdminSales.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import ProfileProductCard from "../../Profile/ProfileProductCard/ProfileProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../../../Components/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   FaShoppingBag,
   FaDollarSign,
   FaHeart,
   FaQuestionCircle,
-  FaSadTear,
   FaUserCircle,
   FaStore,
+  FaSadTear,
+  FaUsers,
+  FaListAlt,
 } from "react-icons/fa";
 
 import { MdRateReview } from "react-icons/md";
 
-export default function ProfileShopping() {
-  const dispatch = useDispatch();
+export default function AdminSales() {
   const products = useSelector((state) => state.allProducts);
-  const filteredProducts = products.filter((product) => product.price >= 25);
+  const filteredProducts = products.filter((products) => products.price >= 30);
   return (
     <div className={style.container}>
       <NavBar />
@@ -28,42 +28,42 @@ export default function ProfileShopping() {
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>
           <hr />
-          <Link to="/profile">
+          <Link to="/dashboard">
             <div className={style.filter}>
               <FaUserCircle />
               <h3 className={style.myShopping}>MY PROFILE</h3>
             </div>
           </Link>
 
-          <Link to="/profile/myproducts">
+          <Link to="/dashboard/myproducts">
             <div className={style.filter}>
               <FaStore />
               <h3 className={style.myShopping}>MY PRODUCTS</h3>
             </div>
           </Link>
 
-          <Link to="/profile/shopping">
+          <Link to="/dashboard/shopping">
             <div className={style.filter}>
               <FaShoppingBag />
               <h3 className={style.myShopping}>MY SHOPPING</h3>
             </div>
           </Link>
 
-          <Link to="/profile/sales">
+          <Link to="/dashboard/sales">
             <div className={style.filter}>
               <FaDollarSign />
               <h3 className={style.mySales}>MY SALES</h3>
             </div>
           </Link>
 
-          <Link to="/profile/reviews">
+          <Link to="/dashboard/reviews">
             <div className={style.filter}>
               <MdRateReview />
               <h3 className={style.myReviews}>MY REVIEWS</h3>
             </div>
           </Link>
 
-          <Link to="/profile/favorites">
+          <Link to="/dashboard/favorites">
             <div className={style.filter}>
               <FaHeart />
               <h3 className={style.myFavorites}>FAVORITE PRODUCTS</h3>
@@ -76,20 +76,37 @@ export default function ProfileShopping() {
               <h3 className={style.help}>HELP</h3>
             </div>
           </Link>
+          <h1 className={style.userPanelTitle}>Admin Panel</h1>
+          <hr />
+
+          <div className={style.adminPanel}>
+            <Link to="/dashboard/allusers">
+              <div className={style.filter}>
+                <FaUsers />
+                <h3 className={style.allUsers}>ALL USERS</h3>
+              </div>
+            </Link>
+
+            <Link to="/dashboard/allproducts">
+              <div className={style.filter}>
+                <FaListAlt />
+                <h3 className={style.allProducts}>ALL PRODUCTS</h3>
+              </div>
+            </Link>
+          </div>
         </div>
         <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>YOUR SHOPPING</h2>
+          <h2 className={style.productPanelTitle}>YOUR SALES</h2>
           <div className={style.productsContainer}>
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
-                    <ProductCard
+                    <ProfileProductCard
                       key={crypto.randomUUID()}
                       _id={product._id}
                       name={product.name}
                       image={product.image}
-                      size={product.size}
                       price={product.price}
                       description={product.description}
                     />

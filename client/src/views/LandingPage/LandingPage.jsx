@@ -78,7 +78,7 @@ export default function LandingPage() {
 
           <div className={style.teamMemberCard}>
             <div className={style.imgContainer}>IMAGEN</div>
-            <h2>JOSE JARAMILLO</h2>
+            <h2>JOSE ATENCIA</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
               <a href="https://github.com/JATENCIA" target="_blank">
@@ -120,7 +120,7 @@ export default function LandingPage() {
 
           <div className={style.teamMemberCard}>
             <div className={style.imgContainer}>IMAGEN</div>
-            <h2>SEBASTIAN RODRIGUEZ</h2>
+            <h2>SEBASTIAN NAJLE</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
               <a href="https://github.com/Sebas202070" target="_blank">
