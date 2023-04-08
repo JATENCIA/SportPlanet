@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getAllUser } from "../../redux/Actions";
 import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
+import { FaAngleDown } from "react-icons/fa";
 
 export default function LandingPage() {
   const myRef = React.useRef(null);
@@ -16,7 +17,6 @@ export default function LandingPage() {
   useEffect(() => {
     dispatch(getAllUser());
   }, [dispatch, location]);
-
   return (
     <>
       <div className={style.welcomeContainer}>
@@ -27,7 +27,7 @@ export default function LandingPage() {
         </Link>
 
         <a onClick={executeScroll} className={style.arrowIcon}>
-          <i class="fa-solid fa-circle-arrow-down fa-bounce fa-2xl"></i>
+          <FaAngleDown className="icon-position icon-style" />
         </a>
       </div>
 

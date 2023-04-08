@@ -1,5 +1,6 @@
 import React from "react";
 import { FaAngleUp } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./ScrollToTop.css";
 

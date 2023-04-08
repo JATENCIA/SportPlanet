@@ -14,7 +14,7 @@ import filaLogo from "../../images/filaLogo.jpeg";
 import reebokLogo from "../../images/reebokLogo.jpg";
 import { getAllUser } from "../../redux/Actions";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 export const Home = () => {
@@ -38,26 +38,43 @@ export const Home = () => {
         <div className={style.brandSection}>
           <h1 className={style.brandTitle}>OUR BRANDS</h1>
           <div className={style.brandContainer}>
-            <div className={style.brand}>
-              <img src={nikeLogo} className={style.brandImg} />
-            </div>
-            <div className={style.brand}>
-              <img src={adidasLogo} className={style.brandImg} />
-            </div>
-            <div className={style.brand}>
-              <img src={pumaLogo} className={style.brandImg} />
-            </div>
+            <Link to="/category/nike">
+              <div className={style.brand}>
+                <img src={nikeLogo} className={style.brandImg} />
+              </div>
+            </Link>
+
+            <Link to="/category/adidas">
+              <div className={style.brand}>
+                <img src={adidasLogo} className={style.brandImg} />
+              </div>
+            </Link>
+
+            <Link to="/category/puma">
+              <div className={style.brand}>
+                <img src={pumaLogo} className={style.brandImg} />
+              </div>
+            </Link>
           </div>
+
           <div className={style.brandContainer}>
-            <div className={style.brand}>
-              <img src={underArmour} className={style.brandImg} />
-            </div>
-            <div className={style.brand}>
-              <img src={filaLogo} />
-            </div>
-            <div className={style.brand}>
-              <img src={reebokLogo} />
-            </div>
+            <Link to="/category/under-armour">
+              <div className={style.brand}>
+                <img src={underArmour} className={style.brandImg} />
+              </div>
+            </Link>
+
+            <Link to="/category/fila">
+              <div className={style.brand}>
+                <img src={filaLogo} />
+              </div>
+            </Link>
+
+            <Link to="/category/reebok">
+              <div className={style.brand}>
+                <img src={reebokLogo} />
+              </div>
+            </Link>
           </div>
         </div>
         <hr></hr>
