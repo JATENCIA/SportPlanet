@@ -1,4 +1,5 @@
-@urlApi = http://localhost:5000
+@urlApi = https://sportsplanet-production.up.railway.app
+
 
 ### get all users
 GET {{urlApi}}/users
@@ -11,10 +12,10 @@ POST {{urlApi}}/users
 Content-Type: application/json
 
 {
-  "name":"Santiago",
-  "eMail":"smassuh@gmail.com",
-  "lastName":"Massuh",
-  "image":""
+  "name":"Ximena",
+  "eMail":"gonzales@gmail.com",
+  "lastName":"Gonzalesz",
+  "image":"https://i.pinimg.com/originals/af/dd/86/afdd863fd6bd045c797f57895a80a756.jpg"
 }
 
 ### get single user id

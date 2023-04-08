@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMail = async (eMail) => {
+const eMailBaned = async (product) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -40,8 +40,8 @@ const eMail = async (eMail) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2 style="color=#1A0EFB">Product Baned</h2>
-        <p style="color=#538AEF">We are writing to inform you that your product has been removed from our platform due to a violation of our terms and conditions. Unfortunately, we had to take this action in order to maintain a safe and fair environment for all of our users.Please be aware that while we understand that this may be an unfortunate situation, it is our responsibility to ensure that our users receive high-quality products that meet our standards.If you have any questions or would like to appeal this decision, please feel free to contact our support team for more information.Thank you for your understanding and cooperation in this matter. Best regards</p>
+        <h2 style="color=#1A0EFB">el producto ${product.name}  fue baneado</h2>
+        <p style="color=#538AEF">Dear ${product.user.name}, we are writing to inform you that your product has been removed from our platform due to a violation of our terms and conditions. Unfortunately, we had to take this action in order to maintain a safe and fair environment for all of our users.Please be aware that while we understand that this may be an unfortunate situation, it is our responsibility to ensure that our users receive high-quality products that meet our standards.If you have any questions or would like to appeal this decision, please feel free to contact our support team for more information.Thank you for your understanding and cooperation in this matter. Best regards</p>
         
         <div style="display: flex; padding: 20px 10px 20px 10px; ">
           <div style=" padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
@@ -67,7 +67,7 @@ const eMail = async (eMail) => {
     `;
   let mensaje = {
     from: '"SportPlanet" <sportplanet.mp@gmail.com>', // sender address
-    to: eMail, // list of receivers
+    to: product.user.eMail, // list of receivers
     subject: " Notification", // Subject line
     text: "Product Baned", // plain text body
     html: mensaHTM,
@@ -84,4 +84,4 @@ const eMail = async (eMail) => {
 
   console.log(info);
 };
-module.exports = { eMail };
+module.exports = { eMailBaned };

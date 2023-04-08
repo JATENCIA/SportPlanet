@@ -1,4 +1,4 @@
-@urlApi = http://localhost:5000
+@urlApi = https://sportsplanet-production.up.railway.app
 
 ### get all products
 GET {{urlApi}}/products
@@ -16,32 +16,35 @@ Content-Type: application/json
 
 //Footwear
 {
- "name":"INLIFE Whey Protein Powder", 
+ "name":"EEUU national team soccer jersey", 
  "productConditionals":[
  
- {  "color":"rojo",
-  "image":["https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/713cJLNB1SL._SY450_.jpg","https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81aYxr6vPVL._SL1500_.jpg","https://ultimatefitnessbirmingham.co.uk/wp-content/uploads/2018/07/Gym-supplements-at-Ultimate-Fitness-Birmingham.jpg"],
-  "size":[{"amount":19}]},
+ {  "color":"red",
+  "image":["https://i.ebayimg.com/thumbs/images/g/8DcAAOSw98RkEJlr/s-l300.jpg","https://m.media-amazon.com/images/I/61kxRclXwVL._AC_SX466_.jpg","https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/kx7fc3d2fzp0bakd5dnx/camiseta-de-visitante-vapor-match-2019-de-ee-uu-gCbfhm.jpg"],
+  "size":[{"L":19},{"XL":8},{"XXL":10}]},
   
- { "color":"negro",
-  "image":["https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/713cJLNB1SL._SY450_.jpg","https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81aYxr6vPVL._SL1500_.jpg","https://ultimatefitnessbirmingham.co.uk/wp-content/uploads/2018/07/Gym-supplements-at-Ultimate-Fitness-Birmingham.jpg"],
-  "size":[{"amount":10}]},
-  
-  {"color":"verde",
-  "image":["https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/713cJLNB1SL._SY450_.jpg","https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81aYxr6vPVL._SL1500_.jpg","https://ultimatefitnessbirmingham.co.uk/wp-content/uploads/2018/07/Gym-supplements-at-Ultimate-Fitness-Birmingham.jpg"],
-  "size":[{"amount":15}]}
+ { "color":"white",
+  "image":["https://www.camisetasfutboleses.com/image/cache/catalog/camisetafutbolespan/Camiseta-ESTADOS-UNIDOS-Primera-Equipaci%C3%B3n-Mundial-Qatar-2022-500x500.jpg","https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/2259b8c2-4d6e-4f2d-b9a9-d0e869786512/jersey-de-f%C3%BAtbol-dri-fit-de-la-selecci%C3%B3n-de-f%C3%BAtbol-femenino-de-ee-uu-local-2022-23-stadium-alex-morgan-DxSbZm.png","https://www.camiseta-de-futbol.com/wp-content/uploads/2022/09/usa-camisetas-2022-2023.jpg"],
+  "size":[{"S":19},{"M":22},{"L":15}]}
   
   ],
- "price":25.000,
+ "price":18.000,
  "discount":0,
- "description":"Gym Supplements form a crucial part of the dietary intake of most passionate athletes.",
- "user":"642a17406d976304462646e8",
+ "description":"EEUU Soccer Jersey 2022-2023 World Cup.",
+ "user":"6431be1d80761ad3170814de",
  "season":2023 ,
- "category": "supplements",
- "gender":"men",
+ "category": "tshirts",
+ "gender":"women",
  "state":"new",
- "brands":"OTHER"
+ "brands":"NIKE"
 }
 
 
 
+### update a product
+PUT {{urlApi}}/products/6431d56b80761ad3170815c2
+Content-Type: application/json
+
+{
+ "name": "Portugal  national team soccer jersey"
+}

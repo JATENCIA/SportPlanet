@@ -1,5 +1,7 @@
 const Products = require("../Models/Products");
 const Users = require("../Models/Users");
+const { eMailBaned } = require("../NodeMailer/productBanedMailer");
+const { eMailEnable } = require("../NodeMailer/productEnabledMailer");
 
 /**
  * It returns a list of products, if the name query parameter is present, it filters the list of
@@ -65,10 +67,7 @@ const createProduct = async (req, res) => {
     const product = new Products(req.body);
 
     const user = await Users.findById(req.body.user);
-    console.log(
-      "🚀 ~ file: productsControll.js:68 ~ createProduct ~ user:",
-      user
-    );
+
     const saveProduct = await product.save();
     user.product = user.product.concat(saveProduct._id);
     await user.save();
@@ -94,7 +93,7 @@ const updateProduct = async (req, res) => {
       }
     );
     if (!productUpdate) return res.status(204).json({});
-    res.status(200).json(storeUpdate);
+    res.status(200).json(productUpdate);
   } catch (error) {
     res.status(500).json({ mensage: `${error}` });
   }
@@ -124,6 +123,8 @@ const deleteProductByid = async (req, res) => {
           message: `the store *** ${product.name} *** is enabled`,
           baneado: baneado,
         });
+
+    baneado ? eMailBaned(product) : eMailEnable(product);
   } catch (error) {
     res.status(500).json({ messaje: `${error}` });
   }
