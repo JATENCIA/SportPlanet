@@ -1,23 +1,23 @@
 import React from "react";
-import style from "./Profile.module.css";
-import { NavBar } from "../../Components/Navbar/Navbar";
+import style from "./ProfileFavorites.module.css";
+import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import ProfileCard from "./ProfileCard/ProfileCard";
+import ProductCard from "../../../Components/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
 import {
   FaShoppingBag,
   FaDollarSign,
   FaHeart,
   FaQuestionCircle,
+  FaSadTear,
   FaUserCircle,
   FaStore,
-  FaEdit,
 } from "react-icons/fa";
 
-export const Profile = () => {
+export default function ProfileFavorites() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.allProducts);
-  const filteredProducts = products.filter((product) => product.price >= 25);
+
+  const products = useSelector((state) => state.userProducts);
   return (
     <div className={style.container}>
       <NavBar />
@@ -65,14 +65,35 @@ export const Profile = () => {
             </div>
           </Link>
         </div>
-        <div className={style.profilePanel}>
-          <h2 className={style.profilePanelTitle}>YOUR PROFILE</h2>
-          <div className={style.profileContainer}>
-            <ProfileCard />
-            <div className={style.profileDescription}>USER DESCRIPTION</div>
+        <div className={style.productPanel}>
+          <h2 className={style.productPanelTitle}>YOUR FAVORITES LIST</h2>
+          <div className={style.productsContainer}>
+            {products.length > 0 ? (
+              products.map((product) => {
+                return (
+                  <Link to={`/detail/${product._id}`}>
+                    <ProductCard
+                      key={crypto.randomUUID()}
+                      _id={product._id}
+                      name={product.name}
+                      image={product.image}
+                      size={product.size}
+                      price={product.price}
+                      description={product.description}
+                    />
+                  </Link>
+                );
+              })
+            ) : (
+              <p className={style.loading}>
+                NOTHING TO SHOW HERE...
+                <span className={style.sadFace}>{<FaSadTear />}</span>
+              </p>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-};
+  rgb(138, 79, 79);
+}

@@ -8,7 +8,7 @@ import {
   GET_ALL_USER,
   POST_USER,
   GET_PRODUCT_DETAIL,
-  GET_SEARCHED_PRODUCTS
+  GET_SEARCHED_PRODUCTS,
 } from "../Actions";
 
 const initialState = {
@@ -18,6 +18,7 @@ const initialState = {
   productDetail: [],
   searchedProducts: [],
   filteredProducts: [],
+  userProducts: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -37,7 +38,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_ALL_PRODUCT:
       return {
         ...state,
-        allProducts: action.payload, 
+        allProducts: action.payload,
         filteredProducts: action.payload,
       };
 
@@ -57,7 +58,7 @@ export const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-       filteredProducts: productsSorted,
+        filteredProducts: productsSorted,
       };
 
     case FILTER_BY_USED:
@@ -66,7 +67,9 @@ export const rootReducer = (state = initialState, action) => {
           ? [...state.allProducts].filter((product) => {
               return product.state === "new";
             })
-          : [...state.allProducts].filter((product) => product.state === "used");
+          : [...state.allProducts].filter(
+              (product) => product.state === "used"
+            );
       return {
         ...state,
         filteredProducts: productsFiltered,
@@ -111,7 +114,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredProducts: productBySize,
-      }
+      };
 
     case FILTER_BY_SEASON:
       let productBySeason = [...state.allProducts].filter((product) => {
@@ -133,13 +136,13 @@ export const rootReducer = (state = initialState, action) => {
       });
       return {
         ...state,
-       filteredProducts: productBySeason
+        filteredProducts: productBySeason,
       };
-      case GET_SEARCHED_PRODUCTS:
-      return{
+    case GET_SEARCHED_PRODUCTS:
+      return {
         ...state,
         searchedProducts: action.payload,
-      }
+      };
     default:
       return {
         ...state,

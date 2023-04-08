@@ -5,6 +5,9 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 .main hr {
   border: 1px solid rgb(0, 0, 0);
@@ -77,6 +80,13 @@
   border: 3px solid black;
   border-radius: 50%;
   background-color: white;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.brand img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 17px 0px rgba(119, 22, 7, 0.75);
 }
 
 hr {
@@ -108,4 +118,13 @@ hr {
   height: 30px;
   border-radius: 2px;
   font-family: RobotoCondensed;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

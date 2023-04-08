@@ -1,20 +1,21 @@
 import React from "react";
-import style from "./Profile.module.css";
-import { NavBar } from "../../Components/Navbar/Navbar";
+import style from "./ProfileShopping.module.css";
+import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import ProfileCard from "./ProfileCard/ProfileCard";
+import ProductCard from "../../../Components/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   FaShoppingBag,
   FaDollarSign,
   FaHeart,
   FaQuestionCircle,
+  FaSadTear,
   FaUserCircle,
   FaStore,
-  FaEdit,
 } from "react-icons/fa";
 
-export const Profile = () => {
+export default function ProfileShopping() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.allProducts);
   const filteredProducts = products.filter((product) => product.price >= 25);
@@ -65,14 +66,34 @@ export const Profile = () => {
             </div>
           </Link>
         </div>
-        <div className={style.profilePanel}>
-          <h2 className={style.profilePanelTitle}>YOUR PROFILE</h2>
-          <div className={style.profileContainer}>
-            <ProfileCard />
-            <div className={style.profileDescription}>USER DESCRIPTION</div>
+        <div className={style.productPanel}>
+          <h2 className={style.productPanelTitle}>YOUR SHOPPING</h2>
+          <div className={style.productsContainer}>
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => {
+                return (
+                  <Link to={`/detail/${product._id}`}>
+                    <ProductCard
+                      key={crypto.randomUUID()}
+                      _id={product._id}
+                      name={product.name}
+                      image={product.image}
+                      size={product.size}
+                      price={product.price}
+                      description={product.description}
+                    />
+                  </Link>
+                );
+              })
+            ) : (
+              <p className={style.loading}>
+                NOTHING TO SHOW HERE...
+                <span className={style.sadFace}>{<FaSadTear />}</span>
+              </p>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
