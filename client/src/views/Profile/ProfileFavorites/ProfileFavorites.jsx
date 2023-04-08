@@ -11,6 +11,7 @@ import {
   FaQuestionCircle,
   FaSadTear,
   FaUserCircle,
+  FaStore,
 } from "react-icons/fa";
 
 export default function ProfileFavorites() {
@@ -28,6 +29,14 @@ export default function ProfileFavorites() {
               <h3 className={style.myShopping}>MY PROFILE</h3>
             </div>
           </Link>
+
+          <Link to="/profile/myproducts">
+            <div className={style.filter}>
+              <FaStore />
+              <h3 className={style.myShopping}>MY PRODUCTS</h3>
+            </div>
+          </Link>
+
           <Link to="/profile/shopping">
             <div className={style.filter}>
               <FaShoppingBag />

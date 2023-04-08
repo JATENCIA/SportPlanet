@@ -1,0 +1,37 @@
+.cardContainer {
+  border: 1px solid black;
+  height: 23rem;
+  width: 15rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgContainer {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-bottom: auto;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardContainer h2 {
+  margin-bottom: auto;
+}
+
+.editButton {
+  align-self: flex-end;
+  margin-right: 5px;
+  font-size: 1.3rem;
+  transition: all 200ms ease;
+}
+
+.editButton:hover {
+  transform: scale(1.03);
+  color: rgb(73, 73, 168);
+}

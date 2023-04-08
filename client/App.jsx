@@ -38,6 +38,7 @@ import Reebok from "./src/Components/Categories/Reebok/Reebok";
 import ProfileShopping from "./src/views/Profile/ProfileShopping/ProfileShopping";
 import ProfileSales from "./src/views/Profile/ProfileSales/ProfileSales";
 import ProfileFavorites from "./src/views/Profile/ProfileFavorites/ProfileFavorites";
+import ProfileProducts from "./src/views/Profile/ProfileProducts/ProfileProducts";
 
 const App = () => {
   const location = useLocation();
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/profile/shopping" Component={ProfileShopping} />
         <Route path="/profile/sales" Component={ProfileSales} />
         <Route path="/profile/favorites" Component={ProfileFavorites} />
+        <Route path="/profile/myproducts" Component={ProfileProducts} />
         <Route path="/dashboard" Component={Admin} />
         <Route path="/dashboardSuperAdmin" Component={SupAdmin} />
         <Route path="/category/tShirts" Component={Tshirts} />
