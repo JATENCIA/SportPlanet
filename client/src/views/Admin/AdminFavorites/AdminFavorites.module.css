@@ -22,17 +22,26 @@
   margin-right: 2rem;
   box-shadow: 0px 0px 7px 0px rgba(200, 195, 195, 0.75);
 }
-
 .productPanelTitle {
   font-size: 4rem;
   display: flex;
-  justify-self: flex-start;
-  padding-bottom: 1rem;
-  color: rgb(78, 139, 78);
+  color: rgb(248, 42, 42);
   font-family: MetroPoliceRegular;
   text-shadow: 1px 1px 1px rgb(180, 172, 172);
+  justify-self: flex-start;
+  margin-bottom: auto;
 }
 
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+  margin-bottom: auto;
+  flex-grow: 1;
+}
 .userPanel {
   font-family: Bebas;
   font-size: large;
@@ -79,6 +88,7 @@
 .filter .myShopping,
 .mySales,
 .myFavorites,
+.myReviews,
 .help {
   transition: all 200ms ease;
 }
@@ -100,6 +110,26 @@
 
 .filter:hover .myReviews {
   color: rgb(105, 110, 112);
+}
+
+.adminPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.adminPanel .allUsers,
+.allProducts {
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.filter:hover .allProducts {
+  color: rgb(135, 193, 244);
+}
+
+.filter:hover .allUsers {
+  color: rgb(135, 193, 244);
 }
 
 .productsContainer {
@@ -127,6 +157,7 @@
   align-items: center;
   color: rgb(137, 52, 52);
 }
+
 .sadFace {
   color: black;
   font-size: 25px;

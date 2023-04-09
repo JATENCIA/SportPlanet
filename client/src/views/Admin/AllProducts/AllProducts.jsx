@@ -1,33 +1,50 @@
 import React from "react";
-import style from "./Admin.module.css";
-import { NavBar } from "../../Components/Navbar/Navbar";
+import style from "./AllProducts.module.css";
+import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import ProfileCard from "../Profile/ProfileCard/ProfileCard";
 import { Link } from "react-router-dom";
 import {
   FaShoppingBag,
   FaDollarSign,
   FaHeart,
   FaQuestionCircle,
+  FaSadTear,
   FaUserCircle,
   FaStore,
-  FaEdit,
   FaUsers,
   FaListAlt,
 } from "react-icons/fa";
 
 import { MdRateReview } from "react-icons/md";
+import { getAllProduct } from "../../../redux/Actions/actions";
+import AdminProfileCard from "../AdminProfileCard/AdminProfileCard";
+import { Paginate } from "../../../Components/Paginate/Paginate";
 
-export default function Admin() {
+export default function AllProducts() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.allProducts);
-  const filteredProducts = products.filter((product) => product.price >= 25);
+
+  React.useEffect(() => {
+    dispatch(getAllProduct());
+  }, [dispatch]);
+
+  const allProducts = useSelector((state) => state.allProducts);
+
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const productsPerPage = 10;
+  const last = currentPage * productsPerPage;
+  const first = last - productsPerPage;
+  const products = allProducts.slice(first, last);
+
+  const setPagination = (page) => {
+    return setCurrentPage(page);
+  };
+
   return (
     <div className={style.container}>
       <NavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
-          <h1 className={style.userPanelTitle}>User Panel</h1>
+          <h1 className={style.filterPanelTitle}>User Panel</h1>
           <hr />
           <Link to="/dashboard">
             <div className={style.filter}>
@@ -95,12 +112,35 @@ export default function Admin() {
             </Link>
           </div>
         </div>
-        <div className={style.profilePanel}>
-          <h2 className={style.profilePanelTitle}>YOUR PROFILE</h2>
-          <div className={style.profileContainer}>
-            <ProfileCard />
-            <div className={style.profileDescription}>USER DESCRIPTION</div>
+        <div className={style.productPanel}>
+          <h2 className={style.productPanelTitle}>USERS LIST</h2>
+          <div className={style.productsContainer}>
+            {products.length > 0 ? (
+              products.map((user) => {
+                return (
+                  <AdminProfileCard
+                    key={crypto.randomUUID()}
+                    _id={user._id}
+                    name={user.name}
+                    image={user.image}
+                    baneado={user.baneado}
+                  />
+                );
+              })
+            ) : (
+              <p className={style.loading}>
+                LOADING...
+                <span className={style.sadFace}>{<FaSadTear />}</span>
+              </p>
+            )}
           </div>
+          <Paginate
+            productsPerPage={productsPerPage}
+            allProducts={products.length}
+            setPagination={setPagination}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>
