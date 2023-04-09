@@ -1,4 +1,6 @@
 @urlApi = https://sportsplanet-production.up.railway.app
+# @urlApi = http://localhost:5000
+
 
 ### get all products
 GET {{urlApi}}/products
@@ -7,7 +9,7 @@ GET {{urlApi}}/products
 GET {{urlApi}}/products?name=boca
 
 ### banear single user
-POST {{urlApi}}/products/642237fc8186e2e058d00515
+POST {{urlApi}}/products/6428ca77bcb9e1cc9f8441f3
 
 
 ### create a product
@@ -16,25 +18,29 @@ Content-Type: application/json
 
 //Footwear
 {
- "name":"EEUU national team soccer jersey", 
+ "name":"Nike Barcelona Strike ball size 5", 
  "productConditionals":[
  
- {  "color":"red",
-  "image":["https://i.ebayimg.com/thumbs/images/g/8DcAAOSw98RkEJlr/s-l300.jpg","https://m.media-amazon.com/images/I/61kxRclXwVL._AC_SX466_.jpg","https://static.nike.com/a/images/c_limit,w_318,f_auto/t_product_v1/kx7fc3d2fzp0bakd5dnx/camiseta-de-visitante-vapor-match-2019-de-ee-uu-gCbfhm.jpg"],
-  "size":[{"L":19},{"XL":8},{"XXL":10}]},
+ {  "color":"blue",
+  "image":["https://www.futbolemotion.com/imagesarticulos/169121/grandes/balon-nike-fc-barcelona-2022-2023-midnight-navy-university-red-0.jpg","https://www.futbolemotion.com/imagesarticulos/169121/grandes/balon-nike-fc-barcelona-2022-2023-midnight-navy-university-red-1.jpg","https://static1.cdn-subsidesports.com/2/media/catalog/product/cache/38d4094f49a5c2931b615f53f1250097/e/3/e3076afc19acaf724da20875075811de517fa15aca76a2a2b01f729703360749.jpeg"],
+  "size":[{"amount":25}]},
   
- { "color":"white",
-  "image":["https://www.camisetasfutboleses.com/image/cache/catalog/camisetafutbolespan/Camiseta-ESTADOS-UNIDOS-Primera-Equipaci%C3%B3n-Mundial-Qatar-2022-500x500.jpg","https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/2259b8c2-4d6e-4f2d-b9a9-d0e869786512/jersey-de-f%C3%BAtbol-dri-fit-de-la-selecci%C3%B3n-de-f%C3%BAtbol-femenino-de-ee-uu-local-2022-23-stadium-alex-morgan-DxSbZm.png","https://www.camiseta-de-futbol.com/wp-content/uploads/2022/09/usa-camisetas-2022-2023.jpg"],
-  "size":[{"S":19},{"M":22},{"L":15}]}
+ { "color":"red",
+  "image":["https://www.xutgol.com/img/balon-fc-barcelona-strike-2021-22-color-blaugrana_2487.jpg","https://www.futbolemotion.com/imagesarticulos/154537/grandes/balon-nike-fcb-nk-strk-fa21-rojo-0.jpg","https://www.gransport.es/17790-large_default/balon-nike-strike-fc-barcelona-2022.jpg"],
+  "size":[{"amount":21}]},
+  
+ { "color":"yellow",
+  "image":["https://m.media-amazon.com/images/I/51b06vyt+jL.jpg","https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61W8j+RhsGL._AC_UF1000,1000_QL80_.jpg","https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71DRaHprfIL._AC_UF350,350_QL80_.jpg"],
+  "size":[{"amount":12}]}
   
   ],
- "price":18.000,
+ "price":15.000,
+ "user":"6431bb0f80761ad3170814ae",
  "discount":0,
- "description":"EEUU Soccer Jersey 2022-2023 World Cup.",
- "user":"6431be1d80761ad3170814de",
- "season":2023 ,
- "category": "tshirts",
- "gender":"women",
+ "description":"It is designed in blaugrana, with the emblems of the football club and has the signatures of the players. It is size 5 and measures approximately 23 cm. So you can practice and experience the excitement of your favorite sport! Recommended from 3 years. Complies with European safety standards.",
+ "season":2022,
+ "category": "balls",
+ "gender":"unisex",
  "state":"new",
  "brands":"NIKE"
 }
@@ -42,9 +48,9 @@ Content-Type: application/json
 
 
 ### update a product
-PUT {{urlApi}}/products/6431d56b80761ad3170815c2
+PUT {{urlApi}}/products/6432c1f178fa18b04967c271
 Content-Type: application/json
 
 {
- "name": "Portugal  national team soccer jersey"
+ "season": 2015
 }

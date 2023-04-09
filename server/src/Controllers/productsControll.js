@@ -106,7 +106,16 @@ const updateProduct = async (req, res) => {
  */
 const deleteProductByid = async (req, res) => {
   try {
-    const product = await Products.findById(req.params.id);
+    const product = await Products.findById(req.params.id).populate("user", {
+      name: 1,
+      image: 1,
+      lastName: 1,
+      dni: 1,
+      eMail: 1,
+      location: 1,
+      telephone: 1,
+      baneado: 1,
+    });
     let baneado = product?.baneado;
     if (product) {
       if (baneado === false) baneado = true;

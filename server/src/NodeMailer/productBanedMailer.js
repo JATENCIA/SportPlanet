@@ -40,7 +40,7 @@ const eMailBaned = async (product) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2 style="color=#1A0EFB">el producto ${product.name}  fue baneado</h2>
+        <h2 style="color=#1A0EFB">The product ${product.name} was banned</h2>
         <p style="color=#538AEF">Dear ${product.user.name}, we are writing to inform you that your product has been removed from our platform due to a violation of our terms and conditions. Unfortunately, we had to take this action in order to maintain a safe and fair environment for all of our users.Please be aware that while we understand that this may be an unfortunate situation, it is our responsibility to ensure that our users receive high-quality products that meet our standards.If you have any questions or would like to appeal this decision, please feel free to contact our support team for more information.Thank you for your understanding and cooperation in this matter. Best regards</p>
         
         <div style="display: flex; padding: 20px 10px 20px 10px; ">
