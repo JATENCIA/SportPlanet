@@ -1,10 +1,10 @@
 import React from "react";
-import style from "./ProfileShopping.module.css";
+import style from "./ProfileReviews.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
+import ReviewCard from "../ReviewCard/ReviewCard";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   FaShoppingBag,
   FaDollarSign,
@@ -17,10 +17,7 @@ import {
 
 import { MdRateReview } from "react-icons/md";
 
-export default function ProfileShopping() {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.allProducts);
-  const filteredProducts = products.filter((product) => product.price >= 25);
+export default function ProfileReviews() {
   return (
     <div className={style.container}>
       <NavBar />
@@ -77,31 +74,12 @@ export default function ProfileShopping() {
             </div>
           </Link>
         </div>
-        <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>YOUR SHOPPING</h2>
-          <div className={style.productsContainer}>
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => {
-                return (
-                  <Link to={`/detail/${product._id}`}>
-                    <ProductCard
-                      key={crypto.randomUUID()}
-                      _id={product._id}
-                      name={product.name}
-                      image={product.image}
-                      size={product.size}
-                      price={product.price}
-                      description={product.description}
-                    />
-                  </Link>
-                );
-              })
-            ) : (
-              <p className={style.loading}>
-                NOTHING TO SHOW HERE...
-                <span className={style.sadFace}>{<FaSadTear />}</span>
-              </p>
-            )}
+        <div className={style.reviewPanel}>
+          <h2 className={style.reviewPanelTitle}>YOUR REVIEWS</h2>
+          <div className={style.reviewContainer}>
+            <ReviewCard />
+            <ReviewCard />
+            <ReviewCard />
           </div>
         </div>
       </div>

@@ -14,6 +14,8 @@ import {
   FaStore,
 } from "react-icons/fa";
 
+import { MdRateReview } from "react-icons/md";
+
 export default function ProfileFavorites() {
   const dispatch = useDispatch();
 
@@ -23,6 +25,8 @@ export default function ProfileFavorites() {
       <NavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
+          <h1 className={style.userPanelTitle}>User Panel</h1>
+          <hr />
           <Link to="/profile">
             <div className={style.filter}>
               <FaUserCircle />
@@ -48,6 +52,13 @@ export default function ProfileFavorites() {
             <div className={style.filter}>
               <FaDollarSign />
               <h3 className={style.mySales}>MY SALES</h3>
+            </div>
+          </Link>
+
+          <Link to="/profile/reviews">
+            <div className={style.filter}>
+              <MdRateReview />
+              <h3 className={style.myReviews}>MY REVIEWS</h3>
             </div>
           </Link>
 
@@ -95,5 +106,4 @@ export default function ProfileFavorites() {
       </div>
     </div>
   );
-  rgb(138, 79, 79);
 }
