@@ -89,7 +89,12 @@
 }
 
 .sellButton {
+  width: 50px;
   transition: all 200ms ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .sellButton:hover {

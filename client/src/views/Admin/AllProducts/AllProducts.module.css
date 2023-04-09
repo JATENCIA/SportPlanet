@@ -22,17 +22,27 @@
   margin-right: 2rem;
   box-shadow: 0px 0px 7px 0px rgba(200, 195, 195, 0.75);
 }
-
 .productPanelTitle {
   font-size: 4rem;
   display: flex;
-  justify-self: flex-start;
-  padding-bottom: 1rem;
-  color: rgb(78, 139, 78);
+  color: rgb(7, 7, 7);
   font-family: MetroPoliceRegular;
   text-shadow: 1px 1px 1px rgb(180, 172, 172);
+  justify-self: flex-start;
+  margin-bottom: auto;
 }
 
+.productsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: auto;
+  flex-wrap: wrap;
+  gap: 5rem;
+  padding: 5rem;
+}
 .userPanel {
   font-family: Bebas;
   font-size: large;
@@ -43,7 +53,7 @@
   justify-content: space-between;
 }
 
-.userPanelTitle {
+.filterPanelTitle {
   display: flex;
   margin-bottom: -3rem;
   padding-bottom: 0;
@@ -79,6 +89,7 @@
 .filter .myShopping,
 .mySales,
 .myFavorites,
+.myReviews,
 .help {
   transition: all 200ms ease;
 }
@@ -102,19 +113,24 @@
   color: rgb(105, 110, 112);
 }
 
-.productsContainer {
-  width: 100%;
+.adminPanel {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  animation: fadeInAnimation ease 2s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  padding-bottom: 3rem;
-  gap: 5rem;
-  flex-grow: 1;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.adminPanel .allUsers,
+.allProducts {
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.filter:hover .allProducts {
+  color: rgb(135, 193, 244);
+}
+
+.filter:hover .allUsers {
+  color: rgb(135, 193, 244);
 }
 
 .loading {

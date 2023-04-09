@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./ProfileProductCard.module.css";
-import { FaEdit, FaDolly, FaExclamation, FaTrash } from "react-icons/fa";
+import { FaEdit, FaDolly, FaExclamation, FaTrashAlt } from "react-icons/fa";
 
 export default function ProfileProductCard({
   name,
@@ -22,7 +22,7 @@ export default function ProfileProductCard({
           <FaEdit />
         </button>
         <button className={style.removeButton}>
-          <FaTrash />
+          <FaTrashAlt />
         </button>
       </div>
     </div>
