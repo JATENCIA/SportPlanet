@@ -4,6 +4,8 @@ import background from "../../images/background.jpg";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getAllUser } from "../../redux/Actions";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
+import { FaAngleDown } from "react-icons/fa";
 
 export default function LandingPage() {
   const myRef = React.useRef(null);
@@ -15,7 +17,6 @@ export default function LandingPage() {
   useEffect(() => {
     dispatch(getAllUser());
   }, [dispatch, location]);
-
   return (
     <>
       <div className={style.welcomeContainer}>
@@ -26,7 +27,7 @@ export default function LandingPage() {
         </Link>
 
         <a onClick={executeScroll} className={style.arrowIcon}>
-          <i class="fa-solid fa-circle-arrow-down fa-bounce fa-2xl"></i>
+          <FaAngleDown className="icon-position icon-style" />
         </a>
       </div>
 
@@ -38,7 +39,7 @@ export default function LandingPage() {
             <h2>CAMILO AGUDELO</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
-              <a>
+              <a href="https://github.com/rake3344" target="_blank">
                 <i class="fa-brands fa-github"></i>
               </a>
               <a>
@@ -52,7 +53,7 @@ export default function LandingPage() {
             <h2>FRANCISCO BACA</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
-              <a>
+              <a href="https://github.com/franciscobaca" target="_blank">
                 <i class="fa-brands fa-github"></i>
               </a>
               <a>
@@ -66,7 +67,7 @@ export default function LandingPage() {
             <h2>JUAN GUTIERREZ</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
-              <a>
+              <a href="https://github.com/JuanGutierrez95" target="_blank">
                 <i class="fa-brands fa-github"></i>
               </a>
               <a>
@@ -77,10 +78,10 @@ export default function LandingPage() {
 
           <div className={style.teamMemberCard}>
             <div className={style.imgContainer}>IMAGEN</div>
-            <h2>JOSE JARAMILLO</h2>
+            <h2>JOSE ATENCIA</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
-              <a>
+              <a href="https://github.com/JATENCIA" target="_blank">
                 <i class="fa-brands fa-github"></i>
               </a>
               <a>
@@ -94,7 +95,7 @@ export default function LandingPage() {
             <h2>SANTIAGO MASSUH</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
-              <a>
+              <a href="https://github.com/Santiago-Massuh" target="_blank">
                 <i class="fa-brands fa-github"></i>
               </a>
               <a>
@@ -108,7 +109,7 @@ export default function LandingPage() {
             <h2>ALEN MUÑOZ</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
-              <a>
+              <a href="https://github.com/alenm777" target="_blank">
                 <i class="fa-brands fa-github"></i>
               </a>
               <a>
@@ -119,10 +120,10 @@ export default function LandingPage() {
 
           <div className={style.teamMemberCard}>
             <div className={style.imgContainer}>IMAGEN</div>
-            <h2>SEBASTIAN RODRIGUEZ</h2>
+            <h2>SEBASTIAN NAJLE</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
-              <a>
+              <a href="https://github.com/Sebas202070" target="_blank">
                 <i class="fa-brands fa-github"></i>
               </a>
               <a>
@@ -136,7 +137,7 @@ export default function LandingPage() {
             <h2>SANTIAGO SANCHEZ DE B.</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
-              <a>
+              <a href="https://github.com/santiagosdeb" target="_blank">
                 <i class="fa-brands fa-github"></i>
               </a>
               <a>
@@ -145,6 +146,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
+        <ScrollToTop />
       </div>
     </>
   );

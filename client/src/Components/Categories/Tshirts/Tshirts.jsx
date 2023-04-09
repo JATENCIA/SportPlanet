@@ -39,21 +39,25 @@ function Tshirts() {
       <Filter />
 
       <div className={style.container}>
-        {products?.map((product) => {
-          return (
-            <Link to={`/detail/${product._id}`}>
-              <ProductCard
-                key={crypto.randomUUID()}
-                _id={product._id}
-                name={product.name}
-                image={product.image}
-                size={product.size}
-                price={product.price}
-                description={product.description}
-              />
-            </Link>
-          );
-        })}
+        {products.length > 0 ? (
+          products.map((product) => {
+            return (
+              <Link to={`/detail/${product._id}`}>
+                <ProductCard
+                  key={crypto.randomUUID()}
+                  _id={product._id}
+                  name={product.name}
+                  image={product.image}
+                  size={product.size}
+                  price={product.price}
+                  description={product.description}
+                />
+              </Link>
+            );
+          })
+        ) : (
+          <p className={style.loading}>LOADING...</p>
+        )}
       </div>
 
       <Paginate
