@@ -3,8 +3,6 @@ const Users = require("../Models/Users");
 const { eMailUserBaned } = require("../NodeMailer/userBanedMailer");
 const { eMailUserEnable } = require("../NodeMailer/userEnabledMailer");
 const { eMail } = require("../NodeMailer/welcomeMailer");
-const { eMailUserBaned } = require("../NodeMailer/userBanedMailer");
-const { eMailUserEnabled } = require("../NodeMailer/userEnabledMailer");
 
 /**
  * It's an async function that uses the mongoose model to find all the users in the database and
