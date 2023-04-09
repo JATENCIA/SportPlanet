@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMailUserEnable = async (user) => {
+const eMailUserEnabled = async (user) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -86,4 +86,4 @@ const eMailUserEnable = async (user) => {
 
   console.log(info);
 };
-module.exports = { eMailUserEnable };
+module.exports = { eMailUserEnabled };
