@@ -18,29 +18,29 @@ Content-Type: application/json
 
 //Footwear
 {
- "name":"Nike Barcelona Strike ball size 5", 
+ "name":"Nike Lebron 17 Low Breed", 
  "productConditionals":[
  
- {  "color":"blue",
-  "image":["https://www.futbolemotion.com/imagesarticulos/169121/grandes/balon-nike-fc-barcelona-2022-2023-midnight-navy-university-red-0.jpg","https://www.futbolemotion.com/imagesarticulos/169121/grandes/balon-nike-fc-barcelona-2022-2023-midnight-navy-university-red-1.jpg","https://static1.cdn-subsidesports.com/2/media/catalog/product/cache/38d4094f49a5c2931b615f53f1250097/e/3/e3076afc19acaf724da20875075811de517fa15aca76a2a2b01f729703360749.jpeg"],
-  "size":[{"amount":25}]},
+ {  "color":"black",
+  "image":["https://www.kicksonfire.com/wp-content/uploads/2020/03/Nike-LeBron-17-Low-Bred.png","https://justfreshkicks.com/wp-content/uploads/2020/02/232cc924-b936baad-3736-453a-8243-aea57a37d4ed.png","https://di2ponv0v5otw.cloudfront.net/posts/2020/10/01/5f75a29cce5f1cb3450da58d/m_5f75a29f7ec30c5d8ead2718.jpeg"],
+  "size":[{"7'5": 12},{"8": 9},{"9": 4}]},
   
  { "color":"red",
-  "image":["https://www.xutgol.com/img/balon-fc-barcelona-strike-2021-22-color-blaugrana_2487.jpg","https://www.futbolemotion.com/imagesarticulos/154537/grandes/balon-nike-fcb-nk-strk-fa21-rojo-0.jpg","https://www.gransport.es/17790-large_default/balon-nike-strike-fc-barcelona-2022.jpg"],
-  "size":[{"amount":21}]},
+  "image":["https://sneakerbardetroit.com/wp-content/uploads/2020/05/Titan-Nike-LeBron-17-Low-Red-CD5008-600-Release-Date.jpg","https://i2.wp.com/nba.thedailydunk.co/wp-content/uploads/2020/07/Lebron-James-4.jpg","https://kicksmaniac.com/zdjecia/2020/12/23/912/04/11457sesja_1123.png"],
+  "size":[{"8": 12},{"8'5": 9},{"9": 4},{"9'5": 6}]},
   
- { "color":"yellow",
-  "image":["https://m.media-amazon.com/images/I/51b06vyt+jL.jpg","https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61W8j+RhsGL._AC_UF1000,1000_QL80_.jpg","https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71DRaHprfIL._AC_UF350,350_QL80_.jpg"],
-  "size":[{"amount":12}]}
+ { "color":"grey",
+  "image":["https://www.manelsanchez.com/uploads/media/images/lebron-17-low-particle-grey-1.jpg","https://images.tokopedia.net/img/cache/700/VqbcmM/2023/1/10/ce616ac9-95fe-43ee-824b-e5771f5d833d.jpg","https://media.karousell.com/media/photos/products/2021/7/27/lebron_17_low_cut_1627370760_0c436241_progressive.jpg"],
+  "size":[{"8": 12},{"8'5": 9},{"9": 5},{"9'5": 9}]}
   
   ],
- "price":15.000,
+ "price":54.99,
  "user":"6431bb0f80761ad3170814ae",
  "discount":0,
- "description":"It is designed in blaugrana, with the emblems of the football club and has the signatures of the players. It is size 5 and measures approximately 23 cm. So you can practice and experience the excitement of your favorite sport! Recommended from 3 years. Complies with European safety standards.",
- "season":2022,
- "category": "balls",
- "gender":"unisex",
+ "description":"The LeBron 17 Low 'Bred' highlights sharp University Red accents on an otherwise monochromatic black design. Unlike its full-sized counterpart, which features Knitposite construction on the upper, the low-top favors transparent textile and synthetic buck.",
+ "season":2017,
+ "category": "footwear",
+ "gender":"men",
  "state":"new",
  "brands":"NIKE"
 }
