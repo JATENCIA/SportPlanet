@@ -23,6 +23,7 @@ export default function Detail() {
   const adToCart = (id) => {
     dispatch(addToCart(id))
       console.log("Add", id)
+  }
 
   let name,
     image = [],

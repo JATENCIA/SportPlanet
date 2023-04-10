@@ -43,6 +43,7 @@ import AdminReviews from "./src/views/Admin/AdminReviews/AdminReviews";
 import AdminFavorites from "./src/views/Admin/AdminFavorites/AdminFavorites";
 import AllUsers from "./src/views/Admin/AllUsers/AllUsers";
 import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
+import Cart from "./src/Components/Cart";
 
 const App = () => {
   const location = useLocation();
@@ -83,6 +84,7 @@ const App = () => {
         <Route path="/category/supplements" Component={Supplements} />
         <Route path="/category/accessories" Component={Accesories} />
         <Route path="/post/product" Component={SellProduct} />
+        <Route path="/cart" Component={Cart} />
       </Routes>
     </>
   );
