@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import style from "./Balls.module.css";
+import Filters from "../../Filters/Filters";
 
 export default function Balls() {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export default function Balls() {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const allProducts = useSelector((state) => state.filteredProducts);
   const filterProducts = allProducts.filter((product) => {
     return product.category === "balls";
   });
@@ -33,6 +34,7 @@ export default function Balls() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <Filters />
 
       <div className={style.container}>
         {products.length > 0 ? (
