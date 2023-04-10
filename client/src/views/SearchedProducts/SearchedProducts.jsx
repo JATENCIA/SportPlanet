@@ -45,7 +45,7 @@ const SearchedProducts = () => {
               gender={product.gender}
               state={product.state}
               size={product.size}
-              image={product.image}
+              image={product.productConditionals[0].image[1]}
             />
           </Link>
         ))}
