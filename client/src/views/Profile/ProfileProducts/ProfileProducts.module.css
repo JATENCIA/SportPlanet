@@ -26,12 +26,13 @@
 }
 
 .productPanelTitle {
-  font-size: 4rem;
+  font-size: 2rem;
   display: flex;
   justify-self: flex-start;
+  align-self: flex-start;
   padding-bottom: 1rem;
-  color: rgb(18, 22, 131);
-  font-family: MetroPoliceRegular;
+  color: rgb(0, 0, 0);
+  font-family: RobotoCondensed;
   text-shadow: 1px 1px 1px rgb(180, 172, 172);
 }
 
@@ -45,6 +46,13 @@
   justify-content: space-between;
 }
 
+.userPanelTitle {
+  display: flex;
+  margin-bottom: -3rem;
+  padding-bottom: 0;
+  margin-top: 1rem;
+}
+
 .filterPanel {
   box-shadow: 0px 0px 7px 0px rgba(200, 195, 195, 0.75);
   width: 18%;
@@ -52,7 +60,7 @@
   display: flex;
   flex-direction: column;
   text-align: justify;
-  gap: 3rem;
+  gap: 2rem;
   padding-left: 5rem;
   padding-top: 5rem;
   border-radius: 5px;
@@ -93,6 +101,10 @@
   color: rgb(74, 196, 220);
 }
 
+.filter:hover .myReviews {
+  color: rgb(105, 110, 112);
+}
+
 .productsContainer {
   width: 100%;
   display: flex;
@@ -105,6 +117,7 @@
   animation-fill-mode: forwards;
   padding-bottom: 3rem;
   gap: 5rem;
+  flex-grow: 1;
 }
 
 .loading {

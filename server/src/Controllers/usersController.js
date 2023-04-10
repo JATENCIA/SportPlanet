@@ -56,7 +56,7 @@ const createUser = async (req, res) => {
   try {
     const userFound = await Users.findOne({ eMail: req.body.eMail });
     if (userFound)
-      return res.status(301).json({ message: "this URL already exits" });
+      return res.status(301).json({ message: "this eMail already exits" });
 
     const usersc = await Users.find({});
     let iNumber = 0;
