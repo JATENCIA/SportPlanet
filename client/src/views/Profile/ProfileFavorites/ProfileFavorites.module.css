@@ -23,13 +23,15 @@
   box-shadow: 0px 0px 7px 0px rgba(200, 195, 195, 0.75);
 }
 .productPanelTitle {
-  font-size: 4rem;
+  font-size: 2rem;
   display: flex;
-  color: rgb(248, 42, 42);
-  font-family: MetroPoliceRegular;
-  text-shadow: 1px 1px 1px rgb(180, 172, 172);
   justify-self: flex-start;
-  margin-bottom: auto;
+  align-self: flex-start;
+  padding-bottom: 1rem;
+  color: rgb(138, 11, 11);
+  font-family: RobotoCondensed;
+  text-shadow: 1px 1px 1px rgb(180, 172, 172);
+  padding-left: 5rem;
 }
 
 .profileContainer {

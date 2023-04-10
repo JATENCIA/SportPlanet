@@ -43,7 +43,7 @@ export default function Balls() {
                   key={crypto.randomUUID()}
                   _id={product._id}
                   name={product.name}
-                  image={product.image}
+                  image={product.productConditionals[0].image[1]}
                   size={product.size}
                   price={product.price}
                   description={product.description}
