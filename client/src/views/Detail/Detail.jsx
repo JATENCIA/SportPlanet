@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductDetail } from "../../redux/Actions";
+import { addToCart, getProductDetail } from "../../redux/Actions";
 import "./styles/detail.css";
 import { GrCart } from "react-icons/gr";
 import { NavBar } from "../../Components/Navbar";
