@@ -18,31 +18,31 @@ Content-Type: application/json
 
 //Footwear
 {
- "name":"Nike Lebron 17 Low Breed", 
+ "name":"Fila Force Women", 
  "productConditionals":[
  
- {  "color":"black",
-  "image":["https://www.kicksonfire.com/wp-content/uploads/2020/03/Nike-LeBron-17-Low-Bred.png","https://justfreshkicks.com/wp-content/uploads/2020/02/232cc924-b936baad-3736-453a-8243-aea57a37d4ed.png","https://di2ponv0v5otw.cloudfront.net/posts/2020/10/01/5f75a29cce5f1cb3450da58d/m_5f75a29f7ec30c5d8ead2718.jpeg"],
-  "size":[{"7'5": 12},{"8": 9},{"9": 4}]},
+ {  "color":"blue",
+  "image":["https://http2.mlstatic.com/D_NQ_NP_797125-MLA51988341773_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_695439-MLA51988390079_102022-O.webp","image.png"],
+  "size":[{"7'5": 10},{"8": 5},{"9": 2}]},
   
- { "color":"red",
-  "image":["https://sneakerbardetroit.com/wp-content/uploads/2020/05/Titan-Nike-LeBron-17-Low-Red-CD5008-600-Release-Date.jpg","https://i2.wp.com/nba.thedailydunk.co/wp-content/uploads/2020/07/Lebron-James-4.jpg","https://kicksmaniac.com/zdjecia/2020/12/23/912/04/11457sesja_1123.png"],
-  "size":[{"8": 12},{"8'5": 9},{"9": 4},{"9'5": 6}]},
+ { "color":"black",
+  "image":["https://http2.mlstatic.com/D_NQ_NP_757252-MLA51988081275_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_621029-MLA51988081127_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_789619-MLA51988065332_102022-O.webp"],
+  "size":[{"8": 5},{"8'5": 3},{"9": 2},{"9'5": 2}]},
   
- { "color":"grey",
-  "image":["https://www.manelsanchez.com/uploads/media/images/lebron-17-low-particle-grey-1.jpg","https://images.tokopedia.net/img/cache/700/VqbcmM/2023/1/10/ce616ac9-95fe-43ee-824b-e5771f5d833d.jpg","https://media.karousell.com/media/photos/products/2021/7/27/lebron_17_low_cut_1627370760_0c436241_progressive.jpg"],
-  "size":[{"8": 12},{"8'5": 9},{"9": 5},{"9'5": 9}]}
+ { "color":"white",
+  "image":["https://http2.mlstatic.com/D_NQ_NP_962993-MLA51988286236_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_944179-MLA51988273171_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_919609-MLA51988279104_102022-O.webp"],
+  "size":[{"8": 2},{"8'5": 19},{"9": 5},{"9'5": 7}]}
   
   ],
- "price":54.99,
- "user":"6431bb0f80761ad3170814ae",
+ "price":58,
+ "user":"643196f41b964ba1250414a0",
  "discount":0,
- "description":"The LeBron 17 Low 'Bred' highlights sharp University Red accents on an otherwise monochromatic black design. Unlike its full-sized counterpart, which features Knitposite construction on the upper, the low-top favors transparent textile and synthetic buck.",
- "season":2017,
+ "description":"Throughout its 110-year history, Fila has known how to unite the sporty with the casual. The brand's disruptive DNA is seen in each collection, where design trends and cutting-edge technology complement each other. EVA rubber sole It provides better cushioning, since it is light, flexible and has great elasticity. for training Training comfortably and safely is possible with these shoes thanks to their flat and more flexible sole.",
+ "season":2020,
  "category": "footwear",
- "gender":"men",
+ "gender":"women",
  "state":"new",
- "brands":"NIKE"
+ "brands":"FILA"
 }
 
 
