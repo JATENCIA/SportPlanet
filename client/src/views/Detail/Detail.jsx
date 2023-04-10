@@ -25,7 +25,16 @@ export default function Detail() {
         dispatch(getProductDetail(id));
     }, [dispatch, id]);
 
+
     const product = useSelector((store) => store.productDetail);
+
+    const _id = product._id
+
+    const adToCart = (id) => {
+        dispatch(addToCart(id))
+        console.log("Add", id)
+    }
+
 
     let name,
         image = [],
@@ -41,14 +50,14 @@ export default function Detail() {
         name = product.name;
         price = product.price;
         description = product.description,
-        category = product.category,
-        gender = product.gender,
-        brands = product.brands
-        
+            category = product.category,
+            gender = product.gender,
+            brands = product.brands
+
         if (product.productConditionals) {
             image = [...product.productConditionals[0].image];
         }
-        
+
 
         if (product.size) {
             size = [...product.size];
@@ -96,7 +105,7 @@ export default function Detail() {
                                     loop={true}
                                     spaceBetween={10}
                                     navigation={true}
-                                    thumbs={{ swiper: thumbsSwiper}}
+                                    thumbs={{ swiper: thumbsSwiper }}
                                     modules={[FreeMode, Navigation, Thumbs]}
                                     className="mySwiper2"
                                 >
@@ -132,10 +141,10 @@ export default function Detail() {
                                         })
                                     }
                                 </Swiper> */}
-                            </div>                           
+                            </div>
                         </section>
                         {/* content */}
-                        
+
 
                         <section className="content">
                             <p className="company">{brands}</p>
@@ -158,7 +167,7 @@ export default function Detail() {
                                             >
                                             </button>
                                         )
-                                    })  
+                                    })
                                 }
                             </div>
 
@@ -210,16 +219,17 @@ export default function Detail() {
         );
     };
 
-    const [ loading, setLoading ] = useState(true);
 
-    if(loading === true) {
+    const [loading, setLoading] = useState(true);
+
+    if (loading === true) {
         setTimeout(() => {
             setLoading(false);
         }, 2000);
     }
 
-    if(loading) {
-        return(
+    if (loading) {
+        return (
             <div className="loader">
                 <Loader />
             </div>

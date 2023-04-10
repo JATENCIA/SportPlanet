@@ -11,7 +11,7 @@ export default function ProfileProductCard({
   return (
     <div className={style.cardContainer}>
       <div className={style.imgContainer}>
-        <img src={image[1]} alt="" />
+        <img src={image} alt="" />
       </div>
       <div className={style.descriptionContainer}>
         <h1 className={style.productName}>{name}</h1>

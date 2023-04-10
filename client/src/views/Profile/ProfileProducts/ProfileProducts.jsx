@@ -3,6 +3,7 @@ import style from "./ProfileProducts.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileProductCard from "../ProfileProductCard/ProfileProductCard";
+import { Paginate } from "../../../Components/Paginate/Paginate";
 import { Link } from "react-router-dom";
 import {
   FaShoppingBag,
@@ -19,8 +20,18 @@ import { MdRateReview } from "react-icons/md";
 export default function ProfileProducts() {
   const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.allProducts);
-  const filteredProducts = products.filter((product) => product.price >= 30);
+  const allProducts = useSelector((state) => state.allProducts);
+  const filteredProducts = allProducts.filter((product) => product.price >= 30);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const productsPerPage = 8;
+  const last = currentPage * productsPerPage;
+  const first = last - productsPerPage;
+  const products = filteredProducts.slice(first, last);
+
+  const setPagination = (page) => {
+    return setCurrentPage(page);
+  };
+
   return (
     <div className={style.container}>
       <NavBar />
@@ -80,15 +91,15 @@ export default function ProfileProducts() {
         <div className={style.productPanel}>
           <h2 className={style.productPanelTitle}>YOUR PRODUCTS ON SALE</h2>
           <div className={style.productsContainer}>
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => {
+            {products.length > 0 ? (
+              products.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
                     <ProfileProductCard
                       key={crypto.randomUUID()}
                       _id={product._id}
                       name={product.name}
-                      image={product.image}
+                      image={product.productConditionals[0].image[1]}
                       price={product.price}
                       description={product.description}
                     />
@@ -102,6 +113,13 @@ export default function ProfileProducts() {
               </p>
             )}
           </div>
+          <Paginate
+            productsPerPage={productsPerPage}
+            allProducts={products.length}
+            setPagination={setPagination}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>
