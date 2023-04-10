@@ -1,25 +1,33 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllProduct } from "../../../redux/Actions";
+import { filterBySize, getAllProduct} from "../../../redux/Actions";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
-import style from "./Tshirts.module.css";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import Filter from "../../Filters/Filters";
+import style from "./Kids.module.css";
 
-function Tshirts() {
-  const dispatch = useDispatch();
+export default function Man() {
+const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
   const allProducts = useSelector((state) => state.filteredProducts);
   console.log("1", allProducts);
+  
+  useEffect(() => {
+    dispatch(filterBySize("small"));
+  }, [dispatch]);
+
   const filterProducts = allProducts.filter(
-    (product) => product.category === "tshirts"
+    (product) => product.category === "tshirts" && product.size === "small"
   );
+
+  console.log("2", filterProducts);
+  
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -46,7 +54,7 @@ function Tshirts() {
                   key={crypto.randomUUID()}
                   _id={product._id}
                   name={product.name}
-                  image={product.productConditionals[0].image[1]}
+                  image={product.image}
                   size={product.size}
                   price={product.price}
                   description={product.description}
@@ -68,6 +76,5 @@ function Tshirts() {
       />
     </div>
   );
-}
 
-export default Tshirts;
+        }

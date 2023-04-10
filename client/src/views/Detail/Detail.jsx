@@ -18,6 +18,13 @@ export default function Detail() {
 
   const product = useSelector((store) => store.productDetail);
 
+  const _id = product._id
+
+  const adToCart = (id) => {
+    dispatch(addToCart(id))
+      console.log("Add", id)
+  }
+
   let name,
     image = [],
     price,
@@ -172,7 +179,7 @@ export default function Detail() {
                     <BiPlus />
                   </button>
                 </div>
-                <button className="add_btn">
+                <button className="add_btn" onClick={() => adToCart(_id)}>
                   <GrCart />
                   Add to cart
                 </button>

@@ -1,24 +1,29 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllProduct } from "../../../redux/Actions";
+import {filterByPrice, getAllProduct } from "../../../redux/Actions";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
-import style from "./Tshirts.module.css";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import Filter from "../../Filters/Filters";
+import style from "./Promotions.module.css";
 
-function Tshirts() {
+export default function Promotions() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
-  const allProducts = useSelector((state) => state.filteredProducts);
-  console.log("1", allProducts);
+  const allProducts = useSelector((state) => state.allProducts);
+console.log("1", allProducts);
+useEffect(() => {
+  dispatch(filterByPrice());
+}, [dispatch]);
+  
+ 
   const filterProducts = allProducts.filter(
-    (product) => product.category === "tshirts"
+    (product) => product.price <= 20
   );
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -46,7 +51,7 @@ function Tshirts() {
                   key={crypto.randomUUID()}
                   _id={product._id}
                   name={product.name}
-                  image={product.productConditionals[0].image[1]}
+                  image={product.image}
                   size={product.size}
                   price={product.price}
                   description={product.description}
@@ -68,6 +73,5 @@ function Tshirts() {
       />
     </div>
   );
-}
 
-export default Tshirts;
+}
