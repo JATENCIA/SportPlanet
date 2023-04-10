@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMail = async (eMail) => {
+const eMailEnable = async (product) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -40,8 +40,8 @@ const eMail = async (eMail) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2 style="color:#120AF0">Product Enabled</h2>
-        <p style="color:#408CF6">We are pleased to inform you that your product has been enabled and is now available on our platform. After reviewing your  case, our team has determined that your product complies with our terms and conditions.
+        <h2 style="color:#120AF0">The product ${product.name} was enabled</h2>
+        <p style="color:#408CF6">Dear ${product.user.name}, we are pleased to inform you that your product has been enabled and is now available on our platform. After reviewing your  case, our team has determined that your product complies with our terms and conditions.
         We apologize for any inconvenience that this situation may have caused, and we appreciate your patience and cooperation during this process.
         If you have any questions or concerns, please do not hesitate to contact our support team.
         Thank you for your understanding and for choosing our platform to offer your product.
@@ -71,7 +71,7 @@ const eMail = async (eMail) => {
     `;
   let mensaje = {
     from: '"SportPlanet" <sportplanet.mp@gmail.com>', // sender address
-    to: eMail, // list of receivers
+    to: product.user.eMail, // list of receivers
     subject: " Notification", // Subject line
     text: "Product Enabled", // plain text body
     html: mensaHTM,
@@ -88,4 +88,4 @@ const eMail = async (eMail) => {
 
   console.log(info);
 };
-module.exports = { eMail };
+module.exports = { eMailEnable };
