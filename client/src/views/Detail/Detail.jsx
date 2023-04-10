@@ -41,13 +41,14 @@ export default function Detail() {
         name = product.name;
         price = product.price;
         description = product.description,
-            category = product.category,
-            gender = product.gender,
-            brands = product.brands
-
-        if (product.productConditionals[0].image) {
+        category = product.category,
+        gender = product.gender,
+        brands = product.brands
+        
+        if (product.productConditionals) {
             image = [...product.productConditionals[0].image];
         }
+        
 
         if (product.size) {
             size = [...product.size];
