@@ -3,13 +3,15 @@ const { validateProductsResult } = require("../helpers/productsHelper");
 
 const validateProductsCreate = [
   check("name")
-  .exists()
-  .withMessage("Name is required")
-  .not()
-  .isEmpty()
-  .withMessage("Name cannot be empty")
-  .matches(/^[A-Za-z0-9 \-\.,_\/'"`]+$/)
-  .withMessage("Name must contain only letters, digits, spaces, hyphens, periods, commas, underscores, forward slashes, and quotes"),
+    .exists()
+    .withMessage("Name is required")
+    .not()
+    .isEmpty()
+    .withMessage("Name cannot be empty")
+    .matches(/^[A-Za-z0-9 \-\.,_\/'"`]+$/)
+    .withMessage(
+      "Name must contain only letters, digits, spaces, hyphens, periods, commas, underscores, forward slashes, and quotes"
+    ),
   // check("image")
   //   .optional()
   //   .isURL()
@@ -53,9 +55,9 @@ const validateProductsCreate = [
       }
       return true;
     }),
-  (req, res, next) => {
-    validateProductsResult(req, res, next);
-  },
+  // (req, res, next) => {
+  //   validateProductsResult(req, res, next);
+  // },
 ];
 
 module.exports = {
