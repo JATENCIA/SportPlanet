@@ -6,6 +6,7 @@ import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
+import Filters from "../../Filters/Filters";
 import style from "./Accesories.module.css";
 
 export default function Accesories() {
@@ -33,6 +34,7 @@ export default function Accesories() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <Filters />
 
       <div className={style.container}>
         {products.length > 0 ? (

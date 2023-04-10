@@ -5,6 +5,7 @@ import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
 import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
+import Filters from "../../Filters/Filters";
 import { Link } from "react-router-dom";
 import style from "./Suplements.module.css";
 
@@ -33,6 +34,7 @@ export default function Supplements() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <Filters />
 
       <div className={style.container}>
         {products.length > 0 ? (
