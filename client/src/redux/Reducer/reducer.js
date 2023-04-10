@@ -139,7 +139,7 @@ export const rootReducer = (state = initialState, action) => {
       }
       
       else if (action.payload === "xlarge"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].XL > 0 )
+        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[1].XL > 0 )
         
       }
       
