@@ -45,8 +45,8 @@ export default function Detail() {
             gender = product.gender,
             brands = product.brands
 
-        if (product.image) {
-            image = [...product.image];
+        if (product.productConditionals[0].image) {
+            image = [...product.productConditionals[0].image];
         }
 
         if (product.size) {
@@ -75,6 +75,7 @@ export default function Detail() {
     }, [sizes]);
 
     const amount = size.find((s) => Object.keys(s) == "amount");
+    console.log(image);
 
     const ShowProduct = () => {
         const [thumbsSwiper, setThumbsSwiper] = useState(null);
