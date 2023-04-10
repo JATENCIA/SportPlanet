@@ -66,9 +66,10 @@ function Cart() {
        name={e.name}
        price={e.price}
        quantity={e.quantity}
-       image={e.image}
+       image={e.productConditionals[0].image[1]}
        delFromCart={delFromCart}
        addItem={adToCart}
+       clearCartShop={clearCartShop}
       
        />
          
@@ -77,7 +78,7 @@ function Cart() {
    })}
 
 
-<button className={styled.clean} onClick={clearCartShop}>Clean Cart</button>
+{/* <button className={styled.clean} onClick={clearCartShop}>Clean Cart</button> */}
 
   
    

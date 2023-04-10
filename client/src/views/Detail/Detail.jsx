@@ -2,217 +2,255 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductDetail } from "../../redux/Actions";
+import { addToCart, getProductDetail } from "../../redux/Actions";
 import "./styles/detail.css";
-import { GrNext, GrPrevious, GrCart, GrClose } from "react-icons/gr";
-import { BiMinus, BiPlus } from "react-icons/bi";
+import { GrCart } from "react-icons/gr";
 import { NavBar } from "../../Components/Navbar";
+import Rating from '@mui/material/Rating';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Navigation, Thumbs } from 'swiper';
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import Loader from "../../Components/Loader/Loader";
 
 export default function Detail() {
-  const dispatch = useDispatch();
-  const { id } = useParams();
+    const dispatch = useDispatch();
+    const { id } = useParams();
 
-  useEffect(() => {
-    dispatch(getProductDetail(id));
-  }, [dispatch, id]);
 
-  const product = useSelector((store) => store.productDetail);
+    useEffect(() => {
+        dispatch(getProductDetail(id));
+    }, [dispatch, id]);
 
-  const _id = product._id
 
-  const adToCart = (id) => {
-    dispatch(addToCart(id))
-      console.log("Add", id)
-  }
+    const product = useSelector((store) => store.productDetail);
 
-  let name,
-    image = [],
-    price,
-    size = [],
-    description,
-    category,
-    gender,
-    brands;
+    const _id = product._id
 
-  if (product) {
-    name = product.name;
-    price = product.price;
-    (description = product.description),
-      (category = product.category),
-      (gender = product.gender),
-      (brands = product.brands);
-
-    if (product.image) {
-      image = [...product.image];
+    const adToCart = (id) => {
+        dispatch(addToCart(id))
+        console.log("Add", id)
     }
 
-    if (product.size) {
-      size = [...product.size];
+
+    let name,
+        image = [],
+        price,
+        size = [],
+        description,
+        category,
+        gender,
+        brands,
+        user;
+
+    if (product) {
+        name = product.name;
+        price = product.price;
+        description = product.description,
+        category = product.category,
+        gender = product.gender,
+        brands = product.brands
+
+        if (product.productConditionals) {
+            image = [...product.productConditionals[0].image];
+        }
+
+
+        if (product.productConditionals) {
+            size = [...product.productConditionals[0].size];
+        }
+
+        if (product.user) {
+            user = product.user;
+        }
     }
-  }
 
-  useEffect(() => {
-    const thumbnails = document.querySelector(".thumbnails");
-    const mainThumbnail = document.querySelector(".main-thumbnail");
-    const lightbox = document.querySelector(".lightbox");
-    const lightboxContainer = document.querySelector(".lightbox-container");
-    const closeLightbox = document.querySelector(".close-lightbox");
-    const nextBtn = document.querySelector("#next");
-    const prevBtn = document.querySelector("#previous");
-    const amount = document.querySelector(".amount");
-    const plusBtn = document.querySelector("#plus");
-    const minusBtn = document.querySelector("#minus");
+    const [ selectedColor, setSelectedColor ] = useState(null);
+    const [sizes, setSizes] = useState("");
+    const [select, setSelect] = useState(0);
 
-    thumbnails;
-    thumbnails.addEventListener("click", function (e) {
-      const target = e.target;
-      if (target.classList.contains("preview")) {
-        return;
-      }
-      const selected = document.querySelector(".selected");
-      selected.classList.remove("selected");
-      target.classList.add("selected");
-      const src = target.src;
-      mainThumbnail.src = src;
-      // lightboxImage.src = src;
-    });
+    const handleSize = (e) => {
+        e.preventDefault();
+        setSizes(e.target.value);
+    }
 
-    lightbox;
-    mainThumbnail.addEventListener("click", function () {
-      lightbox.classList.remove("invisible");
-      lightboxContainer.classList.remove("invisible");
-    });
-    closeLightbox.addEventListener("click", function () {
-      lightbox.classList.add("invisible");
-      lightboxContainer.classList.add("invisible");
-    });
+    useEffect(() => {
+        if (sizes) {
+            const stock = size.find((s) => Object.keys(s) == sizes);
+            setSelect(stock[sizes])
+        }
+    }, [sizes]);
 
-    // next and previous
-    nextBtn.addEventListener("click", function () {
-      const selected = document.querySelector(".selected");
-      if (selected.nextElementSibling) {
-        selected.nextElementSibling.click();
-      }
-    });
-    prevBtn.addEventListener("click", function () {
-      const selected = document.querySelector(".selected");
-      if (selected.previousElementSibling) {
-        selected.previousElementSibling.click();
-      }
-    });
+    const amount = size.find((s) => Object.keys(s) == "amount");
+    const imagesColor = selectedColor ? product.productConditionals.find((condition) => condition.color === selectedColor).image : [];
 
-    // amount
-    plusBtn.addEventListener("click", function () {
-      let amountValue = amount.textContent;
-      amountValue++;
-      amount.textContent = amountValue;
-    });
-    minusBtn.addEventListener("click", function () {
-      let amountValue = amount.textContent;
-      if (amountValue > 0) {
-        amountValue--;
-        amount.textContent = amountValue;
-      }
-    });
-  });
+    const ShowProduct = () => {
+        const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  const ShowProduct = () => {
-    return (
-      <>
-        <div className="container">
-          <main>
-            {/* thumbnails */}
+        return (
+            <>
+                <div className="container">
+                    <main>
+                        <section className="thumbnails">
+                            <div style={{
+                                width: "800px",
+                                height: "1000px",
+                                backgroundColor: "#fff",
+                                padding: "20px",
+                            }}>
+                                <Swiper
+                                    loop={true}
+                                    spaceBetween={10}
+                                    navigation={true}
+                                    thumbs={{ swiper: thumbsSwiper }}
+                                    modules={[FreeMode, Navigation, Thumbs]}
+                                    className="mySwiper2"
+                                >
+                                    
+                                    {
+                                        imagesColor.length > 0 ?
+                                        imagesColor.map((im, index) => {
+                                            return (
+                                                <SwiperSlide key={index}>
+                                                    <img src={im} alt={selectedColor} key={index} />
+                                                </SwiperSlide>
+                                            )
+                                        })
+                                        :
+                                        image.map((im, index) => {
+                                            return (
+                                                <SwiperSlide key={index}>
+                                                    <img src={im} alt="" key={index} />
+                                                </SwiperSlide>
+                                            )
+                                        })
+                                    }
+                                </Swiper>
+                                {/* <Swiper
+                                    onSwiper={setThumbsSwiper}
+                                    loop={true}
+                                    spaceBetween={10}
+                                    slidesPerView={4}
+                                    freeMode={true}
+                                    watchSlidesProgress={true}
+                                    modules={[FreeMode,Navigation, Thumbs]}
+                                    className="mySwiper"
+                                >
+                                    {
+                                        image.map((im, index) => {
+                                            return (
+                                                <SwiperSlide key={index}>
+                                                    
+                                                        <img src={im} alt="" key={index} />
+                                                    
+                                                </SwiperSlide>
+                                            )
+                                        })
+                                    }
+                                </Swiper> */}
+                            </div>
+                        </section>
+                        {/* content */}
 
-            <section className="thumbnails">
-              <img
-                src={image[0]}
-                alt="product"
-                className="main-thumbnail invisible-mob"
-              />
-              <div className="mobile-thumb hidden">
-                <img src={image[0]} alt="product" />
-                <button id="next">
-                  <GrNext />
-                </button>
-                <button id="previous">
-                  <GrPrevious />
-                </button>
-              </div>
-              <div className="preview">
-                {image.map((im, i) => {
-                  return <img src={im} alt="" key={i} />;
-                })}
-              </div>
-            </section>
-            {/* content */}
 
-            <section className="content">
-              <p className="company">{brands}</p>
-              <h1 className="title">{name}</h1>
-              <p className="info">{description}</p>
-              <div className="price">
-                <div className="new-price">
-                  <p className="now">${price}</p>
+                        <section className="content">
+                            <p className="company">{brands}</p>
+                            <Rating name="read-only" value={2} readOnly />
+                            <h1 className="title">{name}</h1>
+                            <p className="info">{description}</p>
+                            <div className="price">
+                                <div className="new-price">
+                                    <p className="now">${price}</p>
+                                </div>
+                            </div>
+                            <div className="colors">
+                                {
+                                    product.productConditionals.map((c, i) => {
+                                        return (
+                                            <button
+                                                className="color-btn"
+                                                key={i}
+                                                style={{ backgroundColor: c.color }}
+                                                onClick={() => setSelectedColor(c.color)}
+                                            >
+                                            </button>
+                                        )
+                                    })
+                                }
+                            </div>
+
+                            <div className="sizes">
+                                {
+                                    !amount ?
+                                        size.map((s, i) => {
+
+                                            return (
+                                                <button
+                                                    className="size-btn"
+                                                    value={Object.keys(s)}
+                                                    key={i}
+                                                    onClick={handleSize}
+                                                >
+                                                    {Object.keys(s)}
+                                                </button>
+                                            )
+                                        })
+                                        :
+                                        ""
+                                }
+                            </div>
+                            {
+                                !amount ?
+                                    select > 0 ?
+                                        <div className="cantidad">
+                                            <strong><p>Amount</p></strong>
+                                            <h5>{select} available</h5>
+                                        </div>
+                                        :
+                                        ""
+                                    :
+                                    <div className="cantidad">
+                                        <strong><p>Amount</p></strong>
+                                        <h5>{amount.amount} available</h5>
+                                    </div>
+                            }
+                            <div className="buttons">
+                                <button className="add_btn" onClick={() => adToCart(id)}>
+                                    <GrCart />
+                                    Add to cart
+                                </button>
+                            </div>
+                        </section>
+                    </main>
                 </div>
-              </div>
-              <div className="sizes">
-                <select className="select">
-                  <option disabled selected defaultValue>
-                    Size
-                  </option>
-                  {size.map((s, i) => {
-                    return (
-                      <option value={s} key={i}>
-                        {Object.keys(s)}: {Object.values(s)}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-              <div className="buttons">
-                <div className="amount-btn">
-                  <button id="minus">
-                    <BiMinus />
-                  </button>
-                  <p className="amount">0</p>
-                  <button id="plus">
-                    <BiPlus />
-                  </button>
-                </div>
-                <button className="add_btn" onClick={() => adToCart(_id)}>
-                  <GrCart />
-                  Add to cart
-                </button>
-              </div>
-            </section>
-          </main>
-        </div>
+            </>
+        );
+    };
 
-        <div className="lightbox invisible">
-          <div className="lightbox-container">
-            <button className="close-lightbox">
-              <GrClose />
-            </button>
-            <img
-              src={image[0]}
-              alt=""
-              className="main-thumbnail invisible-mob"
-            />
-            <div className="preview">
-              <img src={image[0]} alt="" className="selected" />
-              <img src={image[1]} alt="" />
-              <img src={image[2]} alt="" />
+
+    const [loading, setLoading] = useState(true);
+
+    if (loading === true) {
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }
+
+    if (loading) {
+        return (
+            <div className="loader">
+                <Loader />
             </div>
-          </div>
-        </div>
-      </>
-    );
-  };
-
-  return (
-    <>
-      <NavBar />
-      <ShowProduct />
-    </>
-  );
+        )
+    } else {
+        return (
+            <>
+                <NavBar />
+                <ShowProduct />
+            </>
+        );
+    }
 }
