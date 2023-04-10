@@ -75,17 +75,7 @@ export const NavBar = () => {
           </button>
         </div>
         </Link>
-      
-
-        <div className={style.sellContainer}>
-          <Link to="/post/product">
-            <button className={style.sellButton}>
-              <MdSell />
-              SELL
-            </button>
-          </Link>
         </div>
-      </div>
-    </div>
+      </div> 
   );
 };
