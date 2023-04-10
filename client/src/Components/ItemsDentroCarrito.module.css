@@ -1,8 +1,10 @@
 .items{
     color: white;
-    margin-left: 2px;
+    margin-left: 5px;
     font-size: large;
     font-family:Georgia, 'Times New Roman', Times, serif;
+    align-items: center;
+    align-content: center;
    
     
    
