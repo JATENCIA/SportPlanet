@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProduct } from "../../../redux/Actions";
+import { useEffect, useState } from "react";
+import { filterByGender, getAllProduct } from "../../../redux/Actions";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
-import { NavBar } from "../../Navbar/Navbar";
+import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import style from "./Puma.module.css";
+import Filter from "../../Filters/Filters";
+import style from "./Man.module.css";
 
-export default function Puma() {
+export default function Man() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
+  const allProducts = useSelector((state) => state.filteredProducts);
+  console.log("1", allProducts);
 
-  const allProducts = useSelector((state) => state.allProducts);
-  const filterProducts = allProducts.filter((product) => {
-    return product.brands === "PUMA";
-  });
+  useEffect(() => {
+    dispatch(filterByGender("men"));
+  }, [dispatch]);
+
+  const filterProducts = allProducts.filter(
+    (product) => product.category === "tshirts" && product.gender === "men"
+  );
+
+  console.log("2", filterProducts);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -33,6 +42,7 @@ export default function Puma() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <Filter />
 
       <div className={style.container}>
         {products.length > 0 ? (

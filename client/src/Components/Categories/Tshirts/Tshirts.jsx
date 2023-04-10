@@ -1,5 +1,4 @@
 import React from "react";
-import SlidePromos from "../../SlidePromos/SlidePromos";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllProduct } from "../../../redux/Actions";
@@ -47,7 +46,7 @@ function Tshirts() {
                   key={crypto.randomUUID()}
                   _id={product._id}
                   name={product.name}
-                  image={product.image}
+                  image={product.productConditionals[0].image[1]}
                   size={product.size}
                   price={product.price}
                   description={product.description}

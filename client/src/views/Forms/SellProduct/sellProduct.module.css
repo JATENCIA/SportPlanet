@@ -31,8 +31,85 @@
     border-top-left-radius: 5px;
 }
 
+.sizeSelectSinFlecha{
+    appearance: none;
+    background: transparent;
+    width: 25%;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    padding-right: 0;
+    padding-left: 5px;
+}
+
 .sizeNumber{
     width: 75%;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
+}
+
+.errors{
+    font-size: 14px;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+.coloresRed{
+    background-color:#FF0000; 
+    color:#FFFFFF;
+}
+.coloresGreen{
+    background-color: green;
+    color: #FFFFFF;
+}
+.coloresBlue{
+    background-color:#0000FF; 
+    color:#FFFFFF;
+}
+.coloresPurple{
+    background-color: purple;
+    color: #FFFFFF;
+}
+.coloresLightBlue{
+    background-color: lightskyblue;
+    color: #FFFFFF;
+}
+.coloresYellow{
+    background-color: yellow;
+    color: black;
+}
+.coloresOrange{
+    background-color: orange;
+    color: #FFFFFF;
+}
+.coloresGray{
+    background-color: gray;
+    color: #FFFFFF;
+}
+.coloresBlack{
+    background-color: black;
+    color: #FFFFFF;
+}
+.coloresBrown{
+    background-color: brown;
+    color: #FFFFFF;
+}
+
+/* ESTILOS UPLOADER */
+
+.uploadContainer{
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dropzone{
+    text-align: center;
+    padding: 20px;
+    border: 3px dashed #eeeeee;
+    background-color: #fafafa;
+    color: #bdbdbd;
+    margin-bottom: 20px;
 }

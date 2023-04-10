@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../../../redux/Actions";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
-import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import style from "./Puma.module.css";
+import { Link } from "react-router-dom";
+import style from "./Fitness.module.css";
 
-export default function Puma() {
+export default function Fitness() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProduct());
@@ -16,7 +16,9 @@ export default function Puma() {
 
   const allProducts = useSelector((state) => state.allProducts);
   const filterProducts = allProducts.filter((product) => {
-    return product.brands === "PUMA";
+    return (
+      product.category === "accessories" || product.category === "supplements"
+    );
   });
 
   const [currentPage, setCurrentPage] = useState(1);

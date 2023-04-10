@@ -24,13 +24,15 @@
 }
 
 .productPanelTitle {
-  font-size: 4rem;
+  font-size: 2rem;
   display: flex;
   justify-self: flex-start;
+  align-self: flex-start;
   padding-bottom: 1rem;
-  color: rgb(78, 139, 78);
-  font-family: MetroPoliceRegular;
+  color: rgb(21, 94, 61);
+  font-family: RobotoCondensed;
   text-shadow: 1px 1px 1px rgb(180, 172, 172);
+  padding-left: 5rem;
 }
 
 .userPanel {
