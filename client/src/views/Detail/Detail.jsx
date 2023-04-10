@@ -50,17 +50,17 @@ export default function Detail() {
         name = product.name;
         price = product.price;
         description = product.description,
-            category = product.category,
-            gender = product.gender,
-            brands = product.brands
+        category = product.category,
+        gender = product.gender,
+        brands = product.brands
 
         if (product.productConditionals) {
             image = [...product.productConditionals[0].image];
         }
 
 
-        if (product.size) {
-            size = [...product.size];
+        if (product.productConditionals) {
+            size = [...product.productConditionals[0].size];
         }
 
         if (product.user) {
@@ -85,7 +85,6 @@ export default function Detail() {
     }, [sizes]);
 
     const amount = size.find((s) => Object.keys(s) == "amount");
-    console.log(image);
 
     const ShowProduct = () => {
         const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -207,7 +206,7 @@ export default function Detail() {
                                     </div>
                             }
                             <div className="buttons">
-                                <button className="add_btn">
+                                <button className="add_btn" onClick={() => adToCart(id)}>
                                     <GrCart />
                                     Add to cart
                                 </button>
