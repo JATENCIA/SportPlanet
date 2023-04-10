@@ -9,6 +9,8 @@ export const ProductItem = ({
   state,
   size,
   image,
+  addToCart
+
 }) => {
   return (
     <div className={styled.maincontainer}>
@@ -23,7 +25,7 @@ export const ProductItem = ({
           </div>
           <div className={styled.name}>{state}</div>
           <div className={styled.name}>$ {price}</div>
-          
+          <button className={styled.button} onClick={() => addToCart(_id)}>Add <img src="https://thumbs.dreamstime.com/b/icono-del-carrito-de-compras-carro-ilustraci%C3%B3n-vectorial-190744057.jpg" alt="" width="30px"/> </button> 
         </div>
       </div>
     </div>
