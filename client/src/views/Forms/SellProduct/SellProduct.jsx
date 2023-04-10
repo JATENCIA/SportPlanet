@@ -3,7 +3,7 @@ import { NavBar } from "../../../Components/Navbar/Navbar";
 import FilterNavBar from '../../../Components/FilterNavBar/FilterNavBar'
 import style from './sellProduct.module.css'
 import Swal from 'sweetalert2';
-/* import Dropzone from 'react-dropzone' */
+import Dropzone from 'react-dropzone'
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
