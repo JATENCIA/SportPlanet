@@ -50,6 +50,7 @@ import AdminReviews from "./src/views/Admin/AdminReviews/AdminReviews";
 import AdminFavorites from "./src/views/Admin/AdminFavorites/AdminFavorites";
 import AllUsers from "./src/views/Admin/AllUsers/AllUsers";
 import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
+import Cart from "./src/Components/Cart";
 
 
 const App = () => {
@@ -91,11 +92,15 @@ const App = () => {
         <Route path="/category/supplements" Component={Supplements} />
         <Route path="/category/accessories" Component={Accesories} />
         <Route path="/post/product" Component={SellProduct} />
+
+        <Route path="/cart" Component={Cart} />
+
         <Route path="/category/man" Component={Man} />
         <Route path="/category/woman" Component={Woman} />
         <Route path="/category/kids" Component={Kids} />
         <Route path="/category/promotions" Component={Promotions} />
         <Route path="/category/fitness" Component={Fitness} />
+
       </Routes>
     </>
   );
