@@ -6,7 +6,7 @@ import ProductCard from "../../Components/ProductCard/ProductCard";
 import { NavBar } from "../../Components/Navbar";
 import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
 import { Link } from "react-router-dom";
-import style from "./SearchedProducts.module.css";
+import style from "../SearchedProducts/searchedProducts.module.css";
 import { Paginate } from "../../Components/Paginate/Paginate";
 
 const SearchedProducts = () => {
@@ -45,7 +45,7 @@ const SearchedProducts = () => {
               gender={product.gender}
               state={product.state}
               size={product.size}
-              image={product.image}
+              image={product.productConditionals[0].image[1]}
             />
           </Link>
         ))}

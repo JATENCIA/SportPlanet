@@ -2,7 +2,7 @@ import React from "react";
 import style from "./AdminFavorites.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../../../Components/ProductCard/ProductCard";
+import { Paginate } from "../../../Components/Paginate/Paginate";
 import { Link } from "react-router-dom";
 import {
   FaShoppingBag,
@@ -18,9 +18,20 @@ import {
 } from "react-icons/fa";
 
 import { MdRateReview } from "react-icons/md";
+import ProfileProductCard from "../../Profile/ProfileProductCard/ProfileProductCard";
 
 export default function AdminFavorites() {
-  const products = useSelector((state) => state.userProducts);
+  const allProducts = useSelector((state) => state.allProducts);
+  const filteredProducts = allProducts.filter((product) => product.price >= 30);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const productsPerPage = 8;
+  const last = currentPage * productsPerPage;
+  const first = last - productsPerPage;
+  const products = filteredProducts.slice(first, last);
+
+  const setPagination = (page) => {
+    return setCurrentPage(page);
+  };
   return (
     <div className={style.container}>
       <NavBar />
@@ -102,11 +113,11 @@ export default function AdminFavorites() {
               products.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
-                    <ProductCard
+                    <ProfileProductCard
                       key={crypto.randomUUID()}
                       _id={product._id}
                       name={product.name}
-                      image={product.image}
+                      image={product.productConditionals[0].image[1]}
                       size={product.size}
                       price={product.price}
                       description={product.description}
@@ -121,6 +132,13 @@ export default function AdminFavorites() {
               </p>
             )}
           </div>
+          <Paginate
+            productsPerPage={productsPerPage}
+            allProducts={products.length}
+            setPagination={setPagination}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>

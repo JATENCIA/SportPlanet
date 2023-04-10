@@ -5,7 +5,7 @@ import { getSearchedProducts } from "../../redux/Actions/actions";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import style from "./navBar.module.css";
-import { MdSell } from "react-icons/Md";
+import { MdSell } from "react-icons/md";
 
 export const NavBar = () => {
   const dispatch = useDispatch();
@@ -64,12 +64,13 @@ export const NavBar = () => {
         <div className={style.divLogin}>
           <Login />
         </div>
-
+        <Link to="/cart">
         <div className={style.cartContainer}>
           <button className={style.carrito}>
             <i className="fas fa-shopping-cart"></i>
           </button>
         </div>
+        </Link>
 
         <div className={style.sellContainer}>
           <Link to="/post/product">
