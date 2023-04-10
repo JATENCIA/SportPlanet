@@ -1,0 +1,20 @@
+.items{
+    color: white;
+    margin-left: 2px;
+    font-size: large;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+   
+    
+   
+}
+
+.border{
+    margin-top: -14px;
+    border:thick;
+    background-color: red;
+    border-radius: 40px;
+  
+  
+
+  
+}
