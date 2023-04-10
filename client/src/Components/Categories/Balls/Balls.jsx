@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../../../redux/Actions";
-import { ProductItem } from "../../Produts";
+import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
+import style from "./Balls.module.css";
+import Filters from "../../Filters/Filters";
 
 export default function Balls() {
   const dispatch = useDispatch();
@@ -13,7 +15,7 @@ export default function Balls() {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const allProducts = useSelector((state) => state.filteredProducts);
   const filterProducts = allProducts.filter((product) => {
     return product.category === "balls";
   });
@@ -32,21 +34,29 @@ export default function Balls() {
     <div>
       <NavBar />
       <FilterNavBar />
-      {products?.map((product) => {
-        return (
-          <Link to={`/detail/${product._id}`}>
-            <ProductItem
-              key={crypto.randomUUID()}
-              _id={product._id}
-              name={product.name}
-              image={product.image}
-              size={product.size}
-              price={product.price}
-              description={product.description}
-            />
-          </Link>
-        );
-      })}
+      <Filters />
+
+      <div className={style.container}>
+        {products.length > 0 ? (
+          products.map((product) => {
+            return (
+              <Link to={`/detail/${product._id}`}>
+                <ProductCard
+                  key={crypto.randomUUID()}
+                  _id={product._id}
+                  name={product.name}
+                  image={product.productConditionals[0].image[1]}
+                  size={product.size}
+                  price={product.price}
+                  description={product.description}
+                />
+              </Link>
+            );
+          })
+        ) : (
+          <p className={style.loading}>LOADING...</p>
+        )}
+      </div>
 
       <Paginate
         productsPerPage={productsPerPage}

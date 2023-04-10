@@ -5,6 +5,8 @@ import { getSearchedProducts } from "../../redux/Actions/actions";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import style from "./navBar.module.css";
+import { MdSell } from "react-icons/md";
+import ItemsDentroCarrito from "../ItemsDentroCarrito";
 
 export const NavBar = () => {
   const dispatch = useDispatch();
@@ -59,21 +61,30 @@ export const NavBar = () => {
         </Link>
       </div>
 
-      <div className={style.divLogin}>
-        {" "}
-        <Login />{" "}
-      </div>
-
-      <button className={style.carrito}>
-        {" "}
-        <i className="fas fa-shopping-cart"></i>
-        <span className={style.cartSpan}>MY CART</span>
-      </button>
-
-      <div className={style.sellContainer}>
-        <Link to="/post/product">
-          <button className={style.sellButton}>SELL</button>
+      <div className={style.divUserContainer}>
+        
+        <div className={style.divLogin}>
+          <Login />
+        </div>
+        
+        <Link to="/cart">
+        <ItemsDentroCarrito/>
+        <div className={style.cartContainer}>
+          <button className={style.carrito}>
+            <i className="fas fa-shopping-cart"></i>
+          </button>
+        </div>
         </Link>
+      
+
+        <div className={style.sellContainer}>
+          <Link to="/post/product">
+            <button className={style.sellButton}>
+              <MdSell />
+              SELL
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

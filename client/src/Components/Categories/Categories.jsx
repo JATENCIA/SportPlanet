@@ -16,32 +16,38 @@ export default function Categories() {
         <Link to="/category/tShirts">
           <div className={style.CategoryContainer}>
             <img src={tshirt} />
+            <span className={style.spanCategory}>T-SHIRTS</span>
           </div>
         </Link>
         <Link to="/category/pants">
           <div className={style.CategoryContainer}>
             <img src={pantsLogo} />
+            <span className={style.spanCategory}>PANTS</span>
           </div>
         </Link>
         <Link to="/category/shoes">
           <div className={style.CategoryContainer}>
             <img src={shoesLogo} />
+            <span className={style.spanCategory}>SHOES</span>
           </div>
         </Link>
         <div className={style.container}>
           <Link to="/category/balls">
             <div className={style.CategoryContainer}>
               <img src={ballsLogo} />
+              <span className={style.spanCategory}>BALLS</span>
             </div>
           </Link>
           <Link to="/category/supplements">
             <div className={style.CategoryContainer}>
               <img src={suplementsLogo} />
+              <span className={style.spanCategory}>SUPPLEMENTS</span>
             </div>
           </Link>
           <Link to="/category/accessories">
             <div className={style.CategoryContainer}>
               <img src={accesoriesLogo} />
+              <span className={style.spanCategory}>ACCESSORIES</span>
             </div>
           </Link>
         </div>

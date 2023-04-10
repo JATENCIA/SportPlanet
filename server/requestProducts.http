@@ -1,4 +1,6 @@
-@urlApi = http://localhost:5000
+@urlApi = https://sportsplanet-production.up.railway.app
+# @urlApi = http://localhost:5000
+
 
 ### get all products
 GET {{urlApi}}/products
@@ -7,24 +9,48 @@ GET {{urlApi}}/products
 GET {{urlApi}}/products?name=boca
 
 ### banear single user
-POST {{urlApi}}/products/642237fc8186e2e058d00515
+POST {{urlApi}}/products/6428ca77bcb9e1cc9f8441f3
 
 
 ### create a product
 POST {{urlApi}}/products
 Content-Type: application/json
 
+//Footwear
 {
- "name":"sneakers under Armour",
- "image":["https://cdn-ci.nyc3.cdn.digitaloceanspaces.com/ci-cl/webp-products/54_3001.webp","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTk7i0i01fhCBOHYIjN5H460jGG9K5RiYfRGh2IO-wH7qyF5XUjUS4w4vwhZ_t8fWyK48&usqp=CAU","https://underarmour.scene7.com/is/image/Underarmour/1278819-100_DEFAULT?bgc=f0f0f0&wid=640&hei=480&size=440,420"],
- "price":20.000,
+ "name":"Nike Lebron 17 Low Breed", 
+ "productConditionals":[
+ 
+ {  "color":"black",
+  "image":["https://www.kicksonfire.com/wp-content/uploads/2020/03/Nike-LeBron-17-Low-Bred.png","https://justfreshkicks.com/wp-content/uploads/2020/02/232cc924-b936baad-3736-453a-8243-aea57a37d4ed.png","https://di2ponv0v5otw.cloudfront.net/posts/2020/10/01/5f75a29cce5f1cb3450da58d/m_5f75a29f7ec30c5d8ead2718.jpeg"],
+  "size":[{"7'5": 12},{"8": 9},{"9": 4}]},
+  
+ { "color":"red",
+  "image":["https://sneakerbardetroit.com/wp-content/uploads/2020/05/Titan-Nike-LeBron-17-Low-Red-CD5008-600-Release-Date.jpg","https://i2.wp.com/nba.thedailydunk.co/wp-content/uploads/2020/07/Lebron-James-4.jpg","https://kicksmaniac.com/zdjecia/2020/12/23/912/04/11457sesja_1123.png"],
+  "size":[{"8": 12},{"8'5": 9},{"9": 4},{"9'5": 6}]},
+  
+ { "color":"grey",
+  "image":["https://www.manelsanchez.com/uploads/media/images/lebron-17-low-particle-grey-1.jpg","https://images.tokopedia.net/img/cache/700/VqbcmM/2023/1/10/ce616ac9-95fe-43ee-824b-e5771f5d833d.jpg","https://media.karousell.com/media/photos/products/2021/7/27/lebron_17_low_cut_1627370760_0c436241_progressive.jpg"],
+  "size":[{"8": 12},{"8'5": 9},{"9": 5},{"9'5": 9}]}
+  
+  ],
+ "price":54.99,
+ "user":"6431bb0f80761ad3170814ae",
  "discount":0,
- "description":"It used to take time to get soccer cleats to fit and feel right. Not anymore. The UA Magnetico Select 2.0 do not need any type of adaptation, so they fit perfectly.",
- "user":"6428ba39de408ecca1645d45",
- "season":2022 ,
- "size":[{"amount":7}],
+ "description":"The LeBron 17 Low 'Bred' highlights sharp University Red accents on an otherwise monochromatic black design. Unlike its full-sized counterpart, which features Knitposite construction on the upper, the low-top favors transparent textile and synthetic buck.",
+ "season":2017,
  "category": "footwear",
  "gender":"men",
  "state":"new",
- "brands":"UNDER ARMOUR"
+ "brands":"NIKE"
+}
+
+
+
+### update a product
+PUT {{urlApi}}/products/6432c1f178fa18b04967c271
+Content-Type: application/json
+
+{
+ "season": 2015
 }

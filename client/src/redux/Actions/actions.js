@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SEASON, FILTER_BY_USED, FILTER_BY_SIZE, GET_PRODUCT_DETAIL, GET_SEARCHED_PRODUCTS } from "./actionsTypes";
+import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SEASON, FILTER_BY_USED, FILTER_BY_SIZE, GET_PRODUCT_DETAIL, GET_SEARCHED_PRODUCTS, ADD_TO_CART, CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART, SHOP } from "./actionsTypes";
 
 export const getAllUser = () => async (dispatch) => {
   try {
@@ -98,5 +98,54 @@ export const getSearchedProducts = (product) => async (dispatch) => {
   } catch (error) {
     return { messaje: `${error}` };
   }
+}
+
+export const addToCart = (id) => {
+  return {
+    type: ADD_TO_CART,
+    payload:id
+  }
+
+}
+
+
+export const clearCart = () => {
+  return {
+    type: CLEAR_CART,
+    
+    
+  }
+
+}
+
+export const removeAllCart = (id) => {
+  return {
+    type:REMOVE_ALL_FROM_CART,
+    payload:id
+  }
+
+}
+
+export const removeOneCart = (id) => {
+  return {
+    type: REMOVE_ONE_FROM_CART,
+    payload:id
+  }
+
+}
+
+
+
+
+export const shop = (item) => {
+  return async function(dispatch) {
+    const apic = await axios.post("", item )
+    const shop = apic.data
+    if(shop) {alert("Se efectuo tu compra correctamente!")}
+    dispatch({
+     type:SHOP,
+     payload: shop
+    })
+ }
 }
 

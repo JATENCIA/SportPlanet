@@ -8,7 +8,12 @@ import {
   GET_ALL_USER,
   POST_USER,
   GET_PRODUCT_DETAIL,
-  GET_SEARCHED_PRODUCTS
+  GET_SEARCHED_PRODUCTS,
+  ADD_TO_CART,
+  REMOVE_ONE_FROM_CART,
+  REMOVE_ALL_FROM_CART,
+  CLEAR_CART,
+  SHOP,
 } from "../Actions";
 
 const initialState = {
@@ -18,6 +23,8 @@ const initialState = {
   productDetail: [],
   searchedProducts: [],
   filteredProducts: [],
+  userProducts: [],
+  shoppingCart:[],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -37,7 +44,7 @@ export const rootReducer = (state = initialState, action) => {
     case GET_ALL_PRODUCT:
       return {
         ...state,
-        allProducts: action.payload, 
+        allProducts: action.payload,
         filteredProducts: action.payload,
       };
 
@@ -57,7 +64,7 @@ export const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-       filteredProducts: productsSorted,
+        filteredProducts: productsSorted,
       };
 
     case FILTER_BY_USED:
@@ -66,7 +73,9 @@ export const rootReducer = (state = initialState, action) => {
           ? [...state.allProducts].filter((product) => {
               return product.state === "new";
             })
-          : [...state.allProducts].filter((product) => product.state === "used");
+          : [...state.allProducts].filter(
+              (product) => product.state === "used"
+            );
       return {
         ...state,
         filteredProducts: productsFiltered,
@@ -111,7 +120,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredProducts: productBySize,
-      }
+      };
 
     case FILTER_BY_SEASON:
       let productBySeason = [...state.allProducts].filter((product) => {
@@ -133,13 +142,73 @@ export const rootReducer = (state = initialState, action) => {
       });
       return {
         ...state,
-       filteredProducts: productBySeason
+        filteredProducts: productBySeason,
       };
-      case GET_SEARCHED_PRODUCTS:
-      return{
+    case GET_SEARCHED_PRODUCTS:
+      return {
         ...state,
         searchedProducts: action.payload,
-      }
+      };
+
+      case ADD_TO_CART:
+        let productItem = state.allProducts.find(product => product._id === action.payload)
+        console.log(productItem)
+
+        let itemInCar = state.shoppingCart.find(item => item._id === productItem._id)
+
+        return itemInCar
+        
+        ?{...state, 
+          shoppingCart:state.shoppingCart.map((item) => item._id === productItem._id 
+          ? {...item, quantity: item.quantity + 1} 
+          :item
+          )
+        }
+        :{
+          ...state,
+          shoppingCart: [...state.shoppingCart,{...productItem, quantity:1}]
+        }
+        
+          
+          
+
+        
+
+      case REMOVE_ONE_FROM_CART:
+        let delOne = state.shoppingCart.find(e => e._id === action.payload)
+        return delOne.quantity > 1 ? {
+          ...state,
+          shoppingCart: state.shoppingCart.map(e => e._id === action.payload ? {...e, quantity: e.quantity - 1} : e)
+        }
+
+        : {
+          ...state,
+          shoppingCart:state.shoppingCart.filter(e => e._id !== action.payload)
+          
+        }
+
+      
+
+      case REMOVE_ALL_FROM_CART:
+       
+        return {
+          ...state,
+          shoppingCart:state.shoppingCart.filter(e => e._id !== action.payload)
+        }
+          
+
+      
+
+      case CLEAR_CART:
+        return {...state, shoppingCart:[]}
+          
+          case SHOP:
+            return{...state
+            
+            
+            }
+
+
     default:
       return {
         ...state,

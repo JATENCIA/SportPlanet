@@ -1,5 +1,8 @@
 const Products = require("../Models/Products");
 const Users = require("../Models/Users");
+const { eMailUserBaned } = require("../NodeMailer/userBanedMailer");
+const { eMailUserEnable } = require("../NodeMailer/userEnabledMailer");
+const { eMail } = require("../NodeMailer/welcomeMailer");
 
 /**
  * It's an async function that uses the mongoose model to find all the users in the database and
@@ -53,7 +56,7 @@ const createUser = async (req, res) => {
   try {
     const userFound = await Users.findOne({ eMail: req.body.eMail });
     if (userFound)
-      return res.status(301).json({ message: "this URL already exits" });
+      return res.status(301).json({ message: "this eMail already exits" });
 
     const usersc = await Users.find({});
     let iNumber = 0;
@@ -85,6 +88,7 @@ const createUser = async (req, res) => {
 
     const saveUser = await newUser.save();
     res.status(200).json(saveUser);
+    eMail(saveUser);
   } catch (error) {
     res.status(500).json({ message: `${error}` });
   }
@@ -100,6 +104,9 @@ const createUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const user = await Users.findById(req.params.id);
+
+    if (!user) return res.status(204).json({});
+
     let baneado = user?.baneado;
     if (user) {
       if (baneado === false) baneado = true;
@@ -116,6 +123,8 @@ const deleteUser = async (req, res) => {
           message: `the user *** ${user.name} *** is enabled`,
           baneado: baneado,
         });
+
+    baneado ? eMailUserBaned(user) : eMailUserEnable(user);
   } catch (error) {
     res.status(500).json({ message: `${error}` });
   }
@@ -146,24 +155,27 @@ const updateUser = async (req, res) => {
  * @param res - The response object.
  */
 
-const getFavorite = async (req, res) => {
+const postFavorite = async (req, res) => {
   try {
-    const { id, eMail } = req.body;
-    let users = await Users.find({ eMail: eMail });
-    let product = await Products.findById({ _id: id });
+    let users = await Users.findById(req.body.user);
+    let product = await Products.findById(req.body.product);
+
+    if (!users || !product) return res.status(204).json({});
+
     let favorites = users.favorites;
 
     let flag = [];
     if (favorites) {
       favorites.map((element, index) => {
-        if (JSON.stringify(element._id) === JSON.stringify(id)) {
+        if (JSON.stringify(element._id) === JSON.stringify(req.body.product)) {
           flag.push(element);
           users.favorites.splice(index, 1);
         }
       });
-      if (flag.length === 0) favorites.push(restaurant);
-    } else favorites.push(restaurant);
-    await Users.updateOne({ _id: users[0].id }, { $set: favorites });
+      if (flag.length === 0) favorites.push(product);
+    } else favorites.push(product);
+    await Users.updateOne({ _id: users._id }, { $set: favorites });
+    await users.save();
     res.status(200).json(users.favorites);
   } catch (error) {
     res.status(500).send(`{message: ${error}}`);
@@ -176,4 +188,5 @@ module.exports = {
   createUser,
   deleteUser,
   updateUser,
+  postFavorite,
 };

@@ -53,7 +53,7 @@ const userSchema = mongoose.Schema(
     review: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "Reviews",
+        ref: "ProductReview",
       },
     ],
 
@@ -71,6 +71,12 @@ const userSchema = mongoose.Schema(
       {
         type: mongoose.Types.ObjectId,
         ref: "Payments",
+      },
+    ],
+    review: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "ProductReview",
       },
     ],
   },
