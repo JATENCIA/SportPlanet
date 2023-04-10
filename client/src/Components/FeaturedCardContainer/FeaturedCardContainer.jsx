@@ -33,7 +33,7 @@ export default function FeaturedCardContainer() {
           return (
             <Link to={`/detail/${product._id}`}>
             <FeaturedCard
-              image={product.image[1]}
+              image={product.productConditionals[0].image[1]}
               name={product.name}
               price={product.price}
             />

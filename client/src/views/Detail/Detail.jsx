@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductDetail } from "../../redux/Actions";
+import { addToCart, getProductDetail } from "../../redux/Actions";
 import "./styles/detail.css";
 import { GrNext, GrPrevious, GrCart, GrClose } from "react-icons/gr";
 import { BiMinus, BiPlus } from "react-icons/bi";
