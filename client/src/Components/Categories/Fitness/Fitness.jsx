@@ -16,7 +16,9 @@ export default function Fitness() {
 
   const allProducts = useSelector((state) => state.allProducts);
   const filterProducts = allProducts.filter((product) => {
-    return product.category === "accessories" || product.category === "supplements";
+    return (
+      product.category === "accessories" || product.category === "supplements"
+    );
   });
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,8 +30,6 @@ export default function Fitness() {
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
-  
-
 
   return (
     <div>
@@ -45,7 +45,7 @@ export default function Fitness() {
                   key={crypto.randomUUID()}
                   _id={product._id}
                   name={product.name}
-                  image={product.image}
+                  image={product.productConditionals[0].image[1]}
                   size={product.size}
                   price={product.price}
                   description={product.description}
@@ -67,4 +67,4 @@ export default function Fitness() {
       />
     </div>
   );
-} 
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { filterByGender, getAllProduct} from "../../../redux/Actions";
+import { filterByGender, getAllProduct } from "../../../redux/Actions";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
@@ -11,13 +11,13 @@ import Filter from "../../Filters/Filters";
 import style from "./Man.module.css";
 
 export default function Man() {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
   const allProducts = useSelector((state) => state.filteredProducts);
   console.log("1", allProducts);
-  
+
   useEffect(() => {
     dispatch(filterByGender("men"));
   }, [dispatch]);
@@ -27,7 +27,6 @@ const dispatch = useDispatch();
   );
 
   console.log("2", filterProducts);
-  
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -54,7 +53,7 @@ const dispatch = useDispatch();
                   key={crypto.randomUUID()}
                   _id={product._id}
                   name={product.name}
-                  image={product.image}
+                  image={product.productConditionals[0].image[1]}
                   size={product.size}
                   price={product.price}
                   description={product.description}
@@ -76,7 +75,4 @@ const dispatch = useDispatch();
       />
     </div>
   );
-
-        }
-
-   
+}

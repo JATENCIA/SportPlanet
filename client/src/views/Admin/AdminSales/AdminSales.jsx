@@ -2,6 +2,7 @@ import React from "react";
 import style from "./AdminSales.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import ProfileProductCard from "../../Profile/ProfileProductCard/ProfileProductCard";
+import { Paginate } from "../../../Components/Paginate/Paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -19,8 +20,18 @@ import {
 import { MdRateReview } from "react-icons/md";
 
 export default function AdminSales() {
-  const products = useSelector((state) => state.allProducts);
-  const filteredProducts = products.filter((products) => products.price >= 30);
+  const allProducts = useSelector((state) => state.allProducts);
+  const filteredProducts = allProducts.filter((product) => product.price >= 30);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const productsPerPage = 8;
+  const last = currentPage * productsPerPage;
+  const first = last - productsPerPage;
+  const products = filteredProducts.slice(first, last);
+
+  const setPagination = (page) => {
+    return setCurrentPage(page);
+  };
+
   return (
     <div className={style.container}>
       <NavBar />
@@ -98,15 +109,15 @@ export default function AdminSales() {
         <div className={style.productPanel}>
           <h2 className={style.productPanelTitle}>YOUR SALES</h2>
           <div className={style.productsContainer}>
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => {
+            {products.length > 0 ? (
+              products.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
                     <ProfileProductCard
                       key={crypto.randomUUID()}
                       _id={product._id}
                       name={product.name}
-                      image={product.image}
+                      image={product.productConditionals[0].image[1]}
                       price={product.price}
                       description={product.description}
                     />
@@ -120,6 +131,13 @@ export default function AdminSales() {
               </p>
             )}
           </div>
+          <Paginate
+            productsPerPage={productsPerPage}
+            allProducts={products.length}
+            setPagination={setPagination}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>

@@ -113,17 +113,17 @@ export default function AllProducts() {
           </div>
         </div>
         <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>USERS LIST</h2>
+          <h2 className={style.productPanelTitle}>ALL PRODUCTS</h2>
           <div className={style.productsContainer}>
             {products.length > 0 ? (
-              products.map((user) => {
+              products.map((product) => {
                 return (
                   <AdminProfileCard
                     key={crypto.randomUUID()}
-                    _id={user._id}
-                    name={user.name}
-                    image={user.image}
-                    baneado={user.baneado}
+                    _id={product._id}
+                    name={product.name}
+                    image={product.productConditionals[0].image[1]}
+                    baneado={product.baneado}
                   />
                 );
               })
