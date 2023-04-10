@@ -1,4 +1,5 @@
-@urlApi = http://localhost:5000
+@urlApi = https://sportsplanet-production.up.railway.app
+
 
 ### get all users
 GET {{urlApi}}/users
@@ -11,14 +12,14 @@ POST {{urlApi}}/users
 Content-Type: application/json
 
 {
-  "name":"Santiago",
-  "eMail":"smassuh@gmail.com",
-  "lastName":"Massuh",
-  "image":""
+  "name":"Ximena",
+  "eMail":"gonzales@gmail.com",
+  "lastName":"Gonzalesz",
+  "image":"https://i.pinimg.com/originals/af/dd/86/afdd863fd6bd045c797f57895a80a756.jpg"
 }
 
 ### get single user id
-GET {{urlApi}}/users/641cc89444400c0d8a723244
+GET {{urlApi}}/users/642383a9afc7672526531bdd
 
 ### banear single user
 POST {{urlApi}}/users/6428a374de408ecca1645d36
@@ -37,6 +38,6 @@ POST {{urlApi}}/users/favorite
 Content-Type: application/json
 
 {
-  "user":"642a18f86d9763044626471f",
-  "product":"642a37d06d9763044626479b" 
+  "user":"642383a9afc7672526531bdd",
+  "product":"6428c6f2d2af90595e140cea" 
 }
