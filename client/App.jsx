@@ -43,6 +43,11 @@ import AdminReviews from "./src/views/Admin/AdminReviews/AdminReviews";
 import AdminFavorites from "./src/views/Admin/AdminFavorites/AdminFavorites";
 import AllUsers from "./src/views/Admin/AllUsers/AllUsers";
 import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
+import Men from "./src/Components/Categories/Men/Men";
+import Women from "./src/Components/Categories/Women/Women";
+import Kids from "./src/Components/Categories/Kids/Kids";
+import Promotions from "./src/Components/Categories/Promotions/Promotions";
+import Fitness from "./src/Components/Categories/Fitness/Fitness";
 
 const App = () => {
   const location = useLocation();
@@ -83,6 +88,11 @@ const App = () => {
         <Route path="/category/supplements" Component={Supplements} />
         <Route path="/category/accessories" Component={Accesories} />
         <Route path="/post/product" Component={SellProduct} />
+        <Route path="/category/men" Component={Men} />
+        <Route path="/category/women" Component={Women} />
+        <Route path="/category/kids" Component={Kids} />
+        <Route path="/category/promotions" Component={Promotions} />
+        <Route path="/category/fitness" Component={Fitness} />
       </Routes>
     </>
   );
