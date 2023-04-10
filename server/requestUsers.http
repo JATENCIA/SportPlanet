@@ -1,5 +1,5 @@
-# @urlApi = https://sportsplanet-production.up.railway.app
-@urlApi = http://localhost:5000
+@urlApi = https://sportsplanet-production.up.railway.app
+# @urlApi = http://localhost:5000
 
 
 
@@ -27,7 +27,7 @@ GET {{urlApi}}/users/642383a9afc7672526531bdd
 POST {{urlApi}}/users/6428a374de408ecca1645d36
 
 ### update a user
-PUT {{urlApi}}/users/643354bab05a570e9f54140b
+PUT {{urlApi}}/users/64344db878fa18b04967e343
 Content-Type: application/json
 
 {
