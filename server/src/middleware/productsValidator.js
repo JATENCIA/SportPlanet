@@ -55,9 +55,9 @@ const validateProductsCreate = [
       }
       return true;
     }),
-  (req, res, next) => {
-    validateProductsResult(req, res, next);
-  },
+  // (req, res, next) => {
+  //   validateProductsResult(req, res, next);
+  // },
 ];
 
 module.exports = {

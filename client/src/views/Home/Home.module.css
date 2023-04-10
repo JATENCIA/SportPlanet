@@ -5,13 +5,16 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
+  animation: fadeInAnimation ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 .main hr {
   border: 1px solid rgb(0, 0, 0);
 }
 
 .featuredTitle {
-  padding-top: 40px;
+  padding-top: 50px;
   font-size: 70px;
   font-family: aBlackLives;
   text-shadow: 2px 2px 2px rgb(62, 59, 59);
@@ -36,10 +39,12 @@
 }
 
 .aboutUsDescription {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: aBlackLives;
   text-align: center;
   font-size: small;
-  color: rgb(72, 78, 78);
+  color: rgb(124, 135, 135);
+  width: 80%;
+  font-weight: 0;
 }
 
 .brandSection {
@@ -75,6 +80,13 @@
   border: 3px solid black;
   border-radius: 50%;
   background-color: white;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.brand img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 17px 0px rgba(119, 22, 7, 0.75);
 }
 
 hr {
@@ -92,7 +104,7 @@ hr {
   display: flex;
   justify-content: center;
   font-size: small;
-  font-family: "Courier New", Courier, monospace;
+  font-family: aBlackLives;
   font-weight: bold;
   color: rgb(92, 86, 86);
   padding-bottom: 0;
@@ -100,10 +112,19 @@ hr {
 
 .h1Top {
   text-align: center;
-  font-weight: bold;
   color: white;
   background-color: black;
   width: 100%;
   height: 30px;
   border-radius: 2px;
+  font-family: RobotoCondensed;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

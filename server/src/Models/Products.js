@@ -9,11 +9,9 @@ const productsSchema = mongoose.Schema(
       maxLength: 50,
     },
 
-    image: {
+    productConditionals: {
       type: Array,
       required: true,
-      minLength: 1,
-      maxLength: 3,
     },
 
     price: {
@@ -54,13 +52,9 @@ const productsSchema = mongoose.Schema(
     review: [
       {
         type: mongoose.Types.ObjectId,
-        ref: "Reviews",
+        ref: "ProductReview",
       },
     ],
-
-    size: {
-      type: Array,
-    },
 
     category: {
       type: String,
@@ -68,9 +62,10 @@ const productsSchema = mongoose.Schema(
         "tshirts",
         "pants",
         "footwear",
-        "balls",
+        "balls", 
         "supplements",
         "accessories",
+        "gym",
       ],
       default: "accessories",
     },
@@ -86,13 +81,14 @@ const productsSchema = mongoose.Schema(
       enum: ["new", "used"],
       default: "new",
     },
+
     brands: {
       type: "String",
       enum: [
         "PUMA",
         "ADIDAS",
-        "REBOOK",
-        "COLUMBIA",
+        "REEBOK",
+        "FILA",
         "NIKE",
         "UNDER ARMOUR",
         "OTHER",
@@ -108,4 +104,4 @@ const productsSchema = mongoose.Schema(
 
 module.exports = mongoose.model("Products", productsSchema);
 
-// camisetas, pantalones, calzados, pelotas, suplementos y accesorios
+

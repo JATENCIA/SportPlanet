@@ -6,11 +6,14 @@ const {
   getUser,
   getUsers,
   updateUser,
+  postFavorite,
 } = require("../Controllers/usersController");
 const { validateUsersCreate } = require("../middleware/usersValidator");
 
-
-
+/* This code is defining a route for a POST request to "/favorite" and specifying that it should be
+handled by a function called `postFavorite`. The implementation of `postFavorite` is not shown in
+this code snippet. */
+router.post("/favorite", postFavorite);
 /* A route that is listening for a get request to the root of the server. */
 router.get("/", getUsers);
 /* This is a route that is listening for a get request to the root of the server. */
