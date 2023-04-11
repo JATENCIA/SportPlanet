@@ -68,7 +68,9 @@ export default function Detail() {
         }
     }
 
-    const [ selectedColor, setSelectedColor ] = useState(null);
+
+
+    //----------------------------------------------------------------Selector de productos por color y talla -------------------------------------------------------------------//
     const [sizes, setSizes] = useState("");
     const [select, setSelect] = useState(0);
 
@@ -77,15 +79,20 @@ export default function Detail() {
         setSizes(e.target.value);
     }
 
+    const [ selectedColor , setSelectedColor ] = useState(product.productConditionals && product.productConditionals.length > 0 ? product.productConditionals[0].color : '');
+        
+    const selectedProduct = product.productConditionals ? product.productConditionals.find((product) => product.color === selectedColor) : null;
+    const imagesColor = selectedProduct ? selectedProduct.image : [];
+    const size2 = selectedProduct ? selectedProduct.size : [];
+
+    const amount = size2.find((s) => Object.keys(s) == "amount");
     useEffect(() => {
         if (sizes) {
-            const stock = size.find((s) => Object.keys(s) == sizes);
+            const stock = size2.find((s) => Object.keys(s) == sizes);
             setSelect(stock[sizes])
         }
     }, [sizes]);
-
-    const amount = size.find((s) => Object.keys(s) == "amount");
-    const imagesColor = selectedColor ? product.productConditionals.find((condition) => condition.color === selectedColor).image : [];
+    ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
     const ShowProduct = () => {
         const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -109,53 +116,28 @@ export default function Detail() {
                                     modules={[FreeMode, Navigation, Thumbs]}
                                     className="mySwiper2"
                                 >
-                                    
                                     {
                                         imagesColor.length > 0 ?
-                                        imagesColor.map((im, index) => {
-                                            return (
-                                                <SwiperSlide key={index}>
-                                                    <img src={im} alt={selectedColor} key={index} />
-                                                </SwiperSlide>
-                                            )
-                                        })
+                                            imagesColor.map((im, index) => {
+                                                return (
+                                                    <SwiperSlide key={index}>
+                                                        <img src={im} alt={selectedColor} key={index} />
+                                                    </SwiperSlide>
+                                                )
+                                            })
                                         :
-                                        image.map((im, index) => {
-                                            return (
-                                                <SwiperSlide key={index}>
-                                                    <img src={im} alt="" key={index} />
-                                                </SwiperSlide>
-                                            )
-                                        })
+                                            image.map((im, index) => {
+                                                return (
+                                                    <SwiperSlide key={index}>
+                                                        <img src={im} alt="" key={index} />
+                                                    </SwiperSlide>
+                                                )
+                                            })
                                     }
                                 </Swiper>
-                                {/* <Swiper
-                                    onSwiper={setThumbsSwiper}
-                                    loop={true}
-                                    spaceBetween={10}
-                                    slidesPerView={4}
-                                    freeMode={true}
-                                    watchSlidesProgress={true}
-                                    modules={[FreeMode,Navigation, Thumbs]}
-                                    className="mySwiper"
-                                >
-                                    {
-                                        image.map((im, index) => {
-                                            return (
-                                                <SwiperSlide key={index}>
-                                                    
-                                                        <img src={im} alt="" key={index} />
-                                                    
-                                                </SwiperSlide>
-                                            )
-                                        })
-                                    }
-                                </Swiper> */}
                             </div>
                         </section>
                         {/* content */}
-
-
                         <section className="content">
                             <p className="company">{brands}</p>
                             <Rating name="read-only" value={2} readOnly />
@@ -185,11 +167,11 @@ export default function Detail() {
                             <div className="sizes">
                                 {
                                     !amount ?
-                                        size.map((s, i) => {
+                                        size2.map((s, i) => {
 
                                             return (
                                                 <button
-                                                    className="size-btn"
+                                                    className={`size-btn ${Object.keys(s) == sizes ? "selected-size-btn" : ''}`}
                                                     value={Object.keys(s)}
                                                     key={i}
                                                     onClick={handleSize}
