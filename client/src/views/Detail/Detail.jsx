@@ -68,7 +68,7 @@ export default function Detail() {
         }
     }
 
-    const arrColors = ["red", "blue", "green", "yellow", "pink", "black"];
+    const [ selectedColor, setSelectedColor ] = useState(null);
     const [sizes, setSizes] = useState("");
     const [select, setSelect] = useState(0);
 
@@ -85,6 +85,7 @@ export default function Detail() {
     }, [sizes]);
 
     const amount = size.find((s) => Object.keys(s) == "amount");
+    const imagesColor = selectedColor ? product.productConditionals.find((condition) => condition.color === selectedColor).image : [];
 
     const ShowProduct = () => {
         const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -108,7 +109,17 @@ export default function Detail() {
                                     modules={[FreeMode, Navigation, Thumbs]}
                                     className="mySwiper2"
                                 >
+                                    
                                     {
+                                        imagesColor.length > 0 ?
+                                        imagesColor.map((im, index) => {
+                                            return (
+                                                <SwiperSlide key={index}>
+                                                    <img src={im} alt={selectedColor} key={index} />
+                                                </SwiperSlide>
+                                            )
+                                        })
+                                        :
                                         image.map((im, index) => {
                                             return (
                                                 <SwiperSlide key={index}>
@@ -157,12 +168,13 @@ export default function Detail() {
                             </div>
                             <div className="colors">
                                 {
-                                    arrColors.map((c, i) => {
+                                    product.productConditionals.map((c, i) => {
                                         return (
                                             <button
                                                 className="color-btn"
                                                 key={i}
-                                                style={{ backgroundColor: c }}
+                                                style={{ backgroundColor: c.color }}
+                                                onClick={() => setSelectedColor(c.color)}
                                             >
                                             </button>
                                         )

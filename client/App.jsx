@@ -36,7 +36,6 @@ import ProfileShopping from "./src/views/Profile/ProfileShopping/ProfileShopping
 import ProfileSales from "./src/views/Profile/ProfileSales/ProfileSales";
 import ProfileFavorites from "./src/views/Profile/ProfileFavorites/ProfileFavorites";
 import ProfileProducts from "./src/views/Profile/ProfileProducts/ProfileProducts";
-
 import Man from "./src/Components/Categories/Man/Man";
 import Woman from "./src/Components/Categories/Woman/Woman";
 import Kids from "./src/Components/Categories/Kids/Kids";
@@ -51,7 +50,6 @@ import AdminFavorites from "./src/views/Admin/AdminFavorites/AdminFavorites";
 import AllUsers from "./src/views/Admin/AllUsers/AllUsers";
 import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
 import Cart from "./src/Components/Cart";
-
 
 const App = () => {
   const location = useLocation();
@@ -99,8 +97,9 @@ const App = () => {
         <Route path="/category/woman" Component={Woman} />
         <Route path="/category/kids" Component={Kids} />
         <Route path="/category/promotions" Component={Promotions} />
-        <Route path="/category/fitness" Component={Fitness} />
 
+        <Route path="/category/fitness" Component={Fitness} />
+        <Route path="*" Component={Home} />
       </Routes>
     </>
   );
