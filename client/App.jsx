@@ -52,7 +52,6 @@ import AllUsers from "./src/views/Admin/AllUsers/AllUsers";
 import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
 import Cart from "./src/Components/Cart";
 
-
 const App = () => {
   const location = useLocation();
   return (
@@ -100,7 +99,7 @@ const App = () => {
         <Route path="/category/kids" Component={Kids} />
         <Route path="/category/promotions" Component={Promotions} />
         <Route path="/category/fitness" Component={Fitness} />
-
+        <Route path="*" Component={Home} />
       </Routes>
     </>
   );
