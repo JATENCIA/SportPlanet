@@ -21,8 +21,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 2px;
-  margin-left: 20px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  position: absolute;
 }
 
 .inputSearch {
@@ -39,11 +39,12 @@
 }
 
 .btnSearch {
-  background-color: rgb(43, 40, 40);
+  background-color: rgb(66, 62, 62);
   color: white;
   padding: 0 10px;
   cursor: pointer;
   height: 40px;
+  transition: all 200ms ease;
 }
 
 .img {
@@ -56,10 +57,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 250px;
   font-family: Bebas;
   font-size: large;
+  margin-left: 2rem;
+  padding: 5px;
 }
 
 .divLogin {
