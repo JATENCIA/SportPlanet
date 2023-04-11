@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { getAllUser } from "../../redux/Actions";
 import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 import { FaAngleDown } from "react-icons/fa";
-import santimassuh from "../../images/santimassuh.jpeg";
+import santimassuh from "../../images/SantiMassuh.jpeg";
 import joseatencia from "../../images/joseatencia.jpeg";
 
 export default function LandingPage() {

@@ -39,7 +39,6 @@
 }
 
 .brandsContainer {
-  border: 1px solid rgb(77, 48, 48);
   width: 50%;
   display: flex;
   justify-content: center;
