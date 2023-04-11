@@ -40,16 +40,15 @@
 
 .cardContainer h1 {
   color: rgb(84, 80, 80);
-  text-shadow: 1px 1px 1px rgb(181, 171, 171);
   padding-top: 15px;
   font-family: Bebas;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .cardContainer h2 {
-  color: rgb(112, 112, 118);
+  color: rgb(72, 72, 77);
   font-weight: 1000;
-  font-size: 15px;
+  font-size: 16px;
   font-family: Bebas;
   padding-top: 5px;
   padding-bottom: 5px;
