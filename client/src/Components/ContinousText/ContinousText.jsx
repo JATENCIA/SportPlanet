@@ -4,7 +4,7 @@ import style from "./ContinousText.module.css";
 export default function ContinousText() {
   return (
     <div className={style.container}>
-      <span>• CHECK OUT OUR PROMOTIONS TO FIND OUT CRAZY DISCOUNTS ! •</span>
+      <span>🚂 LOOK AT OUR PROMOTIONS TO DISCOVER CRAZY DISCOUNTS 🚨</span>
     </div>
   );
 }
