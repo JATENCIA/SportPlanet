@@ -18,31 +18,31 @@ Content-Type: application/json
 
 //Footwear
 {
- "name":"Fila Force Women", 
+ "name":"Sneakers Under Armour Curry", 
  "productConditionals":[
  
- {  "color":"blue",
-  "image":["https://http2.mlstatic.com/D_NQ_NP_797125-MLA51988341773_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_695439-MLA51988390079_102022-O.webp","image.png"],
-  "size":[{"7'5": 10},{"8": 5},{"9": 2}]},
+ {  "color":"white",
+  "image":["https://kenlu.net/wp-content/uploads/2021/04/20210423-UA-Curry-1-31.jpg","https://ct.yimg.com/xd/api/res/1.2/n7CfPU4H5WlHawH.yIkxxg--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD0zODg7cT04NTtyb3RhdGU9YXV0bzt3PTcwMA--/https://s.yimg.com/ob/image/aa7a040a-abec-49fc-a258-90b7c1dc9bb2.jpg","https://kenlu.net/wp-content/uploads/2021/04/20210423-UA-Curry-1-27.jpg"],
+  "size":[{"7'5": 12},{"8": 9},{"9": 4}]},
   
- { "color":"black",
-  "image":["https://http2.mlstatic.com/D_NQ_NP_757252-MLA51988081275_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_621029-MLA51988081127_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_789619-MLA51988065332_102022-O.webp"],
-  "size":[{"8": 5},{"8'5": 3},{"9": 2},{"9'5": 2}]},
+ { "color":"purple",
+  "image":["https://cdn.weartesters.com/wp-content/uploads/2015/01/Under-Armour-Curry-One-Dark-Matter-for-NBA-All-Star-1.jpg","https://i.ebayimg.com/images/g/P-kAAOSw9kFjqauo/s-l1200.jpg","https://i.ebayimg.com/thumbs/images/g/k14AAOSwiwRj9atc/s-l300.jpg"],
+  "size":[{"8": 32},{"8'5": 19},{"9": 41},{"9'5": 61}]},
   
- { "color":"white",
-  "image":["https://http2.mlstatic.com/D_NQ_NP_962993-MLA51988286236_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_944179-MLA51988273171_102022-O.webp","https://http2.mlstatic.com/D_NQ_NP_919609-MLA51988279104_102022-O.webp"],
-  "size":[{"8": 2},{"8'5": 19},{"9": 5},{"9'5": 7}]}
+ { "color":"blue",
+  "image":["https://sneakernews.com/wp-content/uploads/2021/10/ua-curry-one-3026047-400.jpg?w=780","https://images.stockx.com/images/Under-Armour-Curry-1-Retro-Home-2021.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1639998083","https://laverdadnoticias.com/__export/1593467337095/sites/laverdad/img/2020/06/29/revelan_por_que_stephen_curry_dejo_a_nike_para_firmar_con_under_armor.jpg_673822677.jpg"],
+  "size":[{"8": 7},{"8'5": 12},{"9": 6},{"9'5": 9}]} 
   
   ],
  "price":58,
  "user":"643196f41b964ba1250414a0",
  "discount":0,
- "description":"Throughout its 110-year history, Fila has known how to unite the sporty with the casual. The brand's disruptive DNA is seen in each collection, where design trends and cutting-edge technology complement each other. EVA rubber sole It provides better cushioning, since it is light, flexible and has great elasticity. for training Training comfortably and safely is possible with these shoes thanks to their flat and more flexible sole.",
- "season":2020,
+ "description":"Inspired by streetball players from around the world, these shoes are durable enough to rule any court. The durable rubber outsole, breathable open mesh, and abrasion-resistant overlays let you play anywhere from hardwood to asphalt.",
+ "season":2021,
  "category": "footwear",
  "gender":"women",
  "state":"new",
- "brands":"FILA"
+ "brands":"UNDER ARMOUR"
 }
 
 
@@ -54,3 +54,9 @@ Content-Type: application/json
 {
  "season": 2015
 }
+
+
+//
+
+
+//
