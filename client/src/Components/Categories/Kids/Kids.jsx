@@ -10,7 +10,7 @@ import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import Filter from "../../Filters/Filters";
 import style from "./Kids.module.css";
 
-export default function Man() {
+export default function Kids() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProduct());
@@ -21,12 +21,13 @@ export default function Man() {
   useEffect(() => {
     dispatch(filterBySize("small"));
   }, [dispatch]);
-
   const filterProducts = allProducts.filter(
-    (product) => product.category === "tshirts" && product.size === "small"
+    (product) => product.category === "tshirts" && product.productConditionals[0].size[0].S > 0
   );
 
-  console.log("2", filterProducts);
+
+
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
