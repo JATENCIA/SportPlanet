@@ -16,6 +16,8 @@ import { getAllUser } from "../../redux/Actions";
 import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import ContinousText from "../../Components/ContinousText/ContinousText";
+import Footer from "../../Components/Footer/Footer";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ export const Home = () => {
 
   return (
     <div className={style.main}>
-      <h1 className={style.h1Top}>FREE SHIPPING OVER $15</h1>
+      <ContinousText />
       <NavBar />
       <FilterNavBar />
       <Categories />
@@ -97,9 +99,8 @@ export const Home = () => {
             and payments platform in Latin America.
           </p>
         </div>
-        <hr></hr>
         <ScrollToTop />
-        <div className={style.footer}>Sport Planet ©</div>
+        <Footer />
       </div>
     </div>
   );
