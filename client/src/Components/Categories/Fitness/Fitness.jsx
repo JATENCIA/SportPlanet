@@ -17,7 +17,7 @@ export default function Fitness() {
   const allProducts = useSelector((state) => state.allProducts);
   const filterProducts = allProducts.filter((product) => {
     return (
-      product.category === "accessories" || product.category === "supplements"
+      product.category === "supplements"
     );
   });
 
