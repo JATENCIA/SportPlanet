@@ -40,7 +40,7 @@ import Man from "./src/Components/Categories/Man/Man";
 import Woman from "./src/Components/Categories/Woman/Woman";
 import Kids from "./src/Components/Categories/Kids/Kids";
 import Promotions from "./src/Components/Categories/Promotions/Promotions";
-
+import Fitness from "./src/Components/Categories/Fitness/Fitness";
 
 import ProfileReviews from "./src/views/Profile/ProfileReviews/ProfileReviews";
 import AdminShopping from "./src/views/Admin/AdminShopping/AdminShopping";
@@ -98,10 +98,8 @@ const App = () => {
         <Route path="/category/kids" Component={Kids} />
         <Route path="/category/promotions" Component={Promotions} />
 
-
         <Route path="/category/fitness" Component={Fitness} />
         <Route path="*" Component={Home} />
-
       </Routes>
     </>
   );
