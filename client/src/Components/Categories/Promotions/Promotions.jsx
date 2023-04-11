@@ -7,7 +7,7 @@ import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import Filter from "../../Filters/Filters";
+
 import style from "./Promotions.module.css";
 
 export default function Promotions() {
@@ -21,7 +21,7 @@ export default function Promotions() {
     dispatch(filterByPrice());
   }, [dispatch]);
 
-  const filterProducts = allProducts.filter((product) => product.price <= 20);
+  const filterProducts = allProducts.filter((product) => product.price < 20);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -37,7 +37,7 @@ export default function Promotions() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filter />
+
 
       <div className={style.container}>
         {products.length > 0 ? (
