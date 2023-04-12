@@ -9,6 +9,7 @@ import Admin from "./src/views/Admin/Admin";
 import AdminProducts from "./src/views/Admin/AdminProducts/AdminProducts";
 import SearchedProducts from "./src/views/SearchedProducts/SearchedProducts";
 import SellProduct from "./src/views/Forms/SellProduct/SellProduct";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Fonts
 import "./src/fonts/SportsWorld.ttf";
@@ -52,6 +53,7 @@ import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
 import Cart from "./src/Components/Cart";
 
 const App = () => {
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const location = useLocation();
   return (
     <>
@@ -67,39 +69,38 @@ const App = () => {
         <Route path="/profile/favorites" Component={ProfileFavorites} />
         <Route path="/profile/myproducts" Component={ProfileProducts} />
         <Route path="/profile/reviews" Component={ProfileReviews} />
-        <Route path="/dashboard" Component={Admin} />
-        <Route path="/dashboard/myproducts" Component={AdminProducts} />
-        <Route path="/dashboard/shopping" Component={AdminShopping} />
-        <Route path="/dashboard/sales" Component={AdminSales} />
-        <Route path="/dashboard/reviews" Component={AdminReviews} />
-        <Route path="/dashboard/favorites" Component={AdminFavorites} />
-        <Route path="/dashboard/allusers" Component={AllUsers} />
-        <Route path="/dashboard/allproducts" Component={AllProducts} />
-        <Route path="/category/tShirts" Component={Tshirts} />
-        <Route path="products/:product" Component={SearchedProducts} />
-        <Route path="/category/nike" Component={Nike} />
-        <Route path="/category/adidas" Component={Adidas} />
-        <Route path="/category/puma" Component={Puma} />
-        <Route path="/category/under-armour" Component={UnderArmour} />
-        <Route path="/category/fila" Component={Fila} />
-        <Route path="/category/reebok" Component={Reebok} />
-        <Route path="/category/pants" Component={Pants} />
-        <Route path="/category/gym" Component={Gym} />
-        <Route path="/category/shoes" Component={Shoes} />
-        <Route path="/category/balls" Component={Balls} />
-        <Route path="/category/supplements" Component={Supplements} />
-        <Route path="/category/accessories" Component={Accesories} />
-        <Route path="/post/product" Component={SellProduct} />
+        <Route path="/dashboard" element={isAuthenticated ? <Admin /> : <Navigate to="/home" />} />
+        <Route path="/dashboard/myproducts" element={isAuthenticated ? <AdminProducts /> : <Navigate to="/home" />} />
+        <Route path="/dashboard/shopping" element={isAuthenticated ? <AdminShopping /> : <Navigate to="/home" />} />
+        <Route path="/dashboard/sales" element={isAuthenticated ? <AdminSales /> : <Navigate to="/home" />} />
+        <Route path="/dashboard/reviews" element={isAuthenticated ? <AdminReviews /> : <Navigate to="/home" />} />
+        <Route path="/dashboard/favorites" element={isAuthenticated ? <AdminFavorites /> : <Navigate to="/home" />} />
+        <Route path="/dashboard/allusers" element={isAuthenticated ? <AllUsers /> : <Navigate to="/home" />} />
+        <Route path="/dashboard/allproducts" element={isAuthenticated ? <AllProducts /> : <Navigate to="/home" />} />
+        <Route path="/category/tShirts" element={<Tshirts/>} />
+        <Route path="products/:product" element={<SearchedProducts/>} />
+        <Route path="/category/nike" element={<Nike/>} />
+        <Route path="/category/adidas" element={<Adidas/>} />
+        <Route path="/category/puma" element={<Puma/>} />
+        <Route path="/category/under-armour" element={<UnderArmour/>} />
+        <Route path="/category/fila" element={<Fila/>} />
+        <Route path="/category/reebok" element={<Reebok/>} />
+        <Route path="/category/pants" element={<Pants/>} />
+        <Route path="/category/gym" element={<Gym/>} />
+        <Route path="/category/shoes" element={<Shoes/>} />
+        <Route path="/category/balls" element={<Balls/>} />
+        <Route path="/category/supplements" element={<Supplements/>} />
+        <Route path="/category/accessories" element={<Accesories/>} />
 
-        <Route path="/cart" Component={Cart} />
+        <Route path="/post/product" element={<SellProduct/>} />
+        <Route path="/cart" element={<Cart/>} />
+        <Route path="/category/man" element={<Man/>} />
+        <Route path="/category/woman" element={<Woman/>} />
+        <Route path="/category/kids" element={<Kids/>} />
+        <Route path="/category/promotions" element={<Promotions/>} />
 
-        <Route path="/category/man" Component={Man} />
-        <Route path="/category/woman" Component={Woman} />
-        <Route path="/category/kids" Component={Kids} />
-        <Route path="/category/promotions" Component={Promotions} />
-
-        <Route path="/category/fitness" Component={Fitness} />
-        <Route path="*" Component={Home} />
+        <Route path="/category/fitness" element={<Fitness/>} />
+        <Route path="*" element={<Home/>} />
       </Routes>
     </>
   );
