@@ -47,7 +47,7 @@ const eMailUserEnable = async (user) => {
         
         <div style="display: flex; padding: 20px 10px 20px 10px; ">
           <div style=" padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
-            <img src="https://i.ibb.co/8s8Kwjc/Sports-Planet.jpg" alt="" style="width: 300px;" />
+            <img src="https://lh3.googleusercontent.com/5eEGb8y-_1ZO7xY3dbfn9i2yniw4k-dL92ApzpC6a8_yIa9C438N2XmmKLee3wWDiu5VK9EoZXR1eIf6MuqjoBvGuMoaBzu89s9ph568" alt="" style="width: 300px;" />
             <p style='color:#08042B'>For inquiries or support you can contact us through our digital channels sportplanet.mp@gmail.com </p>
           </div>
         </div>
@@ -76,7 +76,7 @@ const eMailUserEnable = async (user) => {
     attachments: [
       {
         filename: "RC1.jpg",
-        path: "https://i.ibb.co/8s8Kwjc/Sports-Planet.jpg",
+        path: "https://lh3.googleusercontent.com/5eEGb8y-_1ZO7xY3dbfn9i2yniw4k-dL92ApzpC6a8_yIa9C438N2XmmKLee3wWDiu5VK9EoZXR1eIf6MuqjoBvGuMoaBzu89s9ph568",
         cid: "RC1",
       },
     ],
