@@ -259,7 +259,7 @@ export default function SellProduct() {
           "This item is now available for sale!",
           "success"
         );
-        navigate("/profile");
+        navigate("/post/product");
       } catch (error) {
         return { messaje: `${error}` };
       }

@@ -85,16 +85,21 @@
   transform: scale(1.05);
 }
 
-.filter .myShopping,
+.filter,
+.myShopping,
 .mySales,
 .myFavorites,
 .myReviews,
+.sellProducts,
 .help {
   transition: all 200ms ease;
 }
 
 .filter:hover .myShopping {
   color: rgb(89, 89, 195);
+}
+.filter:hover .sellProducts {
+  color: rgb(155, 11, 222);
 }
 .filter:hover .mySales {
   color: rgb(51, 123, 69);
