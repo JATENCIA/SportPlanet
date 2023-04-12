@@ -14,6 +14,7 @@ import {
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
   SHOP,
+  CLEAN_SEARCHED_PRODUCTS,
 } from "../Actions";
 
 const initialState = {
@@ -108,6 +109,19 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         productDetail: action.payload,
       };
+    case FILTER_BY_SIZE:
+    /*   let productBySize = [...state.allProducts] */
+    /*     .sort((a, b) => { */
+    /*       const sizeValues = { small: 1, medium: 2, large: 2, xlarge: 4 }; */
+    /*       const aSizeValues = sizeValues[a.size]; */
+    /*       const bSizeValues = sizeValues[b.size]; */
+    /*       return aSizeValues - bSizeValues; */
+    /*     }) */
+    /*     .filter((product) => product.size === action.payload); */
+    /*   return { */
+    /*     ...state, */
+    /*     filteredProducts: productBySize, */
+    /*   }; */
 
     case FILTER_BY_SIZE:
       let productSize = []
@@ -124,13 +138,21 @@ export const rootReducer = (state = initialState, action) => {
         productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].L  > 0 )
         
       }
+      
       else if (action.payload === "xlarge"){
         productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[1].XL > 0 )
         
       }
+      
+      /* else if (action.payload === "XL"){ */
+      /*   productSize = [...state.allProducts].filter(e => e.size[0].XL >= 0 ) */
+      /*    */
+      /* } */
       else {
         productSize = state.allProducts
       }
+      
+      
       return {
         ...state,
         filteredProducts: [...productSize]
@@ -164,6 +186,12 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         searchedProducts: action.payload,
       };
+
+    case CLEAN_SEARCHED_PRODUCTS:
+      return{
+        ...state,
+        searchedProducts: []
+      }
 
       case ADD_TO_CART:
         let productItem = state.allProducts.find(product => product._id === action.payload)

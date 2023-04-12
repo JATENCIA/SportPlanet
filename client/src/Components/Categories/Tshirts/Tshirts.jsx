@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import Filter from "../../Filters/Filters";
+import Footer from "../../Footer/Footer";
 
 function Tshirts() {
   const dispatch = useDispatch();
@@ -55,17 +56,20 @@ function Tshirts() {
             );
           })
         ) : (
-          <p className={style.loading}>LOADING...</p>
+          <p className={style.loading}>NO ÍTEMS FOUND...</p>
         )}
       </div>
 
-      <Paginate
-        productsPerPage={productsPerPage}
-        allProducts={filterProducts.length}
-        setPagination={setPagination}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      {products.length > 0 ? (
+  <Paginate
+    productsPerPage={productsPerPage}
+    allProducts={filterProducts.length}
+    setPagination={setPagination}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+  />
+) : null}
+<Footer />
     </div>
   );
 }
