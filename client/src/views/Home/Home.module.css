@@ -39,12 +39,12 @@
 }
 
 .aboutUsDescription {
-  font-family: aBlackLives;
+  font-family: RobotoCondensed;
   text-align: center;
-  font-size: small;
-  color: rgb(124, 135, 135);
+  font-size: large;
+  color: rgb(66, 66, 66);
   width: 80%;
-  font-weight: 0;
+  font-weight: 1000;
 }
 
 .brandSection {

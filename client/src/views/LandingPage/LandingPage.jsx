@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { getAllUser } from "../../redux/Actions";
 import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 import { FaAngleDown } from "react-icons/fa";
+import santimassuh from "../../images/SantiMassuh.jpeg";
+import joseatencia from "../../images/joseatencia.jpeg";
 
 export default function LandingPage() {
   const myRef = React.useRef(null);
@@ -77,7 +79,10 @@ export default function LandingPage() {
           </div>
 
           <div className={style.teamMemberCard}>
-            <div className={style.imgContainer}>IMAGEN</div>
+            <div className={style.imgContainer}>
+              <img src={joseatencia} />
+            </div>
+            <hr></hr>
             <h2>JOSE ATENCIA</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
@@ -91,7 +96,10 @@ export default function LandingPage() {
           </div>
 
           <div className={style.teamMemberCard}>
-            <div className={style.imgContainer}>IMAGEN</div>
+            <div className={style.imgContainer}>
+              <img src={santimassuh}></img>
+            </div>
+            <hr></hr>
             <h2>SANTIAGO MASSUH</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
