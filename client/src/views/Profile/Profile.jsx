@@ -4,6 +4,7 @@ import { NavBar } from "../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileCard from "./ProfileCard/ProfileCard";
 import { Link } from "react-router-dom";
+
 import {
   FaShoppingBag,
   FaDollarSign,
@@ -15,7 +16,8 @@ import {
   FaListAlt,
 } from "react-icons/fa";
 
-import { MdRateReview } from "react-icons/md";
+import { MdRateReview, MdSell } from "react-icons/md";
+import SellProduct from "../Forms/SellProduct/SellProduct";
 
 export const Profile = () => {
   const products = useSelector((state) => state.allProducts);
@@ -65,6 +67,13 @@ export const Profile = () => {
             <div className={style.filter}>
               <FaHeart />
               <h3 className={style.myFavorites}>FAVORITE PRODUCTS</h3>
+            </div>
+          </Link>
+
+          <Link to="/post/product">
+            <div className={style.filter}>
+              <MdSell />
+              <h3 className={style.sellProducts}>SELL PRODUCTS</h3>
             </div>
           </Link>
 
