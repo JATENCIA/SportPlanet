@@ -22,7 +22,7 @@ export default function SellProduct(){
 
     const { user } = useAuth0();
     const allUsers = useSelector((state) => state.allUsers);
-    const userDb = allUsers?.find((element) => element.eMail === user.email);
+    // const userDb = allUsers?.find((element) => element.eMail === user.email);
 
     const [flagPage1, setFlagPage1] = useState(true)
     const [flagPage2, setFlagPage2] = useState(false)
