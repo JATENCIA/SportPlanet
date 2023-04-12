@@ -1,22 +1,25 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getSearchedProducts } from "../../redux/Actions/actions";
+import { cleanSearchedProducts, getSearchedProducts } from "../../redux/Actions/actions";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import { NavBar } from "../../Components/Navbar";
 import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
 import { Link } from "react-router-dom";
 import style from "../SearchedProducts/searchedProducts.module.css";
+import { useNavigate } from 'react-router-dom';
 import { Paginate } from "../../Components/Paginate/Paginate";
 
 const SearchedProducts = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const searchedProducts = useSelector((state) => state.searchedProducts);
   const { product } = useParams();
 
   useEffect(() => {
-    dispatch(getSearchedProducts(product));
+    dispatch(getSearchedProducts(product, navigate));
     //return para limpiar searchedProducts
+    return function(){ dispatch(cleanSearchedProducts())}
   }, [dispatch, product]);
 
   const [currentPage, setCurrentPage] = React.useState(1);
