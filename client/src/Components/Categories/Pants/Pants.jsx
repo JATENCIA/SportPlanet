@@ -8,6 +8,7 @@ import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import Filters from "../../Filters/Filters";
 import style from "./Pants.module.css";
+import Footer from "../../Footer/Footer";
 
 export default function Pants() {
   const dispatch = useDispatch();
@@ -54,17 +55,20 @@ export default function Pants() {
             );
           })
         ) : (
-          <p className={style.loading}>LOADING...</p>
+          <p className={style.loading}>NO ÍTEMS FOUND...</p>
         )}
       </div>
 
-      <Paginate
-        productsPerPage={productsPerPage}
-        allProducts={filterProducts.length}
-        setPagination={setPagination}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      {products.length > 0 ? (
+  <Paginate
+    productsPerPage={productsPerPage}
+    allProducts={filterProducts.length}
+    setPagination={setPagination}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+  />
+) : null}
+<Footer />
     </div>
   );
 }
