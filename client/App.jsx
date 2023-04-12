@@ -152,7 +152,7 @@ const App = () => {
         <Route path="/category/kids" element={<Kids />} />
         <Route path="/category/promotions" element={<Promotions />} />
         <Route path="/category/fitness" element={<Fitness />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </>
   );
