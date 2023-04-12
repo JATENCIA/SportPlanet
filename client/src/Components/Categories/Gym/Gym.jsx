@@ -8,6 +8,7 @@ import Filter from "../../Filters/Filters";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
 import style from "./Gym.module.css";
+import Footer from "../../Footer/Footer";
 
 export default function Gym() {
   const dispatch = useDispatch();
@@ -52,17 +53,20 @@ export default function Gym() {
             );
           })
         ) : (
-          <p className={style.loading}>LOADING...</p>
+          <p className={style.loading}>NO ÍTEMS FOUND...</p>
         )}
       </div>
 
-      <Paginate
-        productsPerPage={productsPerPage}
-        allProducts={filteredProducts.length}
-        setPagination={setPagination}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      {products.length > 0 ? (
+  <Paginate
+    productsPerPage={productsPerPage}
+    allProducts={filterProducts.length}
+    setPagination={setPagination}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+  />
+) : null}
+<Footer />
     </div>
   );
 }
