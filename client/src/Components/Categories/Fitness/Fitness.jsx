@@ -7,6 +7,7 @@ import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import { Link } from "react-router-dom";
 import style from "./Fitness.module.css";
+import Footer from "../../Footer/Footer";
 
 export default function Fitness() {
   const dispatch = useDispatch();
@@ -54,17 +55,20 @@ export default function Fitness() {
             );
           })
         ) : (
-          <p className={style.loading}>LOADING...</p>
+          <p className={style.loading}>NO ÍTEMS FOUND...</p>
         )}
       </div>
 
-      <Paginate
-        productsPerPage={productsPerPage}
-        allProducts={filterProducts.length}
-        setPagination={setPagination}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      {products.length > 0 ? (
+  <Paginate
+    productsPerPage={productsPerPage}
+    allProducts={filterProducts.length}
+    setPagination={setPagination}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+  />
+) : null}
+<Footer />
     </div>
   );
 }
