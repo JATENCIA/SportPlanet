@@ -14,6 +14,7 @@ import {
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
   SHOP,
+  CLEAN_SEARCHED_PRODUCTS,
 } from "../Actions";
 
 const initialState = {
@@ -185,6 +186,12 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         searchedProducts: action.payload,
       };
+
+    case CLEAN_SEARCHED_PRODUCTS:
+      return{
+        ...state,
+        searchedProducts: []
+      }
 
       case ADD_TO_CART:
         let productItem = state.allProducts.find(product => product._id === action.payload)

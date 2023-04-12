@@ -1,20 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUser } from "../../../redux/Actions/actions";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import FilterNavBar from '../../../Components/FilterNavBar/FilterNavBar'
 import style from './sellProduct.module.css'
 import Swal from 'sweetalert2';
 import Dropzone from 'react-dropzone'
-import axios from 'axios';
+import  axios  from 'axios';
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+// import { postProduct } from "../../../redux/Actions";
 
 
 export default function SellProduct(){
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [image, setImage ] = useState([])
     const [secondImage, setSecondImage] = useState([]);
     const [thirdImage, setThirdImage] = useState([]);
     const [loading, setLoading] = useState("")
 
+    const { user } = useAuth0();
+    const allUsers = useSelector((state) => state.allUsers);
+    const userDb = allUsers?.find((element) => element.eMail === user.email);
 
     const [flagPage1, setFlagPage1] = useState(true)
     const [flagPage2, setFlagPage2] = useState(false)
@@ -32,9 +40,12 @@ export default function SellProduct(){
         description: "",
         season: "",
         category: "",
-        gender: "unisex",
+        gender: "",
         state: "",
         brands: "",
+        discount: 0,
+        // user: userDb._id,
+        user: "6431bb0f80761ad3170814ae",
     });
     const [ sizes, setSizes] = useState({
         S: 0,
@@ -64,7 +75,7 @@ export default function SellProduct(){
     const [ amount, setAmount ] = useState(0)
     const [ secondAmount, setSecondAmount ] = useState(0)
     const [ thirdAmount, setThirdAmount ] = useState(0)
-    
+
     const [color, setColor] = useState("")
     const [secondColor, setSecondColor] = useState("");
     const [thirdColor, setThirdColor] = useState("");
@@ -105,7 +116,7 @@ export default function SellProduct(){
             </select>
 
             <input type='number' name={i} className={style.sizeNumber} onChange={shoesHandler}/>
-            
+
             </div>
         )
     };
@@ -129,7 +140,7 @@ export default function SellProduct(){
             </select>
 
             <input type='number' name={i} className={style.sizeNumber} onChange={secondShoesHandler}/>
-            
+
             </div>
         )
     };
@@ -152,7 +163,7 @@ export default function SellProduct(){
             </select>
 
             <input type='number' name={i} className={style.sizeNumber} onChange={thirdShoesHandler}/>
-            
+
             </div>
         )
     };
@@ -176,7 +187,7 @@ export default function SellProduct(){
             [e.target.name]: e.target.value
         })
     };
-    
+
     const amountHandler = (e) => {
         setAmount(e.target.value)
     };
@@ -184,19 +195,44 @@ export default function SellProduct(){
     const secondAmountHandler = (e) => {
         setSecondAmount(e.target.value)
     };
-    
+
     const thirdAmountHandler = (e) => {
         setThirdAmount(e.target.value)
     };
 
-    const changeHandler = (event) => {
+    const changeHandlerPage1 = (event) => {
+        setErrors1(validatorPage1(post))
+        setPost({
+            ...post,
+            [event.target.name]: event.target.value,
+        });
+    };
+    // const changeHandlerPage2 = (event) => {
+    //     setErrors2(sellValidator(post))
+    //     setPost({
+    //         ...post,
+    //         [event.target.name]: event.target.value,
+    //     });
+    // };
+    const changeHandlerPage3 = (event) => {
+        setErrors3(validatorPage3(post))
+        setPost({
+            ...post,
+            [event.target.name]: event.target.value,
+        });
+    };
+    const changeHandlerPage4 = (event) => {
+        setErrors4(sellValidator(post))
         setPost({
             ...post,
             [event.target.name]: event.target.value,
         });
     };
 
+
+
     const categoryChangeHandler = (event) => {
+        setErrors1(sellValidator(post))
         setPost({
             ...post,
             [event.target.name]: event.target.value,
@@ -211,21 +247,23 @@ export default function SellProduct(){
         if(Object.keys(e).length === 0) {
             setErrors4(e)
             try {
-                await axios.post('/products', post)
+                await axios.post("/products", post);
                 await Swal.fire('Product published','This item is now available for sale!', 'success')
                 navigate('/home')
             } catch (error) {
-                return { messaje: `${error}` };  
+                return { messaje: `${error}` };
             }
         }else{
             setErrors4(e)
         }
     };
-    
+
     const sellValidator = (post) => {
         const errors = {};
         if(!post.season) errors.season = "Season is required!";
         if(!post.state) errors.state = "Product condition must be entered!";
+        if(!post.gender) errors.gender = "Product gender is required!"
+        if(!post.brands) errors.brands = "Product brand is required!"
         return errors;
     };
 
@@ -246,7 +284,9 @@ export default function SellProduct(){
     const validatorPage2 = (post) => {
         const errors = {};
         if(!image.length) errors.image = "At least 1 image must be entered";
-        if(!colorFlag && !secondColorFlag && !thirdColorFlag) errors.color = "At least 1 color is required!"
+        if(!color) errors.color1 = "Product dominant color is required";
+        // if(!secondColor) errors.color2 =
+        if(!colorFlag && !secondColorFlag && !thirdColorFlag) errors.color = "At least 1 color is required!";
         return errors;
     };
 
@@ -278,8 +318,8 @@ export default function SellProduct(){
                 const thirdSize = Object.entries(thirdSizes).map(([size,amount]) => ({ [size]: amount }));
                 setPost({
                     ...post,
-                    productConditionals:[...post.productConditionals, 
-                        {color:color,image:image,size:size}, 
+                    productConditionals:[...post.productConditionals,
+                        {color:color,image:image,size:size},
                         {color:secondColor,image:secondImage,size:secondSize},
                         {color:thirdColor, image: thirdImage, size:thirdSize},
                     ]
@@ -361,7 +401,6 @@ export default function SellProduct(){
             });
             const data = post.data;
             const fileURL = data.secure_url;
-            console.log(fileURL);
             setImage((prevImages) => [...prevImages, fileURL]);
 
             axios.all(uploader).then(()=>{
@@ -377,8 +416,8 @@ export default function SellProduct(){
         if(loading === "false"){
             return (
                 <div className="mt-4">
-                {!image.length 
-                ? <p>There is no images uploaded</p> 
+                {!image.length
+                ? <p>There is no images uploaded</p>
                 : (
                 <div className="flex flex-wrap">
                     {image.map((img, index) => (
@@ -422,7 +461,7 @@ export default function SellProduct(){
             })
         });
     };
-    
+
     const secondImagePreview = () => {
         if(loading === "true"){
             return <h3 className='text-center'>Loading images...</h3>
@@ -430,8 +469,8 @@ export default function SellProduct(){
         if(loading === "false"){
             return (
                 <div className="mt-4">
-                {!secondImage.length 
-                ? <p className='text-center'>There is no images uploaded</p> 
+                {!secondImage.length
+                ? <p className='text-center'>There is no images uploaded</p>
                 : (
                 <div className="flex flex-wrap">
                     {secondImage.map((img, index) => (
@@ -448,7 +487,7 @@ export default function SellProduct(){
             )
         }
     };
-    
+
     const secondColorHandler = (e) => {
         e.preventDefault();
         setSecondColor(e.target.value)
@@ -487,8 +526,8 @@ export default function SellProduct(){
         if(loading === "false"){
             return (
                 <div className="mt-4">
-                {!thirdImage.length 
-                ? <p className='text-center'>There is no images uploaded</p> 
+                {!thirdImage.length
+                ? <p className='text-center'>There is no images uploaded</p>
                 : (
                 <div className="flex flex-wrap">
                     {thirdImage.map((img, index) => (
@@ -506,25 +545,29 @@ export default function SellProduct(){
         }
     };
 
+    useEffect(() => {
+        dispatch(getAllUser());
+      }, [dispatch, location]);
+
     return (
         <>
         <NavBar />
         <FilterNavBar />
         <div className={style.formContainer}>
         <form onSubmit={submitHandler}>
-            {flagPage1 && 
+            {flagPage1 &&
             <>
             <h1 className="text-3xl font-bold text-gray-900 mb-5 text-center border-b-2 border-gray-900">Post the product you want to sell!</h1>
-            
+
             <div>
             <label className="block text-gray-800 text-xl font-bold">Product Name</label>
-            <input type="text" name='name' value={post.name} onChange={changeHandler} className={style.input} />
+            <input type="text" name='name' value={post.name} onChange={changeHandlerPage1} className={style.input} />
             <p className={style.errors}>{errors1.name}</p>
             </div>
 
             <div className="mt-5">
             <label className="block text-gray-800 text-xl font-bold">Description</label>
-            <textarea type='text' name='description' value={post.description} onChange={changeHandler} className={style.input}/>
+            <textarea type='text' name='description' value={post.description} onChange={changeHandlerPage1} className={style.input}/>
             <p className={style.errors}>{errors1.description}</p>
             </div>
 
@@ -537,12 +580,13 @@ export default function SellProduct(){
                 <option value='footwear'>Shoes</option>
                 <option value='balls'>Balls</option>
                 <option value='supplements'>Supplements</option>
+                <option value='gym'>Fitness</option>
                 <option value='accessories'>Accesories</option>
             </select>
             <p className={style.errors}>{errors1.category}</p>
             </div>
 
-            
+
 
             <div className="mt-8"> <button onClick={clickPage1} className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mx-auto block">NEXT PAGE</button> </div>
             </>
@@ -551,7 +595,7 @@ export default function SellProduct(){
             {flagPage2 &&
             <>
             <p className={style.errors}>{errors2.color}</p>
-            {colorFlag ? 
+            {colorFlag ?
             <>
             <div className="mt-5">
                 <h1 className="text-3xl font-bold text-gray-700 mb-5 text-center">First Color</h1>
@@ -571,13 +615,14 @@ export default function SellProduct(){
                 <option value="black" className={style.coloresBlack}>Black</option>
                 <option value="brown" className={style.coloresBrown}>Brown</option>
                 </select>
+                <p className={style.errors}>{errors2.color1}</p>
             </div>
 
             <div className="mt-5">
             <label className="block text-gray-800 text-xl font-bold">Image</label>
-            
+
             <div className={style.uploadContainer}>
-            
+
             <Dropzone className={style.dropzone} onChange={(e)=>setImage(e.target.value)} onDrop={dropHandler}>
                 {({getRootProps, getInputProps}) => (
                     <section className={style.dropzone}>
@@ -609,7 +654,7 @@ export default function SellProduct(){
             </select>
             <input type='number' value={sizes.S !== 0 ? sizes.S : ""} onChange={sizesChangeHandler} name="S" className={style.sizeNumber} min='0'/>
             </div>
-        
+
             <div>
             <select className={style.sizeSelectSinFlecha}>
                 <option>M</option>
@@ -639,9 +684,9 @@ export default function SellProduct(){
             </div>
 
             </div>
-            : post.category === "footwear" 
-            ? 
-                <div className="mt-5"> 
+            : post.category === "footwear"
+            ?
+                <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">Size</label>
                 {shoesSize}
                 </div>
@@ -653,13 +698,13 @@ export default function SellProduct(){
             }
             </>
         )}
-        
+
             </>
             :<button onClick={(e) => {e.preventDefault();setColorFlag(true)}} className="border border-dashed border-gray-500 py-2 px-4 rounded mx-auto block"> + Add new color</button>
             }
 
             <hr className="border border-dotted border-gray-500"/>
-            
+
             {secondColorFlag ? (
             <>
             <div className="mt-5">
@@ -684,9 +729,9 @@ export default function SellProduct(){
 
             <div className="mt-5">
             <label className="block text-gray-800 text-xl font-bold">Image</label>
-            
+
             <div className={style.uploadContainer}>
-            
+
             <Dropzone className={style.dropzone} onChange={(e)=>setSecondImage(e.target.value)} onDrop={secondDropHandler}>
                 {({getRootProps, getInputProps}) => (
                     <section className={style.dropzone}>
@@ -703,7 +748,7 @@ export default function SellProduct(){
 
             <p className={style.errors}>{errors2.image}</p>
             </div>
-            
+
             {categoryIsSelected && (
                 <>
             {post.category === "tshirts" || post.category === "pants"
@@ -747,9 +792,9 @@ export default function SellProduct(){
             </div>
 
             </div>
-            : post.category === "footwear" 
-            ? 
-                <div className="mt-5"> 
+            : post.category === "footwear"
+            ?
+                <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">Size</label>
                 {secondShoesSize}
                 </div>
@@ -761,7 +806,7 @@ export default function SellProduct(){
             }
             {/* <p className={style.errors}>{errors.size}</p> */}
             </>
-            
+
         )}
             </>
             )
@@ -794,9 +839,9 @@ export default function SellProduct(){
 
             <div className="mt-5">
             <label className="block text-gray-800 text-xl font-bold">Image</label>
-            
+
             <div className={style.uploadContainer}>
-            
+
             <Dropzone className={style.dropzone} onChange={(e)=>setThirdImage(e.target.value)} onDrop={thirdDropHandler}>
                 {({getRootProps, getInputProps}) => (
                     <section className={style.dropzone}>
@@ -857,9 +902,9 @@ export default function SellProduct(){
             </div>
 
             </div>
-            : post.category === "footwear" 
-            ? 
-                <div className="mt-5"> 
+            : post.category === "footwear"
+            ?
+                <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">Size</label>
                 {thirdShoesSize}
                 </div>
@@ -873,18 +918,18 @@ export default function SellProduct(){
             </>
         )}
             </>
-            ) 
+            )
             :<button onClick={(e) => {e.preventDefault();setThirdColorFlag(true)}} className="border border-dashed border-gray-500 py-2 px-4 rounded mx-auto block mt-8"> + Add new color</button>
             }
 
         <div className="mt-8 flex">
             <button onClick={clickPage2_previous} className="hover:bg-gray-700 hover:text-white text-gray-700 font-bold py-2 px-4 rounded mx-auto block border border-gray-700">PREVIOUS PAGE</button>
-            <button onClick={clickPage2_next} className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mx-auto block">NEXT PAGE</button> 
+            <button onClick={clickPage2_next} className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mx-auto block">NEXT PAGE</button>
             </div>
             </>
         }
 
-        {flagPage3 && 
+        {flagPage3 &&
         <>
         <div className="mt-5">
             <label className="block text-gray-800 text-xl font-bold">Set a Price</label>
@@ -892,23 +937,23 @@ export default function SellProduct(){
             <select className={style.sizeSelectSinFlecha}>
                 <option>USD</option>
             </select>
-            <input type='number' name='price' value={post.price} onChange={changeHandler} className={style.sizeNumber} min="0"/>
+            <input type='number' name='price' value={post.price} onChange={changeHandlerPage3} className={style.sizeNumber} min="0"/>
             </div>
             <p className={style.errors}>{errors3.price}</p>
             </div>
 
             <div className="mt-8 flex">
-            <button onClick={clickPage3_previous} className="hover:bg-gray-700 hover:text-white text-gray-700 font-bold py-2 px-4 rounded mx-auto block border border-gray-700">PREVIOUS PAGE</button>  
-            <button onClick={clickPage3_next} className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mx-auto block">NEXT PAGE</button>  
+            <button onClick={clickPage3_previous} className="hover:bg-gray-700 hover:text-white text-gray-700 font-bold py-2 px-4 rounded mx-auto block border border-gray-700">PREVIOUS PAGE</button>
+            <button onClick={clickPage3_next} className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mx-auto block">NEXT PAGE</button>
             </div>
         </>
         }
 
-        {flagPage4 && 
+        {flagPage4 &&
         <>
         <div className="mt-5">
             <label className="block text-gray-800 text-xl font-bold">Season</label>
-            <select onChange={changeHandler} name='season' value={post.season} className={style.input}>
+            <select onChange={changeHandlerPage4} name='season' value={post.season} className={style.input}>
                 <option disabled> </option>
                 {yearOptions}
             </select>
@@ -917,16 +962,18 @@ export default function SellProduct(){
 
         <div className="mt-5">
             <label className="block text-gray-800 text-xl font-bold">Gender</label>
-            <select onChange={changeHandler} name='gender' value={post.gender} className={style.input}>
+            <select onChange={changeHandlerPage4} name='gender' value={post.gender} className={style.input}>
+                <option disabled> </option>
                 <option value='unisex'>Unisex</option>
                 <option value='women'>Women</option>
                 <option value='men'>Men</option>
             </select>
+            <p className={style.errors}>{errors4.gender}</p>
             </div>
 
             <div className="mt-5">
             <label className="block text-gray-800 text-xl font-bold">Condition</label>
-            <select onChange={changeHandler} name='state' value={post.state} className={style.input}> 
+            <select onChange={changeHandlerPage4} name='state' value={post.state} className={style.input}>
                 <option disabled> </option>
                 <option value='new'>New</option>
                 <option value='used'>Used</option>
@@ -936,19 +983,21 @@ export default function SellProduct(){
 
             <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">Brand</label>
-                <select onChange={changeHandler} name='brands' value={post.brands} className={style.input}>
-                    <option> </option>
+                <select onChange={changeHandlerPage4} name='brands' value={post.brands} className={style.input}>
+                    <option disabled> </option>
                     <option value='ADIDAS'>Adidas</option>
                     <option value='NIKE'>Nike</option>
                     <option value='PUMA'>Puma</option>
-                    <option value='REBOOK'>Reebok</option>
+                    <option value='REEBOK'>Reebok</option>
                     <option value='UNDER ARMOUR'>Under Armour</option>
-                    <option value='COLUMBIA'>Columbia</option>
+                    <option value='FILA'>Fila</option>
+                    <option value='OTHER'>Other</option>
                 </select>
+            <p className={style.errors}>{errors4.brands}</p>
             </div>
 
             <div className="mt-8 flex">
-            <button onClick={clickPage4_previous} className="hover:bg-gray-700 hover:text-white text-gray-700 font-bold py-2 px-4 rounded mx-auto block border border-gray-700">PREVIOUS PAGE</button>    
+            <button onClick={clickPage4_previous} className="hover:bg-gray-700 hover:text-white text-gray-700 font-bold py-2 px-4 rounded mx-auto block border border-gray-700">PREVIOUS PAGE</button>
             <button type="submit" className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mx-auto block">POST THIS PRODUCT</button>
             </div>
         </>
