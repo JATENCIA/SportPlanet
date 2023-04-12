@@ -1,28 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../../../redux/Actions";
-import { Link } from "react-router-dom";
-import { NavBar } from "../../Navbar";
-import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import Filter from "../../Filters/Filters";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
-import style from "./Gym.module.css";
+import { Link, useParams } from "react-router-dom";
+import { NavBar } from "../../Navbar/Navbar";
+import FilterNavBar from "../../FilterNavBar/FilterNavBar";
+import Filters from "../../Filters/Filters";
+import style from "./BrandsSinHardcodeo.module.css";
 
-export default function Gym() {
+export default function BrandsSinHardcodeo() {
   const dispatch = useDispatch();
-
-  React.useEffect(() => {
+  let { brand } = useParams()
+  useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const products = useSelector((state) => state.filteredProducts);
+  const allProducts = useSelector((state) => state.allProducts);
+  const filterProducts = allProducts.filter((product) => {
+    brand = brand.toUpperCase();
+    if(brand === "UNDER-ARMOUR"){
+        brand = "UNDER ARMOUR"
+    }
+    return product.brands === brand;
+  });
 
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
   const ultimo = currentPage * productsPerPage;
   const primero = ultimo - productsPerPage;
-  const filteredProducts = products.slice(primero, ultimo);
+  const products = filterProducts.slice(primero, ultimo);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
@@ -32,7 +39,7 @@ export default function Gym() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filter />
+      <Filters />
 
       <div className={style.container}>
         {products.length > 0 ? (
@@ -58,7 +65,7 @@ export default function Gym() {
 
       <Paginate
         productsPerPage={productsPerPage}
-        allProducts={filteredProducts.length}
+        allProducts={filterProducts.length}
         setPagination={setPagination}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

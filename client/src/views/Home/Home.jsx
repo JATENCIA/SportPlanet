@@ -40,19 +40,19 @@ export const Home = () => {
         <div className={style.brandSection}>
           <h1 className={style.brandTitle}>OUR BRANDS</h1>
           <div className={style.brandContainer}>
-            <Link to="/category/nike">
+            <Link to="/brand/nike">
               <div className={style.brand}>
                 <img src={nikeLogo} className={style.brandImg} />
               </div>
             </Link>
 
-            <Link to="/category/adidas">
+            <Link to="/brand/adidas">
               <div className={style.brand}>
                 <img src={adidasLogo} className={style.brandImg} />
               </div>
             </Link>
 
-            <Link to="/category/puma">
+            <Link to="/brand/puma">
               <div className={style.brand}>
                 <img src={pumaLogo} className={style.brandImg} />
               </div>
@@ -60,19 +60,19 @@ export const Home = () => {
           </div>
 
           <div className={style.brandContainer}>
-            <Link to="/category/under-armour">
+            <Link to="/brand/under-armour">
               <div className={style.brand}>
                 <img src={underArmour} className={style.brandImg} />
               </div>
             </Link>
 
-            <Link to="/category/fila">
+            <Link to="/brand/fila">
               <div className={style.brand}>
                 <img src={filaLogo} />
               </div>
             </Link>
 
-            <Link to="/category/reebok">
+            <Link to="/brand/reebok">
               <div className={style.brand}>
                 <img src={reebokLogo} />
               </div>

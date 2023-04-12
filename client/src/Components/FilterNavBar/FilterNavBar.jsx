@@ -9,10 +9,10 @@ export default function FilterNavBar() {
 
   return (
       <div className={style.navContainer}>
-      <Link to="/category/man">
+      <Link to="/category/men">
       <button>MAN</button>
       </Link>
-      <Link to="/category/woman">
+      <Link to="/category/women">
       <button>WOMAN</button>
       </Link>
       <Link to="/category/kids">
@@ -50,22 +50,22 @@ export default function FilterNavBar() {
       <button>BRANDS</button>
       <div className={style.dropdownContent}>
             <div className={style.boton}>
-            <Link to="/category/nike">NIKE</Link>
+            <Link to="/brand/nike">NIKE</Link>
             </div>
             <div className={style.boton}>
-            <Link to="/category/adidas">ADIDAS</Link>
+            <Link to="/brand/adidas">ADIDAS</Link>
             </div>
             <div className={style.boton}>
-            <Link to="/category/puma">PUMA</Link>
+            <Link to="/brand/puma">PUMA</Link>
             </div>
             <div className={style.boton}>
-            <Link to="/category/under-armour">UNDER-ARMOUR</Link>
+            <Link to="/brand/under-armour">UNDER ARMOUR</Link>
             </div>
             <div className={style.boton}>
-            <Link to="/category/fila">FILA</Link>
+            <Link to="/brand/fila">FILA</Link>
             </div>
             <div className={style.boton}>
-            <Link to="/category/reebok">REEBOK</Link>
+            <Link to="/brand/reebok">REEBOK</Link>
             </div>
     </div>
     </div>

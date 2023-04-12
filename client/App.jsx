@@ -19,26 +19,14 @@ import "./src/fonts/RobotoCondensed.ttf";
 import "./src/fonts/Bebas.ttf";
 import "./src/fonts/MetroPoliceLight.otf";
 import "./src/fonts/MetroPoliceRegular.otf";
-import Tshirts from "./src/Components/Categories/Tshirts/Tshirts";
-import Shoes from "./src/Components/Categories/Shoes/Shoes";
-import Balls from "./src/Components/Categories/Balls/Balls";
-import Supplements from "./src/Components/Categories/Suplements/Suplements";
-import Accesories from "./src/Components/Categories/Accesories/Accesories";
-import Gym from "./src/Components/Categories/Gym/Gym";
-import Pants from "./src/Components/Categories/Pants/Pants";
-import Puma from "./src/Components/Categories/Puma/Puma";
-import Nike from "./src/Components/Categories/Nike/Nike";
-import Adidas from "./src/Components/Categories/Adidas/Adidas";
-import UnderArmour from "./src/Components/Categories/UnderArmour/UnderArmour";
-import Fila from "./src/Components/Categories/Fila/Fila";
-import Reebok from "./src/Components/Categories/Reebok/Reebok";
+import CategorySinHardcodeo from "./src/Components/Categories/CategorySinHardcodeo/CategorySinHardcodeo";
+import BrandsSinHardcodeo from "./src/Components/Categories/BrandsSinHardcodeo/BrandsSinHardcodeo";
+
+
 import ProfileShopping from "./src/views/Profile/ProfileShopping/ProfileShopping";
 import ProfileSales from "./src/views/Profile/ProfileSales/ProfileSales";
 import ProfileFavorites from "./src/views/Profile/ProfileFavorites/ProfileFavorites";
 import ProfileProducts from "./src/views/Profile/ProfileProducts/ProfileProducts";
-import Man from "./src/Components/Categories/Man/Man";
-import Woman from "./src/Components/Categories/Woman/Woman";
-import Kids from "./src/Components/Categories/Kids/Kids";
 import Promotions from "./src/Components/Categories/Promotions/Promotions";
 import Fitness from "./src/Components/Categories/Fitness/Fitness";
 
@@ -75,30 +63,13 @@ const App = () => {
         <Route path="/dashboard/favorites" Component={AdminFavorites} />
         <Route path="/dashboard/allusers" Component={AllUsers} />
         <Route path="/dashboard/allproducts" Component={AllProducts} />
-        <Route path="/category/tShirts" Component={Tshirts} />
         <Route path="products/:product" Component={SearchedProducts} />
-        <Route path="/category/nike" Component={Nike} />
-        <Route path="/category/adidas" Component={Adidas} />
-        <Route path="/category/puma" Component={Puma} />
-        <Route path="/category/under-armour" Component={UnderArmour} />
-        <Route path="/category/fila" Component={Fila} />
-        <Route path="/category/reebok" Component={Reebok} />
-        <Route path="/category/pants" Component={Pants} />
-        <Route path="/category/gym" Component={Gym} />
-        <Route path="/category/shoes" Component={Shoes} />
-        <Route path="/category/balls" Component={Balls} />
-        <Route path="/category/supplements" Component={Supplements} />
-        <Route path="/category/accessories" Component={Accesories} />
+        {/* esta seria la nuevas  */}
+        <Route path="/category/:category" Component={CategorySinHardcodeo}/>
+        <Route path='/brand/:brand' Component={BrandsSinHardcodeo}/>
+        {/* estas serian la nuevas  */}
         <Route path="/post/product" Component={SellProduct} />
-
         <Route path="/cart" Component={Cart} />
-
-        <Route path="/category/man" Component={Man} />
-        <Route path="/category/woman" Component={Woman} />
-        <Route path="/category/kids" Component={Kids} />
-        <Route path="/category/promotions" Component={Promotions} />
-
-        <Route path="/category/fitness" Component={Fitness} />
         <Route path="*" Component={Home} />
       </Routes>
     </>

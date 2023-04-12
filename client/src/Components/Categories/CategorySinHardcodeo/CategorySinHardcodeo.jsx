@@ -3,21 +3,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../../../redux/Actions";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import Filters from "../../Filters/Filters";
-import style from "./Accesories.module.css";
+import style from "./CategorySinHardcodeo.module.css";
 
-export default function Accesories() {
-  const dispatch = useDispatch();
+export default function CategorySinHardcodeo() {
+    const dispatch = useDispatch();
+    let { category } = useParams();
+
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.allProducts);
   const filterProducts = allProducts.filter((product) => {
-    return product.category === "accessories";
+    if(category === "men" || category === "women"){
+      return product.gender === category
+    };
+
+    if(category === "kids"){
+      return product.category === "tshirts"
+    }
+
+    if(category === "shoes") {
+        category = "footwear"
+    }
+    if(category === "tShirts") {
+        category = "tshirts"
+    }
+    return product.category === category;
   });
 
   const [currentPage, setCurrentPage] = useState(1);
