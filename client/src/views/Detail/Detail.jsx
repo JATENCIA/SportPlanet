@@ -2,19 +2,26 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, getProductDetail } from "../../redux/Actions";
+import { addToCart, getProductDetail, getAllProduct } from "../../redux/Actions";
 import "./styles/detail.css";
 import { GrCart } from "react-icons/gr";
 import { NavBar } from "../../Components/Navbar";
 import Rating from '@mui/material/Rating';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs } from 'swiper';
+import { FreeMode, Navigation, Thumbs, Pagination, EffectCoverflow } from 'swiper';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 import Loader from "../../Components/Loader/Loader";
+import ProductCard from "../../Components/ProductCard/ProductCard";
+import RelatedProducts from "./RelatedProducts";
+
+
+
 
 export default function Detail() {
     const dispatch = useDispatch();
@@ -23,10 +30,12 @@ export default function Detail() {
 
     useEffect(() => {
         dispatch(getProductDetail(id));
+        dispatch(getAllProduct());
     }, [dispatch, id]);
 
 
     const product = useSelector((store) => store.productDetail);
+    const allProducts = useSelector((store) => store.allProducts);
 
     const _id = product._id
 
@@ -50,9 +59,9 @@ export default function Detail() {
         name = product.name;
         price = product.price;
         description = product.description,
-        category = product.category,
-        gender = product.gender,
-        brands = product.brands
+            category = product.category,
+            gender = product.gender,
+            brands = product.brands
 
         if (product.productConditionals) {
             image = [...product.productConditionals[0].image];
@@ -79,8 +88,8 @@ export default function Detail() {
         setSizes(e.target.value);
     }
 
-    const [ selectedColor , setSelectedColor ] = useState(product.productConditionals && product.productConditionals.length > 0 ? product.productConditionals[0].color : '');
-        
+    const [selectedColor, setSelectedColor] = useState(product.productConditionals && product.productConditionals.length > 0 ? product.productConditionals[0].color : '');
+
     const selectedProduct = product.productConditionals ? product.productConditionals.find((product) => product.color === selectedColor) : null;
     const imagesColor = selectedProduct ? selectedProduct.image : [];
     const size2 = selectedProduct ? selectedProduct.size : [];
@@ -92,7 +101,18 @@ export default function Detail() {
             setSelect(stock[sizes])
         }
     }, [sizes]);
+
     ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+
+    ///--------------------------------------------------------------------Filtrado de productos relacionados--------------------------------------------------------------------------//
+
+    const filterProducts = allProducts.filter((products) => products.brands === brands && products.category === category && products._id !== _id);
+    const arrayFilterProducts = filterProducts.slice(0, 6);
+
+    ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+
 
     const ShowProduct = () => {
         const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -112,6 +132,7 @@ export default function Detail() {
                                     loop={true}
                                     spaceBetween={10}
                                     navigation={true}
+                                    speed={1000}
                                     thumbs={{ swiper: thumbsSwiper }}
                                     modules={[FreeMode, Navigation, Thumbs]}
                                     className="mySwiper2"
@@ -125,7 +146,7 @@ export default function Detail() {
                                                     </SwiperSlide>
                                                 )
                                             })
-                                        :
+                                            :
                                             image.map((im, index) => {
                                                 return (
                                                     <SwiperSlide key={index}>
@@ -151,15 +172,18 @@ export default function Detail() {
                             <div className="colors">
                                 {
                                     product.productConditionals.map((c, i) => {
-                                        return (
-                                            <button
-                                                className="color-btn"
-                                                key={i}
-                                                style={{ backgroundColor: c.color }}
-                                                onClick={() => setSelectedColor(c.color)}
-                                            >
-                                            </button>
-                                        )
+                                        if (c.color !== "") {
+                                            return (
+                                                <button
+                                                    className="color-btn"
+                                                    key={i}
+                                                    style={{ backgroundColor: c.color }}
+                                                    onClick={() => setSelectedColor(c.color)}
+                                                >
+                                                </button>
+                                            )
+                                        }
+                                        return null;
                                     })
                                 }
                             </div>
@@ -168,15 +192,18 @@ export default function Detail() {
                                 {
                                     !amount ?
                                         size2.map((s, i) => {
-
+                                            const sizeName = Object.keys(s);
+                                            const sizeQuantity = Object.values(s);
+                                            const isSizeAvailable = amount ? amount[sizeName] > 0 : sizeQuantity > 0;
                                             return (
                                                 <button
-                                                    className={`size-btn ${Object.keys(s) == sizes ? "selected-size-btn" : ''}`}
-                                                    value={Object.keys(s)}
+                                                    className={`size-btn ${sizeName == sizes ? "selected-size-btn" : ''}`}
+                                                    value={sizeName}
                                                     key={i}
                                                     onClick={handleSize}
+                                                    disabled={!isSizeAvailable}
                                                 >
-                                                    {Object.keys(s)}
+                                                    {sizeName}
                                                 </button>
                                             )
                                         })
@@ -232,6 +259,7 @@ export default function Detail() {
             <>
                 <NavBar />
                 <ShowProduct />
+                <RelatedProducts products={arrayFilterProducts} />
             </>
         );
     }
