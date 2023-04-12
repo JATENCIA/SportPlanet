@@ -99,7 +99,7 @@ const App = () => {
         <Route path="/category/promotions" Component={Promotions} />
 
 
-        <Route path="/category/fitness" Component={Fitness} />
+       {/*  <Route path="/category/fitness" Component={Fitness} /> */}
         <Route path="*" Component={Home} />
 
       </Routes>

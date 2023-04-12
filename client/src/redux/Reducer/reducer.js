@@ -14,6 +14,7 @@ import {
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
   SHOP,
+  REMOVE_PRODUCT,
 } from "../Actions";
 
 const initialState = {
@@ -219,6 +220,17 @@ export const rootReducer = (state = initialState, action) => {
             
             
             }
+
+            case REMOVE_PRODUCT:
+              const foundId = state.shoppingCart.find(e=> e._id === action.payload)
+const newCart = state.shoppingCart.filter(e => 
+    e !== foundId
+)
+return {
+  ...state,
+  shoppingCart:newCart
+}
+            
 
 
     default:
