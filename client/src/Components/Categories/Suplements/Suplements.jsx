@@ -8,6 +8,7 @@ import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import Filters from "../../Filters/Filters";
 import { Link } from "react-router-dom";
 import style from "./Suplements.module.css";
+import Footer from "../../Footer/Footer";
 
 export default function Supplements() {
   const dispatch = useDispatch();
@@ -54,17 +55,20 @@ export default function Supplements() {
             );
           })
         ) : (
-          <p className={style.loading}>LOADING...</p>
+          <p className={style.loading}>NO ÍTEMS FOUND...</p>
         )}
       </div>
 
-      <Paginate
-        productsPerPage={productsPerPage}
-        allProducts={filterProducts.length}
-        setPagination={setPagination}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      {products.length > 0 ? (
+  <Paginate
+    productsPerPage={productsPerPage}
+    allProducts={filterProducts.length}
+    setPagination={setPagination}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+  />
+) : null}
+<Footer />
     </div>
   );
 }
