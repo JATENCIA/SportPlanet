@@ -204,7 +204,7 @@ export const rootReducer = (state = initialState, action) => {
         
         ?{...state, 
           shoppingCart:state.shoppingCart.map((item) => item._id === productItem._id 
-          ? {...item, quantity: item.quantity + 1} 
+          ? {...item, quantity: item.quantity + 1, M:item[0].size[0].M - 1} 
           :item
           )
         }
