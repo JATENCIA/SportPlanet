@@ -110,55 +110,28 @@ export const rootReducer = (state = initialState, action) => {
         productDetail: action.payload,
       };
     case FILTER_BY_SIZE:
-    /*   let productBySize = [...state.allProducts] */
-    /*     .sort((a, b) => { */
-    /*       const sizeValues = { small: 1, medium: 2, large: 2, xlarge: 4 }; */
-    /*       const aSizeValues = sizeValues[a.size]; */
-    /*       const bSizeValues = sizeValues[b.size]; */
-    /*       return aSizeValues - bSizeValues; */
-    /*     }) */
-    /*     .filter((product) => product.size === action.payload); */
-    /*   return { */
-    /*     ...state, */
-    /*     filteredProducts: productBySize, */
-    /*   }; */
-
-    case FILTER_BY_SIZE:
       let productSize = []
       if (action.payload === "small"){
         productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].S > 0 )
-       
       }
-     
      else if (action.payload === "medium"){
         productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].M > 0 )
-       
       }
      else if (action.payload === "large"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].L  > 0 )
-        
+        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].L  > 0 ) 
       }
-      
       else if (action.payload === "xlarge"){
         productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[1].XL > 0 )
-        
       }
-      
-      /* else if (action.payload === "XL"){ */
-      /*   productSize = [...state.allProducts].filter(e => e.size[0].XL >= 0 ) */
-      /*    */
-      /* } */
       else {
         productSize = state.allProducts
       }
-      
       
       return {
         ...state,
         filteredProducts: [...productSize]
       }
       
-
     case FILTER_BY_SEASON:
       let productBySeason = [...state.allProducts].filter((product) => {
         const year = parseInt(product.season);
@@ -212,11 +185,6 @@ export const rootReducer = (state = initialState, action) => {
           shoppingCart: [...state.shoppingCart,{...productItem, quantity:1}]
         }
         
-          
-          
-
-        
-
       case REMOVE_ONE_FROM_CART:
         let delOne = state.shoppingCart.find(e => e._id === action.payload)
         return delOne.quantity > 1 ? {
