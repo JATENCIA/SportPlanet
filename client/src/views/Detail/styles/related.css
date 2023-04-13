@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    margin-left: 10%;
+}
+
+.swiper-slide {
+    opacity: 1 !important;
+}
+
+.titleRelated h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    line-height: 39px;
+    text-align: center;
+    color: #000000;
+    font-family: "Futura Std Bold Condensed", Fabriga, -apple-system, BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+}
+
+.titleRelated {
+    margin-bottom: 5vw;
+}
+
+.first-container {
+    margin-top: 3vw;
+}
+
+.slider-content {
+    margin-bottom: 10%;
+}
+
