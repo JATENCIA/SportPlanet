@@ -24,14 +24,15 @@ main {
 .thumbnails {
   display: flex;
   flex-direction: column;
-  margin-left: 20%;
-  margin-top: 20%;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10%;
+  margin-top: 10%;
 }
 
-/* .container {
-  margin-left: 15%;
-} */
-
+.container {
+  margin-top: 3%;
+}
 
 .main-thumbnail {
   border-radius: 10px;
@@ -64,6 +65,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .swiper-slide img {
@@ -112,6 +114,17 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.centerSwiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.back {
+  margin-left: 10px;
 }
 
 
@@ -283,15 +296,14 @@ main {
   overflow: hidden;
 }
 
-.size-btn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  cursor: pointer;
-  transition: .25s all ease;
+.sizes button[disabled] {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
+
+
 
 .sizes:hover::after {
   color: #f39c12;
@@ -482,4 +494,62 @@ main {
 
 .profile-user-handle {
 	color: #7d8396;
+}
+
+.color-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.color-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.color-btn:focus {
+  outline: none;
+}
+
+.color-btn:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+.color-btn.selected {
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px #000;
+}
+
+.size-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  color: #000;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.size-btn:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
+  cursor: pointer;
+}
+
+
+.selected-size-btn {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
 }

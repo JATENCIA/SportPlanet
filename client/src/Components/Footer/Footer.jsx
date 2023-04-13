@@ -6,6 +6,7 @@ import reebok from "../../images/reebokLogo.jpg";
 import fila from "../../images/filaLogo.jpeg";
 import puma from "../../images/pumaLogo.jpeg";
 import underarmour from "../../images/underArmour.jpg";
+import { FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -30,10 +31,17 @@ export default function Footer() {
 
         <div className={style.infoContainer}>
           <h3>FOLLOW US</h3>
-          <div className={style.imagesContainer}>
-            <span>Imagen</span>
-            <span>Imagen</span>
-            <span>Imagen</span>
+          <div className={style.socialContainer}>
+            <i>
+              <FaTwitter />
+            </i>
+
+            <i>
+              <FaGithub />
+            </i>
+            <i>
+              <FaInstagram />
+            </i>
           </div>
         </div>
       </div>
