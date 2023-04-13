@@ -123,6 +123,9 @@ main {
   height: 100%;
 }
 
+.back {
+  margin-left: 10px;
+}
 
 
 .preview {
