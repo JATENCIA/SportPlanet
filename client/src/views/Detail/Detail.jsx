@@ -99,20 +99,19 @@ export default function Detail() {
             setSelect(stock[sizes])
         }
     }, [sizes]);
-    
     let productCart = {};
-    if (sizes) {
+    if (sizes.length || amount) {
+        select ? select : setSelect(amount.amount);
         productCart = {
             id: _id,
             name: name,
             price: price,
             color: selectedProduct.color,
             image: selectedProduct.image[0],
-            size: sizes,
+            size: sizes || "amount",
             stock: select,
         }
     }
-
 
     const adToCart = (productCart) => {
         dispatch(addToCart(productCart))
