@@ -34,7 +34,7 @@ export const NavBar = () => {
       <div className={style.logo}>
         <Link to="/home">
           <img
-            src="https://i.postimg.cc/kGPCgB7C/logo.png"
+            src="https://lh3.googleusercontent.com/5eEGb8y-_1ZO7xY3dbfn9i2yniw4k-dL92ApzpC6a8_yIa9C438N2XmmKLee3wWDiu5VK9EoZXR1eIf6MuqjoBvGuMoaBzu89s9ph568"
             alt="logo"
             className={style.img}
           />
@@ -62,20 +62,19 @@ export const NavBar = () => {
       </div>
 
       <div className={style.divUserContainer}>
-        
         <div className={style.divLogin}>
           <Login />
         </div>
-        
+
         <Link to="/cart">
-        <ItemsDentroCarrito/>
-        <div className={style.cartContainer}>
-          <button className={style.carrito}>
-            <i className="fas fa-shopping-cart"></i>
-          </button>
-        </div>
+          <ItemsDentroCarrito />
+          <div className={style.cartContainer}>
+            <button className={style.carrito}>
+              <i className="fas fa-shopping-cart"></i>
+            </button>
+          </div>
         </Link>
-        </div>
-      </div> 
+      </div>
+    </div>
   );
 };

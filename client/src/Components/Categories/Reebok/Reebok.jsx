@@ -8,6 +8,7 @@ import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import Filters from "../../Filters/Filters";
 import style from "./Reebok.module.css";
+import Footer from "../../Footer/Footer";
 
 export default function Reebok() {
   const dispatch = useDispatch();
@@ -54,17 +55,20 @@ export default function Reebok() {
             );
           })
         ) : (
-          <p className={style.loading}>LOADING...</p>
-        )}
-      </div>
-
-      <Paginate
-        productsPerPage={productsPerPage}
-        allProducts={filterProducts.length}
-        setPagination={setPagination}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+          <p className={style.loading}>NO ÍTEMS FOUND...</p>
+          )}
+        </div>
+  
+        {products.length > 0 ? (
+    <Paginate
+      productsPerPage={productsPerPage}
+      allProducts={filterProducts.length}
+      setPagination={setPagination}
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+    />
+  ) : null}
+  <Footer />
     </div>
   );
 }

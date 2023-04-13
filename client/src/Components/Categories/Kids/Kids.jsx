@@ -9,6 +9,7 @@ import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import Filter from "../../Filters/Filters";
 import style from "./Kids.module.css";
+import Footer from "../../Footer/Footer";
 
 export default function Kids() {
   const dispatch = useDispatch();
@@ -63,17 +64,20 @@ export default function Kids() {
             );
           })
         ) : (
-          <p className={style.loading}>LOADING...</p>
+          <p className={style.loading}>NO ÍTEMS FOUND...</p>
         )}
       </div>
 
-      <Paginate
-        productsPerPage={productsPerPage}
-        allProducts={filterProducts.length}
-        setPagination={setPagination}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      {products.length > 0 ? (
+  <Paginate
+    productsPerPage={productsPerPage}
+    allProducts={filterProducts.length}
+    setPagination={setPagination}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+  />
+) : null}
+<Footer />
     </div>
   );
 }

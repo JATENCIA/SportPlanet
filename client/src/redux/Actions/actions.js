@@ -1,5 +1,6 @@
 import axios from "axios";
-import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SEASON, FILTER_BY_USED, FILTER_BY_SIZE, GET_PRODUCT_DETAIL, GET_SEARCHED_PRODUCTS, ADD_TO_CART, CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART, SHOP, REMOVE_PRODUCT } from "./actionsTypes";
+import Swal from 'sweetalert2';
+import { GET_ALL_PRODUCT, GET_ALL_USER, POST_USER, FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_SEASON, FILTER_BY_USED, FILTER_BY_SIZE, GET_PRODUCT_DETAIL, GET_SEARCHED_PRODUCTS, ADD_TO_CART, CLEAR_CART, REMOVE_ALL_FROM_CART, REMOVE_ONE_FROM_CART, SHOP, REMOVE_PRODUCT, CLEAN_SEARCHED_PRODUCTS } from "./actionsTypes";
 
 export const getAllUser = () => async (dispatch) => {
   try {
@@ -86,19 +87,33 @@ export const filterBySeason = (payload) => {
   }
 }
 
-export const getSearchedProducts = (product) => async (dispatch) => {
-  try {
-    const { data } = await axios.get(`/products?name=${product}`)
-    console.log(product, 'llega');
-    dispatch({
-      type: GET_SEARCHED_PRODUCTS,
-      payload: data,
-    });
+export const getSearchedProducts = (product, navigate) => {
+  return async function (dispatch){
+      try {
+        const { data } = await axios.get(`/products?name=${product}`)
     
-  } catch (error) {
-    return { messaje: `${error}` };
+        if(!data.length){
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `We didn't find "${product}" in our system`,
+          })
+          navigate("/home")
+        } else{
+            dispatch({
+            type: GET_SEARCHED_PRODUCTS,
+            payload: data,
+          });
+        }
+      } catch (error) {
+        return { messaje: `${error}` };
+      }
+    }
+  };
+
+  export const cleanSearchedProducts = () => {
+    return {type: CLEAN_SEARCHED_PRODUCTS}
   }
-}
 
 export const addToCart = (id) => {
   return {
@@ -156,4 +171,3 @@ export const shop = (item) => {
     })
  }
 }
-
