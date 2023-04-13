@@ -8,7 +8,7 @@ import { GrCart } from "react-icons/gr";
 import { NavBar } from "../../Components/Navbar";
 import Rating from '@mui/material/Rating';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs, Pagination, EffectCoverflow } from 'swiper';
+import { FreeMode, Navigation, Thumbs } from 'swiper';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -17,8 +17,8 @@ import "swiper/css/thumbs";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 import Loader from "../../Components/Loader/Loader";
-import ProductCard from "../../Components/ProductCard/ProductCard";
 import RelatedProducts from "./RelatedProducts";
+import ButtonBack from "../../Components/ButtonBack/ButtonBack";
 
 
 
@@ -39,10 +39,7 @@ export default function Detail() {
 
     const _id = product._id
 
-    const adToCart = (id) => {
-        dispatch(addToCart(id))
-        console.log("Add", id)
-    }
+    
 
 
     let name,
@@ -80,6 +77,7 @@ export default function Detail() {
 
 
     //----------------------------------------------------------------Selector de productos por color y talla -------------------------------------------------------------------//
+
     const [sizes, setSizes] = useState("");
     const [select, setSelect] = useState(0);
 
@@ -94,15 +92,33 @@ export default function Detail() {
     const imagesColor = selectedProduct ? selectedProduct.image : [];
     const size2 = selectedProduct ? selectedProduct.size : [];
 
-    const amount = size2.find((s) => Object.keys(s) == "amount");
+    const amount = size2?.find((s) => Object.keys(s) == "amount");
     useEffect(() => {
         if (sizes) {
-            const stock = size2.find((s) => Object.keys(s) == sizes);
+            const stock = size2?.find((s) => Object.keys(s) == sizes);
             setSelect(stock[sizes])
         }
     }, [sizes]);
+    
+    let productCart = {};
+    if (sizes) {
+        productCart = {
+            id: _id,
+            name: name,
+            price: price,
+            color: selectedProduct.color,
+            image: selectedProduct.image[0],
+            size: sizes,
+            stock: select,
+        }
+    }
 
-    ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+    const adToCart = (productCart) => {
+        dispatch(addToCart(productCart))
+    }
+
+
 
 
     ///--------------------------------------------------------------------Filtrado de productos relacionados--------------------------------------------------------------------------//
@@ -227,7 +243,7 @@ export default function Detail() {
                                     </div>
                             }
                             <div className="buttons">
-                                <button className="add_btn" onClick={() => adToCart(id)}>
+                                <button className="add_btn" onClick={() => adToCart(productCart)} disabled={!size}>
                                     <GrCart />
                                     Add to cart
                                 </button>
@@ -258,6 +274,9 @@ export default function Detail() {
         return (
             <>
                 <NavBar />
+                <div className="back">
+                    <ButtonBack />
+                </div>
                 <ShowProduct />
                 <RelatedProducts products={arrayFilterProducts} />
             </>

@@ -21,7 +21,6 @@ function Cart() {
       }, [dispatch]);
 
     const delFromCart = (id, all = false) => {
-        console.log(id, all)
         if(all) {
           dispatch(removeAllCart(id))
         }
@@ -42,8 +41,6 @@ function Cart() {
 
        const adToCart = (id) => {
         dispatch(addToCart(id))
-          console.log("Add", id)
-      
         }
           
 
@@ -66,11 +63,15 @@ function Cart() {
      return (
        <CartItem
        key={crypto.randomUUID()}
-       _id={e._id}
+       productCart={e}
+       _id={e.id}
        name={e.name}
        price={e.price}
        quantity={e.quantity}
-       image={e.productConditionals[0].image[1]}
+       stock={e.stock}
+       image={e.image}
+       size={e.size}
+       color={e.color}
        delFromCart={delFromCart}
        addItem={adToCart}
        
