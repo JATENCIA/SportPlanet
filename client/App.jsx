@@ -51,6 +51,7 @@ import AdminFavorites from "./src/views/Admin/AdminFavorites/AdminFavorites";
 import AllUsers from "./src/views/Admin/AllUsers/AllUsers";
 import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
 import Cart from "./src/Components/Cart";
+import Reviews from "./src/views/Reviews/Reviews";
 
 const App = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -152,7 +153,8 @@ const App = () => {
         <Route path="/category/kids" element={<Kids />} />
         <Route path="/category/promotions" element={<Promotions />} />
         <Route path="/category/fitness" element={<Fitness />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Navigate to="/home" />} />
+        <Route path="/reviews" element={<Reviews />} />
       </Routes>
     </>
   );
