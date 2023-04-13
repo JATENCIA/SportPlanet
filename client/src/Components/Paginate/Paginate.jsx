@@ -19,23 +19,35 @@ export function Paginate({allProducts, productsPerPage, setPagination, currentPa
 		else setCurrentPage(currentPage+1)
 	}
 
+	const scroll = () => {
+		window.scrollTo({
+			top: 0,
+			behaviour: 'smooth',
+		})
+	};
+
 	return(
 		<div className={style.paginate_container}>
 			<div className={style.prev_next}>
-				<button className={style.next_prev_btn} onClick={() => handlePrev()} disabled={allProducts < 10}>prev</button>
+				<button className={style.next_prev_btn} onClick={() => {scroll();handlePrev()}} disabled={currentPage === 1}> <i className="fa-solid fa-angle-left" /> </button>
 			</div>
-				<div className={style.pages}>
-					{allProducts < 2? 
-					<div key='pagination'> {setPagination(1)}</div> : 
-					pageNumber && pageNumber.map(n =>(
+				
+			<div className={style.pages}>
+				{pageNumber && pageNumber.map(n => {
+					return n !== currentPage ? (
 						<div className={style.page}>
-							<button className={'page-number' + (n === currentPage ? 'active' : '')}  key={n} onClick={(event) => setPagination(n)} >{n}</button>
+							<button className={style.numPage}  key={n} onClick={() => {scroll();setPagination(n)}} >{n}</button>
 						</div>
-					))
-					}
+					) : (
+						<div className={style.page}>
+							<button className={style.numPageSelected}  key={n} onClick={() => {scroll();setPagination(n)}} >{n}</button>
+						</div>
+						)
+					})
+				}
 				</div>
 				<div className={style.prev_next}>
-					<button className={style.next_prev_btn} onClick={() => handleNext()} disabled={allProducts < 10}>next</button>
+					<button className={style.next_prev_btn} onClick={() => {scroll();handleNext()}} disabled={currentPage === pageNumber.length}> <i className="fa-solid fa-angle-right" /> </button>
 				</div>
 		</div>
 	)
