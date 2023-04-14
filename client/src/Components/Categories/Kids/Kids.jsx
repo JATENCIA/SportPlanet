@@ -23,12 +23,10 @@ export default function Kids() {
     dispatch(filterBySize("small"));
   }, [dispatch]);
   const filterProducts = allProducts.filter(
-    (product) => product.category === "tshirts" && product.productConditionals[0].size[0].S > 0
+    (product) =>
+      product.category === "tshirts" &&
+      product.productConditionals[0].size[0].S > 0
   );
-
-
-
-
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -69,15 +67,15 @@ export default function Kids() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

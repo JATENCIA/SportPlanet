@@ -56,19 +56,19 @@ export default function Reebok() {
           })
         ) : (
           <p className={style.loading}>NO ÍTEMS FOUND...</p>
-          )}
-        </div>
-  
-        {products.length > 0 ? (
-    <Paginate
-      productsPerPage={productsPerPage}
-      allProducts={filterProducts.length}
-      setPagination={setPagination}
-      currentPage={currentPage}
-      setCurrentPage={setCurrentPage}
-    />
-  ) : null}
-  <Footer />
+        )}
+      </div>
+
+      {products.length > 0 ? (
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

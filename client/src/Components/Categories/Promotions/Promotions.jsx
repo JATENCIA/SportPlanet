@@ -11,7 +11,6 @@ import style from "./Promotions.module.css";
 import Footer from "../../Footer/Footer";
 import Filters from "../../Filters/Filters";
 
-
 export default function Promotions() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -64,15 +63,15 @@ export default function Promotions() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }
