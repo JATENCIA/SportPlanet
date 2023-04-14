@@ -38,9 +38,9 @@ export default function CartItem({
         <div className={style.amountContainer}>
           <h2>Quantity</h2>
           <div className={style.buttons}>
-            <button>+</button>
-            <span>1</span>
             <button>-</button>
+            <span>1</span>
+            <button>+</button>
           </div>
         </div>
 
@@ -52,7 +52,7 @@ export default function CartItem({
 
       <div className={style.secondRow}>
         <div className={style.itemFunctions}>
-          <button className={style.trashIcon}>
+          <button className={style.trashIcon} onClick={delFromCart}>
             <BsTrash />
           </button>
         </div>
