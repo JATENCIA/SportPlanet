@@ -222,12 +222,6 @@ export const rootReducer = (state = initialState, action) => {
             ],
           };
 
-      const cartLocal = localStorage.getItem("shoppingCart");
-      if (cartLocal) {
-        setCartLocalStorage(JSON.parse(cartLocal));
-      }
-      return shoppingCart;
-
     case REMOVE_ONE_FROM_CART:
       let delOne = state.shoppingCart.find(
         (item) =>

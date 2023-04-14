@@ -25,6 +25,20 @@ function Cart() {
   const dispatch = useDispatch();
   const navigete = useNavigate();
 
+  const [miEstado, setMiEstado] = useState(() => {
+    const valorInicial = localStorage.getItem("cart");
+    return valorInicial !== null ? JSON.parse(valorInicial) : cart;
+  });
+
+  const actualizarEstado = (cart) => {
+    setMiEstado(JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+  console.log(
+    "🚀 ~ file: Cart.jsx:32 ~ const[miEstado,setMiEstado]=useState ~ miEstado:",
+    miEstado
+  );
+
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
