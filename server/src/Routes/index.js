@@ -8,25 +8,21 @@ const router = Router();
 //router.use("/users", UsersRoutes);
 
 const usersRoutes = require("./usersRoutes");
-// const storesRoutes = require("./storesRoutes");
+const paymentRoutes = require("./paymentRoutes");
+const slidersRoutes = require("./slidersRoutes");
 const productsRoutes = require("./productsRoutes");
 const productReviewRoutes = require("./productReviewRoutes");
-const paymentsRoutes = require("./paymentsRoutes");
-const slidersRoutes = require("./slidersRoutes");
 
 router.use("/users", usersRoutes);
-// router.use("/stores", storesRoutes);
-router.use("/products", productsRoutes);
-router.use("/productReview", productReviewRoutes);
-router.use("/payments", paymentsRoutes);
 router.use("/sliders", slidersRoutes);
+router.use("/products", productsRoutes);
+router.use("/payments", paymentRoutes);
+router.use("/productReview", productReviewRoutes);
 
 // Importar todos los routers;
 const UsersRoutes = require("./usersRoutes");
-const PaymentsRoutes = require("./paymentsRoutes");
 
 // Configurar los routers
 router.use("/users", UsersRoutes);
-router.use("/payments", PaymentsRoutes);
 
 module.exports = router;
