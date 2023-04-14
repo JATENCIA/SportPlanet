@@ -23,13 +23,15 @@ import "swiper/css/effect-coverflow";
 import Loader from "../../Components/Loader/Loader";
 import RelatedProducts from "./RelatedProducts";
 import ButtonBack from "../../Components/ButtonBack/ButtonBack";
+import Footer from "../../Components/Footer/Footer";
 
 export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getProductDetail(id));
+    dispatch(getProductDetail(id)).then(() => setIsLoading(false));
     dispatch(getAllProduct());
   }, [dispatch, id]);
 
@@ -71,7 +73,6 @@ export default function Detail() {
 
   //----------------------------------------------------------------Selector de productos por color y talla -------------------------------------------------------------------//
 
-
   const [sizes, setSizes] = useState("");
   const [select, setSelect] = useState(0);
 
@@ -112,8 +113,8 @@ export default function Detail() {
       id: _id,
       name: name,
       price: price,
-      color: selectedProduct.color,
-      image: selectedProduct.image[0],
+      color: selectedProduct?.color,
+      image: selectedProduct?.image[0],
       size: sizes || "amount",
       stock: select,
     };
@@ -264,30 +265,25 @@ export default function Detail() {
     );
   };
 
-  const [loading, setLoading] = useState(true);
-
-  if (loading === true) {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }
-
-  if (loading) {
-    return (
-      <div className="loader">
-        <Loader />
-      </div>
-    );
-  } else {
-    return (
-      <>
-        <NavBar />
-        <div className="back">
-          <ButtonBack />
+  return (
+    <>
+      {isLoading ? (
+        <div className="loader">
+          <Loader />
         </div>
-        <ShowProduct />
-        <RelatedProducts products={arrayFilterProducts} />
-      </>
-    );
-  }
+      ) : (
+        <>
+          <NavBar />
+          <div className="back">
+            <ButtonBack />
+          </div>
+          <ShowProduct />
+          <RelatedProducts products={arrayFilterProducts} />
+          <div className="footer">
+            <Footer />
+          </div>
+        </>
+      )}
+    </>
+  );
 }

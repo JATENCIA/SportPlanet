@@ -1,35 +1,66 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: center;
-    margin-left: 10%;
-}
-
-.swiper-slide {
-    opacity: 1 !important;
-}
-
-.titleRelated h1{
+.card-container {
     display: flex;
     justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+    margin-top: 5%;
+}
+
+.card-container  {
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.card-container .link:last-child {
+    margin-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .card-container .link {
+        margin-right: 5px;
+    }
+}
+
+.h1related{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
     align-items: center;
-    font-size: 26px;
-    line-height: 39px;
+}
+
+.related-products-title {
+    font-size: 32px;
+    font-weight: bold;
     text-align: center;
-    color: #000000;
-    font-family: "Futura Std Bold Condensed", Fabriga, -apple-system, BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
-}
-
-.titleRelated {
-    margin-bottom: 5vw;
-}
-
-.first-container {
-    margin-top: 3vw;
-}
-
-.slider-content {
-    margin-bottom: 10%;
-}
-
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #333;
+    position: relative;
+  }
+  
+  .related-products-title:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15px;
+    width: 50px;
+    height: 3px;
+    background-color: #333;
+  }
+  
+  .related-products-title:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -18px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #333;
+  }
