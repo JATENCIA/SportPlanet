@@ -101,7 +101,7 @@ export default function Detail() {
     }, [sizes]);
     let productCart = {};
     if (sizes.length || amount) {
-        select ? select : setSelect(amount.amount);
+        select ? select :  setSelect(amount.amount)
         productCart = {
             id: _id,
             name: name,
