@@ -184,12 +184,11 @@ html {
 }
 
 .teamMemberCard:hover span {
-  color: rgb(100, 100, 197);
   box-shadow: 0px 0px 6px 0px rgba(220, 214, 214, 0.75);
 }
 
 .teamMemberCard:hover h2 {
-  color: rgb(60, 60, 177);
+  color: rgb(22, 22, 103);
   transform: scale(1.1);
 }
 
@@ -216,7 +215,7 @@ html {
   width: 75%;
   height: 150px;
   border-radius: 50%;
-  filter: grayscale(1);
+  filter: grayscale(0.6);
 }
 
 .memberSocialMedias {
