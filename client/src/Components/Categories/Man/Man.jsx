@@ -7,7 +7,7 @@ import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import Filter from "../../Filters/Filters";
+import Filters from "../../Filters/Filters";
 import style from "./Man.module.css";
 import Footer from "../../Footer/Footer";
 
@@ -43,7 +43,7 @@ export default function Man() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filter />
+      <Filters SizeFilter={true} GenderFilter={false} WearedFilter={true} SeasonFilter={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
