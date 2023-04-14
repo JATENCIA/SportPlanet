@@ -6,24 +6,9 @@ import style from "./FilterNavBar.module.css";
 export default function FilterNavBar() {
 
 
-
   return (
       <div className={style.navContainer}>
-      <Link to="/category/man">
-      <button>MAN</button>
-      </Link>
-      <Link to="/category/woman">
-      <button>WOMAN</button>
-      </Link>
-      <Link to="/category/kids">
-      <button>KIDS</button>
-      </Link>
-      <Link to="/category/promotions">
-      <button>PROMOTIONS</button>
-      </Link>
-     
-
-      <div className={style.dropdown}>
+<div className={style.dropdown}>
         <button >CATEGORIES</button>
           <div className={style.dropdownContent}>
             <div className={style.boton}>
@@ -67,8 +52,23 @@ export default function FilterNavBar() {
             <div className={style.boton}>
             <Link to="/category/reebok">REEBOK</Link>
             </div>
-    </div>
-    </div>
+ </div>
+  </div>
+      <Link to="/category/man">
+      <button>MAN</button>
+      </Link>
+      <Link to="/category/woman">
+      <button>WOMAN</button>
+      </Link>
+      <Link to="/category/kids">
+      <button>KIDS</button>
+      </Link>
+      <Link to="/category/promotions">
+      <button>PROMOTIONS</button>
+      </Link>
+      <Link to="/category/gym">
+      <button>GYM</button>
+      </Link>
     </div>
   );
 }
