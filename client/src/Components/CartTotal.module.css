@@ -1,9 +1,8 @@
-.total{
-   
-   
-    width: fit-content;
-    font-size: x-large;
-    margin-left: 1130px;
-   margin-top:-205px;
-    font-family: Arial, Helvetica, sans-serif;
+.total {
+  font-size: 20px;
+  font-family: RobotoCondensed;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }

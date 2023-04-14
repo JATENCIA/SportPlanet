@@ -35,7 +35,7 @@ export default function Balls() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters />
+      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={true} SeasonFilter={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (

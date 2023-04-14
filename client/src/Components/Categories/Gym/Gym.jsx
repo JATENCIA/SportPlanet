@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { getAllProduct } from "../../../redux/Actions";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import Filter from "../../Filters/Filters";
+import Filters from "../../Filters/Filters";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
 import style from "./Gym.module.css";
@@ -12,28 +13,35 @@ import Footer from "../../Footer/Footer";
 
 export default function Gym() {
   const dispatch = useDispatch();
-
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
+  const allProducts = useSelector((state) => state.filteredProducts);
+  console.log("1", allProducts);
 
-  const products = useSelector((state) => state.filteredProducts);
+  const filterProducts = allProducts.filter(
+    (product) => product.category === "supplements"
+  );
 
-  const [currentPage, setCurrentPage] = React.useState(1);
+
+  
+
+  const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
   const ultimo = currentPage * productsPerPage;
   const primero = ultimo - productsPerPage;
-  const filteredProducts = products.slice(primero, ultimo);
+  const products = filterProducts.slice(primero, ultimo);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
+  
 
   return (
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filter />
+      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={false} SeasonFilter={false} />
 
       <div className={style.container}>
         {products.length > 0 ? (

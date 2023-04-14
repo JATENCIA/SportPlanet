@@ -111,6 +111,7 @@ export const rootReducer = (state = initialState, action) => {
         productDetail: action.payload,
       };
     case FILTER_BY_SIZE:
+
     /*   let productBySize = [...state.allProducts] */
     /*     .sort((a, b) => { */
     /*       const sizeValues = { small: 1, medium: 2, large: 2, xlarge: 4 }; */
@@ -155,6 +156,30 @@ export const rootReducer = (state = initialState, action) => {
         filteredProducts: [...productSize],
       };
 
+
+      let productSize = []
+      if (action.payload === "small"){
+        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].S > 0 )
+      }
+     else if (action.payload === "medium"){
+        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].M > 0 )
+      }
+     else if (action.payload === "large"){
+        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].L  > 0 ) 
+      }
+      else if (action.payload === "xlarge"){
+        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[1].XL > 0 )
+      }
+      else {
+        productSize = state.allProducts
+      }
+      
+      return {
+        ...state,
+        filteredProducts: [...productSize]
+      }
+      
+
     case FILTER_BY_SEASON:
       let productBySeason = [...state.allProducts].filter((product) => {
         const year = parseInt(product.season);
@@ -186,6 +211,7 @@ export const rootReducer = (state = initialState, action) => {
     case CLEAN_SEARCHED_PRODUCTS:
       return {
         ...state,
+
         searchedProducts: [],
       };
 
@@ -221,6 +247,39 @@ export const rootReducer = (state = initialState, action) => {
               { ...action.payload, quantity: 1 },
             ],
           };
+        searchedProducts: []
+      }
+
+      case ADD_TO_CART:
+        let itemInCar = state.shoppingCart.find(item => item.id === action.payload.id)
+        let cont = 0;
+        let stock2 = 0;
+        if(cont < 1){
+          stock2 = action.payload.stock
+          cont++
+        }
+        return itemInCar
+        ? 
+        {...state, 
+          
+          shoppingCart:state.shoppingCart.map((item) => item.id === action.payload.id 
+            
+          ? {...item, quantity: item.quantity + 1, stock: stock2} 
+          :item
+          )
+        }
+        :{
+          ...state,
+          shoppingCart: [...state.shoppingCart,{...action.payload, quantity:1}]
+        }
+        
+      case REMOVE_ONE_FROM_CART:
+        let delOne = state.shoppingCart.find(e => e.id === action.payload.id)
+        return delOne.quantity > 1 ? {
+          ...state,
+          shoppingCart: state.shoppingCart.map(e => e.id === action.payload.id ? {...e, quantity: e.quantity - 1} : e)
+        }
+
 
     case REMOVE_ONE_FROM_CART:
       let delOne = state.shoppingCart.find(
