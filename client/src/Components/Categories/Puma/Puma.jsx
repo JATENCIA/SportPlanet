@@ -14,9 +14,10 @@ export default function Puma() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProduct());
+    
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const  allProducts = useSelector((state) => state.filteredProducts);
   const filterProducts = allProducts.filter((product) => {
     return product.brands === "PUMA";
   });
