@@ -167,34 +167,38 @@ export const rootReducer = (state = initialState, action) => {
       }
 
       case ADD_TO_CART:
-        let productItem = state.allProducts.find(product => product._id === action.payload)
-        console.log(productItem)
-
-        let itemInCar = state.shoppingCart.find(item => item._id === productItem._id)
-
+        let itemInCar = state.shoppingCart.find(item => item.id === action.payload.id)
+        let cont = 0;
+        let stock2 = 0;
+        if(cont < 1){
+          stock2 = action.payload.stock
+          cont++
+        }
         return itemInCar
-        
-        ?{...state, 
-          shoppingCart:state.shoppingCart.map((item) => item._id === productItem._id 
-          ? {...item, quantity: item.quantity + 1} 
+        ? 
+        {...state, 
+          
+          shoppingCart:state.shoppingCart.map((item) => item.id === action.payload.id 
+            
+          ? {...item, quantity: item.quantity + 1, stock: stock2} 
           :item
           )
         }
         :{
           ...state,
-          shoppingCart: [...state.shoppingCart,{...productItem, quantity:1}]
+          shoppingCart: [...state.shoppingCart,{...action.payload, quantity:1}]
         }
         
       case REMOVE_ONE_FROM_CART:
-        let delOne = state.shoppingCart.find(e => e._id === action.payload)
+        let delOne = state.shoppingCart.find(e => e.id === action.payload.id)
         return delOne.quantity > 1 ? {
           ...state,
-          shoppingCart: state.shoppingCart.map(e => e._id === action.payload ? {...e, quantity: e.quantity - 1} : e)
+          shoppingCart: state.shoppingCart.map(e => e.id === action.payload.id ? {...e, quantity: e.quantity - 1} : e)
         }
 
         : {
           ...state,
-          shoppingCart:state.shoppingCart.filter(e => e._id !== action.payload)
+          shoppingCart:state.shoppingCart.filter(e => e.id !== action.payload.id)
           
         }
 
@@ -204,7 +208,7 @@ export const rootReducer = (state = initialState, action) => {
        
         return {
           ...state,
-          shoppingCart:state.shoppingCart.filter(e => e._id !== action.payload)
+          shoppingCart:state.shoppingCart.filter(e => e.id !== action.payload.id)
         }
           
       case CLEAR_CART:
