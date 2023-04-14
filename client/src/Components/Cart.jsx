@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import CartItem from "./CartItem";
 import CartTotal from "./CartTotal";
+import { useAuth0 } from "@auth0/auth0-react";
+import Swal from "sweetalert2";
+import { getAllUser } from "../redux/Actions";
+import Login from "../Components/Navbar/Login";
+import { useNavigate } from "react-router-dom";
+
 import {
   removeAllCart,
   removeOneCart,
@@ -12,11 +18,26 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import styled from "./Cart.module.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 function Cart() {
   const cart = useSelector((state) => state.shoppingCart);
   const dispatch = useDispatch();
+  const navigete = useNavigate();
+
+  const [miEstado, setMiEstado] = useState(() => {
+    const valorInicial = localStorage.getItem("cart");
+    return valorInicial !== null ? JSON.parse(valorInicial) : cart;
+  });
+
+  const actualizarEstado = (cart) => {
+    setMiEstado(JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+  console.log(
+    "🚀 ~ file: Cart.jsx:32 ~ const[miEstado,setMiEstado]=useState ~ miEstado:",
+    miEstado
+  );
 
   useEffect(() => {
     dispatch(getAllProduct());
@@ -34,14 +55,39 @@ function Cart() {
     dispatch(clearCart());
   };
 
-  const handleShop = () => {
-    dispatch(shop(cart));
-    dispatch(clearCart());
+  const handleShop = async () => {
+    if (isAuthenticated) {
+      if (userE.baneado === false) {
+        dispatch(shop(cart));
+        dispatch(clearCart());
+      } else {
+        Swal.fire(`🚫 BANNED USER`);
+      }
+    } else {
+      await Swal.fire(`⚠️ LOG IN`);
+      navigete("/home");
+    }
   };
 
-  const adToCart = (id) => {
-    dispatch(addToCart(id));
+  const adToCart = (product) => {
+    dispatch(addToCart(product));
   };
+
+  const [userE, setUserE] = useState({});
+  const { isAuthenticated, user, logout } = useAuth0();
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+
+  useEffect(() => {
+    if (user && isAuthenticated) {
+      const userDb = allUsers?.find((element) => element.eMail === user?.email);
+      userDb ? setUserE(userDb) : "";
+    }
+  }, [user]);
 
   return (
     <div className={styled.main}>
@@ -54,7 +100,7 @@ function Cart() {
       </button>
 
       <article className={styled.cartitem}>
-        {cart.map((e) => {
+        {cart?.map((e) => {
           return (
             <CartItem
               key={crypto.randomUUID()}
