@@ -7,7 +7,7 @@ import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import Filter from "../../Filters/Filters";
+import Filters from "../../Filters/Filters";
 import style from "./Kids.module.css";
 import Footer from "../../Footer/Footer";
 
@@ -40,11 +40,12 @@ export default function Kids() {
     return setCurrentPage(page);
   };
 
+  const showSizeFilter = false
   return (
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filter />
+      <Filters SizeFilter={false} GenderFilter={true} WearedFilter={true} SeasonFilter={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
