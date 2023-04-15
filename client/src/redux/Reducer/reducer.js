@@ -224,30 +224,19 @@ export const rootReducer = (state = initialState, action) => {
 
     case REMOVE_ONE_FROM_CART:
       let delOne = state.shoppingCart.find(
-        (item) =>
-          item.id === action.payload.id &&
-          item.color === action.payload.color &&
-          item.size === action.payload.size
+        (item) => item.UUID === action.payload.UUID
       );
-      return delOne.quantity > 1
+
+      return delOne
         ? {
             ...state,
-            shoppingCart: state.shoppingCart.map((item) =>
-              item.id === action.payload.id &&
-              item.color === action.payload.color &&
-              item.size === action.payload.size
-                ? { ...item, quantity: item.quantity - 1 }
-                : item
+            shoppingCart: state.shoppingCart.filter(
+              (item) => item.UUID !== action.payload.UUID
             ),
           }
         : {
             ...state,
-            shoppingCart: state.shoppingCart.filter(
-              (item) =>
-                item.id !== action.payload.id &&
-                item.color !== action.payload.color &&
-                item.size !== action.payload.size
-            ),
+            shoppingCart,
           };
 
     case REMOVE_ALL_FROM_CART:
