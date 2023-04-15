@@ -18,7 +18,6 @@ import { BiShoppingBag } from "react-icons/bi";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Cart() {
-  const user = useAuth0();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -90,7 +89,6 @@ export default function Cart() {
               );
             })}
           </div>
-          <hr />
         </article>
         <div className={style.secondContainer}>
           <div className={style.paymentContainer}>
