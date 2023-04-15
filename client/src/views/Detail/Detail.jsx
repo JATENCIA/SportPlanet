@@ -51,11 +51,13 @@ export default function Detail() {
     category,
     gender,
     brands,
+    discount,
     user1;
 
   if (product) {
     name = product.name;
     price = product.price;
+    discount = product.discount;
     (description = product.description),
       (category = product.category),
       (gender = product.gender),
@@ -126,7 +128,8 @@ export default function Detail() {
       let stock2 = amount?.amount;
       select ? select : setSelect(stock2);
     }
-
+    let UUID = crypto.randomUUID();
+    console.log("🚀 ~ file: Detail.jsx:132 ~ Detail ~ UUID:", UUID);
     productCart = {
       id: _id,
       name: name,
@@ -135,6 +138,8 @@ export default function Detail() {
       image: selectedProduct.image[0],
       size: sizes || "amount",
       stock: select,
+      discount: discount,
+      UUID: UUID,
     };
   }
 

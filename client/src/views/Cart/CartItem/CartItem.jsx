@@ -15,7 +15,13 @@ export default function CartItem({
   size,
   color,
   stock,
+  discount,
+  _id,
+  UUID,
 }) {
+  let price2 = price * quantity;
+  let total = price2 - (price2 * discount) / 100;
+
   return (
     <div className={style.itemContainer}>
       <div className={style.firstRow}>
@@ -28,31 +34,56 @@ export default function CartItem({
           <span>Color: {color} </span>
           <span>Size: {size}</span>
           <span>Stock: {stock}</span>
-        </div>
-
-        <div className={style.price}>
-          <h2>Each</h2>
-          <span>{price}</span>
+          {discount <= 0 ? (
+            <span>$ {price}</span>
+          ) : (
+            <span style={{ fontSize: "20px" }}>
+              $ {price}&nbsp;
+              <small style={{ color: "green", fontSize: "12px" }}>
+                {discount}% OFF
+              </small>
+            </span>
+          )}
         </div>
 
         <div className={style.amountContainer}>
           <h2>Quantity</h2>
           <div className={style.buttons}>
-            <button onClick={() => { if (quantity > 1) { delFromCart(productCart) } }} >-</button>
+            <button
+              onClick={() => {
+                if (quantity > 1) {
+                  delFromCart(productCart);
+                }
+              }}
+            >
+              -
+            </button>
             <span>{quantity}</span>
-             <button on onClick={() => { if (quantity < stock) { addItem(productCart) } }}>+</button>
+            <button
+              on
+              onClick={() => {
+                if (quantity < stock) {
+                  addItem(productCart);
+                }
+              }}
+            >
+              +
+            </button>
           </div>
         </div>
 
         <div className={style.totalPrice}>
           <h2>Total</h2>
-          <span>{price * quantity}</span>
+          <span>{total}</span>
         </div>
       </div>
 
       <div className={style.secondRow}>
         <div className={style.itemFunctions}>
-          <button className={style.trashIcon}>
+          <button
+            onClick={() => delFromCart(_id, color, size, UUID)}
+            className={style.trashIcon}
+          >
             <BsTrash />
           </button>
         </div>

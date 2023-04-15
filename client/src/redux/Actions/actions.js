@@ -157,10 +157,16 @@ export const removeAllCart = (id) => {
   };
 };
 
-export const removeOneCart = (id) => {
+export const removeOneCart = (id, color, size, UUID) => {
+  let product = {
+    id: id,
+    color: color,
+    size: size,
+    UUID: UUID,
+  };
   return {
     type: REMOVE_ONE_FROM_CART,
-    payload: id,
+    payload: product,
   };
 };
 
