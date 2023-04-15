@@ -16,6 +16,7 @@ import {
   SHOP,
   CLEAN_SEARCHED_PRODUCTS,
   shop,
+  REMOVE_ONE_ITEM,
 } from "../Actions";
 
 const initialState = {
@@ -232,6 +233,29 @@ export const rootReducer = (state = initialState, action) => {
             ...state,
             shoppingCart: state.shoppingCart.filter(
               (item) => item.UUID !== action.payload.UUID
+            ),
+          }
+        : {
+            ...state,
+            shoppingCart,
+          };
+
+    case REMOVE_ONE_ITEM:
+      let delItem = state.shoppingCart.find(
+        (item) =>
+          item.id === action.payload.id &&
+          item.color === action.payload.color &&
+          item.size === action.payload.size
+      );
+      return delItem.quantity > 1
+        ? {
+            ...state,
+            shoppingCart: state.shoppingCart.map((item) =>
+              item.id === action.payload.id &&
+              item.color === action.payload.color &&
+              item.size === action.payload.size
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
             ),
           }
         : {

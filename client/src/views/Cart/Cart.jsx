@@ -4,6 +4,7 @@ import CartTotal from "../../Components/CartTotal";
 import {
   removeAllCart,
   removeOneCart,
+  removeItemCart,
   clearCart,
   getAllProduct,
   shop,
@@ -37,7 +38,6 @@ export default function Cart() {
   const delFromCart = (id, color, size, UUID, all = false) => {
     if (all) {
       console.log("🚀 ~ file: Cart.jsx:39 ~ delFromCart ~ all:", all);
-
       dispatch(removeAllCart(id));
     } else {
       dispatch(removeOneCart(id, color, size, UUID));
@@ -55,6 +55,10 @@ export default function Cart() {
 
   const adToCart = (id) => {
     dispatch(addToCart(id));
+  };
+
+  const removeItem = (id, color, size) => {
+    dispatch(removeItemCart(id, color, size));
   };
 
   return (
@@ -87,6 +91,7 @@ export default function Cart() {
                   UUID={e.UUID}
                   delFromCart={delFromCart}
                   addItem={adToCart}
+                  removeItem={removeItem}
                 />
               );
             })}

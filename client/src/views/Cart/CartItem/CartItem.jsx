@@ -19,6 +19,7 @@ export default function CartItem({
   discount,
   _id,
   UUID,
+  removeItem,
 }) {
   let price2 = price * quantity;
   let total = price2 - (price2 * discount) / 100;
@@ -68,7 +69,7 @@ export default function CartItem({
               className={style.buttonMinus}
               onClick={() => {
                 if (quantity > 1) {
-                  delFromCart(productCart);
+                  removeItem(_id, color, size, UUID);
                 }
               }}
             >
