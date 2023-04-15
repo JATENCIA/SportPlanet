@@ -17,9 +17,7 @@ export default function Fitness() {
 
   const allProducts = useSelector((state) => state.allProducts);
   const filterProducts = allProducts.filter((product) => {
-    return (
-      product.category === "supplements"
-    );
+    return product.category === "supplements";
   });
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -60,15 +58,15 @@ export default function Fitness() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

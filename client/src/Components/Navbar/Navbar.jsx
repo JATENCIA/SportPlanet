@@ -7,11 +7,13 @@ import Login from "./Login";
 import style from "./navBar.module.css";
 import { MdSell } from "react-icons/md";
 import ItemsDentroCarrito from "../ItemsDentroCarrito";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [product, setProduct] = useState("");
+  const { isAuthenticated, user, logout } = useAuth0();
 
   const changeHandler = (e) => {
     setProduct(e.target.value);

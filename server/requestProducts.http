@@ -8,7 +8,7 @@ GET {{urlApi}}/products
 ### get name a product
 GET {{urlApi}}/products?name=boca
 
-### banear single user
+### banear single products
 POST {{urlApi}}/products/6428ca77bcb9e1cc9f8441f3
 
 

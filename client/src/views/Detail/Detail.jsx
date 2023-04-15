@@ -24,11 +24,18 @@ import Loader from "../../Components/Loader/Loader";
 import RelatedProducts from "./RelatedProducts";
 import ButtonBack from "../../Components/ButtonBack/ButtonBack";
 import Footer from "../../Components/Footer/Footer";
+import Swal from "sweetalert2";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUser } from "../../redux/Actions/actions";
+import Login from "../../Components/Navbar/Login";
+
 
 export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const { isAuthenticated, user, logout } = useAuth0();
+
 
   useEffect(() => {
     dispatch(getProductDetail(id)).then(() => setIsLoading(false));
@@ -48,7 +55,7 @@ export default function Detail() {
     category,
     gender,
     brands,
-    user;
+    user1;
 
   if (product) {
     name = product.name;
@@ -66,10 +73,25 @@ export default function Detail() {
       size = [...product.productConditionals[0].size];
     }
 
-    if (product.user) {
-      user = product.user;
+    if (product.user1) {
+      user1 = product.user1;
     }
   }
+
+  const [userE, setUserE] = useState({});
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+
+  useEffect(() => {
+    if (user && isAuthenticated) {
+      const userDb = allUsers?.find((element) => element.eMail === user?.email);
+      userDb ? setUserE(userDb) : "";
+    }
+  }, [user]);
 
   //----------------------------------------------------------------Selector de productos por color y talla -------------------------------------------------------------------//
 
@@ -119,8 +141,21 @@ export default function Detail() {
       stock: select,
     };
   }
+
   const adToCart = (productCart) => {
-    dispatch(addToCart(productCart));
+    if (select) {
+      if (isAuthenticated) {
+        if (userE.baneado === false) {
+          dispatch(addToCart(productCart));
+        } else {
+          Swal.fire(`🚫 BANNED USER`);
+        }
+      } else {
+        Swal.fire(`⚠️ LOG IN OR REGISTER`);
+      }
+    } else {
+      Swal.fire(`⚠️ SELECT A COLOR`);
+    }
   };
 
   ///--------------------------------------------------------------------Filtrado de productos relacionados--------------------------------------------------------------------------//

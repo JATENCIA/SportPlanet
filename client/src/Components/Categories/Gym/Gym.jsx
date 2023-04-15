@@ -66,15 +66,15 @@ export default function Gym() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }
