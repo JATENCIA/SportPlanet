@@ -22,7 +22,6 @@ const Login = () => {
   const { isAuthenticated, user, logout } = useAuth0();
 
   const [userE, setUserE] = useState({});
-  // console.log("🚀 ~ file: Login.jsx:25 ~ Login ~ userE:", userE);
 
   useEffect(() => {
     dispatch(getAllUser());
