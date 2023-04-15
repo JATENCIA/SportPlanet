@@ -36,6 +36,8 @@ export default function Cart() {
 
   const delFromCart = (id, color, size, UUID, all = false) => {
     if (all) {
+      console.log("🚀 ~ file: Cart.jsx:39 ~ delFromCart ~ all:", all);
+
       dispatch(removeAllCart(id));
     } else {
       dispatch(removeOneCart(id, color, size, UUID));
