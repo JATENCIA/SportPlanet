@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 // axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.baseURL = "https://sportsplanet-production.up.railway.app/";
@@ -15,10 +17,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <BrowserRouter>
       <Auth0Provider
-        domain="dev-uifyeswryeh53bj1.us.auth0.com"
-        clientId="3A17pliIGOkuzXgriNiVChRPGJnHQ4Eh"
-        // domain="dev-j0kao75n5a8hszfj.us.auth0.com"
-        // clientId="okBJLqsiuORgexDsYLGBogOaVw0mT4Gc"
+        // domain="dev-uifyeswryeh53bj1.us.auth0.com"
+        // clientId="3A17pliIGOkuzXgriNiVChRPGJnHQ4Eh"
+        domain="dev-j0kao75n5a8hszfj.us.auth0.com"
+        clientId="okBJLqsiuORgexDsYLGBogOaVw0mT4Gc"
         redirectUri={window.location.origin}
       >
         <App />
