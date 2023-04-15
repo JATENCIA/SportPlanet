@@ -20,7 +20,7 @@ import { MdRateReview } from "react-icons/md";
 export default function ProfileProducts() {
   const dispatch = useDispatch();
 
-  const allProducts = useSelector((state) => state.cartState.allProducts);
+  const allProducts = useSelector((state) => state.allProducts);
   const filteredProducts = allProducts.filter((product) => product.price >= 30);
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 8;

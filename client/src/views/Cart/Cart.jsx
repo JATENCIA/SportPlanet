@@ -4,6 +4,7 @@ import CartTotal from "../../Components/CartTotal";
 import {
   removeAllCart,
   removeOneCart,
+  removeItemCart,
   clearCart,
   getAllProduct,
   shop,
@@ -18,8 +19,6 @@ import { BiShoppingBag } from "react-icons/bi";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Cart() {
-  const user = useAuth0();
-  console.log(user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,13 +26,21 @@ export default function Cart() {
   }, [dispatch]);
 
   const cart = useSelector((state) => state.shoppingCart);
-  console.log(cart);
 
-  const delFromCart = (id, all = false) => {
+  let discount = 0;
+  let shippingCost = 0;
+  cart?.map((elem) => {
+    let preciDiscount = elem.price * (1 - elem.discount / 100);
+    discount += elem.quantity * (elem.price - preciDiscount);
+    shippingCost += elem.price * elem.quantity;
+  });
+
+  const delFromCart = (id, color, size, UUID, all = false) => {
     if (all) {
+      console.log("🚀 ~ file: Cart.jsx:39 ~ delFromCart ~ all:", all);
       dispatch(removeAllCart(id));
     } else {
-      dispatch(removeOneCart(id));
+      dispatch(removeOneCart(id, color, size, UUID));
     }
   };
 
@@ -48,6 +55,10 @@ export default function Cart() {
 
   const adToCart = (id) => {
     dispatch(addToCart(id));
+  };
+
+  const removeItem = (id, color, size) => {
+    dispatch(removeItemCart(id, color, size));
   };
 
   return (
@@ -76,13 +87,15 @@ export default function Cart() {
                   image={e.image}
                   size={e.size}
                   color={e.color}
+                  discount={e.discount}
+                  UUID={e.UUID}
                   delFromCart={delFromCart}
                   addItem={adToCart}
+                  removeItem={removeItem}
                 />
               );
             })}
           </div>
-          <hr />
         </article>
         <div className={style.secondContainer}>
           <div className={style.paymentContainer}>
@@ -98,15 +111,15 @@ export default function Cart() {
               <h2 className={style.detailTitle}>Details Summary</h2>
               <div className={style.detail}>
                 <span>Shipping Cost</span>
-                <span>TBD</span>
+                <span>$ {shippingCost}</span>
               </div>
               <div className={style.detail}>
                 <span>Discount</span>
-                <span>- $0</span>
+                <span>-$ {parseFloat(discount.toFixed(2))}</span>
               </div>
               <div className={style.detail}>
                 <span>Taxes</span>
-                <span>TBD</span>
+                <span style={{ color: "green" }}>N/A</span>
               </div>
               <hr />
               <CartTotal />
