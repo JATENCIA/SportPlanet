@@ -27,6 +27,15 @@ export default function Cart() {
 
   const cart = useSelector((state) => state.shoppingCart);
 
+  useEffect(() => {
+    if (cart.length) {
+      localStorage.setItem("cart", JSON.stringify(JSON.stringify(cart)));
+    }
+  }, [cart]);
+
+  const storedValue = window.localStorage.getItem("cart");
+  let value = JSON.parse(storedValue);
+
   let discount = 0;
   let shippingCost = 0;
   cart?.map((elem) => {
