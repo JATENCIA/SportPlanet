@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useDispatch } from 'react-redux'
 import { addReview } from '../../redux/Actions'
 
+
 export default function Reviews() {
 
     const dispatch = useDispatch()
@@ -48,43 +49,88 @@ export default function Reviews() {
         }
     }
 
-    console.log(user);
-
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
         <label>
-            Quality:
-            <input type="number" name="quality" value={review.quality} onChange={handleChange} />
+          Quality:
+          <input
+            type="number"
+            name="quality"
+            value={review.quality}
+            onChange={handleChange}
+            style={{ margin: '0.5rem 0' }}
+          />
         </label>
         <label>
-            Comfort:
-            <input type="number" name="comfort" value={review.comfort} onChange={handleChange} />
+          Comfort:
+          <input
+            type="number"
+            name="comfort"
+            value={review.comfort}
+            onChange={handleChange}
+            style={{ margin: '0.5rem 0' }}
+          />
         </label>
         <label>
-            Recommended:
-            <input type="checkbox" name="recommended" checked={review.recommended} onChange={handleChange} />
+          Recommended:
+          <input
+            type="checkbox"
+            name="recommended"
+            checked={review.recommended}
+            onChange={handleChange}
+            style={{ margin: '0.5rem 0' }}
+          />
         </label>
         <label>
-            Comment:
-            <textarea name="comment" value={review.comment} onChange={handleChange} />
+          Comment:
+          <textarea
+            name="comment"
+            value={review.comment}
+            onChange={handleChange}
+            style={{ margin: '0.5rem 0' }}
+          />
         </label>
         <label>
-            Product:
-            <input type="text" name="product" value={review.product} onChange={handleChange} />
+          Product:
+          <input
+            type="text"
+            name="product"
+            value={review.product}
+            onChange={handleChange}
+            style={{ margin: '0.5rem 0' }}
+          />
         </label>
         <label>
-            Attention:
-            <input type="number" name="attention" value={review.attention} onChange={handleChange} />
+          Attention:
+          <input
+            type="number"
+            name="attention"
+            value={review.attention}
+            onChange={handleChange}
+            style={{ margin: '0.5rem 0' }}
+          />
         </label>
         <label>
-            Delivery on time:
-            <input type="number" name="deliveryOnTime" value={review.deliveryOnTime} onChange={handleChange} />
+          Delivery on time:
+          <input
+            type="number"
+            name="deliveryOnTime"
+            value={review.deliveryOnTime}
+            onChange={handleChange}
+            style={{ margin: '0.5rem 0' }}
+          />
         </label>
         <label>
-            Packaging:
-            <input type="number" name="packaging" value={review.packaging} onChange={handleChange} />
+          Packaging:
+          <input
+            type="number"
+            name="packaging"
+            value={review.packaging}
+            onChange={handleChange}
+            style={{ margin: '0.5rem 0' }}
+          />
         </label>
-        <button type="submit">Submit</button>
-    </form>
+        <button type="submit" style={{ margin: '1rem 0' }}>Submit</button>
+      </form>
     )
 }

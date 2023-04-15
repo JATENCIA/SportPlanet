@@ -28,6 +28,7 @@ import Swal from "sweetalert2";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUser } from "../../redux/Actions/actions";
 import Login from "../../Components/Navbar/Login";
+import SellerUser from "./SellerUser";
 
 
 export default function Detail() {
@@ -73,8 +74,8 @@ export default function Detail() {
       size = [...product.productConditionals[0].size];
     }
 
-    if (product.user1) {
-      user1 = product.user1;
+    if (product.user) {
+      user1 = product.user;
     }
   }
 
@@ -312,6 +313,7 @@ export default function Detail() {
           <div className="back">
             <ButtonBack />
           </div>
+          {/* <SellerUser user={user1} /> */}
           <ShowProduct />
           <RelatedProducts products={arrayFilterProducts} />
           <div className="footer">

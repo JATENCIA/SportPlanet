@@ -34,6 +34,10 @@ main {
   margin-top: 3%;
 }
 
+.seller {
+  margin-right: 80%;
+}
+
 .main-thumbnail {
   border-radius: 10px;
   cursor: pointer;
@@ -280,6 +284,7 @@ main {
   padding: 12px 40px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  font-family: var(--font-family);
 }
 
 .add_btn:hover {
