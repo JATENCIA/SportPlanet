@@ -17,7 +17,9 @@ import {
   CLEAN_SEARCHED_PRODUCTS,
   shop,
   REMOVE_ONE_ITEM,
+  addToCart,
 } from "../Actions";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   users: [],
@@ -29,6 +31,10 @@ const initialState = {
   userProducts: [],
   shoppingCart: [],
 };
+
+const storedValue = window.localStorage.getItem("cart");
+let value = JSON.parse(storedValue);
+value = JSON.parse(value);
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -280,6 +286,7 @@ export const rootReducer = (state = initialState, action) => {
     default:
       return {
         ...state,
+        shoppingCart: value,
       };
   }
 };
