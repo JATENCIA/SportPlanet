@@ -1,6 +1,9 @@
 .itemContainer {
   display: flex;
   flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 5px;
 }
 
 .firstRow {
@@ -12,13 +15,19 @@
 }
 
 .imgContainer {
-  border: 1px solid black;
-  height: 200px;
+  border: 1px solid rgb(239, 237, 237);
+  border-radius: 5px;
+  height: 250px;
   width: 150px;
   margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -4px 8px 15px -3px rgba(150, 146, 146, 0.75);
 }
 .imgContainer img {
-  height: 200px;
+  border-radius: 5px;
+  height: 250px;
   width: 150px;
 }
 
@@ -32,6 +41,14 @@
   flex-direction: column;
   position: absolute;
   left: 200px;
+}
+
+.detailsContainer h2 {
+  width: 200px;
+}
+
+.price {
+  margin-left: 150px;
 }
 
 .amountContainer {
@@ -57,7 +74,15 @@
 }
 
 .buttons button:hover {
-  font-size: 25px;
+  transform: scale(0.9);
+}
+
+.buttonMinus:hover {
+  color: rgb(136, 38, 38);
+}
+
+.buttonPlus:hover {
+  color: blue;
 }
 
 .totalPrice {
@@ -71,7 +96,7 @@
 }
 
 .trashIcon {
-  font-size: 30px;
+  font-size: 25px;
   transition: all 200ms ease;
 }
 

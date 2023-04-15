@@ -2,6 +2,7 @@ import React from "react";
 import style from "./CartItem.module.css";
 import Cart from "../Cart";
 import { BsTrash } from "react-icons/bs";
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 
 export default function CartItem({
   name,
@@ -20,7 +21,7 @@ export default function CartItem({
     <div className={style.itemContainer}>
       <div className={style.firstRow}>
         <div className={style.imgContainer}>
-          <img src={image} alt="" className={style.itemImage} />
+          <img src={image} alt="" />
         </div>
 
         <div className={style.detailsContainer}>
@@ -39,31 +40,32 @@ export default function CartItem({
           <h2>Quantity</h2>
           <div className={style.buttons}>
             <button
+              className={style.buttonMinus}
               onClick={() => {
                 if (quantity > 1) {
                   delFromCart(productCart);
                 }
               }}
             >
-              -
+              <AiOutlineMinusCircle />
             </button>
             <span>{quantity}</span>
             <button
-              on
+              className={style.buttonPlus}
               onClick={() => {
                 if (quantity < stock) {
                   addItem(productCart);
                 }
               }}
             >
-              +
+              <AiOutlinePlusCircle />
             </button>
           </div>
         </div>
 
         <div className={style.totalPrice}>
           <h2>Total</h2>
-          <span>{price * quantity}</span>
+          <span>${price * quantity}</span>
         </div>
       </div>
 
@@ -74,6 +76,7 @@ export default function CartItem({
           </button>
         </div>
       </div>
+      <hr />
     </div>
   );
 }
