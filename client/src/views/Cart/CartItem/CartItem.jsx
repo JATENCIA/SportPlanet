@@ -20,33 +20,50 @@ export default function CartItem({
     <div className={style.itemContainer}>
       <div className={style.firstRow}>
         <div className={style.imgContainer}>
-          <img src={""} alt="" className={style.itemImage} />
+          <img src={image} alt="" className={style.itemImage} />
         </div>
 
         <div className={style.detailsContainer}>
-          <h2>Name</h2>
-          <span>Color: </span>
-          <span>Size: </span>
-          <span>In Stock</span>
+          <h2>{name}</h2>
+          <span>Color: {color} </span>
+          <span>Size: {size}</span>
+          <span>Stock: {stock}</span>
         </div>
 
         <div className={style.price}>
           <h2>Each</h2>
-          <span>Product Price</span>
+          <span>{price}</span>
         </div>
 
         <div className={style.amountContainer}>
           <h2>Quantity</h2>
           <div className={style.buttons}>
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+            <button
+              onClick={() => {
+                if (quantity > 1) {
+                  delFromCart(productCart);
+                }
+              }}
+            >
+              -
+            </button>
+            <span>{quantity}</span>
+            <button
+              on
+              onClick={() => {
+                if (quantity < stock) {
+                  addItem(productCart);
+                }
+              }}
+            >
+              +
+            </button>
           </div>
         </div>
 
         <div className={style.totalPrice}>
           <h2>Total</h2>
-          <span>Total Price</span>
+          <span>{price * quantity}</span>
         </div>
       </div>
 

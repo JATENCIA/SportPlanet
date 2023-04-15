@@ -20,7 +20,7 @@ import ProfileProductCard from "../ProfileProductCard/ProfileProductCard";
 export default function ProfileShopping() {
   const dispatch = useDispatch();
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const allProducts = useSelector((state) => state.cartState.allProducts);
   const filteredProducts = allProducts.filter((product) => product.price >= 30);
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 8;
