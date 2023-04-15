@@ -29,11 +29,17 @@ function Cart() {
     const valorInicial = localStorage.getItem("cart");
     return valorInicial !== null ? JSON.parse(valorInicial) : cart;
   });
+  const valorInicial = localStorage.getItem("cart");
+  console.log("🚀" + valorInicial);
+ 
+  cart?.map((element)=> {
+    const actualizarEstado = (element) => {
+      setMiEstado(JSON.stringify(element));
+      localStorage.setItem("cart", JSON.stringify(element));
+    };
 
-  const actualizarEstado = (cart) => {
-    setMiEstado(JSON.stringify(cart));
-    localStorage.setItem("cart", JSON.stringify(cart));
-  };
+  }) 
+
   console.log(
     "🚀 ~ file: Cart.jsx:32 ~ const[miEstado,setMiEstado]=useState ~ miEstado:",
     miEstado

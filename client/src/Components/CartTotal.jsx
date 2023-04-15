@@ -11,11 +11,6 @@ function CartTotal() {
 
     <div className={styled.backg}>
       <h1 className={styled.total}>Total : ${total} </h1>
-
-    <div className={style.total}>
-      <span>Estimated Total</span>
-      <span>${total}</span>
-
     </div>
   );
 }
