@@ -1,0 +1,45 @@
+.nav {
+  display: flex;
+  background-color: black;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav h1 {
+  font-family: RobotoCondensed;
+  font-size: 70px;
+  color: white;
+}
+
+.buttonback {
+  padding-top: 15px;
+  margin-left: 1rem;
+}
+
+.bodyText {
+  width: 100%;
+  padding: 60px;
+  text-align: justify;
+  font-family: RobotoCondensed;
+}
+
+.bodyText h1 {
+  color: black;
+  font-size: 50px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.bodyText h2 {
+  color: black;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: justify;
+}
+
+.bodyText p {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 1rem;
+}
