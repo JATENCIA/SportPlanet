@@ -131,7 +131,7 @@ export default function Detail() {
       products.category === category &&
       products._id !== _id
   );
-  const arrayFilterProducts = filterProducts.slice(0, 6);
+  const arrayFilterProducts = filterProducts.slice(0, 5);
 
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 

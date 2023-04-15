@@ -155,7 +155,7 @@ main {
   } */
 .content {
   margin-left: 3rem;
-  margin-bottom: 15%;
+  margin-bottom: 10%;
   
 }
 
@@ -273,8 +273,8 @@ main {
   justify-content: center;
   border: none;
   border-radius: 50px;
-  background-color: #008080;
-  color: #fff;
+  background-color: rgb(244, 244, 0);
+  color: #000;
   font-size: 18px;
   font-weight: bold;
   padding: 12px 40px;
@@ -283,7 +283,7 @@ main {
 }
 
 .add_btn:hover {
-  background-color: #00b3b3;
+  background-color: #c9d33e;
 }
 
 .add_btn img {
