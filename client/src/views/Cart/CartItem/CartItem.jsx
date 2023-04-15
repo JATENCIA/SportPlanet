@@ -35,6 +35,20 @@ export default function CartItem({
           <span>Color: {color} </span>
           <span>Size: {size}</span>
           <span>Stock: {stock}</span>
+          {/* {discount <= 0 ? (
+            <span>$ {price}</span>
+          ) : (
+            <span style={{ fontSize: "20px" }}>
+              $ {price}&nbsp;
+              <small style={{ color: "green", fontSize: "12px" }}>
+                {discount}% OFF
+              </small>
+            </span>
+          )} */}
+        </div>
+
+        <div className={style.price}>
+          <h2>Each</h2>
           {discount <= 0 ? (
             <span>$ {price}</span>
           ) : (
@@ -76,7 +90,7 @@ export default function CartItem({
 
         <div className={style.totalPrice}>
           <h2>Total</h2>
-          <span>{total}</span>
+          <span>$ {total}</span>
         </div>
       </div>
 
