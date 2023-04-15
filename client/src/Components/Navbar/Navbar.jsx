@@ -69,11 +69,11 @@ export const NavBar = () => {
         </div>
 
         <Link to="/cart">
-          <ItemsDentroCarrito />
           <div className={style.cartContainer}>
             <button className={style.carrito}>
               <i className="fas fa-shopping-cart"></i>
             </button>
+            <ItemsDentroCarrito />
           </div>
         </Link>
       </div>
