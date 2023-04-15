@@ -151,6 +151,7 @@ export const clearCart = () => {
 };
 
 export const removeAllCart = (id) => {
+  console.log("🚀 ~ file: actions.js:154 ~ removeAllCart ~ id:", id);
   return {
     type: REMOVE_ALL_FROM_CART,
     payload: id,
