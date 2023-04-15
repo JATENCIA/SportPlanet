@@ -9,7 +9,13 @@ import {
 } from "../../redux/Actions";
 import style from "./Filters.module.css";
 
-export default function Filters() {
+export default function Filters(props) {
+  const { SizeFilter } = props; 
+  const { GenderFilter } = props;
+  const {WearedFilter } = props;
+  const { SeasonFilter } = props;
+ 
+
   const dispatch = useDispatch();
 
   const selectHandlerPrice = (event) => {
@@ -36,9 +42,11 @@ export default function Filters() {
     let value = event.target.value;
     dispatch(filterBySize(value));
   };
+  
 
   return (
     <div className={style.filtersContainer}>
+      
       <select onChange={selectHandlerPrice} className={style.select}>
         <option value="" selected disabled hidden>
           Price Filter
@@ -46,15 +54,18 @@ export default function Filters() {
         <option value="lowerToHigher">Lower to Higher</option>
         <option value="higherToLower">Higher to Lower</option>
       </select>
-      <select onChange={selectHandlerSize} className={style.select}>
+      {SizeFilter && (
+      <select onChange={selectHandlerSize} className={style.select} >
         <option value="" selected disabled hidden>
           Size Filter
-        </option>
+        </option> 
         <option value="small">S</option>
         <option value="medium">M</option>
         <option value="large">L</option>
         <option value="xlarge">XL</option>
       </select>
+       )}
+       {WearedFilter && (
       <select onChange={selectHandlerWeared} className={style.select}>
         <option value="" selected disabled hidden>
           Weared Filter
@@ -62,7 +73,9 @@ export default function Filters() {
         <option value="new">New</option>
         <option value="used">Used</option>
       </select>
-      <select onChange={selectHandlerGender} className={style.select}>
+ )}
+      {GenderFilter && (
+      <select onChange={selectHandlerGender} className={style.select} >
         <option value="" selected disabled hidden>
           Gender Filter
         </option>
@@ -70,6 +83,8 @@ export default function Filters() {
         <option value="women">Women</option>
         <option value="unisex">Unisex</option>
       </select>
+      )}
+      {SeasonFilter && (
       <select onChange={selectHandlerSeason} className={style.select}>
         <option value="" selected disabled hidden>
           Season Filter
@@ -81,6 +96,7 @@ export default function Filters() {
         <option value="10s">2019-2010</option>
         <option value="20s">2023-2020</option>
       </select>
+      )}
     </div>
   );
 }

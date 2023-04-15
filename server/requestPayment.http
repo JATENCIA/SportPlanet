@@ -1,0 +1,22 @@
+ @urlApi = http://localhost:5000
+
+POST {{urlApi}}/payments
+Content-Type: application/json
+
+
+ [
+ {
+ "name":"camiseta river",
+  "discount":10,
+  "price":35.000,
+  "quantity":1,
+  "eMail":"test_user_2065551398@testuser.com"
+  },
+   {
+ "name":"camiseta argentina",
+  "discount":0,
+  "price":25.000,
+  "quantity":2,
+  "eMail":"test_user_2065551398@testuser.com"
+  }
+  ]

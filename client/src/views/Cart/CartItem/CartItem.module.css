@@ -1,0 +1,61 @@
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.firstRow {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  justify-content: space-between;
+  font-family: RobotoCondensed;
+}
+
+.imgContainer {
+  border: 1px solid black;
+  height: 200px;
+  width: 150px;
+  margin-left: 2rem;
+}
+.imgContainer img {
+  height: 200px;
+  width: 150px;
+}
+
+.itemContainer h2 {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 200px;
+}
+
+.buttons {
+  display: flex;
+  width: 100px;
+  justify-content: space-between;
+}
+
+.totalPrice {
+  margin-right: 2rem;
+}
+
+.itemFunctions {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.trashIcon {
+  font-size: 30px;
+  transition: all 200ms ease;
+}
+
+.trashIcon:hover {
+  transform: scale(1.05);
+  color: rgb(215, 73, 73);
+}
