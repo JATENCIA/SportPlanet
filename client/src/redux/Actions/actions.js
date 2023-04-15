@@ -144,15 +144,9 @@ export const addToCart = (productCart) => {
   };
 };
 
-
-  }
-
-}
-
 export const clearCart = () => {
   return {
     type: CLEAR_CART,
-
   };
 };
 
@@ -169,25 +163,6 @@ export const removeOneCart = (id) => {
     payload: id,
   };
 };
-
-
-    
-    
-  }
-}
-export const removeAllCart = (id) => {
-  return {
-    type:REMOVE_ALL_FROM_CART,
-    payload:id
-  }
-}
-export const removeOneCart = (id) => {
-  return {
-    type: REMOVE_ONE_FROM_CART,
-    payload:id
-  }
-
-}
 
 export const shop = (item) => {
   return async function (dispatch) {
