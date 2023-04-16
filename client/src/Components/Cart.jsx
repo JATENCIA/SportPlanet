@@ -25,26 +25,6 @@ function Cart() {
   const dispatch = useDispatch();
   const navigete = useNavigate();
 
-  const [miEstado, setMiEstado] = useState(() => {
-    const valorInicial = localStorage.getItem("cart");
-    return valorInicial !== null ? JSON.parse(valorInicial) : cart;
-  });
-  const valorInicial = localStorage.getItem("cart");
-  console.log("🚀" + valorInicial);
- 
-  cart?.map((element)=> {
-    const actualizarEstado = (element) => {
-      setMiEstado(JSON.stringify(element));
-      localStorage.setItem("cart", JSON.stringify(element));
-    };
-
-  }) 
-
-  console.log(
-    "🚀 ~ file: Cart.jsx:32 ~ const[miEstado,setMiEstado]=useState ~ miEstado:",
-    miEstado
-  );
-
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);

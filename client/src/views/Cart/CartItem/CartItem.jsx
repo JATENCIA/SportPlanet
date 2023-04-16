@@ -36,16 +36,6 @@ export default function CartItem({
           <span>Color: {color} </span>
           <span>Size: {size}</span>
           <span>Stock: {stock}</span>
-          {/* {discount <= 0 ? (
-            <span>$ {price}</span>
-          ) : (
-            <span style={{ fontSize: "20px" }}>
-              $ {price}&nbsp;
-              <small style={{ color: "green", fontSize: "12px" }}>
-                {discount}% OFF
-              </small>
-            </span>
-          )} */}
         </div>
 
         <div className={style.price}>
