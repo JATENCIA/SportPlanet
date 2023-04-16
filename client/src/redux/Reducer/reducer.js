@@ -33,8 +33,11 @@ const initialState = {
 };
 
 const storedValue = window.localStorage.getItem("cart");
-let value = JSON.parse(storedValue);
-value = JSON.parse(value);
+let value = [];
+if (storedValue) {
+  value = JSON.parse(storedValue);
+  value = JSON.parse(value);
+}
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
