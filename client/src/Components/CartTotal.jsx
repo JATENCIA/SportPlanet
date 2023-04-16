@@ -12,7 +12,7 @@ function CartTotal() {
 
   return (
     <div className={styled.backg}>
-      <h1 className={styled.total}>Total : $ {total} </h1>
+      <h1 className={styled.total}>Total : $ {total.toFixed(2)} </h1>
     </div>
   );
 }

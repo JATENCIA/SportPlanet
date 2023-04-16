@@ -9,7 +9,9 @@ function ItemsDentroCarrito() {
 
   return (
     <div className={styled.border}>
-      <span className={styled.items}>{itemsCarrito}</span>
+      <span className={styled.items}>
+        {itemsCarrito !== 0 ? itemsCarrito : null}
+      </span>
     </div>
   );
 }
