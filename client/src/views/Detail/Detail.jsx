@@ -29,14 +29,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUser } from "../../redux/Actions/actions";
 import Login from "../../Components/Navbar/Login";
 import SellerUser from "./SellerUser";
-
+import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
 
 export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const { isAuthenticated, user, logout } = useAuth0();
-
 
   useEffect(() => {
     dispatch(getProductDetail(id)).then(() => setIsLoading(false));
@@ -171,7 +170,8 @@ export default function Detail() {
       products.category === category &&
       products._id !== _id
   );
-  const arrayFilterProducts = filterProducts.slice(0, 5);
+  let arrayFilterProducts = filterProducts.slice(0, 5);
+  arrayFilterProducts = arrayFilterProducts.filter(elem => !elem.baneado)
 
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -181,6 +181,9 @@ export default function Detail() {
     return (
       <>
         <div className="container">
+          <div className="back">
+            <ButtonBack />
+          </div>
           <main>
             <section className="thumbnails">
               <div
@@ -314,9 +317,8 @@ export default function Detail() {
       ) : (
         <>
           <NavBar />
-          <div className="back">
-            <ButtonBack />
-          </div>
+          <FilterNavBar />
+
           {/* <SellerUser user={user1} /> */}
           <ShowProduct />
           <RelatedProducts products={arrayFilterProducts} />
