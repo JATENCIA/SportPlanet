@@ -6,6 +6,7 @@ import {
   filterBySeason,
   filterBySize,
   filterByUsed,
+  resetFilters,
 } from "../../redux/Actions";
 import style from "./Filters.module.css";
 
@@ -14,6 +15,7 @@ export default function Filters(props) {
   const { GenderFilter } = props;
   const {WearedFilter } = props;
   const { SeasonFilter } = props;
+  const { ResetFilters } = props;
  
 
   const dispatch = useDispatch();
@@ -42,6 +44,12 @@ export default function Filters(props) {
     let value = event.target.value;
     dispatch(filterBySize(value));
   };
+
+
+  const handleClick = () => {
+    dispatch(resetFilters());
+    
+  }
   
 
   return (
@@ -97,6 +105,11 @@ export default function Filters(props) {
         <option value="20s">2023-2020</option>
       </select>
       )}
+      {ResetFilters && (
+      <button onClick={handleClick} className={style.resetButton}>
+      Reset Filters
+    </button>
+    )}
     </div>
   );
 }
