@@ -1,31 +1,43 @@
 import React from "react";
 import CartItem from "./CartItem/CartItem";
 import CartTotal from "../../Components/CartTotal";
+import { useNavigate } from "react-router-dom";
+
 import {
   removeAllCart,
   removeOneCart,
+  removeItemCart,
   clearCart,
   getAllProduct,
   shop,
   addToCart,
+  getAllUser,
 } from "../../redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import style from "./Cart.module.css";
 import { NavBar } from "../../Components/Navbar";
 import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
 import { BiShoppingBag } from "react-icons/bi";
 import { useAuth0 } from "@auth0/auth0-react";
+import Swal from "sweetalert2";
 
 export default function Cart() {
-  const user = useAuth0();
   const dispatch = useDispatch();
+  const navigete = useNavigate();
 
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
 
   const cart = useSelector((state) => state.shoppingCart);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(JSON.stringify(cart)));
+  }, [cart]);
+
+  const storedValue = window.localStorage.getItem("cart");
+  let value = JSON.parse(storedValue);
 
   let discount = 0;
   let shippingCost = 0;
@@ -34,6 +46,22 @@ export default function Cart() {
     discount += elem.quantity * (elem.price - preciDiscount);
     shippingCost += elem.price * elem.quantity;
   });
+
+  const [userE, setUserE] = useState({});
+  const { isAuthenticated, user, logout } = useAuth0();
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+
+  useEffect(() => {
+    if (user && isAuthenticated) {
+      const userDb = allUsers?.find((element) => element.eMail === user?.email);
+      userDb ? setUserE(userDb) : "";
+    }
+  }, [user]);
 
   const delFromCart = (id, color, size, UUID, all = false) => {
     if (all) {
@@ -47,13 +75,26 @@ export default function Cart() {
     dispatch(clearCart());
   };
 
-  const handleShop = () => {
-    dispatch(shop(cart));
-    dispatch(clearCart());
-  };
-
   const adToCart = (id) => {
     dispatch(addToCart(id));
+  };
+
+  const removeItem = (id, color, size) => {
+    dispatch(removeItemCart(id, color, size));
+  };
+
+  const handleShop = async () => {
+    if (isAuthenticated) {
+      if (userE.baneado === false) {
+        dispatch(shop(cart));
+        dispatch(clearCart());
+      } else {
+        Swal.fire(`🚫 BANNED USER`);
+      }
+    } else {
+      await Swal.fire(`⚠️ LOG IN`);
+      navigete("/home");
+    }
   };
 
   return (
@@ -86,11 +127,11 @@ export default function Cart() {
                   UUID={e.UUID}
                   delFromCart={delFromCart}
                   addItem={adToCart}
+                  removeItem={removeItem}
                 />
               );
             })}
           </div>
-          <hr />
         </article>
         <div className={style.secondContainer}>
           <div className={style.paymentContainer}>
@@ -106,7 +147,7 @@ export default function Cart() {
               <h2 className={style.detailTitle}>Details Summary</h2>
               <div className={style.detail}>
                 <span>Shipping Cost</span>
-                <span>$ {shippingCost}</span>
+                <span>$ {shippingCost.toFixed(2)}</span>
               </div>
               <div className={style.detail}>
                 <span>Discount</span>
@@ -120,7 +161,9 @@ export default function Cart() {
               <CartTotal />
               <hr />
             </div>
-            <button className={style.buttonPay}>CHECKOUT</button>
+            <button className={style.buttonPay} onClick={() => handleShop()}>
+              CHECKOUT
+            </button>
           </div>
         </div>
       </div>

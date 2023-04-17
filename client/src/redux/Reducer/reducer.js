@@ -16,7 +16,10 @@ import {
   SHOP,
   CLEAN_SEARCHED_PRODUCTS,
   shop,
+  REMOVE_ONE_ITEM,
+  addToCart,
 } from "../Actions";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   users: [],
@@ -28,6 +31,13 @@ const initialState = {
   userProducts: [],
   shoppingCart: [],
 };
+
+const storedValue = window.localStorage.getItem("cart");
+let value = [];
+if (storedValue) {
+  value = JSON.parse(storedValue);
+  value = JSON.parse(value);
+}
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -239,6 +249,29 @@ export const rootReducer = (state = initialState, action) => {
             shoppingCart,
           };
 
+    case REMOVE_ONE_ITEM:
+      let delItem = state.shoppingCart.find(
+        (item) =>
+          item.id === action.payload.id &&
+          item.color === action.payload.color &&
+          item.size === action.payload.size
+      );
+      return delItem.quantity > 1
+        ? {
+            ...state,
+            shoppingCart: state.shoppingCart.map((item) =>
+              item.id === action.payload.id &&
+              item.color === action.payload.color &&
+              item.size === action.payload.size
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            shoppingCart,
+          };
+
     case REMOVE_ALL_FROM_CART:
       return {
         ...state,
@@ -256,6 +289,7 @@ export const rootReducer = (state = initialState, action) => {
     default:
       return {
         ...state,
+        shoppingCart: value,
       };
   }
 };

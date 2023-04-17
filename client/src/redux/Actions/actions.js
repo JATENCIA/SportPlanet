@@ -18,6 +18,7 @@ import {
   SHOP,
   CLEAN_SEARCHED_PRODUCTS,
   ADD_REVIEW,
+  REMOVE_ONE_ITEM,
 } from "./actionsTypes";
 
 export const getAllUser = () => async (dispatch) => {
@@ -134,9 +135,6 @@ export const cleanSearchedProducts = () => {
 };
 
 export const addToCart = (productCart) => {
-  let cart = JSON.parse(localStorage.getItem("car")) || [];
-  cart.push(productCart);
-  localStorage.setItem("cart", JSON.stringify(cart));
   return {
     type: ADD_TO_CART,
 
@@ -151,6 +149,7 @@ export const clearCart = () => {
 };
 
 export const removeAllCart = (id) => {
+  console.log("🚀 ~ file: actions.js:154 ~ removeAllCart ~ id:", id);
   return {
     type: REMOVE_ALL_FROM_CART,
     payload: id,
@@ -166,6 +165,17 @@ export const removeOneCart = (id, color, size, UUID) => {
   };
   return {
     type: REMOVE_ONE_FROM_CART,
+    payload: product,
+  };
+};
+export const removeItemCart = (id, color, size) => {
+  let product = {
+    id: id,
+    color: color,
+    size: size,
+  };
+  return {
+    type: REMOVE_ONE_ITEM,
     payload: product,
   };
 };

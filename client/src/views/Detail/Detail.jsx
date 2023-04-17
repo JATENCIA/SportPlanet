@@ -129,7 +129,6 @@ export default function Detail() {
       select ? select : setSelect(stock2);
     }
     let UUID = crypto.randomUUID();
-    console.log("🚀 ~ file: Detail.jsx:132 ~ Detail ~ UUID:", UUID);
     productCart = {
       id: _id,
       name: name,
@@ -155,7 +154,7 @@ export default function Detail() {
         Swal.fire(`⚠️ LOG IN OR REGISTER`);
       }
     } else {
-      Swal.fire(`⚠️ SELECT A COLOR`);
+      Swal.fire(`⚠️ SELECT COLOR AND SIZE`);
     }
   };
 

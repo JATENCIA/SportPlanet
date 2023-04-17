@@ -2,6 +2,7 @@ import React from "react";
 import style from "./CartItem.module.css";
 import Cart from "../Cart";
 import { BsTrash } from "react-icons/bs";
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 
 export default function CartItem({
   name,
@@ -18,6 +19,7 @@ export default function CartItem({
   discount,
   _id,
   UUID,
+  removeItem,
 }) {
   let price2 = price * quantity;
   let total = price2 - (price2 * discount) / 100;
@@ -26,7 +28,7 @@ export default function CartItem({
     <div className={style.itemContainer}>
       <div className={style.firstRow}>
         <div className={style.imgContainer}>
-          <img src={image} alt="" className={style.itemImage} />
+          <img src={image} alt="" />
         </div>
 
         <div className={style.detailsContainer}>
@@ -34,6 +36,10 @@ export default function CartItem({
           <span>Color: {color} </span>
           <span>Size: {size}</span>
           <span>Stock: {stock}</span>
+        </div>
+
+        <div className={style.price}>
+          <h2>Each</h2>
           {discount <= 0 ? (
             <span>$ {price}</span>
           ) : (
@@ -50,31 +56,32 @@ export default function CartItem({
           <h2>Quantity</h2>
           <div className={style.buttons}>
             <button
+              className={style.buttonMinus}
               onClick={() => {
                 if (quantity > 1) {
-                  delFromCart(productCart);
+                  removeItem(_id, color, size, UUID);
                 }
               }}
             >
-              -
+              <AiOutlineMinusCircle />
             </button>
             <span>{quantity}</span>
             <button
-              on
+              className={style.buttonPlus}
               onClick={() => {
                 if (quantity < stock) {
                   addItem(productCart);
                 }
               }}
             >
-              +
+              <AiOutlinePlusCircle />
             </button>
           </div>
         </div>
 
         <div className={style.totalPrice}>
           <h2>Total</h2>
-          <span>{total}</span>
+          <span>$ {total}</span>
         </div>
       </div>
 
@@ -88,6 +95,7 @@ export default function CartItem({
           </button>
         </div>
       </div>
+      <hr />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import fila from "../../images/filaLogo.jpeg";
 import puma from "../../images/pumaLogo.jpeg";
 import underarmour from "../../images/underArmour.jpg";
 import { FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -25,8 +26,12 @@ export default function Footer() {
 
         <div className={style.infoContainer}>
           <h3>TERMS & CONDITIONS</h3>
-          <span>TERMS OF USE</span>
-          <span>OUR POLICY</span>
+          <Link to="/terms">
+            <span>TERMS OF USE</span>
+          </Link>
+          <Link to="/policy">
+            <span>OUR POLICY</span>
+          </Link>
         </div>
 
         <div className={style.infoContainer}>
