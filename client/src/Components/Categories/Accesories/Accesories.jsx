@@ -16,7 +16,7 @@ export default function Accesories() {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const allProducts = useSelector((state) => state.filteredProducts);
   const filterProducts = allProducts.filter((product) => {
     return product.category === "accessories";
   });

@@ -19,6 +19,7 @@ import {
   CLEAN_SEARCHED_PRODUCTS,
   ADD_REVIEW,
   REMOVE_ONE_ITEM,
+  RESET_FILTERS,
 } from "./actionsTypes";
 
 
@@ -218,3 +219,9 @@ export const addReview = (payload) => {
     return review;
   };
 };
+export const resetFilters = (payload) => {
+  return {
+  type: RESET_FILTERS,
+  payload: payload
+  }
+  }
