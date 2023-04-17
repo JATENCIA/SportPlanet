@@ -21,6 +21,9 @@ import {
   REMOVE_ONE_ITEM,
 } from "./actionsTypes";
 
+
+
+
 export const getAllUser = () => async (dispatch) => {
   try {
     const { data } = await axios.get("/users");
@@ -179,6 +182,21 @@ export const removeItemCart = (id, color, size) => {
     payload: product,
   };
 };
+   
+  
+
+
+
+export const removeProduct = (id) => {
+  return {
+    type: REMOVE_PRODUCT,
+    payload:id
+  }
+
+}
+
+
+
 
 export const shop = (item) => {
   return async function (dispatch) {
