@@ -31,3 +31,22 @@
   height: 40px;
   font-family: Bebas;
 }
+
+.resetButton {
+  color: rgb(95, 100, 99);
+  font-size: 15px; 
+  font-weight: bold;
+  border-radius: 20px;
+  display: flex;
+  height: 25px;
+  font-family: Bebas;
+  background-color: #f2f2f2;
+  padding: 0 10px;
+  transition: background-color 0.3s ease-in-out;
+  margin-left: -40px;
+}
+
+.resetButton:hover {
+  background-color: #c40e0ec2;
+  color: #ffffff;
+}

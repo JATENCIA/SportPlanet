@@ -16,6 +16,10 @@ import {
   SHOP,
   CLEAN_SEARCHED_PRODUCTS,
   REMOVE_ONE_ITEM,
+
+  RESET_FILTERS,
+  
+
 } from "../Actions";
 import { useDispatch } from "react-redux";
 
@@ -284,12 +288,17 @@ export const rootReducer = (state = initialState, action) => {
         ),
       };
 
+      case RESET_FILTERS: 
+      return {
+        ...state,
+        filteredProducts: [...state.allProducts], 
+      };
+
     case CLEAR_CART:
       return { ...state, shoppingCart: [] };
 
     case SHOP:
       return { ...state };
-
     default:
       return {
         ...state,
@@ -297,3 +306,4 @@ export const rootReducer = (state = initialState, action) => {
       };
   }
 };
+
