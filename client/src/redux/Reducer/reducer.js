@@ -66,12 +66,12 @@ export const rootReducer = (state = initialState, action) => {
     case FILTER_BY_PRICE:
       let productsSorted =
         action.payload === "lowerToHigher"
-          ? [...state.filteredProducts].sort((a, b) => {
+          ? [...state.filteredProducts] && [...state.filteredProducts2].sort((a, b) => {
               if (a.price > b.price) return 1;
               if (b.price > a.price) return -1;
               return 0;
             })
-          : [...state.filteredProducts].sort((a, b) => {
+          : [...state.filteredProducts] && [...state.filteredProducts2].sort((a, b) => {
               if (a.price > b.price) return -1;
               if (b.price > a.price) return 1;
               return 0;
