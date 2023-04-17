@@ -15,6 +15,7 @@ export default function CartItem({
   size,
   color,
   stock,
+  discount,
 }) {
   return (
     <div className={style.itemContainer}>

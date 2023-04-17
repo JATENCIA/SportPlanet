@@ -20,17 +20,19 @@ import { useEffect } from "react";
 import styled from "./Cart.module.css";
 import { Link, Navigate } from "react-router-dom";
 
+log
+
 function Cart() {
   const cart = useSelector((state) => state.shoppingCart);
   const dispatch = useDispatch();
   const navigete = useNavigate();
+  console.log("🚀" + cart);
 
   const [miEstado, setMiEstado] = useState(() => {
     const valorInicial = localStorage.getItem("cart");
     return valorInicial !== null ? JSON.parse(valorInicial) : cart;
   });
   const valorInicial = localStorage.getItem("cart");
-  console.log("🚀" + valorInicial);
  
   cart?.map((element)=> {
     const actualizarEstado = (element) => {
@@ -119,6 +121,7 @@ function Cart() {
               image={e.image}
               size={e.size}
               color={e.color}
+              discount={e.discount}
               delFromCart={delFromCart}
               addItem={adToCart}
             />

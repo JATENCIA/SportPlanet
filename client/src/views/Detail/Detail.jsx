@@ -51,10 +51,12 @@ export default function Detail() {
     category,
     gender,
     brands,
-    user1;
+    user1,
+    discount;
 
   if (product) {
     name = product.name;
+    discount = product.discount;
     price = product.price;
     (description = product.description),
       (category = product.category),
@@ -135,6 +137,8 @@ export default function Detail() {
       image: selectedProduct.image[0],
       size: sizes || "amount",
       stock: select,
+      discount: discount,
+
     };
   }
 

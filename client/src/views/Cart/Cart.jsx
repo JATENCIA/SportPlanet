@@ -19,7 +19,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Cart() {
   const user = useAuth0();
-  console.log(user);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,8 +27,12 @@ export default function Cart() {
   }, [dispatch]);
 
   const cart = useSelector((state) => state.shoppingCart);
-  console.log(cart);
-
+  let discount = 0;
+  cart?.map((e)=> {
+    discount +=  e.discount;
+  })
+  
+  
   const delFromCart = (id, all = false) => {
     if (all) {
       dispatch(removeAllCart(id));
@@ -76,6 +80,7 @@ export default function Cart() {
                   image={e.image}
                   size={e.size}
                   color={e.color}
+                  discount={e.discount}
                   delFromCart={delFromCart}
                   addItem={adToCart}
                 />
@@ -102,7 +107,7 @@ export default function Cart() {
               </div>
               <div className={style.detail}>
                 <span>Discount</span>
-                <span>- $0</span>
+                <span>{discount}</span>
               </div>
               <div className={style.detail}>
                 <span>Taxes</span>
