@@ -47,7 +47,7 @@ export function Paginate({allProducts, productsPerPage, setPagination, currentPa
 				}
 				</div>
 				<div className={style.prev_next}>
-					<button className={style.next_prev_btn} onClick={() => {scroll();handleNext()}} disabled={currentPage === pageNumber.length}> <i className="fa-solid fa-angle-right" /> </button>
+					<button className={style.next_prev_btn} onClick={() => {scroll();handleNext()}} disabled={currentPage >= pageNumber.length}> <i className="fa-solid fa-angle-right" /> </button>
 				</div>
 		</div>
 	)
