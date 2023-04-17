@@ -29,6 +29,10 @@
   gap: 10px;
 }
 
+.infoContainer span:hover {
+  font-weight: bolder;
+}
+
 .infoContainer h3 {
   font-weight: 1000;
   font-size: medium;

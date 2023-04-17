@@ -42,7 +42,8 @@ import Woman from "./src/Components/Categories/Woman/Woman";
 import Kids from "./src/Components/Categories/Kids/Kids";
 import Promotions from "./src/Components/Categories/Promotions/Promotions";
 import Fitness from "./src/Components/Categories/Fitness/Fitness";
-
+import Policy from "./src/views/TermsConditions/Policy/Policy";
+import Terms from "./src/views/TermsConditions/Terms/Terms";
 import ProfileReviews from "./src/views/Profile/ProfileReviews/ProfileReviews";
 import AdminShopping from "./src/views/Admin/AdminShopping/AdminShopping";
 import AdminSales from "./src/views/Admin/AdminSales/AdminSales";
@@ -151,10 +152,12 @@ const App = () => {
         <Route path="/category/woman" element={<Woman />} />
         <Route path="/category/kids" element={<Kids />} />
         <Route path="/category/promotions" element={<Promotions />} />
-        <Route path="/category/fitness" element={<Fitness />} />
+       {/*  <Route path="/category/fitness" element={<Fitness />} /> */}
         <Route path="*" element={<Navigate to="/home" />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/policy" element={<Policy />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
     </>
   );
