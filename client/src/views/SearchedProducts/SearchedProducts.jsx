@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import Filters from "../../Components/Filters/Filters";
 import {
   cleanSearchedProducts,
   getSearchedProducts,
@@ -13,12 +14,17 @@ import style from "../SearchedProducts/searchedProducts.module.css";
 import { useNavigate } from "react-router-dom";
 import { Paginate } from "../../Components/Paginate/Paginate";
 
+
 const SearchedProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+<<<<<<< HEAD
   const searchedProducts = useSelector(
     (state) => state.searchedProducts
   );
+=======
+  const searchedProducts = useSelector((state) => state.searchedProducts);
+>>>>>>> d54c450e1e931143905e79b4a79bd9c3a8ef07d8
   const { product } = useParams();
 
   useEffect(() => {
@@ -28,7 +34,7 @@ const SearchedProducts = () => {
       dispatch(cleanSearchedProducts());
     };
   }, [dispatch, product]);
-
+ 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 10;
   const ultimo = currentPage * productsPerPage;
@@ -43,6 +49,8 @@ const SearchedProducts = () => {
     <div>
       <NavBar />
       <FilterNavBar />
+    <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true} />
+
 
       <div className={style.container}>
         {products.map((product) => (

@@ -136,7 +136,7 @@ export default function AllProducts() {
           </div>
           <Paginate
             productsPerPage={productsPerPage}
-            allProducts={products.length}
+            allProducts={allProducts.length}
             setPagination={setPagination}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}

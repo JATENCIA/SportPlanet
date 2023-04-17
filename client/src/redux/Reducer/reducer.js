@@ -16,6 +16,19 @@ import {
   SHOP,
   CLEAN_SEARCHED_PRODUCTS,
   REMOVE_ONE_ITEM,
+<<<<<<< HEAD
+=======
+
+
+  RESET_FILTERS,
+  
+
+
+
+
+ 
+  
+>>>>>>> d54c450e1e931143905e79b4a79bd9c3a8ef07d8
 } from "../Actions";
 import { useDispatch } from "react-redux";
 
@@ -63,14 +76,26 @@ export const rootReducer = (state = initialState, action) => {
     case FILTER_BY_PRICE:
       let productsSorted =
         action.payload === "lowerToHigher"
+<<<<<<< HEAD
           ? [...state.filteredProducts] &&
             [...state.filteredProducts2].sort((a, b) => {
+=======
+
+          ? [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
+
+>>>>>>> d54c450e1e931143905e79b4a79bd9c3a8ef07d8
               if (a.price > b.price) return 1;
               if (b.price > a.price) return -1;
-              return 0;
+              return 0; 
             })
+<<<<<<< HEAD
           : [...state.filteredProducts] &&
             [...state.filteredProducts2].sort((a, b) => {
+=======
+
+          : [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
+
+>>>>>>> d54c450e1e931143905e79b4a79bd9c3a8ef07d8
               if (a.price > b.price) return -1;
               if (b.price > a.price) return 1;
               return 0;
@@ -138,19 +163,19 @@ export const rootReducer = (state = initialState, action) => {
     case FILTER_BY_SIZE:
       let productSize = [];
       if (action.payload === "small") {
-        productSize = [...state.allProducts].filter(
+        productSize = [...state.filteredProducts2].filter(
           (e) => e.productConditionals[0].size[0].S > 0
         );
       } else if (action.payload === "medium") {
-        productSize = [...state.allProducts].filter(
+        productSize = [...state.filteredProducts2].filter(
           (e) => e.productConditionals[0].size[0].M > 0
         );
       } else if (action.payload === "large") {
-        productSize = [...state.allProducts].filter(
+        productSize = [...state.filteredProducts2].filter(
           (e) => e.productConditionals[0].size[0].L > 0
         );
       } else if (action.payload === "xlarge") {
-        productSize = [...state.allProducts].filter(
+        productSize = [...state.filteredProducts2].filter(
           (e) => e.productConditionals[0].size[1].XL > 0
         );
       } else {
@@ -282,12 +307,17 @@ export const rootReducer = (state = initialState, action) => {
         ),
       };
 
+      case RESET_FILTERS: 
+      return {
+        ...state,
+        filteredProducts: [...state.allProducts], 
+      };
+
     case CLEAR_CART:
       return { ...state, shoppingCart: [] };
 
     case SHOP:
       return { ...state };
-
     default:
       return {
         ...state,
@@ -295,3 +325,4 @@ export const rootReducer = (state = initialState, action) => {
       };
   }
 };
+

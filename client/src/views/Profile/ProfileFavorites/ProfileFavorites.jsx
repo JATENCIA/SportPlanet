@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./ProfileFavorites.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,15 +16,28 @@ import {
 } from "react-icons/fa";
 
 import { MdRateReview } from "react-icons/md";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUser } from "../../../redux/Actions";
 
 export default function ProfileFavorites() {
-  const allProducts = useSelector((state) => state.allProducts);
-  const filteredProducts = allProducts.filter((product) => product.price >= 30);
+  const dispatch = useDispatch();
+  
+  const { user } = useAuth0();
+  
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+  const userDb = allUsers?.find((element) => element.eMail === user?.email);
+  
+  const favoritesProducts = userDb.favorites
+
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 8;
   const last = currentPage * productsPerPage;
   const first = last - productsPerPage;
-  const products = filteredProducts.slice(first, last);
+  const products = favoritesProducts.slice(first, last);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
@@ -113,7 +126,7 @@ export default function ProfileFavorites() {
           </div>
           <Paginate
             productsPerPage={productsPerPage}
-            allProducts={products.length}
+            allProducts={favoritesProducts.length}
             setPagination={setPagination}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}

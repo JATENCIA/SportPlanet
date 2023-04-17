@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://static.wikia.nocookie.net/spacetoon/images/3/32/Sports-title.png/revision/latest?cb=20200116175957">
+  <img src="https://static.vecteezy.com/system/resources/previews/013/441/985/original/world-map-on-the-foot-ball-silhouette-for-icon-symbol-pictogram-sport-news-art-illustration-apps-website-or-graphic-design-element-format-png.png">
 </p>
 
 # **SportPlanet**
