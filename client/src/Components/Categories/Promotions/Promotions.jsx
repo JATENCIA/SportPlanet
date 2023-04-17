@@ -22,7 +22,7 @@ export default function Promotions() {
 
   const allProducts = useSelector((state) => state.filteredProducts);
   const filterProducts = allProducts.filter((product) => {
-    return product.price > 15;
+    return product.price < 16;
   });
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,7 +39,7 @@ export default function Promotions() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true}/>
+      <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
