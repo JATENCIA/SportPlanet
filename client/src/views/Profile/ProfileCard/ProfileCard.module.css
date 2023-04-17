@@ -11,13 +11,14 @@
 
 .imgContainer {
   width: 100%;
-  border: 1px solid black;
-  border-radius: 15px;
-  margin-bottom: auto;
   height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.img{
+  border-radius: 50%;
 }
 
 .cardContainer h2 {
