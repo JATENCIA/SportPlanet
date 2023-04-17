@@ -10,6 +10,7 @@ import ItemsDentroCarrito from "../ItemsDentroCarrito";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 
+
 export const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
