@@ -63,14 +63,16 @@ export const rootReducer = (state = initialState, action) => {
     case FILTER_BY_PRICE:
       let productsSorted =
         action.payload === "lowerToHigher"
-          ? [...state.filteredProducts] &&
-            [...state.filteredProducts2].sort((a, b) => {
+
+          ? [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
+
               if (a.price > b.price) return 1;
               if (b.price > a.price) return -1;
-              return 0;
+              return 0; 
             })
-          : [...state.filteredProducts] &&
-            [...state.filteredProducts2].sort((a, b) => {
+
+          : [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
+
               if (a.price > b.price) return -1;
               if (b.price > a.price) return 1;
               return 0;
@@ -138,19 +140,19 @@ export const rootReducer = (state = initialState, action) => {
     case FILTER_BY_SIZE:
       let productSize = [];
       if (action.payload === "small") {
-        productSize = [...state.allProducts].filter(
+        productSize = [...state.filteredProducts2].filter(
           (e) => e.productConditionals[0].size[0].S > 0
         );
       } else if (action.payload === "medium") {
-        productSize = [...state.allProducts].filter(
+        productSize = [...state.filteredProducts2].filter(
           (e) => e.productConditionals[0].size[0].M > 0
         );
       } else if (action.payload === "large") {
-        productSize = [...state.allProducts].filter(
+        productSize = [...state.filteredProducts2].filter(
           (e) => e.productConditionals[0].size[0].L > 0
         );
       } else if (action.payload === "xlarge") {
-        productSize = [...state.allProducts].filter(
+        productSize = [...state.filteredProducts2].filter(
           (e) => e.productConditionals[0].size[1].XL > 0
         );
       } else {
