@@ -14,9 +14,13 @@ import {
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
   SHOP,
-  REMOVE_PRODUCT,
+ 
   CLEAN_SEARCHED_PRODUCTS,
+  
+  REMOVE_ONE_ITEM,
+  
 } from "../Actions";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   users: [],
@@ -27,8 +31,15 @@ const initialState = {
   filteredProducts: [],
   filteredProducts2: [],
   userProducts: [],
-  shoppingCart:[],
+  shoppingCart: [],
 };
+
+const storedValue = window.localStorage.getItem("cart");
+let value = [];
+if (storedValue) {
+  value = JSON.parse(storedValue);
+  value = JSON.parse(value);
+}
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -128,41 +139,36 @@ export const rootReducer = (state = initialState, action) => {
     /*   }; */
 
     case FILTER_BY_SIZE:
-      let productSize = []
-      if (action.payload === "small"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].S > 0 )
-       
+      let productSize = [];
+      if (action.payload === "small") {
+        productSize = [...state.allProducts].filter(
+          (e) => e.productConditionals[0].size[0].S > 0
+        );
+      } else if (action.payload === "medium") {
+        productSize = [...state.allProducts].filter(
+          (e) => e.productConditionals[0].size[0].M > 0
+        );
+      } else if (action.payload === "large") {
+        productSize = [...state.allProducts].filter(
+          (e) => e.productConditionals[0].size[0].L > 0
+        );
+      } else if (action.payload === "xlarge") {
+        productSize = [...state.allProducts].filter(
+          (e) => e.productConditionals[0].size[1].XL > 0
+        );
+      } else {
+        /* else if (action.payload === "XL"){ */
+        /*   productSize = [...state.allProducts].filter(e => e.size[0].XL >= 0 ) */
+        /*    */
+        /* } */
+        productSize = state.allProducts;
       }
-     
-     else if (action.payload === "medium"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].M > 0 )
-       
-      }
-     else if (action.payload === "large"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].L  > 0 )
-        
-      }
-      
-      else if (action.payload === "xlarge"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].XL > 0 )
-        
-      }
-      
-      /* else if (action.payload === "XL"){ */
-      /*   productSize = [...state.allProducts].filter(e => e.size[0].XL >= 0 ) */
-      /*    */
-      /* } */
-      else {
-        productSize =state.allProducts
-      }
-      
-      
+
       return {
         ...state,
         filteredProducts: [...productSize],
-        filteredProducts2: [...productSize]
-      }
-      
+        filteredProducts2:[...productSize]
+      };
 
     case FILTER_BY_SEASON:
       let productBySeason = [...state.filteredProducts2].filter((product) => {
@@ -193,85 +199,102 @@ export const rootReducer = (state = initialState, action) => {
       };
 
     case CLEAN_SEARCHED_PRODUCTS:
-      return{
+      return {
         ...state,
-        searchedProducts: []
+        searchedProducts: [],
+      };
+
+    case ADD_TO_CART:
+      let itemInCar = state.shoppingCart.find(
+        (item) =>
+          item.id === action.payload.id &&
+          item.color === action.payload.color &&
+          item.size === action.payload.size
+      );
+      let cont = 0;
+      let stock2 = 0;
+      if (cont < 1) {
+        stock2 = action.payload.stock;
+        cont++;
       }
+      return itemInCar
+        ? {
+            ...state,
 
-      case ADD_TO_CART:
-        let itemInCar = state.shoppingCart.find(item => item.id === action.payload.id)
-        let cont = 0;
-        let stock2 = 0;
-        if(cont < 1){
-          stock2 = action.payload.stock
-          cont++
-        }
-        return itemInCar
-        ? 
-        {...state, 
-          
-          shoppingCart:state.shoppingCart.map((item) => item.id === action.payload.id 
-            
-          ? {...item, quantity: item.quantity + 1, stock: stock2} 
-          :item
-          )
-        }
-        :{
-          ...state,
-          shoppingCart: [...state.shoppingCart,{...action.payload, quantity:1}]
-        }
-        
-          
-          
-
-        
-
-      case REMOVE_ONE_FROM_CART:
-        let delOne = state.shoppingCart.find(e => e.id === action.payload.id)
-        return delOne.quantity > 1 ? {
-          ...state,
-          shoppingCart: state.shoppingCart.map(e => e.id === action.payload.id ? {...e, quantity: e.quantity - 1} : e)
-        }
-
+            shoppingCart: state.shoppingCart.map((item) =>
+              item.id === action.payload.id &&
+              item.color === action.payload.color &&
+              item.size === action.payload.size
+                ? { ...item, quantity: item.quantity + 1, stock: stock2 }
+                : item
+            ),
+          }
         : {
-          ...state,
-          shoppingCart:state.shoppingCart.filter(e => e.id !== action.payload.id)
-          
-        }
+            ...state,
+            shoppingCart: [
+              ...state.shoppingCart,
+              { ...action.payload, quantity: 1 },
+            ],
+          };
 
-      
+    case REMOVE_ONE_FROM_CART:
+      let delOne = state.shoppingCart.find(
+        (item) => item.UUID === action.payload.UUID
+      );
 
-      case REMOVE_ALL_FROM_CART:
-       
-        return {
-          ...state,
-          shoppingCart:state.shoppingCart.filter(e => e.id !== action.payload.id)
-        }
-          
-      case CLEAR_CART:
-        return {...state, shoppingCart:[]}
-          
-          case SHOP:
-            return{...state
-            
-            
-            }
+      return delOne
+        ? {
+            ...state,
+            shoppingCart: state.shoppingCart.filter(
+              (item) => item.UUID !== action.payload.UUID
+            ),
+          }
+        : {
+            ...state,
+            shoppingCart,
+          };
 
-            case REMOVE_PRODUCT:
-              const foundId = state.shoppingCart.find(e=> e._id === action.payload)
-const newCart = state.shoppingCart.filter(e => 
-    e !== foundId
-)
-return {
-  ...state,
-  shoppingCart:newCart
-}
-            
+    case REMOVE_ONE_ITEM:
+      let delItem = state.shoppingCart.find(
+        (item) =>
+          item.id === action.payload.id &&
+          item.color === action.payload.color &&
+          item.size === action.payload.size
+      );
+      return delItem.quantity > 1
+        ? {
+            ...state,
+            shoppingCart: state.shoppingCart.map((item) =>
+              item.id === action.payload.id &&
+              item.color === action.payload.color &&
+              item.size === action.payload.size
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            shoppingCart,
+          };
 
+    case REMOVE_ALL_FROM_CART:
+      return {
+        ...state,
+        shoppingCart: state.shoppingCart.filter(
+          (e) => e.id !== action.payload.id
+        ),
+      };
+
+    case CLEAR_CART:
+      return { ...state, shoppingCart: [] };
+
+    case SHOP:
+      return { ...state };
 
     default:
       return {
         ...state,
+        shoppingCart: value,
       };
   }
 };

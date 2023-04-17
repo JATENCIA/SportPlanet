@@ -16,7 +16,7 @@ export default function Reebok() {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const allProducts = useSelector((state) => state.filteredProducts);
   const filterProducts = allProducts.filter((product) => {
     return product.brands === "REEBOK";
   });
@@ -35,7 +35,7 @@ export default function Reebok() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters />
+      <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
@@ -56,19 +56,19 @@ export default function Reebok() {
           })
         ) : (
           <p className={style.loading}>NO ÍTEMS FOUND...</p>
-          )}
-        </div>
-  
-        {products.length > 0 ? (
-    <Paginate
-      productsPerPage={productsPerPage}
-      allProducts={filterProducts.length}
-      setPagination={setPagination}
-      currentPage={currentPage}
-      setCurrentPage={setCurrentPage}
-    />
-  ) : null}
-  <Footer />
+        )}
+      </div>
+
+      {products.length > 0 ? (
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

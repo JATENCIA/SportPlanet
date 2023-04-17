@@ -1,17 +1,35 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getSearchedProducts } from "../../redux/Actions/actions";
+import { getAllUser, getSearchedProducts } from "../../redux/Actions/actions";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import style from "./navBar.module.css";
 import { MdSell } from "react-icons/md";
 import ItemsDentroCarrito from "../ItemsDentroCarrito";
+import { useAuth0 } from "@auth0/auth0-react";
+import Swal from "sweetalert2";
 
 export const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [product, setProduct] = useState("");
+  const { isAuthenticated, user, logout } = useAuth0();
+
+  const [userE, setUserE] = useState({});
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+
+  useEffect(() => {
+    if (user && isAuthenticated) {
+      const userDb = allUsers?.find((element) => element.eMail === user?.email);
+      userDb ? setUserE(userDb) : "";
+    }
+  }, [user]);
 
   const changeHandler = (e) => {
     setProduct(e.target.value);
@@ -26,6 +44,18 @@ export const NavBar = () => {
     if (e.key === "Enter") {
       searchHandler();
       navigate(`/products/${product}`);
+    }
+  };
+
+  const enterCart = () => {
+    if (isAuthenticated) {
+      if (userE.baneado === false) {
+        navigate("/cart");
+      } else {
+        Swal.fire(`🚫 BANNED USER`);
+      }
+    } else {
+      Swal.fire(`⚠️ LOG IN`);
     }
   };
 
@@ -65,15 +95,14 @@ export const NavBar = () => {
         <div className={style.divLogin}>
           <Login />
         </div>
-
-        <Link to="/cart">
+        {/* <Link to="/cart"> */}
+        <div className={style.cartContainer}>
+          <button className={style.carrito} onClick={() => enterCart()}>
+            <i className="fas fa-shopping-cart"></i>
+          </button>
           <ItemsDentroCarrito />
-          <div className={style.cartContainer}>
-            <button className={style.carrito}>
-              <i className="fas fa-shopping-cart"></i>
-            </button>
-          </div>
-        </Link>
+        </div>
+        {/* </Link> */}
       </div>
     </div>
   );

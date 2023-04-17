@@ -35,7 +35,7 @@ export default function Pants() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters />
+      <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
@@ -60,15 +60,15 @@ export default function Pants() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

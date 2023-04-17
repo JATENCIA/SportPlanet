@@ -35,7 +35,7 @@ export default function Shoes() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters />
+      <Filters SizeFilter={false} GenderFilter={true} WearedFilter={true} SeasonFilter={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
@@ -60,15 +60,15 @@ export default function Shoes() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

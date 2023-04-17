@@ -1,0 +1,106 @@
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+}
+
+.firstRow {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  justify-content: space-between;
+  font-family: RobotoCondensed;
+}
+
+.imgContainer {
+  border: 1px solid rgb(239, 237, 237);
+  border-radius: 5px;
+  height: 250px;
+  width: 150px;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -4px 8px 15px -3px rgba(150, 146, 146, 0.75);
+}
+.imgContainer img {
+  border-radius: 5px;
+  height: 250px;
+  width: 150px;
+}
+
+.itemContainer h2 {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 200px;
+}
+
+.detailsContainer h2 {
+  width: 200px;
+}
+
+.price {
+  margin-left: 150px;
+}
+
+.amountContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  width: 100px;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  transition: all 200ms ease;
+}
+
+.buttons button {
+  transition: all 200ms ease;
+  width: 15px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.buttons button:hover {
+  transform: scale(0.9);
+}
+
+.buttonMinus:hover {
+  color: rgb(136, 38, 38);
+}
+
+.buttonPlus:hover {
+  color: blue;
+}
+
+.totalPrice {
+  margin-right: 2rem;
+}
+
+.itemFunctions {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.trashIcon {
+  font-size: 25px;
+  transition: all 200ms ease;
+}
+
+.trashIcon:hover {
+  transform: scale(1.05);
+  color: rgb(215, 73, 73);
+}
