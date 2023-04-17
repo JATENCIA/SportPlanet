@@ -155,7 +155,7 @@ const App = () => {
        {/*  <Route path="/category/fitness" element={<Fitness />} /> */}
         <Route path="*" element={<Navigate to="/home" />} />
         <Route path="/reviews" element={<Reviews />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={isAuthenticated ? <Cart /> : <Navigate to="/home" />}/>
         <Route path="/policy" element={<Policy />} />
         <Route path="/terms" element={<Terms />} />
       </Routes>

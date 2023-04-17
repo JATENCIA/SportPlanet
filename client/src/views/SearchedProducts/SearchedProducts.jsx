@@ -17,7 +17,7 @@ const SearchedProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const searchedProducts = useSelector(
-    (state) => state.cartState.searchedProducts
+    (state) => state.searchedProducts
   );
   const { product } = useParams();
 
