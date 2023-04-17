@@ -152,7 +152,7 @@ const App = () => {
         <Route path="/category/woman" element={<Woman />} />
         <Route path="/category/kids" element={<Kids />} />
         <Route path="/category/promotions" element={<Promotions />} />
-        <Route path="/category/fitness" element={<Fitness />} />
+       {/*  <Route path="/category/fitness" element={<Fitness />} /> */}
         <Route path="*" element={<Navigate to="/home" />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/cart" element={<Cart />} />
