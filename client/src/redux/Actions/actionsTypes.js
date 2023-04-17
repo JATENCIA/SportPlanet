@@ -16,3 +16,4 @@ export const CLEAR_CART = "CLEAR_CART";
 export const SHOP = "SHOP";
 export const ADD_REVIEW = "ADD_REVIEW";
 export const REMOVE_ONE_ITEM = "REMOVE_ONE_ITEM";
+export const RESET_FILTERS = "RESET_FILTERS";
