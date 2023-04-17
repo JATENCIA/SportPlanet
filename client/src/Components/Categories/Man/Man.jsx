@@ -43,7 +43,7 @@ export default function Man() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters SizeFilter={true} GenderFilter={false} WearedFilter={true} SeasonFilter={true}/>
+      <Filters SizeFilter={true} GenderFilter={false} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (

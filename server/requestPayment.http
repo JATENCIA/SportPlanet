@@ -1,4 +1,6 @@
- @urlApi = http://localhost:5000
+#  @urlApi = http://localhost:5000
+@urlApi = https://sportsplanet-production.up.railway.app
+ 
 
 POST {{urlApi}}/payments
 Content-Type: application/json
