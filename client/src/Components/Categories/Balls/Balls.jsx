@@ -8,7 +8,7 @@ import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import style from "./Balls.module.css";
 import Filters from "../../Filters/Filters";
-import Footer from "../../Footer/Footer";
+import Footer from "../../Footer/Footer"
 
 export default function Balls() {
   const dispatch = useDispatch();
@@ -60,15 +60,15 @@ export default function Balls() {
       </div>
 
       {products.length > 0 ? (
-        <Paginate
-          productsPerPage={productsPerPage}
-          allProducts={filterProducts.length}
-          setPagination={setPagination}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      ) : null}
-      <Footer />
+  <Paginate
+    productsPerPage={productsPerPage}
+    allProducts={filterProducts.length}
+    setPagination={setPagination}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+  />
+) : null}
+<Footer />
     </div>
   );
 }

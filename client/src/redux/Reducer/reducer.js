@@ -14,11 +14,8 @@ import {
   REMOVE_ALL_FROM_CART,
   CLEAR_CART,
   SHOP,
- 
   CLEAN_SEARCHED_PRODUCTS,
-  
   REMOVE_ONE_ITEM,
-  
 } from "../Actions";
 import { useDispatch } from "react-redux";
 
@@ -36,9 +33,9 @@ const initialState = {
 
 const storedValue = window.localStorage.getItem("cart");
 let value = [];
-if (storedValue) {
+if (storedValue.length) {
   value = JSON.parse(storedValue);
-  value = JSON.parse(value);
+  if (typeof value === "string") value = JSON.parse(value);
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -60,18 +57,20 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allProducts: action.payload,
         filteredProducts: action.payload,
-        filteredProducts2: action.payload
+        filteredProducts2: action.payload,
       };
 
     case FILTER_BY_PRICE:
       let productsSorted =
         action.payload === "lowerToHigher"
-          ? [...state.filteredProducts] && [...state.filteredProducts2].sort((a, b) => {
+          ? [...state.filteredProducts] &&
+            [...state.filteredProducts2].sort((a, b) => {
               if (a.price > b.price) return 1;
               if (b.price > a.price) return -1;
               return 0;
             })
-          : [...state.filteredProducts] && [...state.filteredProducts2].sort((a, b) => {
+          : [...state.filteredProducts] &&
+            [...state.filteredProducts2].sort((a, b) => {
               if (a.price > b.price) return -1;
               if (b.price > a.price) return 1;
               return 0;
@@ -79,7 +78,7 @@ export const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        filteredProducts: productsSorted
+        filteredProducts: productsSorted,
       };
 
     case FILTER_BY_USED:
@@ -93,16 +92,14 @@ export const rootReducer = (state = initialState, action) => {
             );
       return {
         ...state,
-        filteredProducts: productsFiltered
+        filteredProducts: productsFiltered,
       };
 
     case FILTER_BY_GENDER:
       let productsByGender = [];
-      let filtro = [...state.filteredProducts2]
+      let filtro = [...state.filteredProducts2];
       if (action.payload === "men") {
-        productsByGender = filtro.filter(
-          (product) => product.gender === "men"
-        );
+        productsByGender = filtro.filter((product) => product.gender === "men");
       } else if (action.payload === "women") {
         productsByGender = filtro.filter(
           (product) => product.gender === "women"
@@ -116,7 +113,7 @@ export const rootReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        filteredProducts: productsByGender
+        filteredProducts: productsByGender,
       };
 
     case GET_PRODUCT_DETAIL:
@@ -167,7 +164,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredProducts: [...productSize],
-        filteredProducts2:[...productSize]
+        filteredProducts2: [...productSize],
       };
 
     case FILTER_BY_SEASON:
