@@ -136,7 +136,7 @@ export default function AllUsers() {
           </div>
           <Paginate
             usersPerPage={usersPerPage}
-            allUsers={users.length}
+            allUsers={allUsers.length}
             setPagination={setPagination}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
