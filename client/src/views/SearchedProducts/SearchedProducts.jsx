@@ -16,9 +16,7 @@ import { Paginate } from "../../Components/Paginate/Paginate";
 const SearchedProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const searchedProducts = useSelector(
-    (state) => state.cartState.searchedProducts
-  );
+  const searchedProducts = useSelector((state) => state.searchedProducts);
   const { product } = useParams();
 
   useEffect(() => {
