@@ -25,6 +25,7 @@ const initialState = {
   productDetail: [],
   searchedProducts: [],
   filteredProducts: [],
+  filteredProducts2: [],
   userProducts: [],
   shoppingCart:[],
 };
@@ -48,17 +49,18 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allProducts: action.payload,
         filteredProducts: action.payload,
+        filteredProducts2: action.payload
       };
 
     case FILTER_BY_PRICE:
       let productsSorted =
         action.payload === "lowerToHigher"
-          ? [...state.allProducts].sort((a, b) => {
+          ? [...state.filteredProducts].sort((a, b) => {
               if (a.price > b.price) return 1;
               if (b.price > a.price) return -1;
               return 0;
             })
-          : [...state.allProducts].sort((a, b) => {
+          : [...state.filteredProducts].sort((a, b) => {
               if (a.price > b.price) return -1;
               if (b.price > a.price) return 1;
               return 0;
@@ -66,35 +68,36 @@ export const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        filteredProducts: productsSorted,
+        filteredProducts: productsSorted
       };
 
     case FILTER_BY_USED:
       let productsFiltered =
         action.payload === "new"
-          ? [...state.allProducts].filter((product) => {
+          ? [...state.filteredProducts2].filter((product) => {
               return product.state === "new";
             })
-          : [...state.allProducts].filter(
+          : [...state.filteredProducts2].filter(
               (product) => product.state === "used"
             );
       return {
         ...state,
-        filteredProducts: productsFiltered,
+        filteredProducts: productsFiltered
       };
 
     case FILTER_BY_GENDER:
       let productsByGender = [];
+      let filtro = [...state.filteredProducts2]
       if (action.payload === "men") {
-        productsByGender = [...state.allProducts].filter(
+        productsByGender = filtro.filter(
           (product) => product.gender === "men"
         );
       } else if (action.payload === "women") {
-        productsByGender = [...state.allProducts].filter(
+        productsByGender = filtro.filter(
           (product) => product.gender === "women"
         );
       } else if (action.payload === "unisex") {
-        productsByGender = [...state.allProducts].filter(
+        productsByGender = filtro.filter(
           (product) => product.gender === "unisex"
         );
       } else {
@@ -102,7 +105,7 @@ export const rootReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        filteredProducts: [...productsByGender],
+        filteredProducts: productsByGender
       };
 
     case GET_PRODUCT_DETAIL:
@@ -141,7 +144,7 @@ export const rootReducer = (state = initialState, action) => {
       }
       
       else if (action.payload === "xlarge"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[1].XL > 0 )
+        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].XL > 0 )
         
       }
       
@@ -150,18 +153,19 @@ export const rootReducer = (state = initialState, action) => {
       /*    */
       /* } */
       else {
-        productSize = state.allProducts
+        productSize =state.allProducts
       }
       
       
       return {
         ...state,
-        filteredProducts: [...productSize]
+        filteredProducts: [...productSize],
+        filteredProducts2: [...productSize]
       }
       
 
     case FILTER_BY_SEASON:
-      let productBySeason = [...state.allProducts].filter((product) => {
+      let productBySeason = [...state.filteredProducts2].filter((product) => {
         const year = parseInt(product.season);
         switch (action.payload) {
           case "70s":
