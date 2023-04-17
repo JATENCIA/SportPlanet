@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./AdminFavorites.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,19 +19,34 @@ import {
 
 import { MdRateReview } from "react-icons/md";
 import ProfileProductCard from "../../Profile/ProfileProductCard/ProfileProductCard";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUser } from "../../../redux/Actions";
+
 
 export default function AdminFavorites() {
-  const allProducts = useSelector((state) => state.allProducts);
-  const filteredProducts = allProducts.filter((product) => product.price >= 30);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const productsPerPage = 8;
-  const last = currentPage * productsPerPage;
-  const first = last - productsPerPage;
-  const products = filteredProducts.slice(first, last);
+  const dispatch = useDispatch();
 
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
+
+  const { user } = useAuth0();
+  
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+  const userDb = allUsers?.find((element) => element.eMail === user?.email);
+  
+  const favoritesProducts = userDb.favorites
+
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const productsPerPage = 8;
+  const last = currentPage * productsPerPage;
+  const first = last - productsPerPage;
+  const products = favoritesProducts.slice(first, last);
+
   return (
     <div className={style.container}>
       <NavBar />
