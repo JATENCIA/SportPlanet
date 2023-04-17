@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://lh3.googleusercontent.com/5eEGb8y-_1ZO7xY3dbfn9i2yniw4k-dL92ApzpC6a8_yIa9C438N2XmmKLee3wWDiu5VK9EoZXR1eIf6MuqjoBvGuMoaBzu89s9ph568">
+  <img src="https://static.wikia.nocookie.net/spacetoon/images/3/32/Sports-title.png/revision/latest?cb=20200116175957">
 </p>
 
 # **SportPlanet**

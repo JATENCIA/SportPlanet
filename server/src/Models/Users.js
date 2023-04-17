@@ -61,6 +61,14 @@ const userSchema = mongoose.Schema(
       type: Array,
     },
 
+    mySales: {
+      type: Array,
+    },
+
+    myShopping: {
+      type: Array,
+    },
+
     product: [
       {
         type: mongoose.Types.ObjectId,
