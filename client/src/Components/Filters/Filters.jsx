@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterByGender,
@@ -16,9 +16,14 @@ export default function Filters(props) {
   const {WearedFilter } = props;
   const { SeasonFilter } = props;
   const { ResetFilters } = props;
- 
 
   const dispatch = useDispatch();
+
+  const priceRef = useRef(null);
+  const wearedRef = useRef(null);
+  const genderRef = useRef(null);
+  const seasonRef = useRef(null);
+  const sizeRef = useRef(null)
 
   const selectHandlerPrice = (event) => {
     let value = event.target.value;
@@ -48,22 +53,37 @@ export default function Filters(props) {
 
   const handleClick = () => {
     dispatch(resetFilters());
-    
+    if (priceRef.current) {
+      priceRef.current.value = "";
+    }
+    if (wearedRef.current) {
+      wearedRef.current.value = "";
+    }
+    if (genderRef.current) {
+      genderRef.current.value = "";
+    }
+    if (seasonRef.current) {
+      seasonRef.current.value = "";
+    }
+    if (sizeRef.current) {
+      sizeRef.current.value = "";
+    }
   }
   
 
   return (
     <div className={style.filtersContainer}>
       
-      <select onChange={selectHandlerPrice} className={style.select}>
+      <select ref={priceRef} onChange={selectHandlerPrice} className={style.select}>
         <option value="" selected disabled hidden>
           Price Filter
         </option>
         <option value="lowerToHigher">Lower to Higher</option>
         <option value="higherToLower">Higher to Lower</option>
       </select>
+
       {SizeFilter && (
-      <select onChange={selectHandlerSize} className={style.select} >
+      <select ref={sizeRef} onChange={selectHandlerSize} className={style.select} >
         <option value="" selected disabled hidden>
           Size Filter
         </option> 
@@ -74,7 +94,7 @@ export default function Filters(props) {
       </select>
        )}
        {WearedFilter && (
-      <select onChange={selectHandlerWeared} className={style.select}>
+      <select ref={wearedRef} onChange={selectHandlerWeared} className={style.select}>
         <option value="" selected disabled hidden>
           Weared Filter
         </option>
@@ -83,7 +103,7 @@ export default function Filters(props) {
       </select>
  )}
       {GenderFilter && (
-      <select onChange={selectHandlerGender} className={style.select} >
+      <select  ref={genderRef} onChange={selectHandlerGender} className={style.select} >
         <option value="" selected disabled hidden>
           Gender Filter
         </option>
@@ -93,7 +113,7 @@ export default function Filters(props) {
       </select>
       )}
       {SeasonFilter && (
-      <select onChange={selectHandlerSeason} className={style.select}>
+      <select ref={seasonRef} onChange={selectHandlerSeason} className={style.select}>
         <option value="" selected disabled hidden>
           Season Filter
         </option>
