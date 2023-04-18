@@ -66,12 +66,12 @@ export const rootReducer = (state = initialState, action) => {
     case FILTER_BY_PRICE:
       let productsSorted =
         action.payload === "lowerToHigher"
-          ? [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
+          ? [...state.filteredProducts2 && state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
               if (a.price > b.price) return 1;
               if (b.price > a.price) return -1;
               return 0; 
             })
-          : [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
+          : [...state.filteredProducts2 && state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
               if (a.price > b.price) return -1;
               if (b.price > a.price) return 1;
               return 0;
@@ -140,23 +140,38 @@ export const rootReducer = (state = initialState, action) => {
 
     case FILTER_BY_SIZE:
       let productSize = [];
+      let product1= [...state.allProducts]
+      let productfilter= product1.filter(e => e.productConditionals[1].size[0].S > 0)
+      console.log("pf",productfilter)
       if (action.payload === "small") {
-        productSize = [...state.filteredProducts2].filter(
-          (e) => e.productConditionals[0].size[0].S > 0
+        productSize = [...state.allProducts].filter(
+          (e) => e.productConditionals[0].size[0].S > 0 /* && e.productConditionals[1].size[0].S */ > 0
         );
-      } else if (action.payload === "medium") {
-        productSize = [...state.filteredProducts2].filter(
+      } else if (action.payload === "xsmall") {
+        productSize = [...state.allProducts].filter(
+          (e) => e.productConditionals[0].size[0].XS > 0
+        );
+      
+        }
+      else if (action.payload === "medium") {
+        productSize = [...state.allProducts].filter(
           (e) => e.productConditionals[0].size[0].M > 0
         );
       } else if (action.payload === "large") {
-        productSize = [...state.filteredProducts2].filter(
+        productSize = [...state.allProducts].filter(
           (e) => e.productConditionals[0].size[0].L > 0
         );
       } else if (action.payload === "xlarge") {
-        productSize = [...state.filteredProducts2].filter(
-          (e) => e.productConditionals[0].size[1].XL > 0
+        productSize = [...state.allProducts].filter(
+          (e) => e.productConditionals[0].size[0].XL > 0
         );
-      } else {
+      } else if (action.payload === "xxlarge") {
+        productSize = [...state.allProducts].filter(
+          (e) => e.productConditionals[0].size[0].XXL > 0
+        );
+        }
+      
+      else {
         /* else if (action.payload === "XL"){ */
         /*   productSize = [...state.allProducts].filter(e => e.size[0].XL >= 0 ) */
         /*    */
