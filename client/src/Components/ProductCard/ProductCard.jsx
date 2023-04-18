@@ -11,7 +11,7 @@ export default function ProductCard({ _id, name, image, price }) {
   return (
     <div className={style.cardContainer}>
       <div className={style.iconHeart}>
-        <HeartButton _id={_id}/>
+        <HeartButton _id={_id} />
       </div>
       <div className={style.imgContainer}>
         <img src={image} alt="" />

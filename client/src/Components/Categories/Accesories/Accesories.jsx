@@ -21,7 +21,7 @@ export default function Accesories() {
     return product.category === "accessories";
   });
 
-  filterProducts = filterProducts.filter((product) => !product.baneado)
+  filterProducts = filterProducts.filter((product) => !product.baneado);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -37,7 +37,12 @@ export default function Accesories() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={false} SeasonFilter={false}/>
+      <Filters
+        SizeFilter={false}
+        GenderFilter={false}
+        WearedFilter={false}
+        SeasonFilter={false}
+      />
 
       <div className={style.container}>
         {products.length > 0 ? (
@@ -48,7 +53,7 @@ export default function Accesories() {
                   key={crypto.randomUUID()}
                   _id={product._id}
                   name={product.name}
-                  image={product.productConditionals[0].image[1]}
+                  image={product.productConditionals[0]?.image[1]}
                   size={product.size}
                   price={product.price}
                   description={product.description}
