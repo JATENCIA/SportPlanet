@@ -81,7 +81,7 @@ export default function ProfileShopping() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>

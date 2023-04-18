@@ -1,0 +1,39 @@
+.card {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    background-color: transparent;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  }
+
+  .card-container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  
+  .card-image {
+    flex: 0 0 auto;
+    margin-right: 20px;
+  }
+  
+  .card-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    flex: 1 1 auto;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .card-text {
+    margin: 8px 0;
+    font-size: 16px;
+  }

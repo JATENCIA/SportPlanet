@@ -16,16 +16,7 @@ import {
   SHOP,
   CLEAN_SEARCHED_PRODUCTS,
   REMOVE_ONE_ITEM,
-
-
   RESET_FILTERS,
-  
-
-
-
-
- 
-  
 } from "../Actions";
 import { useDispatch } from "react-redux";
 
@@ -39,6 +30,7 @@ const initialState = {
   filteredProducts2: [],
   userProducts: [],
   shoppingCart: [],
+  buttonPay: "",
 };
 
 const storedValue = window.localStorage.getItem("cart");
@@ -73,20 +65,18 @@ export const rootReducer = (state = initialState, action) => {
     case FILTER_BY_PRICE:
       let productsSorted =
         action.payload === "lowerToHigher"
-
-          ? [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
-
-              if (a.price > b.price) return 1;
-              if (b.price > a.price) return -1;
-              return 0; 
-            })
-
-          : [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
-
-              if (a.price > b.price) return -1;
-              if (b.price > a.price) return 1;
-              return 0;
-            });
+          ? [...state.filteredProducts] /* && [...state.filteredProducts2] */
+              .sort((a, b) => {
+                if (a.price > b.price) return 1;
+                if (b.price > a.price) return -1;
+                return 0;
+              })
+          : [...state.filteredProducts] /* && [...state.filteredProducts2] */
+              .sort((a, b) => {
+                if (a.price > b.price) return -1;
+                if (b.price > a.price) return 1;
+                return 0;
+              });
 
       return {
         ...state,
@@ -133,50 +123,53 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         productDetail: action.payload,
       };
-    case FILTER_BY_SIZE:
-    /*   let productBySize = [...state.allProducts] */
-    /*     .sort((a, b) => { */
-    /*       const sizeValues = { small: 1, medium: 2, large: 2, xlarge: 4 }; */
-    /*       const aSizeValues = sizeValues[a.size]; */
-    /*       const bSizeValues = sizeValues[b.size]; */
-    /*       return aSizeValues - bSizeValues; */
-    /*     }) */
-    /*     .filter((product) => product.size === action.payload); */
-    /*   return { */
-    /*     ...state, */
-    /*     filteredProducts: productBySize, */
-    /*   }; */
 
     case FILTER_BY_SIZE:
       let productSize = [];
-      if (action.payload === "small") {
-        productSize = [...state.filteredProducts2].filter(
-          (e) => e.productConditionals[0].size[0].S > 0
+      let filtro2 = [...state.filteredProducts2];
+      if (action.payload === "xSmall") {
+        productSize = filtro2.filter((e) =>
+          e.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("XS"))
+          )
+        );
+      } else if (action.payload === "small") {
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("S"))
+          )
         );
       } else if (action.payload === "medium") {
-        productSize = [...state.filteredProducts2].filter(
-          (e) => e.productConditionals[0].size[0].M > 0
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("M"))
+          )
         );
       } else if (action.payload === "large") {
-        productSize = [...state.filteredProducts2].filter(
-          (e) => e.productConditionals[0].size[0].L > 0
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("L"))
+          )
         );
       } else if (action.payload === "xlarge") {
-        productSize = [...state.filteredProducts2].filter(
-          (e) => e.productConditionals[0].size[1].XL > 0
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("XL"))
+          )
+        );
+      } else if (action.payload === "xxlarge") {
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("XXL"))
+          )
         );
       } else {
-        /* else if (action.payload === "XL"){ */
-        /*   productSize = [...state.allProducts].filter(e => e.size[0].XL >= 0 ) */
-        /*    */
-        /* } */
         productSize = state.allProducts;
       }
 
       return {
         ...state,
         filteredProducts: [...productSize],
-        filteredProducts2: [...productSize],
       };
 
     case FILTER_BY_SEASON:
@@ -294,17 +287,18 @@ export const rootReducer = (state = initialState, action) => {
         ),
       };
 
-      case RESET_FILTERS: 
+    case RESET_FILTERS:
       return {
         ...state,
-        filteredProducts: [...state.allProducts], 
+        filteredProducts: [...state.allProducts],
       };
 
     case CLEAR_CART:
       return { ...state, shoppingCart: [] };
 
     case SHOP:
-      return { ...state };
+      return { ...state, buttonPay: action.payload };
+
     default:
       return {
         ...state,
@@ -312,4 +306,3 @@ export const rootReducer = (state = initialState, action) => {
       };
   }
 };
-
