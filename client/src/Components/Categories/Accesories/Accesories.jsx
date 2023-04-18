@@ -35,7 +35,7 @@ export default function Accesories() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={false} SeasonFilter={false}/>
+      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={true} SeasonFilter={false}  ResetFilters={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (

@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Filters from "../../Components/Filters/Filters";
+import Footer  from "../../Components/Footer/Footer";
 import {
   cleanSearchedProducts,
   getSearchedProducts,
@@ -15,19 +16,27 @@ import { useNavigate } from "react-router-dom";
 import { Paginate } from "../../Components/Paginate/Paginate";
 
 
-const SearchedProducts = () => {
+export default function SearchedProducts ()  {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const searchedProducts = useSelector((state) => state.searchedProducts);
   const { product } = useParams();
+  
+  
 
   useEffect(() => {
     dispatch(getSearchedProducts(product, navigate));
-    //return para limpiar searchedProducts
+
     return function () {
       dispatch(cleanSearchedProducts());
     };
   }, [dispatch, product]);
+
+
+  
+  
+  
+
  
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 10;
@@ -43,10 +52,11 @@ const SearchedProducts = () => {
     <div>
       <NavBar />
       <FilterNavBar />
-    <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true} />
+    <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true}  />
 
 
       <div className={style.container}>
+      
         {products.map((product) => (
           <Link to={`/detail/${product._id}`}>
             <ProductCard
@@ -70,8 +80,9 @@ const SearchedProducts = () => {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
+      <Footer />
     </div>
   );
 };
 
-export default SearchedProducts;
+
