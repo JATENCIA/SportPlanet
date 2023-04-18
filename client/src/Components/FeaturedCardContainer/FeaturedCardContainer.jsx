@@ -26,14 +26,12 @@ export default function FeaturedCardContainer() {
     return setCurrentPage(page);
   };
 
-  console.log("ACA PIBE MIRA ACA!!");
-  console.log(products[0]);
   return (
     <div className={style.container}>
       <div className={style.productsContainer}>
         {products?.map((product) => {
           return (
-            <Link to={`/detail/${product._id}`}>
+            <Link to={`/detail/${product._id}`} key={product._id}>
               <FeaturedCard
                 image={product.productConditionals[0].image[1]}
                 name={product.name}

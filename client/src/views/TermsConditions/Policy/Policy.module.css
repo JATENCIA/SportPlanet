@@ -4,12 +4,20 @@
   height: 150px;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .nav h1 {
-  font-family: RobotoCondensed;
+  font-family: aBlackLives;
   font-size: 70px;
   color: white;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .buttonback {
@@ -18,30 +26,28 @@
 }
 
 .bodyText {
-  width: 100%;
-  padding: 60px;
-  text-align: justify;
+  width: 70%;
   font-family: RobotoCondensed;
+  padding: 20px;
 }
 
 .bodyText h1 {
+  text-align: center;
   color: black;
   font-size: 50px;
-  text-align: center;
   font-weight: bolder;
+}
+
+.bodyText p {
+  text-align: center;
 }
 
 .bodyText h2 {
   color: black;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bolder;
-  text-align: justify;
-}
-
-.bodyText p {
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-bottom: 1rem;
+  text-align: center;
+  padding: 15px;
 }
 .pageList {
   background-color: rgb(195, 202, 195);
@@ -64,4 +70,5 @@
 
 p ul li {
   padding-left: 10px;
+  text-align: center;
 }
