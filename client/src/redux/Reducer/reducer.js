@@ -16,16 +16,7 @@ import {
   SHOP,
   CLEAN_SEARCHED_PRODUCTS,
   REMOVE_ONE_ITEM,
-
-
   RESET_FILTERS,
-  
-
-
-
-
- 
-  
 } from "../Actions";
 import { useDispatch } from "react-redux";
 
@@ -39,6 +30,7 @@ const initialState = {
   filteredProducts2: [],
   userProducts: [],
   shoppingCart: [],
+  buttonPay: "",
 };
 
 const storedValue = window.localStorage.getItem("cart");
@@ -73,20 +65,18 @@ export const rootReducer = (state = initialState, action) => {
     case FILTER_BY_PRICE:
       let productsSorted =
         action.payload === "lowerToHigher"
-
-          ? [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
-
-              if (a.price > b.price) return 1;
-              if (b.price > a.price) return -1;
-              return 0; 
-            })
-
-          : [...state.filteredProducts] /* && [...state.filteredProducts2] */.sort((a, b) => {
-
-              if (a.price > b.price) return -1;
-              if (b.price > a.price) return 1;
-              return 0;
-            });
+          ? [...state.filteredProducts] /* && [...state.filteredProducts2] */
+              .sort((a, b) => {
+                if (a.price > b.price) return 1;
+                if (b.price > a.price) return -1;
+                return 0;
+              })
+          : [...state.filteredProducts] /* && [...state.filteredProducts2] */
+              .sort((a, b) => {
+                if (a.price > b.price) return -1;
+                if (b.price > a.price) return 1;
+                return 0;
+              });
 
       return {
         ...state,
@@ -294,17 +284,18 @@ export const rootReducer = (state = initialState, action) => {
         ),
       };
 
-      case RESET_FILTERS: 
+    case RESET_FILTERS:
       return {
         ...state,
-        filteredProducts: [...state.allProducts], 
+        filteredProducts: [...state.allProducts],
       };
 
     case CLEAR_CART:
       return { ...state, shoppingCart: [] };
 
     case SHOP:
-      return { ...state };
+      return { ...state, buttonPay: action.payload };
+
     default:
       return {
         ...state,
@@ -312,4 +303,3 @@ export const rootReducer = (state = initialState, action) => {
       };
   }
 };
-
