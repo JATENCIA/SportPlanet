@@ -87,7 +87,7 @@ export default function AdminProducts() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>
@@ -117,7 +117,7 @@ export default function AdminProducts() {
             {products.length > 0 ? (
               products.map((product) => {
                 return (
-                  <Link to={`/detail/${product._id}`}>
+                  <Link to={`/detail/${product._id}`} key={product._id}>
                     <AdminProductCard
                       key={crypto.randomUUID()}
                       _id={product._id}
