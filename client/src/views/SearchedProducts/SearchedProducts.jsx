@@ -51,6 +51,7 @@ const SearchedProducts = () => {
           <Link to={`/detail/${product._id}`}>
             <ProductCard
               key={product.id}
+              _id={product._id}
               name={product.name}
               description={product.description}
               price={product.price}
