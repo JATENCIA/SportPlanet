@@ -20,7 +20,9 @@ export default function Footer() {
 
         <div className={style.infoContainer}>
           <h3>CUSTOMER SUPPORT</h3>
-          <span>FAQ</span>
+          <Link to="/faq">
+            <span>FAQ</span>
+          </Link>
           <span>Shipping & Returns</span>
         </div>
 

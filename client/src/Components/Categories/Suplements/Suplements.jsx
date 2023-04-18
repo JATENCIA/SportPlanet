@@ -16,7 +16,7 @@ export default function Supplements() {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const allProducts = useSelector((state) => state.filteredProducts);
   const filterProducts = allProducts.filter((product) => {
     return product.category === "supplements";
   });
@@ -35,7 +35,16 @@ export default function Supplements() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={false} SeasonFilter={false}/>
+      <br />
+ <div>
+ <h1 className={style.h1}>Supplements</h1>
+ </div>
+      <Filters
+        SizeFilter={false}
+        GenderFilter={false}
+        WearedFilter={false}
+        SeasonFilter={false}
+      />
 
       <div className={style.container}>
         {products.length > 0 ? (

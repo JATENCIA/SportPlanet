@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./ProfileProducts.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,23 +14,38 @@ import {
   FaUserCircle,
   FaStore,
 } from "react-icons/fa";
-
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUser } from "../../../redux/Actions/actions";
 import { MdRateReview } from "react-icons/md";
 
 export default function ProfileProducts() {
   const dispatch = useDispatch();
 
-  const allProducts = useSelector((state) => state.allProducts);
-  const filteredProducts = allProducts.filter((product) => product.price >= 30);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const productsPerPage = 8;
-  const last = currentPage * productsPerPage;
-  const first = last - productsPerPage;
-  const products = filteredProducts.slice(first, last);
+  // const allProducts = useSelector((state) => state.allProducts);
+  // const filteredProducts = allProducts.filter((product) => product.price >= 30);
+ 
+  // const products = filteredProducts.slice(first, last);
+
+  const { user } = useAuth0();
+  
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+  const userDb = allUsers?.find((element) => element.eMail === user?.email);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
+
+  const userProducts = userDb.product
+
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const productsPerPage = 8;
+  const last = currentPage * productsPerPage;
+  const first = last - productsPerPage;
+  const products = userProducts.slice(first, last);
 
   return (
     <div className={style.container}>
@@ -96,10 +111,10 @@ export default function ProfileProducts() {
                 return (
                   <Link to={`/detail/${product._id}`}>
                     <ProfileProductCard
-                      key={crypto.randomUUID()}
+                      key={product._id}
                       _id={product._id}
                       name={product.name}
-                      image={product.productConditionals[0].image[1]}
+                      image={product.productConditionals[0].image[0]}
                       price={product.price}
                       description={product.description}
                     />

@@ -48,3 +48,42 @@
   transform: scale(1.3);
   color: rgb(232, 36, 36);
 }
+
+.cardContainerBanned {
+  height: 350px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 11px 0px rgba(148, 141, 141, 0.27);
+  transition: all 200ms ease;
+  border-radius: 8px;
+  opacity: 0.5;
+  filter: grayscale(30%);
+  border: 3px solid red;
+}
+
+.cardContainerBanned img {
+  border-radius: 15px;
+  padding: 0;
+  width: 150px;
+  height: 150px;
+}
+
+.cardContainerBanned h1 {
+  color: rgb(84, 80, 80);
+  text-shadow: 1px 1px 1px rgb(181, 171, 171);
+  padding-top: 15px;
+  font-family: Bebas;
+  font-size: 15px;
+}
+
+.cardContainerBanned h2 {
+  color: rgb(112, 112, 118);
+  font-weight: 1000;
+  font-size: 15px;
+  font-family: Bebas;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

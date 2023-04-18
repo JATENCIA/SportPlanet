@@ -60,9 +60,6 @@ export default function FilterNavBar() {
       <Link to="/category/woman">
       <button>WOMAN</button>
       </Link>
-      <Link to="/category/kids">
-      <button>KIDS</button>
-      </Link>
       <Link to="/category/promotions">
       <button>PROMOTIONS</button>
       </Link>

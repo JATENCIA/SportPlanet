@@ -23,18 +23,22 @@ import "swiper/css/effect-coverflow";
 import Loader from "../../Components/Loader/Loader";
 import RelatedProducts from "./RelatedProducts";
 import ButtonBack from "../../Components/ButtonBack/ButtonBack";
+import Footer from "../../Components/Footer/Footer";
 import Swal from "sweetalert2";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUser } from "../../redux/Actions/actions";
 import Login from "../../Components/Navbar/Login";
+import SellerUser from "./SellerUser";
+import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
 
 export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
   const { isAuthenticated, user, logout } = useAuth0();
 
   useEffect(() => {
-    dispatch(getProductDetail(id));
+    dispatch(getProductDetail(id)).then(() => setIsLoading(false));
     dispatch(getAllProduct());
   }, [dispatch, id]);
 
@@ -71,8 +75,8 @@ export default function Detail() {
       size = [...product.productConditionals[0].size];
     }
 
-    if (product.user1) {
-      user1 = product.user1;
+    if (product.user) {
+      user1 = product.user;
     }
   }
 
@@ -133,8 +137,8 @@ export default function Detail() {
       id: _id,
       name: name,
       price: price,
-      color: selectedProduct.color,
-      image: selectedProduct.image[0],
+      color: selectedProduct?.color,
+      image: selectedProduct?.image[0],
       size: sizes || "amount",
       stock: select,
       discount: discount,
@@ -166,7 +170,8 @@ export default function Detail() {
       products.category === category &&
       products._id !== _id
   );
-  const arrayFilterProducts = filterProducts.slice(0, 6);
+  let arrayFilterProducts = filterProducts.slice(0, 5);
+  arrayFilterProducts = arrayFilterProducts.filter(elem => !elem.baneado)
 
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -176,6 +181,9 @@ export default function Detail() {
     return (
       <>
         <div className="container">
+          <div className="back">
+            <ButtonBack />
+          </div>
           <main>
             <section className="thumbnails">
               <div
@@ -300,30 +308,25 @@ export default function Detail() {
     );
   };
 
-  const [loading, setLoading] = useState(true);
-
-  if (loading === true) {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }
-
-  if (loading) {
-    return (
-      <div className="loader">
-        <Loader />
-      </div>
-    );
-  } else {
-    return (
-      <>
-        <NavBar />
-        <div className="back">
-          <ButtonBack />
+  return (
+    <>
+      {isLoading ? (
+        <div className="loader">
+          <Loader />
         </div>
-        <ShowProduct />
-        <RelatedProducts products={arrayFilterProducts} />
-      </>
-    );
-  }
+      ) : (
+        <>
+          <NavBar />
+          <FilterNavBar />
+
+          {/* <SellerUser user={user1} /> */}
+          <ShowProduct />
+          <RelatedProducts products={arrayFilterProducts} />
+          <div className="footer">
+            <Footer />
+          </div>
+        </>
+      )}
+    </>
+  );
 }

@@ -44,6 +44,7 @@ import Promotions from "./src/Components/Categories/Promotions/Promotions";
 import Fitness from "./src/Components/Categories/Fitness/Fitness";
 import Policy from "./src/views/TermsConditions/Policy/Policy";
 import Terms from "./src/views/TermsConditions/Terms/Terms";
+import Faq from "./src/views/TermsConditions/FAQ/Faq";
 import ProfileReviews from "./src/views/Profile/ProfileReviews/ProfileReviews";
 import AdminShopping from "./src/views/Admin/AdminShopping/AdminShopping";
 import AdminSales from "./src/views/Admin/AdminSales/AdminSales";
@@ -52,6 +53,7 @@ import AdminFavorites from "./src/views/Admin/AdminFavorites/AdminFavorites";
 import AllUsers from "./src/views/Admin/AllUsers/AllUsers";
 import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
 import Reviews from "./src/views/Reviews/Reviews";
+
 // import Cart from "./src/Components/Cart";
 import Cart from "./src/views/Cart/Cart"; /* Nuevo Componente */
 
@@ -152,12 +154,16 @@ const App = () => {
         <Route path="/category/woman" element={<Woman />} />
         <Route path="/category/kids" element={<Kids />} />
         <Route path="/category/promotions" element={<Promotions />} />
-       {/*  <Route path="/category/fitness" element={<Fitness />} /> */}
+        {/*  <Route path="/category/fitness" element={<Fitness />} /> */}
         <Route path="*" element={<Navigate to="/home" />} />
         <Route path="/reviews" element={<Reviews />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={isAuthenticated ? <Cart /> : <Navigate to="/home" />}
+        />
         <Route path="/policy" element={<Policy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/faq" element={<Faq />} />
       </Routes>
     </>
   );

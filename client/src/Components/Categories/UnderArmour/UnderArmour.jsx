@@ -35,7 +35,7 @@ export default function UnderArmour() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true}/>
+      <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (

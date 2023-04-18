@@ -1,38 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./AdminProducts.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileProductCard from "../../Profile/ProfileProductCard/ProfileProductCard";
+import AdminProductCard from '../AdminProductCard/AdminProductCard'
 import { Paginate } from "../../../Components/Paginate/Paginate";
 import { Link } from "react-router-dom";
-import {
-  FaShoppingBag,
-  FaDollarSign,
-  FaHeart,
-  FaQuestionCircle,
-  FaSadTear,
-  FaUserCircle,
-  FaStore,
-  FaUsers,
-  FaListAlt,
-} from "react-icons/fa";
-
+import { FaShoppingBag, FaDollarSign,FaHeart,FaQuestionCircle,FaSadTear,FaUserCircle,FaStore,FaUsers,FaListAlt } from "react-icons/fa";
 import { MdRateReview } from "react-icons/md";
+import { getAllUser } from "../../../redux/Actions/actions";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function AdminProducts() {
   const dispatch = useDispatch();
 
-  const allProducts = useSelector((state) => state.allProducts);
-  const filteredProducts = allProducts.filter((product) => product.price >= 30);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const productsPerPage = 8;
-  const last = currentPage * productsPerPage;
-  const first = last - productsPerPage;
-  const products = filteredProducts.slice(first, last);
-
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
+
+  const { user } = useAuth0();
+  
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+  const userDb = allUsers?.find((element) => element.eMail === user?.email);
+
+  const userProducts = userDb.product
+
+  
+  const productsPerPage = 8;
+  const last = currentPage * productsPerPage;
+  const first = last - productsPerPage;
+  const products = userProducts.slice(first, last)
+
+
 
   return (
     <div className={style.container}>
@@ -114,13 +118,14 @@ export default function AdminProducts() {
               products.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
-                    <ProfileProductCard
+                    <AdminProductCard
                       key={crypto.randomUUID()}
                       _id={product._id}
                       name={product.name}
-                      image={product.productConditionals[0].image[1]}
+                      image={product.productConditionals[0].image[0]}
                       price={product.price}
                       description={product.description}
+                      baneado={product.baneado}
                     />
                   </Link>
                 );
@@ -134,7 +139,7 @@ export default function AdminProducts() {
           </div>
           <Paginate
             productsPerPage={productsPerPage}
-            allProducts={products.length}
+            allProducts={userProducts.length}
             setPagination={setPagination}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
@@ -144,3 +149,4 @@ export default function AdminProducts() {
     </div>
   );
 }
+
