@@ -49,8 +49,7 @@ export default function SellProduct() {
     state: "",
     brands: "",
     discount: 0,
-    user: userDb._id,
-    // user: "6431bb0f80761ad3170814ae",
+    user: userDb?._id,
   });
   const [sizes, setSizes] = useState({
     S: 0,
