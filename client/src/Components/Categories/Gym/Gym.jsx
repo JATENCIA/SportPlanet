@@ -18,21 +18,11 @@ export default function Gym() {
   }, [dispatch]);
   const allProducts = useSelector((state) => state.filteredProducts);
 
-  console.log("1", allProducts);
-
   let filterProducts = allProducts.filter(
-    (product) => product.category === "supplements"
+    (product) => product.category === "gym"
   );
- filterProducts = filterProducts.filter((product) => !product.baneado)
 
-  const filterProducts = allProducts.filter((product) => {
-    return product.category ===  "gym";
-
-
- //filterProducts = filterProducts.filter((product) => !product.baneado)
-
-
-  
+  filterProducts = filterProducts.filter((product) => !product.baneado);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -43,7 +33,6 @@ export default function Gym() {
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
-  
 
   return (
     <div>
@@ -51,10 +40,16 @@ export default function Gym() {
       <FilterNavBar />
       <br />
       <div>
-      <h1 className={style.h1}>Gym</h1>
+        <h1 className={style.h1}>Gym</h1>
       </div>
 
-      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={true} SeasonFilter={false} ResetFilters={true} />
+      <Filters
+        SizeFilter={false}
+        GenderFilter={false}
+        WearedFilter={true}
+        SeasonFilter={false}
+        ResetFilters={true}
+      />
 
       <div className={style.container}>
         {products.length > 0 ? (
