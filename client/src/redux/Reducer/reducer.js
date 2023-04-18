@@ -28,6 +28,7 @@ const initialState = {
   searchedProducts: [],
   filteredProducts: [],
   filteredProducts2: [],
+  filteredProducts3: [],
   userProducts: [],
   shoppingCart: [],
   buttonPay: "",
@@ -60,6 +61,7 @@ export const rootReducer = (state = initialState, action) => {
         allProducts: action.payload,
         filteredProducts: action.payload,
         filteredProducts2: action.payload,
+        filteredProducts3: action.payload,
       };
 
     case FILTER_BY_PRICE:
@@ -170,10 +172,11 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredProducts: [...productSize],
+        filteredProducts3: [...productSize],
       };
 
     case FILTER_BY_SEASON:
-      let productBySeason = [...state.filteredProducts2].filter((product) => {
+      let productBySeason = [...state.filteredProducts3].filter((product) => {
         const year = parseInt(product.season);
         switch (action.payload) {
           case "70s":
