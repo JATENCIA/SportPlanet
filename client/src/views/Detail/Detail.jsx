@@ -143,6 +143,8 @@ export default function Detail() {
       stock: select,
       discount: discount,
       UUID: UUID,
+      eMail: userE.eMail,
+      userID: userE._id,
     };
   }
 
@@ -171,7 +173,7 @@ export default function Detail() {
       products._id !== _id
   );
   let arrayFilterProducts = filterProducts.slice(0, 5);
-  arrayFilterProducts = arrayFilterProducts.filter(elem => !elem.baneado)
+  arrayFilterProducts = arrayFilterProducts.filter((elem) => !elem.baneado);
 
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 

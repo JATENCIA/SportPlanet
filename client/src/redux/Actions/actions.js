@@ -189,6 +189,7 @@ export const removeProduct = (id) => {
 };
 
 export const shop = (item) => {
+  console.log("🚀 ~ file: actions.js:192 ~ shop ~ item:", item);
   return async function (dispatch) {
     const apic = await axios.post("/payments", item);
     const shop = apic.data.url;

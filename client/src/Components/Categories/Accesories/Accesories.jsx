@@ -17,9 +17,11 @@ export default function Accesories() {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.filteredProducts);
-  const filterProducts = allProducts.filter((product) => {
+  let filterProducts = allProducts.filter((product) => {
     return product.category === "accessories";
   });
+
+  filterProducts = filterProducts.filter((product) => !product.baneado);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -35,6 +37,14 @@ export default function Accesories() {
     <div>
       <NavBar />
       <FilterNavBar />
+
+      <Filters
+        SizeFilter={false}
+        GenderFilter={false}
+        WearedFilter={false}
+        SeasonFilter={false}
+      />
+
       <br />
       <div>
       <h1 className={style.h1}>Accessories</h1>
@@ -42,18 +52,18 @@ export default function Accesories() {
       <Filters SizeFilter={false} GenderFilter={false} WearedFilter={true} SeasonFilter={false} ResetFilters={true}/>
       
       
-      
+
 
       <div className={style.container}>
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}
                   name={product.name}
-                  image={product.productConditionals[0].image[1]}
+                  image={product.productConditionals[0]?.image[1]}
                   size={product.size}
                   price={product.price}
                   description={product.description}
