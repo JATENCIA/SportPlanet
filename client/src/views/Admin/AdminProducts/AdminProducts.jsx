@@ -117,7 +117,7 @@ export default function AdminProducts() {
             {products.length > 0 ? (
               products.map((product) => {
                 return (
-                  <Link to={`/detail/${product._id}`}>
+                  <Link to={`/detail/${product._id}`} key={product._id}>
                     <AdminProductCard
                       key={crypto.randomUUID()}
                       _id={product._id}
