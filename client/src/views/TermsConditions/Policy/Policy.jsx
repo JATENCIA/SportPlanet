@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Policy.module.css";
 import ButtonBack from "../../../Components/ButtonBack/ButtonBack";
+import HeartButton from "../../../Components/ProductCard/HeartButton/HeartButton";
 
 export default function Policy() {
   return (
@@ -8,10 +9,8 @@ export default function Policy() {
       <div className={style.nav}>
         <h1>SPORT PLANET</h1>
       </div>
-      <div className={style.buttonback}>
-        <ButtonBack />
-      </div>
 
+      <HeartButton />
       <div className={style.bodyText}>
         <h1>Our Policy</h1>
         <h2>Publication Policies</h2>
@@ -314,6 +313,10 @@ export default function Policy() {
           will adopt the measures or sanctions established in the General Terms
           and Conditions.
         </p>
+      </div>
+
+      <div className={style.buttonback}>
+        <ButtonBack />
       </div>
     </div>
   );

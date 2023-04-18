@@ -4,14 +4,10 @@ import ButtonBack from "../../../Components/ButtonBack/ButtonBack";
 
 export default function Terms() {
   return (
-    <div>
+    <div className={style.main}>
       <div className={style.nav}>
         <h1>SPORT PLANET</h1>
       </div>
-      <div className={style.buttonback}>
-        <ButtonBack />
-      </div>
-
       <div className={style.bodyText}>
         <h1>OUR TERMS</h1>
         <h2>Marketplace</h2>
@@ -193,6 +189,9 @@ export default function Terms() {
           on the platform. The Seller also consents to their data being provided
           to members of the BPP.
         </p>
+      </div>
+      <div className={style.buttonback}>
+        <ButtonBack />
       </div>
     </div>
   );
