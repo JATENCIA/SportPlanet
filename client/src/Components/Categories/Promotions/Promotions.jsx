@@ -14,15 +14,12 @@ import Filters from "../../Filters/Filters";
 export default function Promotions() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllProduct());
-  }, [dispatch]);
-  useEffect(() => {
     dispatch(filterByPrice());
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.filteredProducts);
   const filterProducts = allProducts.filter((product) => {
-    return product.price < 16;
+    return product.price <= 15
   });
 
   const [currentPage, setCurrentPage] = useState(1);

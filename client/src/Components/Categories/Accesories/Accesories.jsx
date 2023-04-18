@@ -39,7 +39,7 @@ export default function Accesories() {
       <div>
       <h1 className={style.h1}>Accessories</h1>
       </div>
-      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={false} SeasonFilter={false}/>
+      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={true} SeasonFilter={false} ResetFilters={true}/>
       
       
       
