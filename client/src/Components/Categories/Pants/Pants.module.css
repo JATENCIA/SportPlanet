@@ -27,3 +27,12 @@
     opacity: 1;
   }
 }
+
+
+.h1{
+  font-size:50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  justify-content: space-around;
+  text-shadow: 40px;
+}

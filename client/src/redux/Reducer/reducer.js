@@ -129,7 +129,7 @@ export const rootReducer = (state = initialState, action) => {
       let filtro2 = [...state.filteredProducts2];
       if (action.payload === "xSmall") {
         productSize = filtro2.filter((e) =>
-          e.some((elem) =>
+          e.productConditionals.some((elem) =>
             elem.size.some((elem2) => elem2.hasOwnProperty("XS"))
           )
         );
