@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import style from "./AdminProducts.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileProductCard from "../../Profile/ProfileProductCard/ProfileProductCard";
 import AdminProductCard from '../AdminProductCard/AdminProductCard'
@@ -41,6 +42,7 @@ export default function AdminProducts() {
   return (
     <div className={style.container}>
       <NavBar />
+      <FilterNavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>

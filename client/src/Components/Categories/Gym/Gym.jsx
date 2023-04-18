@@ -17,12 +17,11 @@ export default function Gym() {
     dispatch(getAllProduct());
   }, [dispatch]);
   const allProducts = useSelector((state) => state.filteredProducts);
-  console.log("1", allProducts);
+  const filterProducts = allProducts.filter((product) => {
+    return product.category ===  "gym";
+  }); 
 
-  let filterProducts = allProducts.filter(
-    (product) => product.category === "supplements"
-  );
- filterProducts = filterProducts.filter((product) => !product.baneado)
+ //filterProducts = filterProducts.filter((product) => !product.baneado)
 
   
 
@@ -41,7 +40,12 @@ export default function Gym() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={false} SeasonFilter={false} />
+      <br />
+      <div>
+      <h1 className={style.h1}>Gym</h1>
+      </div>
+
+      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={true} SeasonFilter={false} ResetFilters={true} />
 
       <div className={style.container}>
         {products.length > 0 ? (
