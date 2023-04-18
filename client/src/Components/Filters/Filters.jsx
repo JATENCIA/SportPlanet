@@ -87,7 +87,7 @@ export default function Filters(props) {
         <option value="" selected disabled hidden>
           Size Filter
         </option> 
-        <option value="small">XS</option>
+        <option value="xSmall">XS</option>
         <option value="small">S</option>
         <option value="medium">M</option>
         <option value="large">L</option>
