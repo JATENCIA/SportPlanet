@@ -26,6 +26,7 @@
   100% {
     opacity: 1;
   }
+
 }
 
 .h1 {
@@ -34,3 +35,22 @@
   display: flex;
   justify-content: space-around;
 }
+
+  
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .h1{
+    font-size: 40px;
+    font-family: aBlackLives;
+    text-shadow: 2px 2px 2px rgb(62, 59, 59);
+    color: rgb(21, 20, 20);
+    display: flex;
+    justify-content: space-around;
+    }

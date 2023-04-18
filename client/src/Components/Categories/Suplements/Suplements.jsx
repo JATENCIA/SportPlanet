@@ -36,6 +36,10 @@ export default function Supplements() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <br />
+ <div>
+ <h1 className={style.h1}>Supplements</h1>
+ </div>
       <Filters
         SizeFilter={false}
         GenderFilter={false}

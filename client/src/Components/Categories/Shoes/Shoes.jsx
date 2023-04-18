@@ -37,6 +37,10 @@ export default function Shoes() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <br />
+      <div>
+      <h1 className={style.h1}>Shoes</h1>
+      </div>
       <Filters SizeFilter={false} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
       <div className={style.container}>

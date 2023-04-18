@@ -36,6 +36,10 @@ export default function Pants() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <br />
+      <div>
+      <h1 className={style.h1}>Pants</h1>
+      </div>
       <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
       <div className={style.container}>
