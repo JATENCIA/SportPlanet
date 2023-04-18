@@ -17,9 +17,15 @@ import {
   CLEAN_SEARCHED_PRODUCTS,
   REMOVE_ONE_ITEM,
 
+
   RESET_FILTERS,
   
 
+
+
+
+ 
+  
 } from "../Actions";
 import { useDispatch } from "react-redux";
 
