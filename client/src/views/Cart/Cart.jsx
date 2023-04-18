@@ -24,13 +24,20 @@ import Swal from "sweetalert2";
 
 export default function Cart() {
   const dispatch = useDispatch();
-  const navigete = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
 
+  const [bPay, setBPay] = useState("");
+  const [brand, setBrand] = useState(0);
   const cart = useSelector((state) => state.shoppingCart);
+  const pay = useSelector((state) => state.buttonPay);
+
+  useEffect(() => {
+    setBPay(pay);
+  }, [pay]);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(JSON.stringify(cart)));
@@ -86,15 +93,25 @@ export default function Cart() {
   const handleShop = async () => {
     if (isAuthenticated) {
       if (userE.baneado === false) {
-        dispatch(shop(cart));
-        dispatch(clearCart());
+        if (cart.length) {
+          dispatch(shop(cart));
+          setBrand(1);
+        } else {
+          Swal.fire(`NO PRODUCT SELECTED`);
+        }
       } else {
         Swal.fire(`🚫 BANNED USER`);
       }
     } else {
       await Swal.fire(`⚠️ LOG IN`);
-      navigete("/home");
+      navigate("/home");
     }
+  };
+
+  const handleClear = () => {
+    setBrand(0);
+    dispatch(clearCart());
+    navigate("/home");
   };
 
   return (
@@ -164,6 +181,17 @@ export default function Cart() {
             <button className={style.buttonPay} onClick={() => handleShop()}>
               CHECKOUT
             </button>
+            {brand !== 0 ? (
+              <a href={bPay} target="_blank">
+                {" "}
+                <button
+                  className={style.buttonPay2}
+                  onClick={() => handleClear()}
+                >
+                  GO PAY
+                </button>
+              </a>
+            ) : null}
           </div>
         </div>
       </div>

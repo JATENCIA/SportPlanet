@@ -26,6 +26,11 @@ const productsSchema = mongoose.Schema(
       default: false,
     },
 
+    featured: {
+      type: Boolean,
+      default: false,
+    },
+
     discount: {
       type: Number,
       default: 0,
@@ -62,7 +67,7 @@ const productsSchema = mongoose.Schema(
         "tshirts",
         "pants",
         "footwear",
-        "balls", 
+        "balls",
         "supplements",
         "accessories",
         "gym",
@@ -103,5 +108,3 @@ const productsSchema = mongoose.Schema(
 );
 
 module.exports = mongoose.model("Products", productsSchema);
-
-
