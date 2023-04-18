@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { RiForbid2Line } from "react-icons/ri";
 
 export default function ProfileProductCard({name,image,price,description,_id,baneado}) {
-  const [isBaneado, setIsBaneado] = useState('')
+  const [isBaneado, setIsBaneado] = useState(baneado)
 
   const editHandler = async (e) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ export default function ProfileProductCard({name,image,price,description,_id,ban
           <FaEdit />
         </button>
         <button className={style.removeButton} onClick={removeHandler}>
-          <RiForbid2Line />
+          <FaTrashAlt />
         </button>
       </div>
     </div>

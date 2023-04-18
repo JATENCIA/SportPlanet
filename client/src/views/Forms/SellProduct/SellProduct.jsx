@@ -20,11 +20,11 @@ export default function SellProduct() {
   const [secondImage, setSecondImage] = useState([]);
   const [thirdImage, setThirdImage] = useState([]);
   const [loading, setLoading] = useState("");
-  const { isAuthenticated, user, logout } = useAuth0();
+  const { user } = useAuth0();
 
   useEffect(() => {
     dispatch(getAllUser());
-  }, [dispatch, location]);
+  }, [dispatch]);
 
   const allUsers = useSelector((state) => state.allUsers);
   const userDb = allUsers?.find((element) => element.eMail === user?.email);
@@ -52,6 +52,7 @@ export default function SellProduct() {
     user: userDb?._id,
   });
   const [sizes, setSizes] = useState({
+    XS: 0,
     S: 0,
     M: 0,
     L: 0,
@@ -59,6 +60,7 @@ export default function SellProduct() {
     XXL: 0,
   });
   const [secondSizes, setSecondSizes] = useState({
+    XS: 0,
     S: 0,
     M: 0,
     L: 0,
@@ -66,6 +68,7 @@ export default function SellProduct() {
     XXL: 0,
   });
   const [thirdSizes, setThirdSizes] = useState({
+    XS: 0,
     S: 0,
     M: 0,
     L: 0,
@@ -258,7 +261,7 @@ export default function SellProduct() {
           "This item is now available for sale!",
           "success"
         );
-        navigate("/post/product");
+        navigate("/home");
       } catch (error) {
         return { messaje: `${error}` };
       }
@@ -595,10 +598,6 @@ export default function SellProduct() {
     }
   };
 
-  useEffect(() => {
-    dispatch(getAllUser());
-  }, [dispatch, location]);
-
   return (
     <>
       <NavBar />
@@ -613,7 +612,7 @@ export default function SellProduct() {
 
               <div>
                 <label className="block text-gray-800 text-xl font-bold">
-                  Product Name
+                  Product Name <label className={style.obligatory}>*</label>
                 </label>
                 <input
                   type="text"
@@ -621,13 +620,14 @@ export default function SellProduct() {
                   value={post.name}
                   onChange={changeHandlerPage1}
                   className={style.input}
+                  autoComplete="off"
                 />
                 <p className={style.errors}>{errors1.name}</p>
               </div>
 
               <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">
-                  Description
+                  Description <label className={style.obligatory}>*</label>
                 </label>
                 <textarea
                   type="text"
@@ -641,7 +641,7 @@ export default function SellProduct() {
 
               <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">
-                  Category
+                  Category <label className={style.obligatory}>*</label>
                 </label>
                 <select
                   onChange={categoryChangeHandler}
@@ -655,7 +655,7 @@ export default function SellProduct() {
                   <option value="footwear">Shoes</option>
                   <option value="balls">Balls</option>
                   <option value="supplements">Supplements</option>
-                  <option value="gym">Fitness</option>
+                  <option value="gym">Gym</option>
                   <option value="accessories">Accesories</option>
                 </select>
                 <p className={style.errors}>{errors1.category}</p>
@@ -683,7 +683,7 @@ export default function SellProduct() {
                       First Color
                     </h1>
                     <label className="block text-gray-800 text-xl font-bold">
-                      Product Color
+                      Product Color <label className={style.obligatory}>*</label>
                     </label>
 
                     <select
@@ -692,7 +692,7 @@ export default function SellProduct() {
                       value={color}
                     >
                       <option value="" className="bg-white text-black-400">
-                        Select a color
+                        Select a color 
                       </option>
                       <option value="purple" className={style.coloresPurple}>
                         Purple
@@ -736,7 +736,7 @@ export default function SellProduct() {
 
                   <div className="mt-5">
                     <label className="block text-gray-800 text-xl font-bold">
-                      Image
+                      Image <label className={style.obligatory}>*</label>
                     </label>
 
                     <div className={style.uploadContainer}>
@@ -772,8 +772,22 @@ export default function SellProduct() {
                       post.category === "pants" ? (
                         <div className="mt-5">
                           <label className="block text-gray-800 text-xl font-bold">
-                            Size
+                            Size <label className={style.obligatory}>*</label>
                           </label>
+
+                          <div>
+                            <select className={style.sizeSelectSinFlecha}>
+                              <option>XS</option>
+                            </select>
+                            <input
+                              type="number"
+                              value={sizes.XS !== 0 ? sizes.XS : ""}
+                              onChange={sizesChangeHandler}
+                              name="XS"
+                              className={style.sizeNumber}
+                              min="0"
+                            />
+                          </div>
 
                           <div>
                             <select className={style.sizeSelectSinFlecha}>
@@ -848,14 +862,14 @@ export default function SellProduct() {
                       ) : post.category === "footwear" ? (
                         <div className="mt-5">
                           <label className="block text-gray-800 text-xl font-bold">
-                            Size
+                            Size <label className={style.obligatory}>*</label>
                           </label>
                           {shoesSize}
                         </div>
                       ) : (
                         <div className="mt-5">
                           <label className="block text-gray-800 text-xl font-bold">
-                            Amount
+                            Amount <label className={style.obligatory}>*</label>
                           </label>
                           <input
                             type="number"
@@ -892,7 +906,7 @@ export default function SellProduct() {
                     </h1>
 
                     <label className="block text-gray-800 text-xl font-bold">
-                      Product Color
+                      Product Color <label className={style.obligatory}>*</label>
                     </label>
                     <select
                       onChange={secondColorHandler}
@@ -943,8 +957,8 @@ export default function SellProduct() {
 
                   <div className="mt-5">
                     <label className="block text-gray-800 text-xl font-bold">
-                      Image
-                    </label>
+                      Image <label className={style.obligatory}>*</label>
+                    </label> 
 
                     <div className={style.uploadContainer}>
                       <Dropzone
@@ -978,8 +992,22 @@ export default function SellProduct() {
                       post.category === "pants" ? (
                         <div className="mt-5">
                           <label className="block text-gray-800 text-xl font-bold">
-                            Size
+                            Size <label className={style.obligatory}>*</label>
                           </label>
+
+                          <div>
+                            <select className={style.sizeSelectSinFlecha}>
+                              <option>XS</option>
+                            </select>
+                            <input
+                              type="number"
+                              value={secondSizes.XS !== 0 ? secondSizes.XS : ""}
+                              onChange={secondSizesChangeHandler}
+                              name="XS"
+                              className={style.sizeNumber}
+                              min="0"
+                            />
+                          </div>
 
                           <div>
                             <select className={style.sizeSelectSinFlecha}>
@@ -1056,14 +1084,14 @@ export default function SellProduct() {
                       ) : post.category === "footwear" ? (
                         <div className="mt-5">
                           <label className="block text-gray-800 text-xl font-bold">
-                            Size
+                            Size <label className={style.obligatory}>*</label>
                           </label>
                           {secondShoesSize}
                         </div>
                       ) : (
                         <div className="mt-5">
                           <label className="block text-gray-800 text-xl font-bold">
-                            Amount
+                            Amount <label className={style.obligatory}>*</label>
                           </label>
                           <input
                             type="number"
@@ -1101,7 +1129,7 @@ export default function SellProduct() {
                     </h1>
 
                     <label className="block text-gray-800 text-xl font-bold">
-                      Product Color
+                      Product Color <label className={style.obligatory}>*</label>
                     </label>
                     <select
                       onChange={thirdColorHandler}
@@ -1152,7 +1180,7 @@ export default function SellProduct() {
 
                   <div className="mt-5">
                     <label className="block text-gray-800 text-xl font-bold">
-                      Image
+                      Image <label className={style.obligatory}>*</label>
                     </label>
 
                     <div className={style.uploadContainer}>
@@ -1187,8 +1215,22 @@ export default function SellProduct() {
                       post.category === "pants" ? (
                         <div className="mt-5">
                           <label className="block text-gray-800 text-xl font-bold">
-                            Size
+                            Size <label className={style.obligatory}>*</label>
                           </label>
+
+                          <div>
+                            <select className={style.sizeSelectSinFlecha}>
+                              <option>XS</option>
+                            </select>
+                            <input
+                              type="number"
+                              value={thirdSizes.XS !== 0 ? thirdSizes.XS : ""}
+                              onChange={thirdSizesChangeHandler}
+                              name="XS"
+                              className={style.sizeNumber}
+                              min="0"
+                            />
+                          </div>
 
                           <div>
                             <select className={style.sizeSelectSinFlecha}>
@@ -1263,14 +1305,14 @@ export default function SellProduct() {
                       ) : post.category === "footwear" ? (
                         <div className="mt-5">
                           <label className="block text-gray-800 text-xl font-bold">
-                            Size
+                            Size <label className={style.obligatory}>*</label>
                           </label>
                           {thirdShoesSize}
                         </div>
                       ) : (
                         <div className="mt-5">
                           <label className="block text-gray-800 text-xl font-bold">
-                            Amount
+                            Amount <label className={style.obligatory}>*</label>
                           </label>
                           <input
                             type="number"
@@ -1319,7 +1361,7 @@ export default function SellProduct() {
             <>
               <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">
-                  Set a Price
+                  Set a Price <label className={style.obligatory}>*</label>
                 </label>
                 <div>
                   <select className={style.sizeSelectSinFlecha}>
@@ -1358,7 +1400,7 @@ export default function SellProduct() {
             <>
               <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">
-                  Season
+                  Season <label className={style.obligatory}>*</label>
                 </label>
                 <select
                   onChange={changeHandlerPage4}
@@ -1374,7 +1416,7 @@ export default function SellProduct() {
 
               <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">
-                  Gender
+                  Gender <label className={style.obligatory}>*</label>
                 </label>
                 <select
                   onChange={changeHandlerPage4}
@@ -1392,7 +1434,7 @@ export default function SellProduct() {
 
               <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">
-                  Condition
+                  Condition <label className={style.obligatory}>*</label>
                 </label>
                 <select
                   onChange={changeHandlerPage4}
@@ -1409,7 +1451,7 @@ export default function SellProduct() {
 
               <div className="mt-5">
                 <label className="block text-gray-800 text-xl font-bold">
-                  Brand
+                  Brand <label className={style.obligatory}>*</label>
                 </label>
                 <select
                   onChange={changeHandlerPage4}
@@ -1441,6 +1483,7 @@ export default function SellProduct() {
                   className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mx-auto block"
                 >
                   POST THIS PRODUCT
+                
                 </button>
               </div>
             </>
