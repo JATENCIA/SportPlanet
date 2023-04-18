@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useDispatch } from 'react-redux'
-import { addReview } from '../../redux/Actions'
+import { addReview, getAllUser } from '../../redux/Actions'
+import { useSelector } from 'react-redux'
+
 
 export default function Reviews() {
 
@@ -48,43 +50,29 @@ export default function Reviews() {
         }
     }
 
-    console.log(user);
+    useEffect(() => {
+        dispatch(getAllUser())
+    }, [dispatch])
+
+    const users = useSelector(state => state.allUsers)
+    const [ userRe, setUserRe ] = useState({})
+
+    useEffect(() => {
+      if(user && isAuthenticated){
+        const userDb = users?.find(elem => elem.eMail === user?.email)
+        userDb ? setUserRe(userDb) : ""
+      }
+    }, [user])
+
+    console.log(userRe._id);
+
+    
 
     return (
-        <form onSubmit={handleSubmit}>
-        <label>
-            Quality:
-            <input type="number" name="quality" value={review.quality} onChange={handleChange} />
-        </label>
-        <label>
-            Comfort:
-            <input type="number" name="comfort" value={review.comfort} onChange={handleChange} />
-        </label>
-        <label>
-            Recommended:
-            <input type="checkbox" name="recommended" checked={review.recommended} onChange={handleChange} />
-        </label>
-        <label>
-            Comment:
-            <textarea name="comment" value={review.comment} onChange={handleChange} />
-        </label>
-        <label>
-            Product:
-            <input type="text" name="product" value={review.product} onChange={handleChange} />
-        </label>
-        <label>
-            Attention:
-            <input type="number" name="attention" value={review.attention} onChange={handleChange} />
-        </label>
-        <label>
-            Delivery on time:
-            <input type="number" name="deliveryOnTime" value={review.deliveryOnTime} onChange={handleChange} />
-        </label>
-        <label>
-            Packaging:
-            <input type="number" name="packaging" value={review.packaging} onChange={handleChange} />
-        </label>
-        <button type="submit">Submit</button>
-    </form>
+        <>
+          <form action="">
+            
+          </form>
+        </>
     )
 }
