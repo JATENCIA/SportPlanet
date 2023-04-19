@@ -23,11 +23,11 @@ export default function Woman() {
     dispatch(filterByGender("women"));
   }, [dispatch]);
 
-  const filterProducts = allProducts.filter(
-    (product) => product.category === "tshirts" && product.gender === "women"
+  let filterProducts = allProducts.filter(
+    (product) => product.gender === "women"
   );
+ filterProducts = filterProducts.filter((product) => !product.baneado)
 
-  console.log("2", filterProducts);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -43,13 +43,17 @@ export default function Woman() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <br />
+      <div>
+      <h1 className={style.h1}>Woman</h1>
+      </div>
       <Filters SizeFilter={true} GenderFilter={false} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}

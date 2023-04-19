@@ -17,14 +17,12 @@ export default function Gym() {
     dispatch(getAllProduct());
   }, [dispatch]);
   const allProducts = useSelector((state) => state.filteredProducts);
-  console.log("1", allProducts);
 
-  const filterProducts = allProducts.filter(
-    (product) => product.category === "supplements"
+  let filterProducts = allProducts.filter(
+    (product) => product.category === "gym"
   );
 
-
-  
+  filterProducts = filterProducts.filter((product) => !product.baneado);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -35,19 +33,29 @@ export default function Gym() {
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
-  
 
   return (
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={false} SeasonFilter={false} />
+      <br />
+      <div>
+        <h1 className={style.h1}>Gym</h1>
+      </div>
+
+      <Filters
+        SizeFilter={false}
+        GenderFilter={false}
+        WearedFilter={true}
+        SeasonFilter={false}
+        ResetFilters={true}
+      />
 
       <div className={style.container}>
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}

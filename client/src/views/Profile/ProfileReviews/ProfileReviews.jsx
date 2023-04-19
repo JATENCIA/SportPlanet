@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./ProfileReviews.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
 import ReviewCard from "../ReviewCard/ReviewCard";
@@ -21,6 +22,7 @@ export default function ProfileReviews() {
   return (
     <div className={style.container}>
       <NavBar />
+      <FilterNavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>
@@ -67,7 +69,7 @@ export default function ProfileReviews() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>

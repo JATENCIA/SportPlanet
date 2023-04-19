@@ -17,9 +17,10 @@ export default function Reebok() {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.filteredProducts);
-  const filterProducts = allProducts.filter((product) => {
+  let filterProducts = allProducts.filter((product) => {
     return product.brands === "REEBOK";
   });
+ filterProducts = filterProducts.filter((product) => !product.baneado)
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -41,7 +42,7 @@ export default function Reebok() {
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}

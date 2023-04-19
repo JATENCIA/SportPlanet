@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./AdminReviews.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import ReviewCard from "../../Profile/ReviewCard/ReviewCard";
 import { Link } from "react-router-dom";
@@ -22,6 +23,7 @@ export default function AdminReviews() {
   return (
     <div className={style.container}>
       <NavBar />
+      <FilterNavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>
@@ -68,7 +70,7 @@ export default function AdminReviews() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>

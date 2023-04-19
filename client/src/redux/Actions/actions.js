@@ -22,9 +22,6 @@ import {
   RESET_FILTERS,
 } from "./actionsTypes";
 
-
-
-
 export const getAllUser = () => async (dispatch) => {
   try {
     const { data } = await axios.get("/users");
@@ -183,29 +180,20 @@ export const removeItemCart = (id, color, size) => {
     payload: product,
   };
 };
-   
-  
-
-
 
 export const removeProduct = (id) => {
   return {
     type: REMOVE_PRODUCT,
-    payload:id
-  }
-
-}
-
-
-
+    payload: id,
+  };
+};
 
 export const shop = (item) => {
+  console.log("🚀 ~ file: actions.js:192 ~ shop ~ item:", item);
   return async function (dispatch) {
-    const apic = await axios.post("", item);
-    const shop = apic.data;
-    if (shop) {
-      alert("Se efectuo tu compra correctamente!");
-    }
+    const apic = await axios.post("/payments", item);
+    const shop = apic.data.url;
+
     dispatch({
       type: SHOP,
       payload: shop,
@@ -221,7 +209,7 @@ export const addReview = (payload) => {
 };
 export const resetFilters = (payload) => {
   return {
-  type: RESET_FILTERS,
-  payload: payload
-  }
-  }
+    type: RESET_FILTERS,
+    payload: payload,
+  };
+};

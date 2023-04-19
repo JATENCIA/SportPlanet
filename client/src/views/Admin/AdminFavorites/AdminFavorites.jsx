@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import style from "./AdminFavorites.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 import { Link } from "react-router-dom";
@@ -50,6 +51,7 @@ export default function AdminFavorites() {
   return (
     <div className={style.container}>
       <NavBar />
+      <FilterNavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>
@@ -96,7 +98,7 @@ export default function AdminFavorites() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>

@@ -15,12 +15,16 @@ export default function Footer() {
       <div className={style.firstContainer}>
         <div className={style.infoContainer}>
           <h3>CONTACT INFORMATION</h3>
+          <Link to="https://api.whatsapp.com/send?phone=5491155173954&text=Escriba%20su%20consulta%20aqui">
           <span>Contact us via WPP</span>
+          </Link>
         </div>
 
         <div className={style.infoContainer}>
           <h3>CUSTOMER SUPPORT</h3>
-          <span>FAQ</span>
+          <Link to="/faq">
+            <span>FAQ</span>
+          </Link>
           <span>Shipping & Returns</span>
         </div>
 

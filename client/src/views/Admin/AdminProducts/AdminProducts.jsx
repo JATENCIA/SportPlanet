@@ -1,22 +1,13 @@
 import React, { useEffect } from "react";
 import style from "./AdminProducts.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileProductCard from "../../Profile/ProfileProductCard/ProfileProductCard";
+import AdminProductCard from '../AdminProductCard/AdminProductCard'
 import { Paginate } from "../../../Components/Paginate/Paginate";
 import { Link } from "react-router-dom";
-import {
-  FaShoppingBag,
-  FaDollarSign,
-  FaHeart,
-  FaQuestionCircle,
-  FaSadTear,
-  FaUserCircle,
-  FaStore,
-  FaUsers,
-  FaListAlt,
-} from "react-icons/fa";
-
+import { FaShoppingBag, FaDollarSign,FaHeart,FaQuestionCircle,FaSadTear,FaUserCircle,FaStore,FaUsers,FaListAlt } from "react-icons/fa";
 import { MdRateReview } from "react-icons/md";
 import { getAllUser } from "../../../redux/Actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -24,6 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 export default function AdminProducts() {
   const dispatch = useDispatch();
 
+  const [currentPage, setCurrentPage] = React.useState(1);
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
@@ -39,7 +31,7 @@ export default function AdminProducts() {
 
   const userProducts = userDb.product
 
-  const [currentPage, setCurrentPage] = React.useState(1);
+  
   const productsPerPage = 8;
   const last = currentPage * productsPerPage;
   const first = last - productsPerPage;
@@ -50,6 +42,7 @@ export default function AdminProducts() {
   return (
     <div className={style.container}>
       <NavBar />
+      <FilterNavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>
@@ -96,7 +89,7 @@ export default function AdminProducts() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>
@@ -126,9 +119,9 @@ export default function AdminProducts() {
             {products.length > 0 ? (
               products.map((product) => {
                 return (
-                  <Link to={`/detail/${product._id}`}>
-                    <ProfileProductCard
-                      key={product._id}
+                  <Link to={`/detail/${product._id}`} key={product._id}>
+                    <AdminProductCard
+                      key={crypto.randomUUID()}
                       _id={product._id}
                       name={product.name}
                       image={product.productConditionals[0].image[0]}

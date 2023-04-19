@@ -17,9 +17,9 @@ class PaymentService {
     }));
 
     const body = {
-      payer_email: shoppingcart.eMail,
+      payer_email: shoppingcart[0].eMail,
       items: items_ml,
-      external_reference: shoppingcart.eMail,
+      external_reference: shoppingcart[0].eMail,
       payment_methods: {
         excluded_payment_types: [
           {
@@ -29,9 +29,9 @@ class PaymentService {
         installments: 1,
       },
       back_urls: {
-        // failure: `${config.API_URL_BACK}/payment/success`,
-        // pending: `${config.API_URL_BACK}/payment/success`,
-        // success: `${config.API_URL_BACK}/payment/success`,
+        failure: `${config.API_URL_BACK}/payments/success`,
+        pending: `${config.API_URL_BACK}/payments/success`,
+        success: `${config.API_URL_BACK}/payments/success`,
       },
     };
 

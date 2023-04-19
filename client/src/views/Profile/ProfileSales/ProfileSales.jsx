@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./ProfileSales.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import ProfileProductCard from "../ProfileProductCard/ProfileProductCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,6 +33,7 @@ export default function ProfileSales() {
   return (
     <div className={style.container}>
       <NavBar />
+      <FilterNavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>
@@ -78,7 +80,7 @@ export default function ProfileSales() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>

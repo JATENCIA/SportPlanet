@@ -1,3 +1,8 @@
+.obligatory{
+    color: red;
+    font-size: 20px;
+}
+
 .formContainer{
     margin: 0 auto;
     width: 55%;

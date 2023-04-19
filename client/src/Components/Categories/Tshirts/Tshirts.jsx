@@ -17,10 +17,10 @@ function Tshirts() {
     dispatch(getAllProduct());
   }, [dispatch]);
   const allProducts = useSelector((state) => state.filteredProducts);
-  console.log("1", allProducts);
-  const filterProducts = allProducts.filter(
+  let filterProducts = allProducts.filter(
     (product) => product.category === "tshirts"
   );
+  filterProducts = filterProducts.filter((product) => !product.baneado)
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -36,13 +36,17 @@ function Tshirts() {
     <div>
       <NavBar />
       <FilterNavBar />
+      <br />
+      <div>
+      <h1 className={style.h1}>T-shirts</h1>
+      </div>
       <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true} />
 
       <div className={style.container}>
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}
