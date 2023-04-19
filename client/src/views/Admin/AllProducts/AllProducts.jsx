@@ -31,7 +31,7 @@ export default function AllProducts() {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts2);
+  const allProducts = useSelector((state) => state.allProducts);
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 10;
@@ -143,7 +143,10 @@ export default function AllProducts() {
               onChange={inputChange}
             />
 
-            <button className={style.buttonSearch} onClick={buttonSearch}>
+            <button
+              className={style.buttonSearch}
+              onClick={() => buttonSearch()}
+            >
               <FaSearch />
             </button>
             <h2 className={style.totalSales}>
@@ -151,8 +154,8 @@ export default function AllProducts() {
             </h2>
           </div>
           <div className={style.productsContainer}>
-            {products.length > 0 ? (
-              products.map((product) => {
+            {products?.length > 0 ? (
+              products?.map((product) => {
                 return (
                   <AdminProductCard
                     key={crypto.randomUUID()}
