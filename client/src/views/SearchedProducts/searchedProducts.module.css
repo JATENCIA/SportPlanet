@@ -12,6 +12,13 @@
   padding-bottom: 3rem;
 }
 
+.loading{
+  margin-bottom: 5rem;
+  padding-top: 5rem;
+  font-size: xx-large;
+  font-family: Bebas;
+}
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
