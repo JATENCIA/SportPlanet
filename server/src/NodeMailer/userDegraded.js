@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMailBaned = async (product) => {
+const eMailUserDegradedRoll = async (user) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -40,12 +40,17 @@ const eMailBaned = async (product) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2 style="color=#1A0EFB">The product ${product.name} was banned</h2>
-        <p style="color=#538AEF">Dear ${product.user.name}, we are writing to inform you that your product has been removed from our platform due to a violation of our terms and conditions. Unfortunately, we had to take this action in order to maintain a safe and fair environment for all of our users.Please be aware that while we understand that this may be an unfortunate situation, it is our responsibility to ensure that our users receive high-quality products that meet our standards.If you have any questions or would like to appeal this decision, please feel free to contact our support team for more information.Thank you for your understanding and cooperation in this matter. Best regards</p>
+        <h2 style='color:#1B07FF'>${user.name} ${user.lastName} now you are a regular user</h2>
+        <p style='color:#08042B'>Dear ${user.name} ${user.lastName},
+        We wanted to let you know that your account on our website has been updated and you have been demoted from the role of Administrator to that of a regular User. This change in your role may affect your access to certain features on the website.
+        As a User, you will still have access to the website's basic features and functionalities. However, you will no longer have the same level of access and responsibility that comes with the Administrator role.
+        Please let us know if you have any questions or concerns regarding this change. We will be happy to provide you with any assistance or information you need.
+        Thank you for being a part of our community and we hope that you continue to enjoy using our website as a regular User.
+        Best regards</p>
         
-        <P style="margin-bottom: 10px;"><i>Sincerely:</i><br> SportPlanet </P>
+        <P style="margin-bottom: 10px; color:#08042B"><i>Sincerely:</i><br> SportPlanet </P>
         <a style="background-color: rgb(5, 23, 124); border: 2px solid rgb(8, 8, 8); color:#FFFFFF; padding: 16px 32px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px; margin: 4px 2px;
-        transition-duration: 0.4s; cursor: pointer;"href="https://sport-planet.vercel.app/">SportPlanet</a>
+        transition-duration: 0.4s; cursor: pointer;" href="https://sport-planet.vercel.app/">SportPlanet</a>
        
          
           <p style="background-color: black; padding: 10px 0px 10px 0px ; color:#FFFFFF; font-size: 12 !important;">
@@ -61,9 +66,9 @@ const eMailBaned = async (product) => {
     `;
   let mensaje = {
     from: '"SportPlanet" <sportplanet.mp@gmail.com>', // sender address
-    to: product.user.eMail, // list of receivers
+    to: user.eMail, // list of receivers
     subject: " Notification", // Subject line
-    text: "Product Baned", // plain text body
+    text: "now you are user!", // plain text body
     html: mensaHTM,
     attachments: [
       {
@@ -78,4 +83,4 @@ const eMailBaned = async (product) => {
 
   console.log(info);
 };
-module.exports = { eMailBaned };
+module.exports = { eMailUserDegradedRoll };
