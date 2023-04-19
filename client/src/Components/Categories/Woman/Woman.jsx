@@ -45,7 +45,7 @@ export default function Woman() {
       <FilterNavBar />
       <br />
       <div>
-      <h1 className={style.h1}>Woman</h1>
+      <h1 className={style.h1}>Women</h1>
       </div>
       <Filters SizeFilter={true} GenderFilter={false} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
