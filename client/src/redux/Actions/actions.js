@@ -20,6 +20,9 @@ import {
   ADD_REVIEW,
   REMOVE_ONE_ITEM,
   RESET_FILTERS,
+  ADMIN_SEARCH_USER,
+  ADMIN_SEARCH_PRODUCT,
+  GET_ALL_REVIEWS,
 } from "./actionsTypes";
 
 export const getAllUser = () => async (dispatch) => {
@@ -33,6 +36,20 @@ export const getAllUser = () => async (dispatch) => {
     return { messaje: `${error}` };
     console.log({ messaje: `${error}` });
   }
+};
+
+export const searchUser = (payload) => {
+  return {
+    type: ADMIN_SEARCH_USER,
+    payload: payload,
+  };
+};
+
+export const searchProduct = (payload) => {
+  return {
+    type: ADMIN_SEARCH_PRODUCT,
+    payload: payload,
+  };
 };
 
 export const postUser = (payload) => async (dispatch) => {
@@ -202,8 +219,12 @@ export const shop = (item) => {
 };
 
 export const addReview = (payload) => {
-  return async function () {
+  return async function (dispatch) {
     const review = await axios.post("/productReview", payload);
+    dispatch({
+      type: ADD_REVIEW,
+      payload: review.data,
+    });
     return review;
   };
 };
@@ -211,5 +232,15 @@ export const resetFilters = (payload) => {
   return {
     type: RESET_FILTERS,
     payload: payload,
+  };
+};
+
+export const getAllReviews = () => {
+  return async function (dispatch) {
+    const reviews = await axios.get("/productReview");
+    dispatch({
+      type: GET_ALL_REVIEWS,
+      payload: reviews.data,
+    });
   };
 };

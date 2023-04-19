@@ -1,4 +1,6 @@
 export const POST_USER = "POST_USER";
+export const ADMIN_SEARCH_USER = "ADMIN_SEARCH_USER";
+export const ADMIN_SEARCH_PRODUCT = "ADMIN_SEARCH_PRODUCT";
 export const GET_ALL_USER = "GET_ALL_USER";
 export const GET_ALL_PRODUCT = "GET_ALL_PRODUCT";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
@@ -17,3 +19,4 @@ export const SHOP = "SHOP";
 export const ADD_REVIEW = "ADD_REVIEW";
 export const REMOVE_ONE_ITEM = "REMOVE_ONE_ITEM";
 export const RESET_FILTERS = "RESET_FILTERS";
+export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";

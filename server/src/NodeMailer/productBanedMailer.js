@@ -43,12 +43,6 @@ const eMailBaned = async (product) => {
         <h2 style="color=#1A0EFB">The product ${product.name} was banned</h2>
         <p style="color=#538AEF">Dear ${product.user.name}, we are writing to inform you that your product has been removed from our platform due to a violation of our terms and conditions. Unfortunately, we had to take this action in order to maintain a safe and fair environment for all of our users.Please be aware that while we understand that this may be an unfortunate situation, it is our responsibility to ensure that our users receive high-quality products that meet our standards.If you have any questions or would like to appeal this decision, please feel free to contact our support team for more information.Thank you for your understanding and cooperation in this matter. Best regards</p>
         
-        <div style="display: flex; padding: 20px 10px 20px 10px; ">
-          <div style=" padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
-            <img src="https://static.vecteezy.com/system/resources/previews/013/441/985/original/world-map-on-the-foot-ball-silhouette-for-icon-symbol-pictogram-sport-news-art-illustration-apps-website-or-graphic-design-element-format-png.png" alt="" style="width: 300px;" />
-            <p >For inquiries or support you can contact us through our digital channels sportplanet.mp@gmail.com </p>
-          </div>
-        </div>
         <P style="margin-bottom: 10px;"><i>Sincerely:</i><br> SportPlanet </P>
         <a style="background-color: rgb(5, 23, 124); border: 2px solid rgb(8, 8, 8); color:#FFFFFF; padding: 16px 32px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px; margin: 4px 2px;
         transition-duration: 0.4s; cursor: pointer;"href="https://sport-planet.vercel.app/">SportPlanet</a>

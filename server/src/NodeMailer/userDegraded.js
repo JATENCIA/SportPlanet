@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMailUserEnable = async (user) => {
+const eMailUserDegradedRoll = async (user) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -24,7 +24,7 @@ const eMailUserEnable = async (user) => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
-        p, a, h1, h2, h3, h4, h5 {font-family: 'Noto Sans KR', sans-serif !important;}
+        p, a, h1, h2, h3, h4, h5 {font-family: 'Roboto', sans-serif !important;}
         h1{font-size: 60px !important;}
         h2{font-size: 45px !important;}
         h3{font-size: 35px !important;}
@@ -40,9 +40,12 @@ const eMailUserEnable = async (user) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2 style='color:#1B07FF'>${user.name} ${user.lastName} has been enabled</h2>
-        <p style='color:#08042B'>Dear ${user.name} ${user.lastName}, we are pleased to inform you that your account has been enabled and you can now access our platform again. After reviewing your case, our team has determined that your account complies with our terms and conditions.We apologize for any inconvenience that this situation may have caused, and we appreciate your patience and cooperation during this process.If you have any questions or concerns, please do not hesitate to contact our support team.
-        Thank you for your understanding and for choosing our platform to be a part of our community.
+        <h2 style='color:#1B07FF'>${user.name} ${user.lastName} now you are a regular user</h2>
+        <p style='color:#08042B'>Dear ${user.name} ${user.lastName},
+        We wanted to let you know that your account on our website has been updated and you have been demoted from the role of Administrator to that of a regular User. This change in your role may affect your access to certain features on the website.
+        As a User, you will still have access to the website's basic features and functionalities. However, you will no longer have the same level of access and responsibility that comes with the Administrator role.
+        Please let us know if you have any questions or concerns regarding this change. We will be happy to provide you with any assistance or information you need.
+        Thank you for being a part of our community and we hope that you continue to enjoy using our website as a regular User.
         Best regards</p>
         
         <P style="margin-bottom: 10px; color:#08042B"><i>Sincerely:</i><br> SportPlanet </P>
@@ -65,7 +68,7 @@ const eMailUserEnable = async (user) => {
     from: '"SportPlanet" <sportplanet.mp@gmail.com>', // sender address
     to: user.eMail, // list of receivers
     subject: " Notification", // Subject line
-    text: "User enable", // plain text body
+    text: "now you are user!", // plain text body
     html: mensaHTM,
     attachments: [
       {
@@ -80,4 +83,4 @@ const eMailUserEnable = async (user) => {
 
   console.log(info);
 };
-module.exports = { eMailUserEnable };
+module.exports = { eMailUserDegradedRoll };
