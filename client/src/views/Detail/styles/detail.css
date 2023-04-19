@@ -136,6 +136,9 @@ main {
   margin-top: 20%;
 }
 
+.related-container {
+  margin-bottom: 20%;
+}
 
 .preview {
   display: flex;

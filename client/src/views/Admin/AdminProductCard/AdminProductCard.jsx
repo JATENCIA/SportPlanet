@@ -4,33 +4,55 @@ import { FaEdit } from "react-icons/fa";
 import { RiForbid2Line } from "react-icons/ri";
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import EditModal from "../EditModal";
 
-export default function AdminProductCard({ _id, name, image, baneado }) {
+export default function AdminProductCard({ _id, name, image, baneado, lastName, roll }) {
 
-  const [isBaneado, setIsBaneado] = useState(baneado)
+  const [isBaneado, setIsBaneado] = useState(baneado);
+  const [editView, setEditView] = useState(false);
+  // const [editViewProduct, setEditViewProduct] = useState(false)
 
   const editHandler = async (e) => {
-    e.preventDefault();
-    const put = await axios.put(`/products/${_id}`);
-    console.log(put.data);
+      e.preventDefault();
+      try {
+        editView ? setEditView(false) : setEditView(true)
+      } catch (error) {
+        alert(error)  
+      };
   }
 
   const removeHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const del = await axios.post(`/products/${_id}`)
-      const msg = del.data;
-      setIsBaneado(msg.baneado)
-      await Swal.fire({
-        icon: 'info',
-        text: msg.message,
-      })
-    } catch (error) {
-      return alert(error) 
+    if(lastName){
+      e.preventDefault()
+      try {
+        const del = await axios.post(`/users/${_id}`)
+        const msg = del.data;
+        setIsBaneado(msg.baneado)
+        await Swal.fire({
+          icon: 'info',
+          text: msg.message,
+        });
+      } catch (error) {
+        alert(error)
+      }
+    }else{
+      e.preventDefault();
+      try {
+        const del = await axios.post(`/products/${_id}`)
+        const msg = del.data;
+        setIsBaneado(msg.baneado)
+        await Swal.fire({
+          icon: 'info',
+          text: msg.message,
+        })
+      } catch (error) {
+          alert(error) 
+      }
     }
   };
 
   return (
+    <>
     <div className={isBaneado ? style.cardContainerBanned : style.cardContainer}>
       <div className={style.imgContainer}>
         <img src={image} />
@@ -47,5 +69,9 @@ export default function AdminProductCard({ _id, name, image, baneado }) {
         </button>
       </div>
     </div>
+
+    {editView && <EditModal _id={_id} name={name} roll={roll} lastName={lastName} setEditView={setEditView}/>}
+
+    </>
   );
 }
