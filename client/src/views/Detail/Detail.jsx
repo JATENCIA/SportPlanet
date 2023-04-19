@@ -36,6 +36,7 @@ export default function Detail() {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const { isAuthenticated, user, logout } = useAuth0();
+  
 
   useEffect(() => {
     dispatch(getProductDetail(id)).then(() => setIsLoading(false));
@@ -177,11 +178,8 @@ export default function Detail() {
       products.category === category &&
       products._id !== _id
   );
-<<<<<<< HEAD
-  let arrayFilterProducts = filterProducts.slice(0, 6);
-=======
+
   let arrayFilterProducts = filterProducts.slice(0, 5);
->>>>>>> ce205efbcf1b297537d87c676ed980514a8bc173
   arrayFilterProducts = arrayFilterProducts.filter((elem) => !elem.baneado);
 
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -195,7 +193,7 @@ export default function Detail() {
 
   const allReviews = useSelector((state) => state.reviews);
 
-  const reviews = allReviews?.filter((r) => review.includes(r._id));
+  const reviews = allReviews?.filter((r) => review?.includes(r._id));
   
   let qualityTotal = 0;
   let comfortTotal = 0;

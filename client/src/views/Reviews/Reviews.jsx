@@ -9,6 +9,7 @@ import ButtonBack from "../../Components/ButtonBack/ButtonBack";
 import Swal from "sweetalert2";
 import "./reviews.css";
 
+
 export default function Reviews() {
     const dispatch = useDispatch();
     const { user, isAuthenticated } = useAuth0();
@@ -36,7 +37,7 @@ export default function Reviews() {
 
         const updateReview = {
             ...review,
-            // product: "643edc6c6a3f7aa668ab778c",
+            // product: "6432598378fa18b04967c1f2",
             user: userDb._id,
         };
 
@@ -50,6 +51,7 @@ export default function Reviews() {
                 showConfirmButton: false,
                 timer: 1500,
             })
+            
         } catch (error) {
             console.log("Error adding review", error);
         }
