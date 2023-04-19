@@ -52,7 +52,7 @@ export default function FilterNavBar() {
         </div>
       </div>
       <Link to="/category/man">
-        <button>MAN</button>
+        <button>MEN</button>
       </Link>
       <Link to="/category/woman">
         <button>WOMEN</button>

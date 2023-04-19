@@ -88,7 +88,7 @@ export function Paginate({
             scroll();
             handleNext();
           }}
-          disabled={currentPage === pageNumber.length}
+          disabled={currentPage >= pageNumber.length}
         >
           {" "}
           <i className="fa-solid fa-angle-right" />{" "}

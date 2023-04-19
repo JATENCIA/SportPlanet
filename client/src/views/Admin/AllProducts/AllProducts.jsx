@@ -14,21 +14,24 @@ import {
   FaStore,
   FaUsers,
   FaListAlt,
+  FaSearch,
 } from "react-icons/fa";
 
-import { MdRateReview } from "react-icons/md";
-import { getAllProduct } from "../../../redux/Actions/actions";
+import { MdRateReview, MdSell } from "react-icons/md";
+import { getAllProduct, searchProduct } from "../../../redux/Actions/actions";
 import AdminProfileCard from "../AdminProfileCard/AdminProfileCard";
+import AdminProductCard from "../AdminProductCard/AdminProductCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 
 export default function AllProducts() {
+  const [input, setInput] = React.useState("");
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const allProducts = useSelector((state) => state.allProducts2);
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 10;
@@ -38,6 +41,14 @@ export default function AllProducts() {
 
   const setPagination = (page) => {
     return setCurrentPage(page);
+  };
+
+  const inputChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const buttonSearch = (event) => {
+    dispatch(searchProduct(input));
   };
 
   return (
@@ -90,6 +101,13 @@ export default function AllProducts() {
             </div>
           </Link>
 
+          <Link to="/post/product">
+            <div className={style.filter}>
+              <MdSell />
+              <h3 className={style.sellProducts}>SELL PRODUCTS</h3>
+            </div>
+          </Link>
+
           <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
@@ -115,12 +133,28 @@ export default function AllProducts() {
           </div>
         </div>
         <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>ALL PRODUCTS</h2>
+          <div className={style.firstRow}>
+            <h2 className={style.productPanelTitle}>ALL PRODUCTS</h2>
+            <input
+              type="text"
+              className={style.searchInput}
+              placeholder="Search product..."
+              value={input}
+              onChange={inputChange}
+            />
+
+            <button className={style.buttonSearch} onClick={buttonSearch}>
+              <FaSearch />
+            </button>
+            <h2 className={style.totalSales}>
+              Total Products:{allProducts.length}
+            </h2>
+          </div>
           <div className={style.productsContainer}>
             {products.length > 0 ? (
               products.map((product) => {
                 return (
-                  <AdminProfileCard
+                  <AdminProductCard
                     key={crypto.randomUUID()}
                     _id={product._id}
                     name={product.name}

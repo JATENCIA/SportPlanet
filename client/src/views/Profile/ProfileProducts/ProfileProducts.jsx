@@ -14,22 +14,24 @@ import {
   FaSadTear,
   FaUserCircle,
   FaStore,
+  FaSearch,
 } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUser } from "../../../redux/Actions/actions";
-import { MdRateReview } from "react-icons/md";
+import { getAllUser, searchProduct } from "../../../redux/Actions/actions";
+import { MdRateReview, MdSell } from "react-icons/md";
 
 export default function ProfileProducts() {
+  const [input, setInput] = React.useState("");
   const dispatch = useDispatch();
 
   // const allProducts = useSelector((state) => state.allProducts);
   // const filteredProducts = allProducts.filter((product) => product.price >= 30);
- 
+
   // const products = filteredProducts.slice(first, last);
 
   const { user } = useAuth0();
-  
-  useEffect(() => {
+
+  React.useEffect(() => {
     dispatch(getAllUser());
   }, [dispatch]);
 
@@ -40,7 +42,11 @@ export default function ProfileProducts() {
     return setCurrentPage(page);
   };
 
-  const userProducts = userDb.product
+  const inputChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const userProducts = userDb.product;
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 8;
@@ -98,6 +104,13 @@ export default function ProfileProducts() {
             </div>
           </Link>
 
+          <Link to="/post/product">
+            <div className={style.filter}>
+              <MdSell />
+              <h3 className={style.sellProducts}>SELL PRODUCTS</h3>
+            </div>
+          </Link>
+
           <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
@@ -106,7 +119,23 @@ export default function ProfileProducts() {
           </Link>
         </div>
         <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>YOUR PRODUCTS ON SALE</h2>
+          <div className={style.firstRow}>
+            <h2 className={style.productPanelTitle}>YOUR PRODUCTS ON SALE</h2>
+            {/* <input
+              type="text"
+              className={style.searchInput}
+              placeholder="Search product..."
+              value={input}
+              onChange={inputChange}
+            />
+
+            <button className={style.buttonSearch} onClick={buttonSearch}>
+              <FaSearch />
+            </button> */}
+            <h2 className={style.totalProducts}>
+              Total Products: {userProducts.length}
+            </h2>
+          </div>
           <div className={style.productsContainer}>
             {products.length > 0 ? (
               products.map((product) => {

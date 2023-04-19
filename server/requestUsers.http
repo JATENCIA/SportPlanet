@@ -1,5 +1,5 @@
-@urlApi = https://sportsplanet-production.up.railway.app
-# @urlApi = http://localhost:5000
+ @urlApi = https://sportsplanet-production.up.railway.app
+#  @urlApi = http://localhost:5000
 
 
 
@@ -33,6 +33,23 @@ Content-Type: application/json
 {
   "roll":"admin"
 }
+
+### update to user a admin
+PUT {{urlApi}}/users/isadmin/643196f41b964ba1250414a0
+Content-Type: application/json
+
+{
+  "roll":"admin"
+}
+
+### update to admin a user
+PUT {{urlApi}}/users/isadmin/643196f41b964ba1250414a0
+Content-Type: application/json
+
+{
+  "roll":"user"
+}
+
 
 
 ### favorite a user
