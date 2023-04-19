@@ -18,7 +18,7 @@ import {
   FaListAlt,
 } from "react-icons/fa";
 
-import { MdRateReview } from "react-icons/md";
+import { MdRateReview, MdSell } from "react-icons/md";
 
 export default function AdminSales() {
   const allProducts = useSelector((state) => state.allProducts);
@@ -80,6 +80,13 @@ export default function AdminSales() {
             <div className={style.filter}>
               <FaHeart />
               <h3 className={style.myFavorites}>FAVORITE PRODUCTS</h3>
+            </div>
+          </Link>
+
+          <Link to="/post/product">
+            <div className={style.filter}>
+              <MdSell />
+              <h3 className={style.sellProducts}>SELL PRODUCTS</h3>
             </div>
           </Link>
 
