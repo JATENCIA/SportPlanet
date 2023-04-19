@@ -24,7 +24,7 @@ const eMail = async (user) => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
-        p, a, h1, h2, h3, h4, h5 {font-family: 'Roboto', sans-serif !important;}
+        p, a, h1, h2, h3, h4, h5 {font-family: 'Noto Sans KR', sans-serif !important;}
         h1{font-size: 60px !important;}
         h2{font-size: 45px !important;}
         h3{font-size: 35px !important;}
