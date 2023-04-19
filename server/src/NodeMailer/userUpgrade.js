@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMailBaned = async (product) => {
+const eMailUserUpgradeRoll = async (user) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -40,12 +40,16 @@ const eMailBaned = async (product) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2 style="color=#1A0EFB">The product ${product.name} was banned</h2>
-        <p style="color=#538AEF">Dear ${product.user.name}, we are writing to inform you that your product has been removed from our platform due to a violation of our terms and conditions. Unfortunately, we had to take this action in order to maintain a safe and fair environment for all of our users.Please be aware that while we understand that this may be an unfortunate situation, it is our responsibility to ensure that our users receive high-quality products that meet our standards.If you have any questions or would like to appeal this decision, please feel free to contact our support team for more information.Thank you for your understanding and cooperation in this matter. Best regards</p>
+        <h2 style='color:#1B07FF'>${user.name} ${user.lastName} now you are admin!!</h2>
+        <p style='color:#08042B'>Dear ${user.name} ${user.lastName}, We would like to inform you that your account on our website has been upgraded and you have been promoted to the role of Administrator. As an Administrator, you will have access to additional features that will allow you to manage and oversee the platform.
+        As an Administrator, we expect you to be responsible and carry out your duties in a professional and ethical manner. We also expect you to respect the website's terms and conditions of use, as well as the privacy and security of other users.
+        Please do not hesitate to contact us if you have any questions or need assistance in using the administration tools. We are here to help you at any time.
+        Congratulations on your new role on the website and thank you for being a part of our community.
+        Best regards</p>
         
-        <P style="margin-bottom: 10px;"><i>Sincerely:</i><br> SportPlanet </P>
+        <P style="margin-bottom: 10px; color:#08042B"><i>Sincerely:</i><br> SportPlanet </P>
         <a style="background-color: rgb(5, 23, 124); border: 2px solid rgb(8, 8, 8); color:#FFFFFF; padding: 16px 32px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px; margin: 4px 2px;
-        transition-duration: 0.4s; cursor: pointer;"href="https://sport-planet.vercel.app/">SportPlanet</a>
+        transition-duration: 0.4s; cursor: pointer;" href="https://sport-planet.vercel.app/">SportPlanet</a>
        
          
           <p style="background-color: black; padding: 10px 0px 10px 0px ; color:#FFFFFF; font-size: 12 !important;">
@@ -61,9 +65,9 @@ const eMailBaned = async (product) => {
     `;
   let mensaje = {
     from: '"SportPlanet" <sportplanet.mp@gmail.com>', // sender address
-    to: product.user.eMail, // list of receivers
+    to: user.eMail, // list of receivers
     subject: " Notification", // Subject line
-    text: "Product Baned", // plain text body
+    text: "now you are admin!", // plain text body
     html: mensaHTM,
     attachments: [
       {
@@ -78,4 +82,4 @@ const eMailBaned = async (product) => {
 
   console.log(info);
 };
-module.exports = { eMailBaned };
+module.exports = { eMailUserUpgradeRoll };

@@ -20,6 +20,7 @@ import {
 import { MdRateReview } from "react-icons/md";
 import { getAllProduct, searchProduct } from "../../../redux/Actions/actions";
 import AdminProfileCard from "../AdminProfileCard/AdminProfileCard";
+import AdminProductCard from "../AdminProductCard/AdminProductCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 
 export default function AllProducts() {
@@ -146,7 +147,7 @@ export default function AllProducts() {
             {products.length > 0 ? (
               products.map((product) => {
                 return (
-                  <AdminProfileCard
+                  <AdminProductCard
                     key={crypto.randomUUID()}
                     _id={product._id}
                     name={product.name}

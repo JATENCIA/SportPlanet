@@ -19,6 +19,8 @@ import {
   CLEAN_SEARCHED_PRODUCTS,
   REMOVE_ONE_ITEM,
   RESET_FILTERS,
+  ADD_REVIEW,
+  GET_ALL_REVIEWS,
 } from "../Actions";
 import { useDispatch } from "react-redux";
 
@@ -36,6 +38,7 @@ const initialState = {
   userProducts: [],
   shoppingCart: [],
   buttonPay: "",
+  reviews: [],
 };
 
 const storedValue = window.localStorage.getItem("cart");
@@ -330,6 +333,12 @@ export const rootReducer = (state = initialState, action) => {
 
     case SHOP:
       return { ...state, buttonPay: action.payload };
+
+    case GET_ALL_REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
 
     default:
       return {

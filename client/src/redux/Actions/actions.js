@@ -22,6 +22,7 @@ import {
   RESET_FILTERS,
   ADMIN_SEARCH_USER,
   ADMIN_SEARCH_PRODUCT,
+  GET_ALL_REVIEWS,
 } from "./actionsTypes";
 
 export const getAllUser = () => async (dispatch) => {
@@ -218,8 +219,12 @@ export const shop = (item) => {
 };
 
 export const addReview = (payload) => {
-  return async function () {
+  return async function (dispatch) {
     const review = await axios.post("/productReview", payload);
+    dispatch({
+      type: ADD_REVIEW,
+      payload: review.data,
+    });
     return review;
   };
 };
@@ -227,5 +232,15 @@ export const resetFilters = (payload) => {
   return {
     type: RESET_FILTERS,
     payload: payload,
+  };
+};
+
+export const getAllReviews = () => {
+  return async function (dispatch) {
+    const reviews = await axios.get("/productReview");
+    dispatch({
+      type: GET_ALL_REVIEWS,
+      payload: reviews.data,
+    });
   };
 };

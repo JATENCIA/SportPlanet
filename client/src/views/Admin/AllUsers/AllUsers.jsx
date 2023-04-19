@@ -20,6 +20,7 @@ import {
 import { MdRateReview } from "react-icons/md";
 import { getAllUser, searchUser } from "../../../redux/Actions/actions";
 import AdminProfileCard from "../AdminProfileCard/AdminProfileCard";
+import AdminProductCard from "../AdminProductCard/AdminProductCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 
 export default function AllUsers() {
@@ -143,12 +144,14 @@ export default function AllUsers() {
             {users.length > 0 ? (
               users.map((user) => {
                 return (
-                  <AdminProfileCard
+                  <AdminProductCard
                     key={crypto.randomUUID()}
                     _id={user._id}
                     name={user.name}
                     image={user.image}
                     baneado={user.baneado}
+                    lastName={user.lastName}
+                    roll={user.roll}
                   />
                 );
               })
