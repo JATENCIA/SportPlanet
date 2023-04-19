@@ -13,7 +13,7 @@ import camiloagudelo from "../../images/Team/camiloagudelo.jpg";
 import franciscobaca from "../../images/Team/franciscobaca.jpeg";
 import joseatencia from "../../images/Team/joseatencia.jpeg";
 import santisanchez from "../../images/Team/santisanchez.jpeg";
-import sebanajle from "../../images/Team/sebanajle.jpg";
+import sebanajle from "../../images/Team/sebas.jpeg";
 
 export default function LandingPage() {
   const myRef = React.useRef(null);
