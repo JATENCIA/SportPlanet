@@ -57,7 +57,7 @@ export default function ProfileProductCard({
 
       await Swal.fire({
         icon: "success",
-        title: "delete favorite",
+        title: "Favorite deleted succesfully!",
         timer: 1500,
         position: "center",
         showConfirmButton: false,
