@@ -121,7 +121,7 @@ export default function ProfileProducts() {
         <div className={style.productPanel}>
           <div className={style.firstRow}>
             <h2 className={style.productPanelTitle}>YOUR PRODUCTS ON SALE</h2>
-            <input
+            {/* <input
               type="text"
               className={style.searchInput}
               placeholder="Search product..."
@@ -131,7 +131,7 @@ export default function ProfileProducts() {
 
             <button className={style.buttonSearch} onClick={buttonSearch}>
               <FaSearch />
-            </button>
+            </button> */}
             <h2 className={style.totalProducts}>
               Total Products: {userProducts.length}
             </h2>
