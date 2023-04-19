@@ -26,7 +26,7 @@ import ButtonBack from "../../Components/ButtonBack/ButtonBack";
 import Footer from "../../Components/Footer/Footer";
 import Swal from "sweetalert2";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUser } from "../../redux/Actions/actions";
+import { getAllUser, getAllReviews } from "../../redux/Actions/actions";
 import Login from "../../Components/Navbar/Login";
 import SellerUser from "./SellerUser";
 import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
@@ -56,7 +56,8 @@ export default function Detail() {
     gender,
     brands,
     discount,
-    user1;
+    user1,
+    review;
 
   if (product) {
     name = product.name;
@@ -77,6 +78,10 @@ export default function Detail() {
 
     if (product.user) {
       user1 = product.user;
+    }
+
+    if (product.review) {
+      review = product.review;
     }
   }
 
@@ -171,9 +176,40 @@ export default function Detail() {
       products._id !== _id
   );
   let arrayFilterProducts = filterProducts.slice(0, 5);
-  arrayFilterProducts = arrayFilterProducts.filter(elem => !elem.baneado)
+  arrayFilterProducts = arrayFilterProducts.filter((elem) => !elem.baneado);
 
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+  ///--------------------------------------------------------------------Promedio reviews---------------------------------------------------------------------------------------------//
+  
+  const [average, setAverage] = useState(0);
+  useEffect(() => {
+    dispatch(getAllReviews());
+  }, [dispatch]);
+
+  const allReviews = useSelector((state) => state.reviews);
+
+  const reviews = allReviews?.filter((r) => review.includes(r._id));
+  
+  let qualityTotal = 0;
+  let comfortTotal = 0;
+  let recommendTotal = 0;
+
+  useEffect(() => {
+    if (reviews.length > 0) {
+      for (let i = 0; i < reviews.length; i++) {
+        const review2 = reviews[i];
+        qualityTotal += review2.quality;
+        comfortTotal += review2.comfort;
+        recommendTotal += review2.recommended;
+      }
+    }
+    const prom = (qualityTotal + comfortTotal + recommendTotal) / 3;
+    setAverage(prom);
+  }, [reviews])
+  
+  ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+  
 
   const ShowProduct = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -224,7 +260,7 @@ export default function Detail() {
             {/* content */}
             <section className="content">
               <p className="company">{brands}</p>
-              <Rating name="read-only" value={2} readOnly />
+              <Rating name="read-only" value={Math.round(average)} readOnly />
               <h1 className="title">{name}</h1>
               <p className="info">{description}</p>
               <div className="price">
