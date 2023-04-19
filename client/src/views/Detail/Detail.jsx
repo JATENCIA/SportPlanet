@@ -143,6 +143,8 @@ export default function Detail() {
       stock: select,
       discount: discount,
       UUID: UUID,
+      eMail: userE.eMail,
+      userID: userE._id,
     };
   }
 
@@ -171,7 +173,7 @@ export default function Detail() {
       products._id !== _id
   );
   let arrayFilterProducts = filterProducts.slice(0, 5);
-  arrayFilterProducts = arrayFilterProducts.filter(elem => !elem.baneado)
+  arrayFilterProducts = arrayFilterProducts.filter((elem) => !elem.baneado);
 
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -229,7 +231,7 @@ export default function Detail() {
               <p className="info">{description}</p>
               <div className="price">
                 <div className="new-price">
-                  <p className="now">${price}</p>
+                  <p className="now">💲 {price}</p>
                 </div>
               </div>
               <div className="colors">

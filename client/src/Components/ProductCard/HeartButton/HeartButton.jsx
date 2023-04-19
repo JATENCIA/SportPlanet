@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUser } from "../../../redux/Actions/actions";
-
 function HeartButton({ _id }) {
   const dispatch = useDispatch();
   const [toggleHeart, setToggleHeart] = React.useState(false);
@@ -18,6 +17,7 @@ function HeartButton({ _id }) {
   }, [dispatch]);
 
   const allUsers = useSelector((state) => state.allUsers);
+
   const userDb = allUsers?.find((element) => element.eMail === user?.email);
 
   const favoriteHandler = async (e) => {
@@ -38,9 +38,18 @@ function HeartButton({ _id }) {
     }
   };
 
+  useEffect(() => {
+    const userF = userDb?.favorites;
+    const favorite = userF?.map((f) => f._id);
+
+    for (let i = 0; i < favorite?.length; i++) {
+      if (favorite[i] === _id) setToggleHeart(true);
+    }
+  }, []);
+
   return (
     <button className="heart-button" onClick={favoriteHandler}>
-      {heartIcon}
+      {heartIcon ? heartIcon : heartIcon2}
     </button>
   );
 }

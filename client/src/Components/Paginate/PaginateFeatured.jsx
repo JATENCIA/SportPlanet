@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Paginate.module.css";
 
-export function Paginate({
+export function PaginateFeatured({
   allProducts,
   productsPerPage,
   setPagination,
@@ -26,20 +26,12 @@ export function Paginate({
     else setCurrentPage(currentPage + 1);
   };
 
-  const scroll = () => {
-    window.scrollTo({
-      top: 0,
-      behaviour: "smooth",
-    });
-  };
-
   return (
     <div className={style.paginate_container}>
       <div className={style.prev_next}>
         <button
           className={style.next_prev_btn}
           onClick={() => {
-            scroll();
             handlePrev();
           }}
           disabled={currentPage === 1}
@@ -88,7 +80,7 @@ export function Paginate({
             scroll();
             handleNext();
           }}
-          disabled={currentPage >= pageNumber.length}
+          disabled={currentPage === pageNumber.length}
         >
           {" "}
           <i className="fa-solid fa-angle-right" />{" "}
