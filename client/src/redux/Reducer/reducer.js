@@ -6,6 +6,8 @@ import {
   FILTER_BY_USED,
   GET_ALL_PRODUCT,
   GET_ALL_USER,
+  ADMIN_SEARCH_USER,
+  ADMIN_SEARCH_PRODUCT,
   POST_USER,
   GET_PRODUCT_DETAIL,
   GET_SEARCHED_PRODUCTS,
@@ -25,7 +27,9 @@ import { useDispatch } from "react-redux";
 const initialState = {
   users: [],
   allUsers: [],
+  allUsers2: [],
   allProducts: [],
+  allProducts2: [],
   productDetail: [],
   searchedProducts: [],
   filteredProducts: [],
@@ -56,6 +60,31 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allUsers: action.payload,
+        allUsers2: action.payload,
+      };
+
+    case ADMIN_SEARCH_USER:
+      let searchedUsers =
+        action.payload === ""
+          ? state.allUsers
+          : state.allUsers.filter(
+              (user) => user.name.toLowerCase() === action.payload.toLowerCase()
+            );
+      return {
+        ...state,
+        allUsers2: [...searchedUsers],
+      };
+
+    case ADMIN_SEARCH_PRODUCT:
+      let searchedProducts =
+        action.payload === ""
+          ? state.allProducts
+          : state.allProducts.filter((product) =>
+              product.name.toLowerCase().includes(action.payload.toLowerCase())
+            );
+      return {
+        ...state,
+        allProducts2: [...searchedProducts],
       };
 
     case GET_ALL_PRODUCT:
@@ -204,12 +233,18 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         searchedProducts: action.payload,
+        filteredProducts: action.payload,
+        filteredProducts2: action.payload,
+        filteredProducts3: action.payload,
       };
 
     case CLEAN_SEARCHED_PRODUCTS:
       return {
         ...state,
         searchedProducts: [],
+        filteredProducts: action.payload,
+        filteredProducts2: action.payload,
+        filteredProducts3: action.payload,
       };
 
     case ADD_TO_CART:
@@ -297,6 +332,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredProducts: [...state.allProducts],
+        filteredProducts: [...state.searchedProducts],
       };
 
     case CLEAR_CART:

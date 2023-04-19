@@ -1,4 +1,6 @@
 export const POST_USER = "POST_USER";
+export const ADMIN_SEARCH_USER = "ADMIN_SEARCH_USER";
+export const ADMIN_SEARCH_PRODUCT = "ADMIN_SEARCH_PRODUCT";
 export const GET_ALL_USER = "GET_ALL_USER";
 export const GET_ALL_PRODUCT = "GET_ALL_PRODUCT";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
