@@ -12,6 +12,11 @@ export default function EditModal({ lastName, _id, setEditView, roll, name}) {
     setRollValue(e.target.value)
   }
 
+  const cancelClickHandler = (e) => {
+    e.preventDefault();
+    setEditView(false)
+  }
+
   const clickHandler = async (e) => {
     e.preventDefault();
     if(lastName){
@@ -34,11 +39,17 @@ export default function EditModal({ lastName, _id, setEditView, roll, name}) {
         alert(error)
       }
     }else{
-
+      try {
+        
+      } catch (error) {
+        alert(error)
+      }
     }
   };
 
-    if(roll){
+
+  // ESTO SE RENDERIZA
+  if(roll){
       try {
         return (
           <div className={style.editModal}>
@@ -52,7 +63,8 @@ export default function EditModal({ lastName, _id, setEditView, roll, name}) {
                 <option value="admin">Admin</option>
               </select>
             </div>
-          <div className="flex items-center justify-center space-x-4 pt-12"> 
+          <div className="flex items-center justify-center space-x-4 pt-12">
+            <button className={style.btnCancel} onClick={cancelClickHandler}>Cancel</button>
             <button className={style.btnSync} onClick={clickHandler}>Sync Changes</button>
           </div>
           </div>
@@ -61,6 +73,14 @@ export default function EditModal({ lastName, _id, setEditView, roll, name}) {
         alert(error)
       };
     } else {
-      alert('aca iria el producto')
+      return (
+        <div className={style.editModal}>
+          {/* <h1 className='text-center text-2xl p-3 border-b-2 border-black bg-red-200'>{name} {lastName}</h1> */}
+          
+        <div className="flex items-center justify-center space-x-4 pt-12"> 
+          <button className={style.btnSync} onClick={clickHandler}>Sync Changes</button>
+        </div>
+        </div>
+      )
     }
   }

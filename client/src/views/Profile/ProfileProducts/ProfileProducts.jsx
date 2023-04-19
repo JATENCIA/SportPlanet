@@ -18,6 +18,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUser } from "../../../redux/Actions/actions";
 import { MdRateReview } from "react-icons/md";
+import AdminProductCard from "../../Admin/AdminProductCard/AdminProductCard";
 
 export default function ProfileProducts() {
   const dispatch = useDispatch();
@@ -112,7 +113,7 @@ export default function ProfileProducts() {
               products.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
-                    <ProfileProductCard
+                    <AdminProductCard
                       key={product._id}
                       _id={product._id}
                       name={product.name}

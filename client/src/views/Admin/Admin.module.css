@@ -165,14 +165,27 @@
 }
 
 .btnSync{
-  width: 50%;
+  width: 30%;
+  height: 50px;
+  background-color: #96f099;
+  border-radius: 15px;
+  font-size: 23px;
+}
+
+.btnSync:hover{
+  /* background-color: #ffafb8; */
+  background-color: #51ee56;
+}
+
+.btnCancel{
+  width: 30%;
   height: 50px;
   background-color: #FECDD3;
   border-radius: 15px;
   font-size: 23px;
 }
 
-.btnSync:hover{
+.btnCancel:hover{
   /* background-color: #ffafb8; */
   background-color: #F096A7;
 }
