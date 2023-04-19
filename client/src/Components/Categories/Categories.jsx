@@ -5,7 +5,7 @@ import pantsLogo from "../../images/pantsLogo.jpg";
 import ballsLogo from "../../images/ballsLogo.jpg";
 import suplementsLogo from "../../images/suplementsLogo.jpg";
 import tshirt from "../../images/tshirt.jpg";
-import shoesLogo from "../../images/sneakers-icon.jpg";
+import shoesLogo from "../../images/shoesLogo22.jpg";
 import accesoriesLogo from "../../images/accesoriesLogo.jpeg";
 
 export default function Categories() {
