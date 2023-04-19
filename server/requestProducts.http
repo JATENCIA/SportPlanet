@@ -16,34 +16,60 @@ POST {{urlApi}}/products/6428ca77bcb9e1cc9f8441f3
 POST {{urlApi}}/products
 Content-Type: application/json
 
+
+
 //Footwear
 {
- "name":"Sneakers Under Armour Curry", 
+ "name":"Reebok Women Freestyle Hi High Top Sneaker", 
  "productConditionals":[
  
  {  "color":"white",
-  "image":["https://kenlu.net/wp-content/uploads/2021/04/20210423-UA-Curry-1-31.jpg","https://ct.yimg.com/xd/api/res/1.2/n7CfPU4H5WlHawH.yIkxxg--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD0zODg7cT04NTtyb3RhdGU9YXV0bzt3PTcwMA--/https://s.yimg.com/ob/image/aa7a040a-abec-49fc-a258-90b7c1dc9bb2.jpg","https://kenlu.net/wp-content/uploads/2021/04/20210423-UA-Curry-1-27.jpg"],
-  "size":[{"7'5": 12},{"8": 9},{"9": 4}]},
+  "image":["https://m.media-amazon.com/images/I/61YDcm7l6SL._AC_UY500_.jpg","https://m.media-amazon.com/images/I/81LnPbRDWIL._AC_UY500_.jpg","https://m.media-amazon.com/images/I/71+oHfPjdBL._AC_UY500_.jpg"],
+  "size":[{"7": 12},{"8": 9},{"9.5": 4}]},
   
- { "color":"purple",
-  "image":["https://cdn.weartesters.com/wp-content/uploads/2015/01/Under-Armour-Curry-One-Dark-Matter-for-NBA-All-Star-1.jpg","https://i.ebayimg.com/images/g/P-kAAOSw9kFjqauo/s-l1200.jpg","https://i.ebayimg.com/thumbs/images/g/k14AAOSwiwRj9atc/s-l300.jpg"],
-  "size":[{"8": 32},{"8'5": 19},{"9": 41},{"9'5": 61}]},
-  
- { "color":"blue",
-  "image":["https://sneakernews.com/wp-content/uploads/2021/10/ua-curry-one-3026047-400.jpg?w=780","https://images.stockx.com/images/Under-Armour-Curry-1-Retro-Home-2021.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1639998083","https://laverdadnoticias.com/__export/1593467337095/sites/laverdad/img/2020/06/29/revelan_por_que_stephen_curry_dejo_a_nike_para_firmar_con_under_armor.jpg_673822677.jpg"],
-  "size":[{"8": 7},{"8'5": 12},{"9": 6},{"9'5": 9}]} 
+ { "color":"black",
+  "image":["https://m.media-amazon.com/images/I/71BLPPdqZIL._AC_SX500._SX._UX._SY._UY_.jpg","https://m.media-amazon.com/images/I/61-mPJM-NUL._AC_SY695._SX._UX._SY._UY_.jpg","https://m.media-amazon.com/images/I/61N4isWzTxL._AC_SY695._SX._UX._SY._UY_.jpg"],
+  "size":[{"8.5": 15},{"7'5": 10},{"7": 12},{"6'5": 25}]},
+
+   { "color":"red",
+  "image":["https://m.media-amazon.com/images/I/71Ky41T29qL._AC_SX500._SX._UX._SY._UY_.jpg","https://m.media-amazon.com/images/I/61tVupIBxPL._AC_SY695._SX._UX._SY._UY_.jpg","https://m.media-amazon.com/images/I/61-SCgcfmgL._AC_SY695._SX._UX._SY._UY_.jpg"],
+  "size":[{"5.5": 15},{"6'5": 10},{"7": 12},{"7'5": 25}]}
   
   ],
- "price":54.99,
- "user":"6431bb0f80761ad3170814ae",
- "discount":0,
- "description":"Inspired by streetball players from around the world, these shoes are durable enough to rule any court. The durable rubber outsole, breathable open mesh, and abrasion-resistant overlays let you play anywhere from hardwood to asphalt.",
- "season":2021,
+
+ "price":58,
+ "user":"64344db878fa18b04967e343",
+ "discount":10,
+ "description":"Reebok is an inspirational athletic lifestyle company that has always lived at the intersection of sport and style.​ Their fitness heritage gives them credibility in the sports space while their foundation in Classics gives them a foothold in lifestyle.​ Reebok makes products that inspire human movement—and they advocate for human rights for all.",
+ "season":2022,
  "category": "footwear",
- "gender":"men",
+ "gender":"women",
  "state":"new",
- "brands":"UNDER ARMOUR"
+ "brands":"REEBOK"
 }
+
+// Suplementos
+
+# {
+#  "name":"Move Free Advanced Glucosamine Chondroitin MSM",
+# 	"productConditionals":[
+# 		{ 
+# 		"color": "red",
+# 		"image": ["https://m.media-amazon.com/images/I/71M9mXBxzKL._AC_SX569_.jpg", 
+#         "https://m.media-amazon.com/images/I/91VOwsxPsfL._AC_SX425_.jpg", 
+#         "https://m.media-amazon.com/images/I/91ujG+iZyWL._AC_SX425_.jpg"],
+# 		 "size": [{"amount": 18}]}
+#     ],
+#  "price": 19.000,
+#  "discount":19,
+#  "description":"ADVANCED JOINT SUPPORT FOR MEN and WOMEN: This joint support supplement contains Glucosamine, Chondroitin, Hyaluronic Acid, Uniflex, MSM and Vitamin D3 to help support the 5 signs of joint health.",
+#  "user":"64344db878fa18b04967e343",
+#  "season":2020,
+#  "category": "supplements",
+#  "gender": "unisex",
+#  "state":"new",
+#  "brands":"OTHER"
+# }
 
 
 
