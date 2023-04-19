@@ -15,8 +15,8 @@ export default function Footer() {
       <div className={style.firstContainer}>
         <div className={style.infoContainer}>
           <h3>CONTACT INFORMATION</h3>
-          <Link to="https://api.whatsapp.com/send?phone=5491155173954&text=Escriba%20su%20consulta%20aqui">
-          <span>Contact us via WPP</span>
+          <Link to="https://chat.whatsapp.com/BBKDAQ6dZBc2FwWqkmKKFP">
+          <span>Contact us</span>
           </Link>
         </div>
 
