@@ -47,12 +47,6 @@ const eMailUserUpgradeRoll = async (user) => {
         Congratulations on your new role on the website and thank you for being a part of our community.
         Best regards</p>
         
-        <div style="display: flex; padding: 20px 10px 20px 10px; ">
-          <div style=" padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
-            <img src="https://static.vecteezy.com/system/resources/previews/013/441/985/original/world-map-on-the-foot-ball-silhouette-for-icon-symbol-pictogram-sport-news-art-illustration-apps-website-or-graphic-design-element-format-png.png" alt="" style="width: 300px;" />
-            <p style='color:#08042B'>For inquiries or support you can contact us through our digital channels sportplanet.mp@gmail.com </p>
-          </div>
-        </div>
         <P style="margin-bottom: 10px; color:#08042B"><i>Sincerely:</i><br> SportPlanet </P>
         <a style="background-color: rgb(5, 23, 124); border: 2px solid rgb(8, 8, 8); color:#FFFFFF; padding: 16px 32px; text-align: center; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px; margin: 4px 2px;
         transition-duration: 0.4s; cursor: pointer;" href="https://sport-planet.vercel.app/">SportPlanet</a>

@@ -1,9 +1,9 @@
 const Products = require("../Models/Products");
 const Users = require("../Models/Users");
 const { eMailUserBaned } = require("../NodeMailer/userBanedMailer");
+const { eMailUserDegradedRoll } = require("../NodeMailer/userDegraded");
 const { eMailUserEnable } = require("../NodeMailer/userEnabledMailer");
 const { eMailUserUpgradeRoll } = require("../NodeMailer/userUpgrade");
-
 const { eMail } = require("../NodeMailer/welcomeMailer");
 
 /**
@@ -159,11 +159,14 @@ const updateUserIsAdmin = async (req, res) => {
     });
     if (!userUpdate) return res.status(204).json({});
     res.status(200).json(userUpdate);
-    eMailUserUpgradeRoll(userUpdate);
+    userUpdate.roll === "admin"
+      ? eMailUserUpgradeRoll(userUpdate)
+      : eMailUserDegradedRoll(userUpdate);
   } catch (error) {
     res.status(500).json({ message: `${error}` });
   }
 };
+
 /**
  * This function is used to add or remove a restaurant from the user's favorites list
  * @param req - The request object.

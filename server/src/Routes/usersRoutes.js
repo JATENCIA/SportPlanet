@@ -25,6 +25,9 @@ router.post("/", validateUsersCreate, createUser);
 router.put("/:id", updateUser);
 
 router.put("/isadmin/:id", updateUserIsAdmin);
+
+router.put("/isadmin/:id", updateUserIsAdmin);
+
 /* This is a route that is listening for a delete request to the root of the server. */
 router.post("/:id", deleteUser);
 
