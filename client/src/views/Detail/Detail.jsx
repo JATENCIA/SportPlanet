@@ -175,7 +175,7 @@ export default function Detail() {
       products.category === category &&
       products._id !== _id
   );
-  let arrayFilterProducts = filterProducts.slice(0, 5);
+  let arrayFilterProducts = filterProducts.slice(0, 6);
   arrayFilterProducts = arrayFilterProducts.filter((elem) => !elem.baneado);
 
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -357,7 +357,9 @@ export default function Detail() {
 
           {/* <SellerUser user={user1} /> */}
           <ShowProduct />
-          <RelatedProducts products={arrayFilterProducts} />
+          <div className="related-container">
+            <RelatedProducts products={arrayFilterProducts} />
+          </div>
           <div className="footer">
             <Footer />
           </div>
