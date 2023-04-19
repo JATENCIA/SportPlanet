@@ -9,7 +9,7 @@ GET {{urlApi}}/products
 GET {{urlApi}}/products?name=boca
 
 ### banear single products
-POST {{urlApi}}/products/6428ca77bcb9e1cc9f8441f3
+POST {{urlApi}}/products/643dcc3a9b004b9bec5677d1
 
 
 ### create a product
