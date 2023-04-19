@@ -18,11 +18,10 @@ import {
   FaSadTear,
 } from "react-icons/fa";
 
-import { MdRateReview } from "react-icons/md";
+import { MdRateReview, MdSell } from "react-icons/md";
 import ProfileProductCard from "../../Profile/ProfileProductCard/ProfileProductCard";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUser } from "../../../redux/Actions";
-
 
 export default function AdminFavorites() {
   const dispatch = useDispatch();
@@ -32,15 +31,15 @@ export default function AdminFavorites() {
   };
 
   const { user } = useAuth0();
-  
+
   useEffect(() => {
     dispatch(getAllUser());
   }, [dispatch]);
 
   const allUsers = useSelector((state) => state.allUsers);
   const userDb = allUsers?.find((element) => element.eMail === user?.email);
-  
-  const favoritesProducts = userDb.favorites
+
+  const favoritesProducts = userDb.favorites;
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 8;
@@ -95,6 +94,13 @@ export default function AdminFavorites() {
             <div className={style.filter}>
               <FaHeart />
               <h3 className={style.myFavorites}>FAVORITE PRODUCTS</h3>
+            </div>
+          </Link>
+
+          <Link to="/post/product">
+            <div className={style.filter}>
+              <MdSell />
+              <h3 className={style.sellProducts}>SELL PRODUCTS</h3>
             </div>
           </Link>
 
