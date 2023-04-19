@@ -1,5 +1,5 @@
-#  @urlApi = http://localhost:5000
-@urlApi = https://sportsplanet-production.up.railway.app
+ @urlApi = http://localhost:5000
+# @urlApi = https://sportsplanet-production.up.railway.app
  
 
 POST {{urlApi}}/payments
@@ -12,13 +12,13 @@ Content-Type: application/json
   "discount":10,
   "price":35.000,
   "quantity":1,
-  "eMail":"test_user_2065551398@testuser.com"
+  "eMail":"test_user_1312714371@testuser.com"
   },
    {
  "name":"camiseta argentina",
   "discount":0,
   "price":25.000,
   "quantity":2,
-  "eMail":"test_user_2065551398@testuser.com"
+  "eMail":"test_user_1312714371@testuser.com"
   }
   ]
