@@ -231,7 +231,7 @@ export default function Detail() {
               <p className="info">{description}</p>
               <div className="price">
                 <div className="new-price">
-                  <p className="now">${price}</p>
+                  <p className="now">💲 {price}</p>
                 </div>
               </div>
               <div className="colors">

@@ -74,11 +74,11 @@ Content-Type: application/json
 
 
 ### update a product
-PUT {{urlApi}}/products/6432c1f178fa18b04967c271
+PUT {{urlApi}}/products/643edfc06a3f7aa668ab78f6
 Content-Type: application/json
 
 {
- "season": 2015
+ "featured": true
 }
 
 
