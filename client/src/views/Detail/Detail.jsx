@@ -148,6 +148,8 @@ export default function Detail() {
       stock: select,
       discount: discount,
       UUID: UUID,
+      eMail: userE.eMail,
+      userID: userE._id,
     };
   }
 
@@ -175,7 +177,11 @@ export default function Detail() {
       products.category === category &&
       products._id !== _id
   );
+<<<<<<< HEAD
   let arrayFilterProducts = filterProducts.slice(0, 6);
+=======
+  let arrayFilterProducts = filterProducts.slice(0, 5);
+>>>>>>> ce205efbcf1b297537d87c676ed980514a8bc173
   arrayFilterProducts = arrayFilterProducts.filter((elem) => !elem.baneado);
 
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -265,7 +271,7 @@ export default function Detail() {
               <p className="info">{description}</p>
               <div className="price">
                 <div className="new-price">
-                  <p className="now">${price}</p>
+                  <p className="now">💲 {price}</p>
                 </div>
               </div>
               <div className="colors">
