@@ -17,8 +17,10 @@ import {
 } from "react-icons/fa";
 
 import { MdRateReview } from "react-icons/md";
+import { getSearchedProducts } from "../../../redux/Actions/actions";
 
 export default function ProfileSales() {
+  const [input, setInput] = React.useState("");
   const allProducts = useSelector((state) => state.allProducts);
   const filteredProducts = allProducts.filter((product) => product.price >= 30);
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -30,6 +32,11 @@ export default function ProfileSales() {
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
+
+  const inputChange = (event) => {
+    setInput(event.target.value);
+  };
+
   return (
     <div className={style.container}>
       <NavBar />
@@ -88,7 +95,17 @@ export default function ProfileSales() {
           </Link>
         </div>
         <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>YOUR SALES</h2>
+          <div className={style.firstRow}>
+            <h2 className={style.productPanelTitle}>YOUR SALES</h2>
+            <input
+              type="text"
+              className={style.searchInput}
+              placeholder="Search product..."
+              value={input}
+              onChange={inputChange}
+            />
+            <h2 className={style.totalSales}>Total: </h2>
+          </div>
           <div className={style.productsContainer}>
             {products.length > 0 ? (
               products.map((product) => {

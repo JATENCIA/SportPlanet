@@ -14,21 +14,23 @@ import {
   FaStore,
   FaUsers,
   FaListAlt,
+  FaSearch,
 } from "react-icons/fa";
 
 import { MdRateReview } from "react-icons/md";
-import { getAllProduct } from "../../../redux/Actions/actions";
+import { getAllProduct, searchProduct } from "../../../redux/Actions/actions";
 import AdminProfileCard from "../AdminProfileCard/AdminProfileCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 
 export default function AllProducts() {
+  const [input, setInput] = React.useState("");
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const allProducts = useSelector((state) => state.allProducts2);
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 10;
@@ -38,6 +40,14 @@ export default function AllProducts() {
 
   const setPagination = (page) => {
     return setCurrentPage(page);
+  };
+
+  const inputChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const buttonSearch = (event) => {
+    dispatch(searchProduct(input));
   };
 
   return (
@@ -115,7 +125,23 @@ export default function AllProducts() {
           </div>
         </div>
         <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>ALL PRODUCTS</h2>
+          <div className={style.firstRow}>
+            <h2 className={style.productPanelTitle}>ALL PRODUCTS</h2>
+            <input
+              type="text"
+              className={style.searchInput}
+              placeholder="Search product..."
+              value={input}
+              onChange={inputChange}
+            />
+
+            <button className={style.buttonSearch} onClick={buttonSearch}>
+              <FaSearch />
+            </button>
+            <h2 className={style.totalSales}>
+              Total Products:{allProducts.length}
+            </h2>
+          </div>
           <div className={style.productsContainer}>
             {products.length > 0 ? (
               products.map((product) => {
