@@ -12,7 +12,7 @@ import alenmuñoz from "../../images/Team/alenmuñoz.jpg";
 import camiloagudelo from "../../images/Team/camiloagudelo.jpg";
 import franciscobaca from "../../images/Team/franciscobaca.jpeg";
 import joseatencia from "../../images/Team/joseatencia.jpeg";
-import juangutierrez from "../../images/Team/juangutierrez.jpeg"
+import juangutierrez from "../../images/Team/juangutierrez.jpeg";
 import santisanchez from "../../images/Team/santisanchez.jpeg";
 import sebanajle from "../../images/Team/sebas.jpeg";
 
@@ -96,7 +96,7 @@ export default function LandingPage() {
 
           <div className={style.teamMemberCard}>
             <div className={style.imgContainer}>
-              <img src={juangutierrez} alt="" />
+              <img src={juangutierrez} />
               </div>
             <hr></hr>
             <h2>JUAN GUTIERREZ</h2>
