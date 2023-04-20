@@ -10,7 +10,7 @@ import {  FaShoppingBag,  FaDollarSign,  FaHeart,  FaQuestionCircle,  FaUserCirc
 import { MdRateReview, MdSell } from "react-icons/md";
 import { getAllUser, getSearchedProducts } from "../../../redux/Actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
-import CardSales from "../../Admin/CardSales/cardSales";
+import CardSales from "../../Admin/CardSales/CardSales";
 
 
 export default function ProfileSales() {
