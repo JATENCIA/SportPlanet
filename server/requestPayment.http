@@ -5,7 +5,6 @@
 POST {{urlApi}}/payments
 Content-Type: application/json
 
-
  [
  {
  "name":"camiseta river",

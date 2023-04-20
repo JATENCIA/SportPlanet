@@ -120,6 +120,12 @@ hr {
   font-family: RobotoCondensed;
 }
 
+.contactUsWpp {
+  font-family: RobotoCondensed;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;

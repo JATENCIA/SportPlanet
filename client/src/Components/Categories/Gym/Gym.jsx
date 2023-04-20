@@ -22,7 +22,7 @@ export default function Gym() {
     (product) => product.category === "gym"
   );
 
-  filterProducts = filterProducts.filter((product) => !product.baneado);
+  //filterProducts = filterProducts.filter((product) => !product.baneado);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;

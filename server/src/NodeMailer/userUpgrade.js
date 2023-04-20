@@ -15,7 +15,7 @@ transporter.verify().then(() => {
   console.log("ready for send emails");
 });
 
-const eMailUserEnable = async (user) => {
+const eMailUserUpgradeRoll = async (user) => {
   let mensaHTM = `
     <!DOCTYPE html>
     <html lang="en">
@@ -24,7 +24,7 @@ const eMailUserEnable = async (user) => {
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
-        p, a, h1, h2, h3, h4, h5 {font-family: 'Noto Sans KR', sans-serif !important;}
+        p, a, h1, h2, h3, h4, h5 {font-family: 'Roboto', sans-serif !important;}
         h1{font-size: 60px !important;}
         h2{font-size: 45px !important;}
         h3{font-size: 35px !important;}
@@ -40,9 +40,11 @@ const eMailUserEnable = async (user) => {
         </div>
       </div>
       <div style="background-color: #e3e3e3; margin-top: 0px; padding: 20px 0px 5px 0px; text-align: center;">
-        <h2 style='color:#1B07FF'>${user.name} ${user.lastName} has been enabled</h2>
-        <p style='color:#08042B'>Dear ${user.name} ${user.lastName}, we are pleased to inform you that your account has been enabled and you can now access our platform again. After reviewing your case, our team has determined that your account complies with our terms and conditions.We apologize for any inconvenience that this situation may have caused, and we appreciate your patience and cooperation during this process.If you have any questions or concerns, please do not hesitate to contact our support team.
-        Thank you for your understanding and for choosing our platform to be a part of our community.
+        <h2 style='color:#1B07FF'>${user.name} ${user.lastName} now you are admin!!</h2>
+        <p style='color:#08042B'>Dear ${user.name} ${user.lastName}, We would like to inform you that your account on our website has been upgraded and you have been promoted to the role of Administrator. As an Administrator, you will have access to additional features that will allow you to manage and oversee the platform.
+        As an Administrator, we expect you to be responsible and carry out your duties in a professional and ethical manner. We also expect you to respect the website's terms and conditions of use, as well as the privacy and security of other users.
+        Please do not hesitate to contact us if you have any questions or need assistance in using the administration tools. We are here to help you at any time.
+        Congratulations on your new role on the website and thank you for being a part of our community.
         Best regards</p>
         
         <P style="margin-bottom: 10px; color:#08042B"><i>Sincerely:</i><br> SportPlanet </P>
@@ -65,7 +67,7 @@ const eMailUserEnable = async (user) => {
     from: '"SportPlanet" <sportplanet.mp@gmail.com>', // sender address
     to: user.eMail, // list of receivers
     subject: " Notification", // Subject line
-    text: "User enable", // plain text body
+    text: "now you are admin!", // plain text body
     html: mensaHTM,
     attachments: [
       {
@@ -80,4 +82,4 @@ const eMailUserEnable = async (user) => {
 
   console.log(info);
 };
-module.exports = { eMailUserEnable };
+module.exports = { eMailUserUpgradeRoll };

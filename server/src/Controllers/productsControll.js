@@ -63,7 +63,6 @@ const getProduct = async (req, res) => {
  */
 const createProduct = async (req, res) => {
   try {
-    console.log(req.body);
     const product = new Products(req.body);
 
     const user = await Users.findById(req.body.user);
