@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./ProfileSales.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
@@ -6,28 +6,34 @@ import ProfileProductCard from "../ProfileProductCard/ProfileProductCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  FaShoppingBag,
-  FaDollarSign,
-  FaHeart,
-  FaQuestionCircle,
-  FaUserCircle,
-  FaStore,
-  FaSadTear,
-} from "react-icons/fa";
-
+import {  FaShoppingBag,  FaDollarSign,  FaHeart,  FaQuestionCircle,  FaUserCircle,  FaStore,  FaSadTear,} from "react-icons/fa";
 import { MdRateReview, MdSell } from "react-icons/md";
-import { getSearchedProducts } from "../../../redux/Actions/actions";
+import { getAllUser, getSearchedProducts } from "../../../redux/Actions/actions";
+import { useAuth0 } from "@auth0/auth0-react";
+import CardSales from "../../Admin/CardSales/cardSales";
+
 
 export default function ProfileSales() {
   const [input, setInput] = React.useState("");
-  const allProducts = useSelector((state) => state.allProducts);
-  const filteredProducts = allProducts.filter((product) => product.price >= 30);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const productsPerPage = 8;
+  
+  const dispatch = useDispatch();
+
+  const { user } = useAuth0();
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+  const userDb = allUsers?.find((element) => element.eMail === user?.email);
+
+  const userSales = userDb.mySales
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
   const last = currentPage * productsPerPage;
   const first = last - productsPerPage;
-  const products = filteredProducts.slice(first, last);
+  const products = userSales.slice(first, last);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
@@ -118,22 +124,26 @@ export default function ProfileSales() {
               products.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
-                    <ProfileProductCard
+                    <CardSales
                       key={crypto.randomUUID()}
-                      _id={product._id}
-                      name={product.name}
-                      image={product.productConditionals[0].image[1]}
-                      price={product.price}
-                      description={product.description}
+                      title={product.title}
+                      unit_price={product.unit_price}
+                      quantity={product.quantity}
+                      picture_url={product.picture_url}
                     />
                   </Link>
                 );
               })
             ) : (
+              <div>
               <p className={style.loading}>
-                NOTHING TO SHOW HERE...
-                <span className={style.sadFace}>{<FaSadTear />}</span>
+                You didn't sell anything... YET! 
+                {/* <span className={style.sadFace}>{<FaSadTear />}</span> */}
               </p>
+              <p className={style.loading}>
+                You want to sell something and you don't know how to do it? <Link to='/post/product' className="pl-5 underline hover:text-black"> CLICK HERE!</Link>
+              </p>
+              </div>
             )}
           </div>
           <Paginate
