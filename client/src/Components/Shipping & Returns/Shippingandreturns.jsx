@@ -10,7 +10,7 @@ function Shippingandreturns() {
     </div>
     <div className={style.bodyText}>
       <h1>Shipping and Returns</h1>
-     
+     <br />
     
       <p>
         Our website iroparis.com offers worldwide shipping by partnering with UPS.
