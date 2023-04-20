@@ -83,13 +83,6 @@ export default function AdminFavorites() {
             </div>
           </Link>
 
-          <Link to="/dashboard/reviews">
-            <div className={style.filter}>
-              <MdRateReview />
-              <h3 className={style.myReviews}>MY REVIEWS</h3>
-            </div>
-          </Link>
-
           <Link to="/dashboard/favorites">
             <div className={style.filter}>
               <FaHeart />

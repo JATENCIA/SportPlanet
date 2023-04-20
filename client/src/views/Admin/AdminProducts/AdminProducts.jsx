@@ -88,13 +88,6 @@ export default function AdminProducts() {
             </div>
           </Link>
 
-          <Link to="/dashboard/reviews">
-            <div className={style.filter}>
-              <MdRateReview />
-              <h3 className={style.myReviews}>MY REVIEWS</h3>
-            </div>
-          </Link>
-
           <Link to="/dashboard/favorites">
             <div className={style.filter}>
               <FaHeart />
@@ -155,22 +148,20 @@ export default function AdminProducts() {
             {products.length > 0 ? (
               products.map((product) => {
                 return (
-                
-                    <AdminProductCard
-                      key={crypto.randomUUID()}
-                      _id={product._id}
-                      name={product.name}
-                      image={product.productConditionals[0].image[0]}
-                      price={product.price}
-                      description={product.description}
-                      baneado={product.baneado}
-                      discount={product.discount}
-                      season={product.season}
-                      gender={product.gender}
-                      state={product.state}
-                      brands={product.brands}
-                    />
-                  
+                  <AdminProductCard
+                    key={crypto.randomUUID()}
+                    _id={product._id}
+                    name={product.name}
+                    image={product.productConditionals[0].image[0]}
+                    price={product.price}
+                    description={product.description}
+                    baneado={product.baneado}
+                    discount={product.discount}
+                    season={product.season}
+                    gender={product.gender}
+                    state={product.state}
+                    brands={product.brands}
+                  />
                 );
               })
             ) : (
