@@ -16,7 +16,7 @@ export default function Footer() {
         <div className={style.infoContainer}>
           <h3>CONTACT INFORMATION</h3>
           <Link to="https://chat.whatsapp.com/BBKDAQ6dZBc2FwWqkmKKFP">
-          <span>Contact us via WhatsApp</span>
+          <span>Contact us</span>
           </Link>
         </div>
 
