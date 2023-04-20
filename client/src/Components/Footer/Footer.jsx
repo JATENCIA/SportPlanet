@@ -25,7 +25,9 @@ export default function Footer() {
           <Link to="/faq">
             <span>FAQ</span>
           </Link>
+          <Link to="/shippingandreturns">
           <span>Shipping & Returns</span>
+          </Link>
         </div>
 
         <div className={style.infoContainer}>
