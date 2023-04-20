@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./AdminShopping.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
 import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
@@ -20,17 +20,31 @@ import {
 } from "react-icons/fa";
 
 import { MdRateReview, MdSell } from "react-icons/md";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUser } from "../../../redux/Actions/actions";
+import CardSales from "../CardSales/CardSales";
+
+
 
 export default function AdminShopping() {
   const dispatch = useDispatch();
 
-  const allProducts = useSelector((state) => state.allProducts);
-  const filteredProducts = allProducts.filter((product) => product.price >= 30);
+  const { user } = useAuth0();
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+  const userDb = allUsers?.find((element) => element.eMail === user?.email);
+
+  const userShopping = userDb.myShopping
+
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 8;
   const last = currentPage * productsPerPage;
   const first = last - productsPerPage;
-  const products = filteredProducts.slice(first, last);
+  const products = userShopping.slice(first, last);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
@@ -125,13 +139,12 @@ export default function AdminShopping() {
               products.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
-                    <ProfileProductCard
+                    <CardSales
                       key={crypto.randomUUID()}
-                      _id={product._id}
-                      name={product.name}
-                      image={product.productConditionals[0].image[1]}
-                      size={product.size}
-                      price={product.price}
+                      title={product.title}
+                      unit_price={product.unit_price}
+                      quantity={product.quantity}
+                      picture_url={product.picture_url}
                       description={product.description}
                     />
                   </Link>
@@ -139,14 +152,13 @@ export default function AdminShopping() {
               })
             ) : (
               <p className={style.loading}>
-                NOTHING TO SHOW HERE...
-                <span className={style.sadFace}>{<FaSadTear />}</span>
+                You didn't buy anything yet
               </p>
             )}
           </div>
           <Paginate
             productsPerPage={productsPerPage}
-            allProducts={products.length}
+            allProducts={userShopping.length}
             setPagination={setPagination}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}

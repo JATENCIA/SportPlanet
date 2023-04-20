@@ -245,9 +245,9 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         searchedProducts: [],
-        filteredProducts: action.payload,
-        filteredProducts2: action.payload,
-        filteredProducts3: action.payload,
+        filteredProducts: [],
+        filteredProducts2: [],
+        filteredProducts3: [],
       };
 
     case ADD_TO_CART:
