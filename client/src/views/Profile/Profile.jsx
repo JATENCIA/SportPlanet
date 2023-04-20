@@ -5,17 +5,7 @@ import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileCard from "./ProfileCard/ProfileCard";
 import { Link } from "react-router-dom";
-
-import {
-  FaShoppingBag,
-  FaDollarSign,
-  FaHeart,
-  FaQuestionCircle,
-  FaUserCircle,
-  FaStore,
-  FaUsers,
-  FaListAlt,
-} from "react-icons/fa";
+import {  FaShoppingBag,  FaDollarSign,  FaHeart,  FaQuestionCircle,  FaUserCircle,  FaStore,  FaUsers,  FaListAlt,} from "react-icons/fa";
 
 import { MdRateReview, MdSell } from "react-icons/md";
 import SellProduct from "../Forms/SellProduct/SellProduct";
@@ -90,7 +80,6 @@ export const Profile = () => {
           <h2 className={style.profilePanelTitle}>YOUR PROFILE</h2>
           <div className={style.profileContainer}>
             <ProfileCard />
-            <div className={style.profileDescription}>USER DESCRIPTION</div>
           </div>
         </div>
       </div>
