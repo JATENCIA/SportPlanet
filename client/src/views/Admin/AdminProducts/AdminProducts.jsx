@@ -155,7 +155,7 @@ export default function AdminProducts() {
             {products.length > 0 ? (
               products.map((product) => {
                 return (
-                  <Link to={`/detail/${product._id}`} key={product._id}>
+                
                     <AdminProductCard
                       key={crypto.randomUUID()}
                       _id={product._id}
@@ -164,8 +164,13 @@ export default function AdminProducts() {
                       price={product.price}
                       description={product.description}
                       baneado={product.baneado}
+                      discount={product.discount}
+                      season={product.season}
+                      gender={product.gender}
+                      state={product.state}
+                      brands={product.brands}
                     />
-                  </Link>
+                  
                 );
               })
             ) : (

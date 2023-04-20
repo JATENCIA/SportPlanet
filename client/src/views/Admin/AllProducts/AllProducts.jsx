@@ -158,11 +158,18 @@ export default function AllProducts() {
               products?.map((product) => {
                 return (
                   <AdminProductCard
-                    key={crypto.randomUUID()}
-                    _id={product._id}
-                    name={product.name}
-                    image={product.productConditionals[0].image[1]}
-                    baneado={product.baneado}
+                  key={crypto.randomUUID()}
+                  _id={product._id}
+                  name={product.name}
+                  image={product.productConditionals[0].image[0]}
+                  price={product.price}
+                  description={product.description}
+                  baneado={product.baneado}
+                  discount={product.discount}
+                  season={product.season}
+                  gender={product.gender}
+                  state={product.state}
+                  brands={product.brands}
                   />
                 );
               })
