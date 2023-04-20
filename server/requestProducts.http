@@ -17,32 +17,61 @@ POST {{urlApi}}/products
 Content-Type: application/json
 
 //Footwear
+# {
+#  "name":"Sneakers Under Armour Curry", 
+#  "productConditionals":[
+ 
+#  {  "color":"white",
+#   "image":["https://kenlu.net/wp-content/uploads/2021/04/20210423-UA-Curry-1-31.jpg","https://ct.yimg.com/xd/api/res/1.2/n7CfPU4H5WlHawH.yIkxxg--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD0zODg7cT04NTtyb3RhdGU9YXV0bzt3PTcwMA--/https://s.yimg.com/ob/image/aa7a040a-abec-49fc-a258-90b7c1dc9bb2.jpg","https://kenlu.net/wp-content/uploads/2021/04/20210423-UA-Curry-1-27.jpg"],
+#   "size":[{"7'5": 12},{"8": 9},{"9": 4}]},
+  
+#  { "color":"purple",
+#   "image":["https://cdn.weartesters.com/wp-content/uploads/2015/01/Under-Armour-Curry-One-Dark-Matter-for-NBA-All-Star-1.jpg","https://i.ebayimg.com/images/g/P-kAAOSw9kFjqauo/s-l1200.jpg","https://i.ebayimg.com/thumbs/images/g/k14AAOSwiwRj9atc/s-l300.jpg"],
+#   "size":[{"8": 32},{"8'5": 19},{"9": 41},{"9'5": 61}]},
+  
+#  { "color":"blue",
+#   "image":["https://sneakernews.com/wp-content/uploads/2021/10/ua-curry-one-3026047-400.jpg?w=780","https://images.stockx.com/images/Under-Armour-Curry-1-Retro-Home-2021.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1639998083","https://laverdadnoticias.com/__export/1593467337095/sites/laverdad/img/2020/06/29/revelan_por_que_stephen_curry_dejo_a_nike_para_firmar_con_under_armor.jpg_673822677.jpg"],
+#   "size":[{"8": 7},{"8'5": 12},{"9": 6},{"9'5": 9}]} 
+  
+#   ],
+#  "price":155.99,
+#  "user":"6431bb0f80761ad3170814ae",
+#  "discount":15,
+#  "description":"Work all your muscles with just one machine!",
+#  "season":2008,
+#  "category": "gym",
+#  "gender":"unisex",
+#  "state":"new",
+#  "brands":"OTHER"
+# }
+
+
+//gym
+
 {
- "name":"Sneakers Under Armour Curry", 
+ "name":"Multigym", 
  "productConditionals":[
  
- {  "color":"white",
-  "image":["https://kenlu.net/wp-content/uploads/2021/04/20210423-UA-Curry-1-31.jpg","https://ct.yimg.com/xd/api/res/1.2/n7CfPU4H5WlHawH.yIkxxg--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD0zODg7cT04NTtyb3RhdGU9YXV0bzt3PTcwMA--/https://s.yimg.com/ob/image/aa7a040a-abec-49fc-a258-90b7c1dc9bb2.jpg","https://kenlu.net/wp-content/uploads/2021/04/20210423-UA-Curry-1-27.jpg"],
-  "size":[{"7'5": 12},{"8": 9},{"9": 4}]},
-  
- { "color":"purple",
-  "image":["https://cdn.weartesters.com/wp-content/uploads/2015/01/Under-Armour-Curry-One-Dark-Matter-for-NBA-All-Star-1.jpg","https://i.ebayimg.com/images/g/P-kAAOSw9kFjqauo/s-l1200.jpg","https://i.ebayimg.com/thumbs/images/g/k14AAOSwiwRj9atc/s-l300.jpg"],
-  "size":[{"8": 32},{"8'5": 19},{"9": 41},{"9'5": 61}]},
-  
- { "color":"blue",
-  "image":["https://sneakernews.com/wp-content/uploads/2021/10/ua-curry-one-3026047-400.jpg?w=780","https://images.stockx.com/images/Under-Armour-Curry-1-Retro-Home-2021.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1639998083","https://laverdadnoticias.com/__export/1593467337095/sites/laverdad/img/2020/06/29/revelan_por_que_stephen_curry_dejo_a_nike_para_firmar_con_under_armor.jpg_673822677.jpg"],
-  "size":[{"8": 7},{"8'5": 12},{"9": 6},{"9'5": 9}]} 
-  
+    {
+      "color": "black",
+      "image": [
+        "https://res.cloudinary.com/santiagosdeb/image/upload/v1681771498/sportPlanet/multigym2_jpbgif.jpg",
+        "https://res.cloudinary.com/santiagosdeb/image/upload/v1681771498/sportPlanet/multigym_nadmlu.jpg"
+      ],
+      "size": [
+        {"amount": 1}]
+          
+         }
   ],
- "price":54.99,
- "user":"6431bb0f80761ad3170814ae",
- "discount":0,
- "description":"Inspired by streetball players from around the world, these shoes are durable enough to rule any court. The durable rubber outsole, breathable open mesh, and abrasion-resistant overlays let you play anywhere from hardwood to asphalt.",
- "season":2021,
- "category": "footwear",
- "gender":"men",
+ "price":155.99,
+ "user":"64344db878fa18b04967e343",
+ "discount":15,
+ "description":"Work all your muscles with just one machine!",
+ "season":2008,
+ "category": "gym",
+ "gender":"unisex",
  "state":"new",
- "brands":"UNDER ARMOUR"
+ "brands":"OTHER"
 }
 
 

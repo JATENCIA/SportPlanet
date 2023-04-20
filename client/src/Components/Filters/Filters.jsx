@@ -7,6 +7,7 @@ import {
   filterBySize,
   filterByUsed,
   resetFilters,
+  resetFilters2,
 } from "../../redux/Actions";
 import style from "./Filters.module.css";
 
@@ -16,6 +17,7 @@ export default function Filters(props) {
   const { WearedFilter } = props;
   const { SeasonFilter } = props;
   const { ResetFilters } = props;
+  const { ResetFilters2 } = props;
 
   const dispatch = useDispatch();
 
@@ -52,6 +54,25 @@ export default function Filters(props) {
 
   const handleClick = () => {
     dispatch(resetFilters());
+    if (priceRef.current) {
+      priceRef.current.value = "";
+    }
+    if (wearedRef.current) {
+      wearedRef.current.value = "";
+    }
+    if (genderRef.current) {
+      genderRef.current.value = "";
+    }
+    if (seasonRef.current) {
+      seasonRef.current.value = "";
+    }
+    if (sizeRef.current) {
+      sizeRef.current.value = "";
+    }
+  };
+
+  const onClick = () => {
+    dispatch(resetFilters2());
     if (priceRef.current) {
       priceRef.current.value = "";
     }
@@ -150,6 +171,12 @@ export default function Filters(props) {
           Reset Filters
         </button>
       )}
+
+      {ResetFilters2 && (
+        <button onClick={onClick} className={style.resetButton}>
+          Reset Filters
+        </button>
+        )}
     </div>
   );
 }

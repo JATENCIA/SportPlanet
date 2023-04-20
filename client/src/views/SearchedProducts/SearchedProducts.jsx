@@ -49,7 +49,7 @@ export default function SearchedProducts ()  {
     <div>
       <NavBar />
       <FilterNavBar />
-    <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true} />
+    <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={false}  ResetFilters2={true}/>
 
 
       <div className={style.container}>
