@@ -19,10 +19,9 @@ export default function Promotions() {
 
   const allProducts = useSelector((state) => state.filteredProducts);
   let filterProducts = allProducts.filter((product) => {
-    return product.discount > 0
+    return product.price > 0
   });
-  filterProducts = filterProducts.filter(product=> !product.baneado)
-
+  filterProducts = filterProducts.filter(product => !product.baneado)
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;

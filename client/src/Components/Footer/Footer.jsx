@@ -16,7 +16,7 @@ export default function Footer() {
         <div className={style.infoContainer}>
           <h3>CONTACT INFORMATION</h3>
           <Link to="https://chat.whatsapp.com/BBKDAQ6dZBc2FwWqkmKKFP">
-          <span>Contact us via WhatsApp</span>
+          <span>Contact us</span>
           </Link>
         </div>
 
@@ -44,14 +44,20 @@ export default function Footer() {
           <h3>FOLLOW US</h3>
           <div className={style.socialContainer}>
             <i>
+              <Link to="https://twitter.com/?lang=es">
               <FaTwitter />
+              </Link>
             </i>
 
             <i>
+              <Link to="https://github.com/JATENCIA/SportPlanet">
               <FaGithub />
+              </Link>
             </i>
             <i>
+              <Link to="https://www.instagram.com/">
               <FaInstagram />
+              </Link>
             </i>
           </div>
         </div>
