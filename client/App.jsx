@@ -157,14 +157,10 @@ const App = () => {
         {/*  <Route path="/category/fitness" element={<Fitness />} /> */}
         <Route path="*" element={<Navigate to="/home" />} />
         <Route path="/reviews" element={<Reviews />} />
-<<<<<<< HEAD
-        <Route path="/cart" element={isAuthenticated ? <Cart /> : <Navigate to="/home" />}/>
-=======
         <Route
           path="/cart"
           element={isAuthenticated ? <Cart /> : <Navigate to="/home" />}
         />
->>>>>>> d54c450e1e931143905e79b4a79bd9c3a8ef07d8
         <Route path="/policy" element={<Policy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/faq" element={<Faq />} />
