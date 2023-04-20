@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./ProfileProducts.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileProductCard from "../ProfileProductCard/ProfileProductCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
@@ -13,28 +14,51 @@ import {
   FaSadTear,
   FaUserCircle,
   FaStore,
+  FaSearch,
 } from "react-icons/fa";
-
-import { MdRateReview } from "react-icons/md";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUser, searchProduct } from "../../../redux/Actions/actions";
+import { MdRateReview, MdSell } from "react-icons/md";
+import AdminProductCard from "../../Admin/AdminProductCard/AdminProductCard";
 
 export default function ProfileProducts() {
+  const [input, setInput] = React.useState("");
   const dispatch = useDispatch();
 
-  const allProducts = useSelector((state) => state.allProducts);
-  const filteredProducts = allProducts.filter((product) => product.price >= 30);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const productsPerPage = 8;
-  const last = currentPage * productsPerPage;
-  const first = last - productsPerPage;
-  const products = filteredProducts.slice(first, last);
+  // const allProducts = useSelector((state) => state.allProducts);
+  // const filteredProducts = allProducts.filter((product) => product.price >= 30);
+
+  // const products = filteredProducts.slice(first, last);
+
+  const { user } = useAuth0();
+
+  React.useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+  const userDb = allUsers?.find((element) => element.eMail === user?.email);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
 
+  const inputChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const userProducts = userDb.product;
+
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const productsPerPage = 8;
+  const last = currentPage * productsPerPage;
+  const first = last - productsPerPage;
+  const products = userProducts.slice(first, last);
+
   return (
     <div className={style.container}>
       <NavBar />
+      <FilterNavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>
@@ -81,7 +105,14 @@ export default function ProfileProducts() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/post/product">
+            <div className={style.filter}>
+              <MdSell />
+              <h3 className={style.sellProducts}>SELL PRODUCTS</h3>
+            </div>
+          </Link>
+
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>
@@ -89,17 +120,33 @@ export default function ProfileProducts() {
           </Link>
         </div>
         <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>YOUR PRODUCTS ON SALE</h2>
+          <div className={style.firstRow}>
+            <h2 className={style.productPanelTitle}>YOUR PRODUCTS ON SALE</h2>
+            {/* <input
+              type="text"
+              className={style.searchInput}
+              placeholder="Search product..."
+              value={input}
+              onChange={inputChange}
+            />
+
+            <button className={style.buttonSearch} onClick={buttonSearch}>
+              <FaSearch />
+            </button> */}
+            <h2 className={style.totalProducts}>
+              Total Products: {userProducts.length}
+            </h2>
+          </div>
           <div className={style.productsContainer}>
             {products.length > 0 ? (
               products.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
-                    <ProfileProductCard
-                      key={crypto.randomUUID()}
+                    <AdminProductCard
+                      key={product._id}
                       _id={product._id}
                       name={product.name}
-                      image={product.productConditionals[0].image[1]}
+                      image={product.productConditionals[0].image[0]}
                       price={product.price}
                       description={product.description}
                     />

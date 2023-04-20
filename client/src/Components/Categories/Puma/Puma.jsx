@@ -14,12 +14,14 @@ export default function Puma() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProduct());
+    
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
-  const filterProducts = allProducts.filter((product) => {
+  const  allProducts = useSelector((state) => state.filteredProducts);
+  let filterProducts = allProducts.filter((product) => {
     return product.brands === "PUMA";
   });
+ filterProducts = filterProducts.filter((product) => !product.baneado)
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -35,13 +37,13 @@ export default function Puma() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters />
+      <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}
@@ -60,15 +62,15 @@ export default function Puma() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

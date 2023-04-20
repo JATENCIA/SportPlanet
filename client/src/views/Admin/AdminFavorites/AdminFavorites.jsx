@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./AdminFavorites.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 import { Link } from "react-router-dom";
@@ -17,24 +18,39 @@ import {
   FaSadTear,
 } from "react-icons/fa";
 
-import { MdRateReview } from "react-icons/md";
+import { MdRateReview, MdSell } from "react-icons/md";
 import ProfileProductCard from "../../Profile/ProfileProductCard/ProfileProductCard";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUser } from "../../../redux/Actions";
 
 export default function AdminFavorites() {
-  const allProducts = useSelector((state) => state.allProducts);
-  const filteredProducts = allProducts.filter((product) => product.price >= 30);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const productsPerPage = 8;
-  const last = currentPage * productsPerPage;
-  const first = last - productsPerPage;
-  const products = filteredProducts.slice(first, last);
+  const dispatch = useDispatch();
 
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
+
+  const { user } = useAuth0();
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const allUsers = useSelector((state) => state.allUsers);
+  const userDb = allUsers?.find((element) => element.eMail === user?.email);
+
+  const favoritesProducts = userDb.favorites;
+
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const productsPerPage = 8;
+  const last = currentPage * productsPerPage;
+  const first = last - productsPerPage;
+  const products = favoritesProducts.slice(first, last);
+
   return (
     <div className={style.container}>
       <NavBar />
+      <FilterNavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>
@@ -81,7 +97,14 @@ export default function AdminFavorites() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/post/product">
+            <div className={style.filter}>
+              <MdSell />
+              <h3 className={style.sellProducts}>SELL PRODUCTS</h3>
+            </div>
+          </Link>
+
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>

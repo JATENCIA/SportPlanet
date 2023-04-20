@@ -42,7 +42,9 @@ import Woman from "./src/Components/Categories/Woman/Woman";
 import Kids from "./src/Components/Categories/Kids/Kids";
 import Promotions from "./src/Components/Categories/Promotions/Promotions";
 import Fitness from "./src/Components/Categories/Fitness/Fitness";
-
+import Policy from "./src/views/TermsConditions/Policy/Policy";
+import Terms from "./src/views/TermsConditions/Terms/Terms";
+import Faq from "./src/views/TermsConditions/FAQ/Faq";
 import ProfileReviews from "./src/views/Profile/ProfileReviews/ProfileReviews";
 import AdminShopping from "./src/views/Admin/AdminShopping/AdminShopping";
 import AdminSales from "./src/views/Admin/AdminSales/AdminSales";
@@ -50,7 +52,11 @@ import AdminReviews from "./src/views/Admin/AdminReviews/AdminReviews";
 import AdminFavorites from "./src/views/Admin/AdminFavorites/AdminFavorites";
 import AllUsers from "./src/views/Admin/AllUsers/AllUsers";
 import AllProducts from "./src/views/Admin/AllProducts/AllProducts";
-import Cart from "./src/Components/Cart";
+import Reviews from "./src/views/Reviews/Reviews";
+
+// import Cart from "./src/Components/Cart";
+import Cart from "./src/views/Cart/Cart"; /* Nuevo Componente */
+import Shippingandreturns from "./src/Components/Shipping & Returns/Shippingandreturns";
 
 const App = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -92,7 +98,6 @@ const App = () => {
             isAuthenticated ? <ProfileReviews /> : <Navigate to="/home" />
           }
         />
-
         <Route
           path="/dashboard"
           element={isAuthenticated ? <Admin /> : <Navigate to="/home" />}
@@ -146,13 +151,21 @@ const App = () => {
         <Route path="/category/supplements" element={<Supplements />} />
         <Route path="/category/accessories" element={<Accesories />} />
         <Route path="/post/product" element={<SellProduct />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/category/man" element={<Man />} />
         <Route path="/category/woman" element={<Woman />} />
         <Route path="/category/kids" element={<Kids />} />
         <Route path="/category/promotions" element={<Promotions />} />
-        <Route path="/category/fitness" element={<Fitness />} />
+        <Route path="/shippingandreturns" element={<Shippingandreturns/>} />
+        {/*  <Route path="/category/fitness" element={<Fitness />} /> */}
         <Route path="*" element={<Navigate to="/home" />} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route
+          path="/cart"
+          element={isAuthenticated ? <Cart /> : <Navigate to="/home" />}
+        />
+        <Route path="/policy" element={<Policy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/faq" element={<Faq />} />
       </Routes>
     </>
   );

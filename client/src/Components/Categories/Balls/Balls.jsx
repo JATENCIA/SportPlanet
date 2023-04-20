@@ -8,7 +8,7 @@ import { NavBar } from "../../Navbar/Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
 import style from "./Balls.module.css";
 import Filters from "../../Filters/Filters";
-import Footer from "../../Footer/Footer"
+import Footer from "../../Footer/Footer";
 
 export default function Balls() {
   const dispatch = useDispatch();
@@ -17,9 +17,10 @@ export default function Balls() {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.filteredProducts);
-  const filterProducts = allProducts.filter((product) => {
+  let filterProducts = allProducts.filter((product) => {
     return product.category === "balls";
   });
+  filterProducts = filterProducts.filter((product) => !product.baneado)
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -35,13 +36,17 @@ export default function Balls() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters />
+      <br />
+      <div>
+      <h1 className={style.h1}>Balls</h1>
+      </div>
+      <Filters SizeFilter={false} GenderFilter={false} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}
@@ -60,15 +65,15 @@ export default function Balls() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

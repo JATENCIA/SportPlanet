@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./ProfileFavorites.module.css";
 import { NavBar } from "../../../Components/Navbar/Navbar";
+import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 import ProfileProductCard from "../ProfileProductCard/ProfileProductCard";
@@ -15,23 +16,36 @@ import {
   FaStore,
 } from "react-icons/fa";
 
-import { MdRateReview } from "react-icons/md";
+import { MdRateReview, MdSell } from "react-icons/md";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUser } from "../../../redux/Actions";
 
 export default function ProfileFavorites() {
-  const allProducts = useSelector((state) => state.allProducts);
-  const filteredProducts = allProducts.filter((product) => product.price >= 30);
+  const { user } = useAuth0();
+  const dispatch = useDispatch();
+  const allUsers = useSelector((state) => state.allUsers);
+
+  useEffect(() => {
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  const userDb = allUsers?.find((element) => element.eMail === user?.email);
+  const favoritesProducts = userDb?.favorites;
+
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 8;
   const last = currentPage * productsPerPage;
   const first = last - productsPerPage;
-  const products = filteredProducts.slice(first, last);
+  const products = favoritesProducts?.slice(first, last);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
   };
+
   return (
     <div className={style.container}>
       <NavBar />
+      <FilterNavBar />
       <div className={style.userPanel}>
         <div className={style.filterPanel}>
           <h1 className={style.userPanelTitle}>User Panel</h1>
@@ -78,7 +92,14 @@ export default function ProfileFavorites() {
             </div>
           </Link>
 
-          <Link to="/help">
+          <Link to="/post/product">
+            <div className={style.filter}>
+              <MdSell />
+              <h3 className={style.sellProducts}>SELL PRODUCTS</h3>
+            </div>
+          </Link>
+
+          <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
               <h3 className={style.help}>HELP</h3>
@@ -88,8 +109,8 @@ export default function ProfileFavorites() {
         <div className={style.productPanel}>
           <h2 className={style.productPanelTitle}>YOUR FAVORITES LIST</h2>
           <div className={style.productsContainer}>
-            {products.length > 0 ? (
-              products.map((product) => {
+            {products?.length > 0 ? (
+              products?.map((product) => {
                 return (
                   <Link to={`/detail/${product._id}`}>
                     <ProfileProductCard
@@ -113,7 +134,7 @@ export default function ProfileFavorites() {
           </div>
           <Paginate
             productsPerPage={productsPerPage}
-            allProducts={products.length}
+            allProducts={favoritesProducts.length}
             setPagination={setPagination}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}

@@ -23,16 +23,46 @@
   box-shadow: 0px 0px 7px 0px rgba(200, 195, 195, 0.75);
 }
 
+.firstRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+}
+
 .productPanelTitle {
   font-size: 2rem;
-  display: flex;
   justify-self: flex-start;
   align-self: flex-start;
-  padding-bottom: 1rem;
   color: rgb(21, 94, 61);
   font-family: RobotoCondensed;
   text-shadow: 1px 1px 1px rgb(180, 172, 172);
   padding-left: 5rem;
+}
+
+.searchInput {
+  font-family: RobotoCondensed;
+  font-weight: 0;
+  position: absolute;
+  border-radius: 15px;
+  width: 300px;
+  right: 33%;
+  border: 1px solid rgb(210, 207, 207);
+  color: rgb(0, 0, 0);
+  box-shadow: 0px 0px 5px -1px rgba(145, 143, 143, 0.75);
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: rgb(181, 178, 178);
+  font-size: 13px;
+}
+
+.totalSales {
+  position: absolute;
+  right: 10rem;
 }
 
 .userPanel {
@@ -43,6 +73,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 50px;
+
 }
 
 .userPanelTitle {
@@ -120,8 +152,8 @@
 }
 
 .loading {
-  margin-bottom: 5rem;
-  padding-top: 5rem;
+  /* margin-bottom: 5rem;
+  padding-top: 5rem; */
   font-size: xx-large;
   font-family: Bebas;
   display: flex;
@@ -129,6 +161,7 @@
   align-items: center;
   color: rgb(137, 52, 52);
 }
+
 .sadFace {
   color: black;
   font-size: 25px;

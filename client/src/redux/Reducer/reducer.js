@@ -6,6 +6,8 @@ import {
   FILTER_BY_USED,
   GET_ALL_PRODUCT,
   GET_ALL_USER,
+  ADMIN_SEARCH_USER,
+  ADMIN_SEARCH_PRODUCT,
   POST_USER,
   GET_PRODUCT_DETAIL,
   GET_SEARCHED_PRODUCTS,
@@ -15,18 +17,37 @@ import {
   CLEAR_CART,
   SHOP,
   CLEAN_SEARCHED_PRODUCTS,
+  REMOVE_ONE_ITEM,
+  RESET_FILTERS,
+  ADD_REVIEW,
+  GET_ALL_REVIEWS,
+  RESET_FILTERS2,
 } from "../Actions";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   users: [],
   allUsers: [],
+  allUsers2: [],
   allProducts: [],
+  allProducts2: [],
   productDetail: [],
   searchedProducts: [],
   filteredProducts: [],
+  filteredProducts2: [],
+  filteredProducts3: [],
   userProducts: [],
-  shoppingCart:[],
+  shoppingCart: [],
+  buttonPay: "",
+  reviews: [],
 };
+
+const storedValue = window.localStorage.getItem("cart");
+let value = [];
+if (storedValue) {
+  value = JSON.parse(storedValue);
+  if (typeof value === "string") value = JSON.parse(value);
+}
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -40,6 +61,31 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allUsers: action.payload,
+        allUsers2: action.payload,
+      };
+
+    case ADMIN_SEARCH_USER:
+      let searchedUsers =
+        action.payload === ""
+          ? state.allUsers
+          : state.allUsers.filter(
+              (user) => user.name.toLowerCase() === action.payload.toLowerCase()
+            );
+      return {
+        ...state,
+        allUsers2: [...searchedUsers],
+      };
+
+    case ADMIN_SEARCH_PRODUCT:
+      let searchedProducts =
+        action.payload === ""
+          ? state.allProducts
+          : state.allProducts.filter((product) =>
+              product.name.toLowerCase().includes(action.payload.toLowerCase())
+            );
+      return {
+        ...state,
+        allProducts2: [...searchedProducts],
       };
 
     case GET_ALL_PRODUCT:
@@ -47,21 +93,25 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allProducts: action.payload,
         filteredProducts: action.payload,
+        filteredProducts2: action.payload,
+        filteredProducts3: action.payload,
       };
 
     case FILTER_BY_PRICE:
       let productsSorted =
         action.payload === "lowerToHigher"
-          ? [...state.allProducts].sort((a, b) => {
-              if (a.price > b.price) return 1;
-              if (b.price > a.price) return -1;
-              return 0;
-            })
-          : [...state.allProducts].sort((a, b) => {
-              if (a.price > b.price) return -1;
-              if (b.price > a.price) return 1;
-              return 0;
-            });
+          ? [...state.filteredProducts] /* && [...state.filteredProducts2] */
+              .sort((a, b) => {
+                if (a.price > b.price) return 1;
+                if (b.price > a.price) return -1;
+                return 0;
+              })
+          : [...state.filteredProducts] /* && [...state.filteredProducts2] */
+              .sort((a, b) => {
+                if (a.price > b.price) return -1;
+                if (b.price > a.price) return 1;
+                return 0;
+              });
 
       return {
         ...state,
@@ -71,10 +121,10 @@ export const rootReducer = (state = initialState, action) => {
     case FILTER_BY_USED:
       let productsFiltered =
         action.payload === "new"
-          ? [...state.allProducts].filter((product) => {
+          ? [...state.filteredProducts2].filter((product) => {
               return product.state === "new";
             })
-          : [...state.allProducts].filter(
+          : [...state.filteredProducts2].filter(
               (product) => product.state === "used"
             );
       return {
@@ -84,16 +134,15 @@ export const rootReducer = (state = initialState, action) => {
 
     case FILTER_BY_GENDER:
       let productsByGender = [];
+      let filtro = [...state.filteredProducts2];
       if (action.payload === "men") {
-        productsByGender = [...state.allProducts].filter(
-          (product) => product.gender === "men"
-        );
+        productsByGender = filtro.filter((product) => product.gender === "men");
       } else if (action.payload === "women") {
-        productsByGender = [...state.allProducts].filter(
+        productsByGender = filtro.filter(
           (product) => product.gender === "women"
         );
       } else if (action.payload === "unisex") {
-        productsByGender = [...state.allProducts].filter(
+        productsByGender = filtro.filter(
           (product) => product.gender === "unisex"
         );
       } else {
@@ -101,7 +150,7 @@ export const rootReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        filteredProducts: [...productsByGender],
+        filteredProducts: productsByGender,
       };
 
     case GET_PRODUCT_DETAIL:
@@ -109,58 +158,58 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         productDetail: action.payload,
       };
-    case FILTER_BY_SIZE:
-    /*   let productBySize = [...state.allProducts] */
-    /*     .sort((a, b) => { */
-    /*       const sizeValues = { small: 1, medium: 2, large: 2, xlarge: 4 }; */
-    /*       const aSizeValues = sizeValues[a.size]; */
-    /*       const bSizeValues = sizeValues[b.size]; */
-    /*       return aSizeValues - bSizeValues; */
-    /*     }) */
-    /*     .filter((product) => product.size === action.payload); */
-    /*   return { */
-    /*     ...state, */
-    /*     filteredProducts: productBySize, */
-    /*   }; */
 
     case FILTER_BY_SIZE:
-      let productSize = []
-      if (action.payload === "small"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].S > 0 )
-       
+      let productSize = [];
+      let filtro2 = [...state.filteredProducts2];
+      if (action.payload === "xSmall") {
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("XS"))
+          )
+        );
+      } else if (action.payload === "small") {
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("S"))
+          )
+        );
+      } else if (action.payload === "medium") {
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("M"))
+          )
+        );
+      } else if (action.payload === "large") {
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("L"))
+          )
+        );
+      } else if (action.payload === "xlarge") {
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("XL"))
+          )
+        );
+      } else if (action.payload === "xxlarge") {
+        productSize = filtro2.filter((e) =>
+          e.productConditionals.some((elem) =>
+            elem.size.some((elem2) => elem2.hasOwnProperty("XXL"))
+          )
+        );
+      } else {
+        productSize = state.allProducts;
       }
-     
-     else if (action.payload === "medium"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].M > 0 )
-       
-      }
-     else if (action.payload === "large"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[0].L  > 0 )
-        
-      }
-      
-      else if (action.payload === "xlarge"){
-        productSize = [...state.allProducts].filter(e => e.productConditionals[0].size[1].XL > 0 )
-        
-      }
-      
-      /* else if (action.payload === "XL"){ */
-      /*   productSize = [...state.allProducts].filter(e => e.size[0].XL >= 0 ) */
-      /*    */
-      /* } */
-      else {
-        productSize = state.allProducts
-      }
-      
-      
+
       return {
         ...state,
-        filteredProducts: [...productSize]
-      }
-      
+        filteredProducts: [...productSize],
+        filteredProducts3: [...productSize],
+      };
 
     case FILTER_BY_SEASON:
-      let productBySeason = [...state.allProducts].filter((product) => {
+      let productBySeason = [...state.filteredProducts3].filter((product) => {
         const year = parseInt(product.season);
         switch (action.payload) {
           case "70s":
@@ -185,73 +234,132 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         searchedProducts: action.payload,
+        filteredProducts: action.payload,
+        filteredProducts2: action.payload,
+        filteredProducts3: action.payload,
+       
+
       };
 
     case CLEAN_SEARCHED_PRODUCTS:
-      return{
+      return {
         ...state,
-        searchedProducts: []
+        searchedProducts: [],
+        filteredProducts: [],
+        filteredProducts2: [],
+        filteredProducts3: [],
+      };
+
+    case ADD_TO_CART:
+      let itemInCar = state.shoppingCart.find(
+        (item) =>
+          item.id === action.payload.id &&
+          item.color === action.payload.color &&
+          item.size === action.payload.size
+      );
+      let cont = 0;
+      let stock2 = 0;
+      if (cont < 1) {
+        stock2 = action.payload.stock;
+        cont++;
       }
+      return itemInCar
+        ? {
+            ...state,
 
-      case ADD_TO_CART:
-        let productItem = state.allProducts.find(product => product._id === action.payload)
-        console.log(productItem)
-
-        let itemInCar = state.shoppingCart.find(item => item._id === productItem._id)
-
-        return itemInCar
-        
-        ?{...state, 
-          shoppingCart:state.shoppingCart.map((item) => item._id === productItem._id 
-          ? {...item, quantity: item.quantity + 1} 
-          :item
-          )
-        }
-        :{
-          ...state,
-          shoppingCart: [...state.shoppingCart,{...productItem, quantity:1}]
-        }
-        
-          
-          
-
-        
-
-      case REMOVE_ONE_FROM_CART:
-        let delOne = state.shoppingCart.find(e => e._id === action.payload)
-        return delOne.quantity > 1 ? {
-          ...state,
-          shoppingCart: state.shoppingCart.map(e => e._id === action.payload ? {...e, quantity: e.quantity - 1} : e)
-        }
-
+            shoppingCart: state.shoppingCart.map((item) =>
+              item.id === action.payload.id &&
+              item.color === action.payload.color &&
+              item.size === action.payload.size
+                ? { ...item, quantity: item.quantity + 1, stock: stock2 }
+                : item
+            ),
+          }
         : {
-          ...state,
-          shoppingCart:state.shoppingCart.filter(e => e._id !== action.payload)
-          
-        }
+            ...state,
+            shoppingCart: [
+              ...state.shoppingCart,
+              { ...action.payload, quantity: 1 },
+            ],
+          };
 
-      
+    case REMOVE_ONE_FROM_CART:
+      let delOne = state.shoppingCart.find(
+        (item) => item.UUID === action.payload.UUID
+      );
 
-      case REMOVE_ALL_FROM_CART:
+      return delOne
+        ? {
+            ...state,
+            shoppingCart: state.shoppingCart.filter(
+              (item) => item.UUID !== action.payload.UUID
+            ),
+          }
+        : {
+            ...state,
+            shoppingCart,
+          };
+
+    case REMOVE_ONE_ITEM:
+      let delItem = state.shoppingCart.find(
+        (item) =>
+          item.id === action.payload.id &&
+          item.color === action.payload.color &&
+          item.size === action.payload.size
+      );
+      return delItem.quantity > 1
+        ? {
+            ...state,
+            shoppingCart: state.shoppingCart.map((item) =>
+              item.id === action.payload.id &&
+              item.color === action.payload.color &&
+              item.size === action.payload.size
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            shoppingCart,
+          };
+
+    case REMOVE_ALL_FROM_CART:
+      return {
+        ...state,
+        shoppingCart: state.shoppingCart.filter(
+          (e) => e.id !== action.payload.id
+        ),
+      };
+
+    case RESET_FILTERS:
+      return {
+        ...state,
+        filteredProducts: [...state.allProducts],
        
+      };
+
+      case RESET_FILTERS2:
         return {
           ...state,
-          shoppingCart:state.shoppingCart.filter(e => e._id !== action.payload)
+          filteredProducts: [...state.searchedProducts],
         }
-          
-      case CLEAR_CART:
-        return {...state, shoppingCart:[]}
-          
-          case SHOP:
-            return{...state
-            
-            
-            }
 
+    case CLEAR_CART:
+      return { ...state, shoppingCart: [] };
+
+    case SHOP:
+      return { ...state, buttonPay: action.payload };
+
+    case GET_ALL_REVIEWS:
+      return {
+        ...state,
+        reviews: action.payload,
+      };
 
     default:
       return {
         ...state,
+        shoppingCart: value,
       };
   }
 };

@@ -1,22 +1,16 @@
-.items{
-    color: white;
-    margin-left: 5px;
-    font-size: large;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    align-items: center;
-    align-content: center;
-   
-    
-   
+.border {
+  width: 20px;
+  height: 20px;
+  margin-top: -25px;
 }
 
-.border{
-    margin-top: -14px;
-    border:thick;
-    background-color: red;
-    border-radius: 40px;
-  
-  
-
-  
+.items {
+  padding: 2px;
+  text-align: center;
+  color: rgb(1, 253, 38);
+  font-size: 15px;
+  font-family: RobotoCondensed;
+  font-weight: bolder;
+  border-radius: 50%;
+  vertical-align: top;
 }

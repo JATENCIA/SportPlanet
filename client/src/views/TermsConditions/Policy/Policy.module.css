@@ -1,0 +1,74 @@
+.nav {
+  display: flex;
+  background-color: black;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.nav h1 {
+  font-family: aBlackLives;
+  font-size: 70px;
+  color: white;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.buttonback {
+  padding-top: 15px;
+  margin-left: 1rem;
+}
+
+.bodyText {
+  width: 70%;
+  font-family: RobotoCondensed;
+  padding: 20px;
+}
+
+.bodyText h1 {
+  text-align: center;
+  color: black;
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+.bodyText p {
+  text-align: center;
+}
+
+.bodyText h2 {
+  color: black;
+  font-size: 25px;
+  font-weight: bolder;
+  text-align: center;
+  padding: 15px;
+}
+.pageList {
+  background-color: rgb(195, 202, 195);
+  width: 600px;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.pageList ul {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding: 10px;
+}
+
+.pageList li {
+  margin-top: 1rem;
+}
+
+p ul li {
+  padding-left: 10px;
+  text-align: center;
+}

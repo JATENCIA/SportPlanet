@@ -16,11 +16,10 @@ export default function Fitness() {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.allProducts);
-  const filterProducts = allProducts.filter((product) => {
-    return (
-      product.category === "supplements"
-    );
+  let filterProducts = allProducts.filter((product) => {
+    return product.category === "supplements";
   });
+  filterProducts = filterProducts.filter((product) => !product.baneado) 
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -41,7 +40,7 @@ export default function Fitness() {
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}
@@ -60,15 +59,15 @@ export default function Fitness() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { getAllProduct } from "../../../redux/Actions";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import Filter from "../../Filters/Filters";
+import Filters from "../../Filters/Filters";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
 import style from "./Gym.module.css";
@@ -12,18 +13,22 @@ import Footer from "../../Footer/Footer";
 
 export default function Gym() {
   const dispatch = useDispatch();
-
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(getAllProduct());
   }, [dispatch]);
+  const allProducts = useSelector((state) => state.filteredProducts);
 
-  const products = useSelector((state) => state.filteredProducts);
+  let filterProducts = allProducts.filter(
+    (product) => product.category === "gym"
+  );
 
-  const [currentPage, setCurrentPage] = React.useState(1);
+  //filterProducts = filterProducts.filter((product) => !product.baneado);
+
+  const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
   const ultimo = currentPage * productsPerPage;
   const primero = ultimo - productsPerPage;
-  const filteredProducts = products.slice(primero, ultimo);
+  const products = filterProducts.slice(primero, ultimo);
 
   const setPagination = (page) => {
     return setCurrentPage(page);
@@ -33,13 +38,24 @@ export default function Gym() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filter />
+      <br />
+      <div>
+        <h1 className={style.h1}>Gym</h1>
+      </div>
+
+      <Filters
+        SizeFilter={false}
+        GenderFilter={false}
+        WearedFilter={true}
+        SeasonFilter={false}
+        ResetFilters={true}
+      />
 
       <div className={style.container}>
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}
@@ -58,15 +74,15 @@ export default function Gym() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

@@ -6,6 +6,8 @@ import reebok from "../../images/reebokLogo.jpg";
 import fila from "../../images/filaLogo.jpeg";
 import puma from "../../images/pumaLogo.jpeg";
 import underarmour from "../../images/underArmour.jpg";
+import { FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -13,27 +15,50 @@ export default function Footer() {
       <div className={style.firstContainer}>
         <div className={style.infoContainer}>
           <h3>CONTACT INFORMATION</h3>
-          <span>Contact us via WPP</span>
+          <Link to="https://chat.whatsapp.com/BBKDAQ6dZBc2FwWqkmKKFP">
+          <span>Contact us</span>
+          </Link>
         </div>
 
         <div className={style.infoContainer}>
           <h3>CUSTOMER SUPPORT</h3>
-          <span>FAQ</span>
+          <Link to="/faq">
+            <span>FAQ</span>
+          </Link>
+          <Link to="/shippingandreturns">
           <span>Shipping & Returns</span>
+          </Link>
         </div>
 
         <div className={style.infoContainer}>
           <h3>TERMS & CONDITIONS</h3>
-          <span>TERMS OF USE</span>
-          <span>OUR POLICY</span>
+          <Link to="/terms">
+            <span>TERMS OF USE</span>
+          </Link>
+          <Link to="/policy">
+            <span>OUR POLICY</span>
+          </Link>
         </div>
 
         <div className={style.infoContainer}>
           <h3>FOLLOW US</h3>
-          <div className={style.imagesContainer}>
-            <span>Imagen</span>
-            <span>Imagen</span>
-            <span>Imagen</span>
+          <div className={style.socialContainer}>
+            <i>
+              <Link to="https://twitter.com/?lang=es">
+              <FaTwitter />
+              </Link>
+            </i>
+
+            <i>
+              <Link to="https://github.com/JATENCIA/SportPlanet">
+              <FaGithub />
+              </Link>
+            </i>
+            <i>
+              <Link to="https://www.instagram.com/">
+              <FaInstagram />
+              </Link>
+            </i>
           </div>
         </div>
       </div>

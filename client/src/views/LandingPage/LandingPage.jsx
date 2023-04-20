@@ -1,13 +1,20 @@
 import React, { useEffect } from "react";
 import style from "./LandingPage.module.css";
-import background from "../../images/background.jpg";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getAllUser } from "../../redux/Actions";
 import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 import { FaAngleDown } from "react-icons/fa";
-import santimassuh from "../../images/SantiMassuh.jpeg";
-import joseatencia from "../../images/joseatencia.jpeg";
+
+// Imagenes
+import santimassuh from "../../images/Team/santimassuh.jpeg";
+import alenmuñoz from "../../images/Team/alenmuñoz.jpg";
+import camiloagudelo from "../../images/Team/camiloagudelo.jpg";
+import franciscobaca from "../../images/Team/franciscobaca.jpeg";
+import joseatencia from "../../images/Team/joseatencia.jpeg";
+import juangutierrez from "../../images/Team/juangutierrez.jpeg";
+import santisanchez from "../../images/Team/santisanchez.jpeg";
+import sebanajle from "../../images/Team/sebas.jpeg";
 
 export default function LandingPage() {
   const myRef = React.useRef(null);
@@ -37,43 +44,18 @@ export default function LandingPage() {
         <h1>MEET THE TEAM</h1>
         <div className={style.teamContainer}>
           <div className={style.teamMemberCard}>
-            <div className={style.imgContainer}>IMAGEN</div>
+            <div className={style.imgContainer}>
+              <img src={camiloagudelo} alt="" />
+            </div>
+            <hr></hr>
             <h2>CAMILO AGUDELO</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
               <a href="https://github.com/rake3344" target="_blank">
-                <i class="fa-brands fa-github"></i>
+                <i className="fa-brands fa-github"></i>
               </a>
-              <a>
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-            </div>
-          </div>
-
-          <div className={style.teamMemberCard}>
-            <div className={style.imgContainer}>IMAGEN</div>
-            <h2>FRANCISCO BACA</h2>
-            <span>FULL STACK DEVELOPER</span>
-            <div className={style.memberSocialMedias}>
-              <a href="https://github.com/franciscobaca" target="_blank">
-                <i class="fa-brands fa-github"></i>
-              </a>
-              <a>
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-            </div>
-          </div>
-
-          <div className={style.teamMemberCard}>
-            <div className={style.imgContainer}>IMAGEN</div>
-            <h2>JUAN GUTIERREZ</h2>
-            <span>FULL STACK DEVELOPER</span>
-            <div className={style.memberSocialMedias}>
-              <a href="https://github.com/JuanGutierrez95" target="_blank">
-                <i class="fa-brands fa-github"></i>
-              </a>
-              <a>
-                <i class="fa-brands fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/juan-camilo-agudelo-giraldo-957ab3245/" target="_blank">
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>
@@ -87,10 +69,44 @@ export default function LandingPage() {
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
               <a href="https://github.com/JATENCIA" target="_blank">
-                <i class="fa-brands fa-github"></i>
+                <i className="fa-brands fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/jos%C3%A9-antonio-atencia-jaramillo-a4757b239/" target="_blank">
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+
+          <div className={style.teamMemberCard}>
+            <div className={style.imgContainer}>
+              <img src={franciscobaca} alt="" />
+            </div>
+            <hr></hr>
+            <h2>FRANCISCO BACA</h2>
+            <span>FULL STACK DEVELOPER</span>
+            <div className={style.memberSocialMedias}>
+              <a href="https://github.com/franciscobaca" target="_blank">
+                <i className="fa-brands fa-github"></i>
               </a>
               <a>
-                <i class="fa-brands fa-linkedin"></i>
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+
+          <div className={style.teamMemberCard}>
+            <div className={style.imgContainer}>
+              <img src={juangutierrez} />
+              </div>
+            <hr></hr>
+            <h2>JUAN GUTIERREZ</h2>
+            <span>FULL STACK DEVELOPER</span>
+            <div className={style.memberSocialMedias}>
+              <a href="https://github.com/JuanGutierrez95" target="_blank">
+                <i className="fa-brands fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/juan-gutierrez95/" target="_blank">
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>
@@ -104,52 +120,61 @@ export default function LandingPage() {
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
               <a href="https://github.com/Santiago-Massuh" target="_blank">
-                <i class="fa-brands fa-github"></i>
+                <i className="fa-brands fa-github"></i>
               </a>
-              <a>
-                <i class="fa-brands fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/santiagomassuh/" target="_blank">
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>
 
           <div className={style.teamMemberCard}>
-            <div className={style.imgContainer}>IMAGEN</div>
+            <div className={style.imgContainer}>
+              <img src={alenmuñoz} alt="" />
+            </div>
+            <hr></hr>
             <h2>ALEN MUÑOZ</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
               <a href="https://github.com/alenm777" target="_blank">
-                <i class="fa-brands fa-github"></i>
+                <i className="fa-brands fa-github"></i>
               </a>
-              <a>
-                <i class="fa-brands fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/al%C3%A9n-mu%C3%B1oz-107560231/" target="_blank">
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>
 
           <div className={style.teamMemberCard}>
-            <div className={style.imgContainer}>IMAGEN</div>
+            <div className={style.imgContainer}>
+              <img src={sebanajle} alt="" />
+            </div>
+            <hr></hr>
             <h2>SEBASTIAN NAJLE</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
               <a href="https://github.com/Sebas202070" target="_blank">
-                <i class="fa-brands fa-github"></i>
+                <i className="fa-brands fa-github"></i>
               </a>
-              <a>
-                <i class="fa-brands fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/sebastian-rodrigo-najle-7bba34125/" target="_blank">
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>
 
           <div className={style.teamMemberCard}>
-            <div className={style.imgContainer}>IMAGEN</div>
+            <div className={style.imgContainer}>
+              <img src={santisanchez} alt="" />
+            </div>
+            <hr></hr>
             <h2>SANTIAGO SANCHEZ DE B.</h2>
             <span>FULL STACK DEVELOPER</span>
             <div className={style.memberSocialMedias}>
               <a href="https://github.com/santiagosdeb" target="_blank">
-                <i class="fa-brands fa-github"></i>
+                <i className="fa-brands fa-github"></i>
               </a>
-              <a>
-                <i class="fa-brands fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/santiago-a-sanchez-de-bustamante-9116531a2/" target="_blank">
+                <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
           </div>

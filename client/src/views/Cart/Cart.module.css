@@ -1,0 +1,164 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.bagIcon {
+  font-size: 4rem;
+  margin-right: 5px;
+}
+
+.cartTitle {
+  font-size: 40px;
+  align-self: center;
+  font-family: RobotoCondensed;
+  font-weight: bolder;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: auto;
+}
+
+.cartContainer hr {
+  align-self: center;
+  width: 80%;
+  border: 2px solid rgb(248, 248, 248);
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemFunctions {
+  font-family: RobotoCondensed;
+  display: flex;
+  justify-content: center;
+}
+
+/*-------------------------------------------*/
+.secondContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  height: 600px;
+}
+
+.secondContainer hr {
+  width: 100%;
+}
+
+.paymentContainer {
+  width: auto;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.codeContainer {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.inputCode {
+  width: 50%;
+  font-family: RobotoCondensed;
+  border-radius: 2px;
+  border: 2px solid rgb(233, 228, 228);
+  margin-right: 0;
+  padding-right: 0;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+.buttonSubmit {
+  font-family: RobotoCondensed;
+  align-self: center;
+  background-color: black;
+  color: white;
+  border-radius: 0px;
+  flex-grow: 1;
+  height: 50px;
+  transition: all 200ms ease;
+}
+
+.buttonSubmit:hover {
+  font-size: 15px;
+  font-weight: 1000;
+}
+
+.detailsContainer {
+  font-family: RobotoCondensed;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.detailTitle {
+  margin-top: 1rem;
+  font-size: 20px;
+  font-weight: 1000;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+  margin-top: 1rem;
+}
+
+.buttonPay {
+  margin-top: 2rem;
+  background-color: rgb(253, 253, 45);
+  color: black;
+  font-family: RobotoCondensed;
+  font-weight: bolder;
+  border-radius: 15px;
+  width: 90%;
+  height: 50px;
+  transition: all 200ms ease;
+}
+.buttonPay2 {
+  margin-top: 2rem;
+  background-color: rgb(2, 144, 246);
+  color: rgb(246, 244, 244);
+  font-family: RobotoCondensed;
+  font-weight: bolder;
+  border-radius: 19px;
+  width: 170%;
+  height: 50px;
+  transition: all 200ms ease;
+}
+
+.buttonPay:hover {
+  background-color: black;
+  color: rgb(255, 255, 255);
+  transition: all 200ms ease;
+}
+.buttonPay2:hover {
+  background-color: black;
+  color: rgb(255, 255, 255);
+  transition: all 200ms ease;
+}

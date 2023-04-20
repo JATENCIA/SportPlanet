@@ -1,0 +1,47 @@
+.nav {
+    display: flex;
+    background-color: black;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .nav h1 {
+    font-family: aBlackLives;
+    font-size: 70px;
+    color: white;
+  }
+  
+  .main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .bodyText {
+    width: 70%;
+    font-family: RobotoCondensed;
+    padding: 20px;
+  }
+  
+  .bodyText h1 {
+    text-align: center;
+    color: black;
+    font-size: 50px;
+    font-weight: bolder;
+  }
+  
+  .bodyText p {
+    text-align: center;
+  }
+  
+  .bodyText h2 {
+    color: black;
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center;
+    padding: 15px;
+  }
+  

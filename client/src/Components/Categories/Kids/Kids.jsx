@@ -7,7 +7,7 @@ import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
 import { NavBar } from "../../Navbar";
 import FilterNavBar from "../../FilterNavBar/FilterNavBar";
-import Filter from "../../Filters/Filters";
+import Filters from "../../Filters/Filters";
 import style from "./Kids.module.css";
 import Footer from "../../Footer/Footer";
 
@@ -23,12 +23,10 @@ export default function Kids() {
     dispatch(filterBySize("small"));
   }, [dispatch]);
   const filterProducts = allProducts.filter(
-    (product) => product.category === "tshirts" && product.productConditionals[0].size[0].S > 0
+    (product) =>
+      product.category === "tshirts" &&
+      product.productConditionals[0].size[0].S > 0
   );
-
-
-
-
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -40,11 +38,12 @@ export default function Kids() {
     return setCurrentPage(page);
   };
 
+  const showSizeFilter = false
   return (
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filter />
+      <Filters SizeFilter={false} GenderFilter={true} WearedFilter={true} SeasonFilter={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
@@ -69,15 +68,15 @@ export default function Kids() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 // axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.baseURL = "https://sportsplanet-production.up.railway.app/";

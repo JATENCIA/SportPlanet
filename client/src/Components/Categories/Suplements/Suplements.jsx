@@ -16,10 +16,11 @@ export default function Supplements() {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
-  const filterProducts = allProducts.filter((product) => {
+  const allProducts = useSelector((state) => state.filteredProducts);
+  let filterProducts = allProducts.filter((product) => {
     return product.category === "supplements";
   });
+ filterProducts = filterProducts.filter((product) => !product.baneado)
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -35,13 +36,22 @@ export default function Supplements() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters />
+      <br />
+ <div>
+ <h1 className={style.h1}>Supplements</h1>
+ </div>
+      <Filters
+        SizeFilter={false}
+        GenderFilter={false}
+        WearedFilter={false}
+        SeasonFilter={false}
+      />
 
       <div className={style.container}>
         {products.length > 0 ? (
           products.map((product) => {
             return (
-              <Link to={`/detail/${product._id}`}>
+              <Link to={`/detail/${product._id}`} key={product._id}>
                 <ProductCard
                   key={crypto.randomUUID()}
                   _id={product._id}
@@ -60,15 +70,15 @@ export default function Supplements() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }

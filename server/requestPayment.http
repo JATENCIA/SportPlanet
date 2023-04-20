@@ -1,0 +1,33 @@
+
+#  @urlApi = http://localhost:5000
+ @urlApi = https://1888-201-221-172-179.ngrok-free.app 
+# @urlApi = https://sportsplanet-production.up.railway.app
+ 
+
+POST {{urlApi}}/payments
+Content-Type: application/json
+
+ [
+ {
+ "name":"camiseta river",
+  "discount":10,
+  "price":35.000,
+  "quantity":1,
+  "eMail":"test_user_1312714371@testuser.com",
+  "category_id":123,
+  "picture_url":"https://img.planetafobal.com/2014/10/nike-ordem-hi-vis-2014-2015-winter-serie-a.jpg",
+  "description":"color del producto",
+  "id":"talle"
+  },
+   {
+ "name":"camiseta argentina",
+  "discount":0,
+  "price":25.000,
+  "quantity":2,
+  "eMail":"test_user_1312714371@testuser.com",
+  "category_id":1234,
+  "picture_url":"https://img.planetafobal.com/2014/10/nike-ordem-hi-vis-2014-2015-winter-serie-a.jpg",
+  "description":"color del producto",
+  "id":"talle"  
+  }
+  ]

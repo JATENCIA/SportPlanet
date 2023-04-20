@@ -11,7 +11,7 @@ const Produts = () => {
     dispatch(getAllProduct());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.allProducts);
+  const allProducts = useSelector((state) => state.cartState.allProducts);
   console.log("1", allProducts);
 
   const filterProducts = allProducts.filter(

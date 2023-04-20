@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { filterByPrice, getAllProduct } from "../../../redux/Actions";
@@ -11,19 +11,17 @@ import style from "./Promotions.module.css";
 import Footer from "../../Footer/Footer";
 import Filters from "../../Filters/Filters";
 
-
 export default function Promotions() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllProduct());
-  }, [dispatch]);
-  const allProducts = useSelector((state) => state.allProducts);
-  console.log("1", allProducts);
   useEffect(() => {
     dispatch(filterByPrice());
   }, [dispatch]);
 
-  const filterProducts = allProducts.filter((product) => product.price < 20);
+  const allProducts = useSelector((state) => state.filteredProducts);
+  let filterProducts = allProducts.filter((product) => {
+    return product.price > 0
+  });
+  filterProducts = filterProducts.filter(product => !product.baneado)
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -39,7 +37,11 @@ export default function Promotions() {
     <div>
       <NavBar />
       <FilterNavBar />
-      <Filters />
+      <br />
+      <div>
+      <h1 className={style.h1}>Promotions</h1>
+      </div>
+      <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
 
       <div className={style.container}>
         {products.length > 0 ? (
@@ -64,15 +66,15 @@ export default function Promotions() {
       </div>
 
       {products.length > 0 ? (
-  <Paginate
-    productsPerPage={productsPerPage}
-    allProducts={filterProducts.length}
-    setPagination={setPagination}
-    currentPage={currentPage}
-    setCurrentPage={setCurrentPage}
-  />
-) : null}
-<Footer />
+        <Paginate
+          productsPerPage={productsPerPage}
+          allProducts={filterProducts.length}
+          setPagination={setPagination}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      ) : null}
+      <Footer />
     </div>
   );
 }
