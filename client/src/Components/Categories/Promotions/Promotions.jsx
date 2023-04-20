@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { filterByPrice, getAllProduct } from "../../../redux/Actions";
@@ -19,9 +19,9 @@ export default function Promotions() {
 
   const allProducts = useSelector((state) => state.filteredProducts);
   let filterProducts = allProducts.filter((product) => {
-    return product.price > 0
+    return product.discount > 0;
   });
-  filterProducts = filterProducts.filter(product => !product.baneado)
+  filterProducts = filterProducts.filter((product) => !product.baneado);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -39,9 +39,15 @@ export default function Promotions() {
       <FilterNavBar />
       <br />
       <div>
-      <h1 className={style.h1}>Promotions</h1>
+        <h1 className={style.h1}>Promotions</h1>
       </div>
-      <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true}/>
+      <Filters
+        SizeFilter={true}
+        GenderFilter={true}
+        WearedFilter={true}
+        SeasonFilter={true}
+        ResetFilters={true}
+      />
 
       <div className={style.container}>
         {products.length > 0 ? (
