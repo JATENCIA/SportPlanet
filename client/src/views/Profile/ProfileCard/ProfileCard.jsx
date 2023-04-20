@@ -19,9 +19,6 @@ export default function ProfileCard() {
 
   return (
     <div className={style.cardContainer}>
-      <button className={style.editButton}>
-        <FaEdit />
-      </button>
       <div className={style.imgContainer}>
         <img src={userDb.image} alt="usuario" className={style.img} />
         <div>{userDb.baneado && <h2>User Banned!</h2>}</div>

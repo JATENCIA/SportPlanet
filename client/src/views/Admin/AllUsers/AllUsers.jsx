@@ -22,6 +22,7 @@ import { getAllUser, searchUser } from "../../../redux/Actions/actions";
 import AdminProfileCard from "../AdminProfileCard/AdminProfileCard";
 import AdminProductCard from "../AdminProductCard/AdminProductCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
+import Login from "../../../Components/Navbar/Login";
 
 export default function AllUsers() {
   const [input, setInput] = React.useState("");
@@ -49,6 +50,7 @@ export default function AllUsers() {
 
   const buttonSearch = (event) => {
     dispatch(searchUser(input));
+    setCurrentPage(1)
   };
 
   return (
