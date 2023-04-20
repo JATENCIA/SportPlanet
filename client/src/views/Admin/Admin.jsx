@@ -108,7 +108,6 @@ export default function Admin() {
           <h2 className={style.profilePanelTitle}>YOUR PROFILE</h2>
           <div className={style.profileContainer}>
             <ProfileCard />
-            <div className={style.profileDescription}>USER DESCRIPTION</div>
           </div>
         </div>
       </div>
