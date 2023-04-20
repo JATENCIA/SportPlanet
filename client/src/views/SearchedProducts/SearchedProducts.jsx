@@ -19,7 +19,9 @@ import { Paginate } from "../../Components/Paginate/Paginate";
 export default function SearchedProducts ()  {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const searchedProducts = useSelector((state) => state.filteredProducts);
   const { product } = useParams();
+
     
   useEffect(() => {
     dispatch(getSearchedProducts(product, navigate));
@@ -29,7 +31,7 @@ export default function SearchedProducts ()  {
     };
   }, [dispatch, product]);
  
-  const searchedProducts = useSelector((state) => state.filteredProducts);
+  
  
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 10;

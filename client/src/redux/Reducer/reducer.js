@@ -236,6 +236,8 @@ export const rootReducer = (state = initialState, action) => {
         filteredProducts: action.payload,
         filteredProducts2: action.payload,
         filteredProducts3: action.payload,
+       
+
       };
 
     case CLEAN_SEARCHED_PRODUCTS:
@@ -332,7 +334,7 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredProducts: [...state.allProducts],
-        filteredProducts: [...state.searchedProducts],
+       
       };
 
     case CLEAR_CART:
