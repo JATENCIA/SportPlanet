@@ -10,8 +10,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 
-// axios.defaults.baseURL = "http://localhost:5000";
-axios.defaults.baseURL = "https://sportsplanet-production.up.railway.app/";
+axios.defaults.baseURL = "http://localhost:5000";
+// axios.defaults.baseURL = "https://sportsplanet-production.up.railway.app/";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
