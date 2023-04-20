@@ -1,7 +1,7 @@
 import React  from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { filterByPrice, getAllProduct } from "../../../redux/Actions";
+import { RESET_FILTERS, filterByPrice, getAllProduct } from "../../../redux/Actions";
 import ProductCard from "../../ProductCard/ProductCard";
 import { Paginate } from "../../Paginate/Paginate";
 import { Link } from "react-router-dom";
@@ -18,9 +18,11 @@ export default function Promotions() {
   }, [dispatch]);
 
   const allProducts = useSelector((state) => state.filteredProducts);
-  const filterProducts = allProducts.filter((product) => {
-    return product.price <= 15
+  let filterProducts = allProducts.filter((product) => {
+    return product.discount > 0
   });
+  filterProducts = filterProducts.filter(product=> !product.baneado)
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
