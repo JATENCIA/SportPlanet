@@ -20,6 +20,8 @@ import {
   ADD_REVIEW,
   REMOVE_ONE_ITEM,
   RESET_FILTERS,
+  ADMIN_SEARCH_USER,
+  ADMIN_SEARCH_PRODUCT,
   GET_ALL_REVIEWS,
 } from "./actionsTypes";
 
@@ -34,6 +36,20 @@ export const getAllUser = () => async (dispatch) => {
     return { messaje: `${error}` };
     console.log({ messaje: `${error}` });
   }
+};
+
+export const searchUser = (payload) => {
+  return {
+    type: ADMIN_SEARCH_USER,
+    payload: payload,
+  };
+};
+
+export const searchProduct = (payload) => {
+  return {
+    type: ADMIN_SEARCH_PRODUCT,
+    payload: payload,
+  };
 };
 
 export const postUser = (payload) => async (dispatch) => {
@@ -151,7 +167,6 @@ export const clearCart = () => {
 };
 
 export const removeAllCart = (id) => {
-  console.log("🚀 ~ file: actions.js:154 ~ removeAllCart ~ id:", id);
   return {
     type: REMOVE_ALL_FROM_CART,
     payload: id,
@@ -190,7 +205,6 @@ export const removeProduct = (id) => {
 };
 
 export const shop = (item) => {
-  console.log("🚀 ~ file: actions.js:192 ~ shop ~ item:", item);
   return async function (dispatch) {
     const apic = await axios.post("/payments", item);
     const shop = apic.data.url;
@@ -209,7 +223,7 @@ export const addReview = (payload) => {
       type: ADD_REVIEW,
       payload: review.data,
     });
-    return review
+    return review;
   };
 };
 export const resetFilters = (payload) => {
@@ -227,4 +241,4 @@ export const getAllReviews = () => {
       payload: reviews.data,
     });
   };
-} 
+};

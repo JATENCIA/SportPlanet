@@ -14,22 +14,24 @@ import {
   FaStore,
   FaUsers,
   FaListAlt,
+  FaSearch,
 } from "react-icons/fa";
 
-import { MdRateReview } from "react-icons/md";
-import { getAllUser } from "../../../redux/Actions/actions";
+import { MdRateReview, MdSell } from "react-icons/md";
+import { getAllUser, searchUser } from "../../../redux/Actions/actions";
 import AdminProfileCard from "../AdminProfileCard/AdminProfileCard";
 import AdminProductCard from "../AdminProductCard/AdminProductCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 
 export default function AllUsers() {
+  const [input, setInput] = React.useState("");
   const dispatch = useDispatch();
 
   React.useEffect(() => {
     dispatch(getAllUser());
   }, [dispatch]);
 
-  const allUsers = useSelector((state) => state.allUsers);
+  const allUsers = useSelector((state) => state.allUsers2);
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const usersPerPage = 10;
@@ -39,6 +41,14 @@ export default function AllUsers() {
 
   const setPagination = (page) => {
     return setCurrentPage(page);
+  };
+
+  const inputChange = (event) => {
+    setInput(event.target.value);
+  };
+
+  const buttonSearch = (event) => {
+    dispatch(searchUser(input));
   };
 
   return (
@@ -91,6 +101,13 @@ export default function AllUsers() {
             </div>
           </Link>
 
+          <Link to="/post/product">
+            <div className={style.filter}>
+              <MdSell />
+              <h3 className={style.sellProducts}>SELL PRODUCTS</h3>
+            </div>
+          </Link>
+
           <Link to="/faq">
             <div className={style.filter}>
               <FaQuestionCircle />
@@ -115,8 +132,21 @@ export default function AllUsers() {
             </Link>
           </div>
         </div>
-        <div className={style.productPanel}>
-          <h2 className={style.productPanelTitle}>USERS LIST</h2>
+        <div className={style.usersPanel}>
+          <div className={style.firstRow}>
+            <h2 className={style.usersPanelTitle}>ALL USERS</h2>
+            <input
+              type="text"
+              className={style.searchInput}
+              placeholder="Search user..."
+              value={input}
+              onChange={inputChange}
+            />
+            <button className={style.buttonSearch} onClick={buttonSearch}>
+              <FaSearch />
+            </button>
+            <h2 className={style.totalSales}>Total Users: {allUsers.length}</h2>
+          </div>
           <div className={style.productsContainer}>
             {users.length > 0 ? (
               users.map((user) => {

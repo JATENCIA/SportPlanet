@@ -18,7 +18,7 @@ export default function ProductCard({ _id, name, image, price }) {
       </div>
       <div className={style.descriptionContainer}>
         <h1 className={style.productName}>{name}</h1>
-        <h2 className={style.price}>💲 {price}</h2>
+        <h2 className={style.price}>💲{price}</h2>
         <Shipping price={price} />
       </div>
     </div>

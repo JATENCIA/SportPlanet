@@ -7,6 +7,7 @@ const {
   getUsers,
   updateUser,
   postFavorite,
+  updateUserIsAdmin,
 } = require("../Controllers/usersController");
 const { validateUsersCreate } = require("../middleware/usersValidator");
 
@@ -22,6 +23,11 @@ router.get("/:id", getUser);
 router.post("/", validateUsersCreate, createUser);
 /* This is a route that is listening for a put request to the root of the server. */
 router.put("/:id", updateUser);
+
+router.put("/isadmin/:id", updateUserIsAdmin);
+
+router.put("/isadmin/:id", updateUserIsAdmin);
+
 /* This is a route that is listening for a delete request to the root of the server. */
 router.post("/:id", deleteUser);
 
