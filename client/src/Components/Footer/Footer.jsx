@@ -25,7 +25,9 @@ export default function Footer() {
           <Link to="/faq">
             <span>FAQ</span>
           </Link>
+          <Link to="/shippingandreturns">
           <span>Shipping & Returns</span>
+          </Link>
         </div>
 
         <div className={style.infoContainer}>
@@ -42,14 +44,20 @@ export default function Footer() {
           <h3>FOLLOW US</h3>
           <div className={style.socialContainer}>
             <i>
+              <Link to="https://twitter.com/?lang=es">
               <FaTwitter />
+              </Link>
             </i>
 
             <i>
+              <Link to="https://github.com/JATENCIA/SportPlanet">
               <FaGithub />
+              </Link>
             </i>
             <i>
+              <Link to="https://www.instagram.com/">
               <FaInstagram />
+              </Link>
             </i>
           </div>
         </div>

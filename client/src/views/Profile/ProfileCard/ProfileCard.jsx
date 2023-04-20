@@ -6,7 +6,7 @@ import { getAllUser } from "../../../redux/Actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function ProfileCard() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { user } = useAuth0();
 
@@ -19,14 +19,24 @@ export default function ProfileCard() {
 
   return (
     <div className={style.cardContainer}>
-      <button className={style.editButton}>
-        <FaEdit />
-      </button>
       <div className={style.imgContainer}>
-        <img src={userDb.image} alt="usuario" className={style.img}/>
+        <img src={userDb.image} alt="usuario" className={style.img} />
+        <div>{userDb.baneado && <h2>User Banned!</h2>}</div>
       </div>
-      <h2>{userDb.name} {userDb.lastName}</h2>
-      <span>VALORATION</span>
+      <h2 className={style.userRoll}>User Type: {userDb.roll} </h2>
+      <h2>
+        Name: <span className={style.profileCardSpan}>{userDb.name}</span>
+      </h2>
+      <h2>
+        Lastname:{" "}
+        <span className={style.profileCardSpan}>{userDb.lastName}</span>
+      </h2>
+      <h2>
+        Email: <span className={style.profileCardSpan}>{userDb.eMail}</span>
+      </h2>
+      <h2>
+        Personal ID: <span className={style.profileCardSpan}>{userDb.dni}</span>
+      </h2>
     </div>
   );
 }

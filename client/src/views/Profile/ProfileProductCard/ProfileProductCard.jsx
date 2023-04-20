@@ -82,12 +82,7 @@ export default function ProfileProductCard({
           <h2 className={style.price}>${price}</h2>
         </div>
         <div className={style.functionContainer}>
-          <button className={style.editButton} onClick={editHandler}>
-            <FaEdit />
-          </button>
-          <button className={style.removeButton} onClick={removeHandler}>
-            <FaTrashAlt />
-          </button>
+
           <button className={style.removeButton} onClick={favoriteHandler}>
             <AiFillHeart />
           </button>

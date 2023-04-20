@@ -106,14 +106,14 @@ export const Home = () => {
         <hr />
         <br />
         <br />
-        <h1 className={style.contactUsWpp}>CONTACT US WHATSAPP</h1>
+        {/* <h1 className={style.contactUsWpp}>CONTACT US WHATSAPP</h1>
         <a className="" href="https://chat.whatsapp.com/BBKDAQ6dZBc2FwWqkmKKFP">
           <img
             src="https://st2.depositphotos.com/1116329/7584/v/600/depositphotos_75840613-stock-illustration-vector-modern-phone-icon-in.jpg"
             width="80px"
             alt=""
           />
-        </a>
+        </a> */}
         <br />
         <ScrollToTop />
         <Footer />

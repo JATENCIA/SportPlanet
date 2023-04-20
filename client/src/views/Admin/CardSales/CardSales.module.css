@@ -1,0 +1,128 @@
+.cardContainer {
+    height: 350px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 11px 0px rgba(148, 141, 141, 0.27);
+    transition: all 200ms ease;
+    border-radius: 8px;
+  }
+  
+  .cardContainer:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 18px -3px rgb(186, 203, 226);
+  }
+  
+  .cardContainer:active {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 19px -3px rgb(78, 242, 165);
+  }
+  
+  .cardContainer img {
+    border-radius: 15px;
+    padding: 0;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+    padding-top: 1rem;
+  }
+  
+  .cardContainer h1 {
+    color: rgb(84, 80, 80);
+    text-shadow: 1px 1px 1px rgb(181, 171, 171);
+    padding-top: 15px;
+    font-family: Bebas;
+    font-size: 15px;
+  }
+  
+  .cardContainer h2 {
+    color: rgb(112, 112, 118);
+    font-weight: 1000;
+    font-size: 15px;
+    font-family: Bebas;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .cardContainer p {
+    font-family: MetroPoliceRegular;
+    color: rgb(34, 153, 34);
+    font-weight: 1000;
+  }
+  
+  .productName {
+    text-align: center;
+  }
+  
+  .functionContainer {
+    padding-top: 2rem;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .functionContainer,
+  .editButton,
+  .removeButton {
+    transition: all 200ms ease;
+  }
+  
+  .editButton:hover {
+    transform: scale(1.1);
+    color: rgb(158, 158, 253);
+  }
+  
+  .removeButton:hover {
+    transform: scale(1.1);
+    color: rgb(232, 36, 36);
+  }
+  
+  /* .cardContainerBanned {
+    height: 350px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 11px 0px rgba(148, 141, 141, 0.27);
+    transition: all 200ms ease;
+    border-radius: 8px;
+    opacity: 0.8;
+    filter: grayscale(80%);
+  }
+  
+  .cardContainerBanned img {
+    border-radius: 15px;
+    padding: 0;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .cardContainerBanned h1 {
+    color: rgb(84, 80, 80);
+    text-shadow: 1px 1px 1px rgb(181, 171, 171);
+    padding-top: 15px;
+    font-family: Bebas;
+    font-size: 15px;
+  }
+  
+  .cardContainerBanned h2 {
+    color: rgb(112, 112, 118);
+    font-weight: 1000;
+    font-size: 15px;
+    font-family: Bebas;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  } */

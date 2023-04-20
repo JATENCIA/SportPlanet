@@ -56,6 +56,7 @@ import Reviews from "./src/views/Reviews/Reviews";
 
 // import Cart from "./src/Components/Cart";
 import Cart from "./src/views/Cart/Cart"; /* Nuevo Componente */
+import Shippingandreturns from "./src/Components/Shipping & Returns/Shippingandreturns";
 
 const App = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -154,6 +155,7 @@ const App = () => {
         <Route path="/category/woman" element={<Woman />} />
         <Route path="/category/kids" element={<Kids />} />
         <Route path="/category/promotions" element={<Promotions />} />
+        <Route path="/shippingandreturns" element={<Shippingandreturns/>} />
         {/*  <Route path="/category/fitness" element={<Fitness />} /> */}
         <Route path="*" element={<Navigate to="/home" />} />
         <Route path="/reviews" element={<Reviews />} />

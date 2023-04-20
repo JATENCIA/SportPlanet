@@ -19,8 +19,11 @@ import { Paginate } from "../../Components/Paginate/Paginate";
 export default function SearchedProducts ()  {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  let searchedProducts = useSelector((state) => state.filteredProducts);
   const { product } = useParams();
-    
+
+  searchedProducts = searchedProducts.filter(product => !product.baneado)
+
   useEffect(() => {
     dispatch(getSearchedProducts(product, navigate));
     //return para limpiar searchedProducts
@@ -29,7 +32,7 @@ export default function SearchedProducts ()  {
     };
   }, [dispatch, product]);
  
-  const searchedProducts = useSelector((state) => state.filteredProducts);
+  
  
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 10;
@@ -46,7 +49,7 @@ export default function SearchedProducts ()  {
     <div>
       <NavBar />
       <FilterNavBar />
-    <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={true} />
+    <Filters SizeFilter={true} GenderFilter={true} WearedFilter={true} SeasonFilter={true} ResetFilters={false}  ResetFilters2={true}/>
 
 
       <div className={style.container}>
