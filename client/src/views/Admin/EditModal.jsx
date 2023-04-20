@@ -52,7 +52,7 @@ const editHandler = (e) => {
           roll:rollValue
         }
         
-        await axios.put(`/users/${_id}`, changes);
+        await axios.put(`/users/isadmin/${_id}`, changes);
 
         await Swal.fire({
           icon: "success",
