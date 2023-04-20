@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {  FaShoppingBag,  FaDollarSign,  FaHeart,  FaQuestionCircle,  FaUserCircle,  FaStore,  FaSadTear,  FaUsers,  FaListAlt,} from "react-icons/fa";
 import { MdRateReview, MdSell } from "react-icons/md";
-import CardSales from "../CardSales/cardSales";
+import CardSales from "../CardSales/CardSales";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUser } from "../../../redux/Actions/actions";
 

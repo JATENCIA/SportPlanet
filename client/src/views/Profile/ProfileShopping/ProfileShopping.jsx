@@ -18,7 +18,7 @@ import {
 import { MdRateReview, MdSell } from "react-icons/md";
 import ProfileProductCard from "../ProfileProductCard/ProfileProductCard";
 import { useAuth0 } from "@auth0/auth0-react";
-import CardSales from "../../Admin/CardSales/cardSales";
+import CardSales from "../../Admin/CardSales/CardSales";
 import { getAllUser } from "../../../redux/Actions/actions";
 
 

@@ -22,7 +22,7 @@ import {
 import { MdRateReview, MdSell } from "react-icons/md";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUser } from "../../../redux/Actions/actions";
-import CardSales from "../CardSales/cardSales";
+import CardSales from "../CardSales/CardSales";
 
 
 
