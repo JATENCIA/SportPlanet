@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 import EditModal from "../EditModal";
 
-export default function AdminProductCard({ _id, name, image, baneado, lastName, roll }) {
+export default function AdminProductCard({ _id, name, image, baneado, lastName, roll, price,description,discount,season,gender,state,brands }) {
 
   const [isBaneado, setIsBaneado] = useState(baneado);
   const [editView, setEditView] = useState(false);
@@ -70,7 +70,9 @@ export default function AdminProductCard({ _id, name, image, baneado, lastName, 
       </div>
     </div>
 
-    {editView && <EditModal _id={_id} name={name} roll={roll} lastName={lastName} setEditView={setEditView}/>}
+    {editView && <EditModal _id={_id} name={name} roll={roll} lastName={lastName} setEditView={setEditView} 
+                  price={price} description={description} discount={discount} season={season}
+                  gender={gender} state={state} brands={brands}/>}
 
     </>
   );
