@@ -21,6 +21,7 @@ import {
   RESET_FILTERS,
   ADD_REVIEW,
   GET_ALL_REVIEWS,
+  RESET_FILTERS2,
 } from "../Actions";
 import { useDispatch } from "react-redux";
 
@@ -336,6 +337,12 @@ export const rootReducer = (state = initialState, action) => {
         filteredProducts: [...state.allProducts],
        
       };
+
+      case RESET_FILTERS2:
+        return {
+          ...state,
+          filteredProducts: [...state.searchedProducts],
+        }
 
     case CLEAR_CART:
       return { ...state, shoppingCart: [] };

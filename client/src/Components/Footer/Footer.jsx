@@ -16,7 +16,7 @@ export default function Footer() {
         <div className={style.infoContainer}>
           <h3>CONTACT INFORMATION</h3>
           <Link to="https://chat.whatsapp.com/BBKDAQ6dZBc2FwWqkmKKFP">
-          <span>Contact us</span>
+          <span>Contact us via WhatsApp</span>
           </Link>
         </div>
 
@@ -25,7 +25,9 @@ export default function Footer() {
           <Link to="/faq">
             <span>FAQ</span>
           </Link>
+          <Link to="/shippingandreturns">
           <span>Shipping & Returns</span>
+          </Link>
         </div>
 
         <div className={style.infoContainer}>

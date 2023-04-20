@@ -70,6 +70,7 @@ export const NavBar = () => {
             className={style.img}
           />
         </Link>
+        <h3>SPORT PLANET</h3>
       </div>
 
       <div className={style.searchDiv}>
