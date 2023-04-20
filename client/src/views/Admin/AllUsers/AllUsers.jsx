@@ -50,7 +50,7 @@ export default function AllUsers() {
 
   const buttonSearch = (event) => {
     dispatch(searchUser(input));
-    setCurrentPage(1)
+    setCurrentPage(1);
   };
 
   return (
@@ -86,13 +86,6 @@ export default function AllUsers() {
             <div className={style.filter}>
               <FaDollarSign />
               <h3 className={style.mySales}>MY SALES</h3>
-            </div>
-          </Link>
-
-          <Link to="/dashboard/reviews">
-            <div className={style.filter}>
-              <MdRateReview />
-              <h3 className={style.myReviews}>MY REVIEWS</h3>
             </div>
           </Link>
 

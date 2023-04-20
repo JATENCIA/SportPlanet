@@ -5,13 +5,21 @@ import FilterNavBar from "../../../Components/FilterNavBar/FilterNavBar";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {  FaShoppingBag,  FaDollarSign,  FaHeart,  FaQuestionCircle,  FaUserCircle,  FaStore,  FaSadTear,  FaUsers,  FaListAlt,} from "react-icons/fa";
+import {
+  FaShoppingBag,
+  FaDollarSign,
+  FaHeart,
+  FaQuestionCircle,
+  FaUserCircle,
+  FaStore,
+  FaSadTear,
+  FaUsers,
+  FaListAlt,
+} from "react-icons/fa";
 import { MdRateReview, MdSell } from "react-icons/md";
 import CardSales from "../CardSales/CardSales";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getAllUser } from "../../../redux/Actions/actions";
-
-
 
 export default function AdminSales() {
   const dispatch = useDispatch();
@@ -25,7 +33,7 @@ export default function AdminSales() {
   const allUsers = useSelector((state) => state.allUsers);
   const userDb = allUsers?.find((element) => element.eMail === user?.email);
 
-  const userSales = userDb.mySales
+  const userSales = userDb.mySales;
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 8;
@@ -70,13 +78,6 @@ export default function AdminSales() {
             <div className={style.filter}>
               <FaDollarSign />
               <h3 className={style.mySales}>MY SALES</h3>
-            </div>
-          </Link>
-
-          <Link to="/dashboard/reviews">
-            <div className={style.filter}>
-              <MdRateReview />
-              <h3 className={style.myReviews}>MY REVIEWS</h3>
             </div>
           </Link>
 
@@ -139,13 +140,20 @@ export default function AdminSales() {
               })
             ) : (
               <div>
-              <p className={style.loading}>
-                You didn't sell anything... YET! 
-                {/* <span className={style.sadFace}>{<FaSadTear />}</span> */}
-              </p>
-              <p className={style.loading}>
-                You want to sell something and you don't know how to do it? <Link to='/post/product' className="pl-5 underline hover:text-black"> CLICK HERE!</Link>
-              </p>
+                <p className={style.loading}>
+                  You didn't sell anything... YET!
+                  {/* <span className={style.sadFace}>{<FaSadTear />}</span> */}
+                </p>
+                <p className={style.loading}>
+                  You want to sell something and you don't know how to do it?{" "}
+                  <Link
+                    to="/post/product"
+                    className="pl-5 underline hover:text-black"
+                  >
+                    {" "}
+                    CLICK HERE!
+                  </Link>
+                </p>
               </div>
             )}
           </div>

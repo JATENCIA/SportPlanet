@@ -5,7 +5,16 @@ import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileCard from "./ProfileCard/ProfileCard";
 import { Link } from "react-router-dom";
-import {  FaShoppingBag,  FaDollarSign,  FaHeart,  FaQuestionCircle,  FaUserCircle,  FaStore,  FaUsers,  FaListAlt,} from "react-icons/fa";
+import {
+  FaShoppingBag,
+  FaDollarSign,
+  FaHeart,
+  FaQuestionCircle,
+  FaUserCircle,
+  FaStore,
+  FaUsers,
+  FaListAlt,
+} from "react-icons/fa";
 
 import { MdRateReview, MdSell } from "react-icons/md";
 import SellProduct from "../Forms/SellProduct/SellProduct";
@@ -45,13 +54,6 @@ export const Profile = () => {
             <div className={style.filter}>
               <FaDollarSign />
               <h3 className={style.mySales}>MY SALES</h3>
-            </div>
-          </Link>
-
-          <Link to="/profile/reviews">
-            <div className={style.filter}>
-              <MdRateReview />
-              <h3 className={style.myReviews}>MY REVIEWS</h3>
             </div>
           </Link>
 

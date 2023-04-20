@@ -6,16 +6,26 @@ import ProfileProductCard from "../ProfileProductCard/ProfileProductCard";
 import { Paginate } from "../../../Components/Paginate/Paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {  FaShoppingBag,  FaDollarSign,  FaHeart,  FaQuestionCircle,  FaUserCircle,  FaStore,  FaSadTear,} from "react-icons/fa";
+import {
+  FaShoppingBag,
+  FaDollarSign,
+  FaHeart,
+  FaQuestionCircle,
+  FaUserCircle,
+  FaStore,
+  FaSadTear,
+} from "react-icons/fa";
 import { MdRateReview, MdSell } from "react-icons/md";
-import { getAllUser, getSearchedProducts } from "../../../redux/Actions/actions";
+import {
+  getAllUser,
+  getSearchedProducts,
+} from "../../../redux/Actions/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import CardSales from "../../Admin/CardSales/CardSales";
 
-
 export default function ProfileSales() {
   const [input, setInput] = React.useState("");
-  
+
   const dispatch = useDispatch();
 
   const { user } = useAuth0();
@@ -27,8 +37,8 @@ export default function ProfileSales() {
   const allUsers = useSelector((state) => state.allUsers);
   const userDb = allUsers?.find((element) => element.eMail === user?.email);
 
-  const userSales = userDb.mySales
-  
+  const userSales = userDb.mySales;
+
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
   const last = currentPage * productsPerPage;
@@ -76,13 +86,6 @@ export default function ProfileSales() {
             <div className={style.filter}>
               <FaDollarSign />
               <h3 className={style.mySales}>MY SALES</h3>
-            </div>
-          </Link>
-
-          <Link to="/profile/reviews">
-            <div className={style.filter}>
-              <MdRateReview />
-              <h3 className={style.myReviews}>MY REVIEWS</h3>
             </div>
           </Link>
 
@@ -136,13 +139,20 @@ export default function ProfileSales() {
               })
             ) : (
               <div>
-              <p className={style.loading}>
-                You didn't sell anything... YET! 
-                {/* <span className={style.sadFace}>{<FaSadTear />}</span> */}
-              </p>
-              <p className={style.loading}>
-                You want to sell something and you don't know how to do it? <Link to='/post/product' className="pl-5 underline hover:text-black"> CLICK HERE!</Link>
-              </p>
+                <p className={style.loading}>
+                  You didn't sell anything... YET!
+                  {/* <span className={style.sadFace}>{<FaSadTear />}</span> */}
+                </p>
+                <p className={style.loading}>
+                  You want to sell something and you don't know how to do it?{" "}
+                  <Link
+                    to="/post/product"
+                    className="pl-5 underline hover:text-black"
+                  >
+                    {" "}
+                    CLICK HERE!
+                  </Link>
+                </p>
               </div>
             )}
           </div>
