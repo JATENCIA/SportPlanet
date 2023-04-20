@@ -12,7 +12,7 @@ import "./reviews.css";
 
 export default function Reviews() {
     const dispatch = useDispatch();
-    const { user, isAuthenticated } = useAuth0();
+    const { user } = useAuth0();
     const [review, setReview] = useState({
         quality: 0,
         comfort: 0,
@@ -31,13 +31,15 @@ export default function Reviews() {
 
     const users = useSelector((state) => state.allUsers);
     const userDb = users?.find((elem) => elem.eMail === user?.email);
+    const pendingReviews = userDb?.pendingReviews;
+    const pendingReviewsId = pendingReviews?.map((elem) => elem.category_id);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const updateReview = {
             ...review,
-            // product: "6432598378fa18b04967c1f2",
+            product: pendingReviewsId,
             user: userDb._id,
         };
 
