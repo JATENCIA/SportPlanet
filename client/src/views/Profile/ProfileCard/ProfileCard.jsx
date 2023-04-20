@@ -24,9 +24,15 @@ export default function ProfileCard() {
       </button>
       <div className={style.imgContainer}>
         <img src={userDb.image} alt="usuario" className={style.img}/>
+        <h2> You are: {userDb.roll} </h2>
+        <div>
+        {userDb.baneado && <h2>User Banned!</h2>}
+        </div>
       </div>
-      <h2>{userDb.name} {userDb.lastName}</h2>
-      <span>VALORATION</span>
+      <h2>Name: {userDb.name}</h2>
+      <h2>Lastname: {userDb.lastName}</h2>
+      <h2>Email: {userDb.eMail}</h2>
+      <h2>Personal ID: {userDb.dni}</h2>
     </div>
   );
 }
