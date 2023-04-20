@@ -78,13 +78,6 @@ export default function ProfileFavorites() {
             </div>
           </Link>
 
-          <Link to="/profile/reviews">
-            <div className={style.filter}>
-              <MdRateReview />
-              <h3 className={style.myReviews}>MY REVIEWS</h3>
-            </div>
-          </Link>
-
           <Link to="/profile/favorites">
             <div className={style.filter}>
               <FaHeart />

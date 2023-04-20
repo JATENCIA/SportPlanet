@@ -21,7 +21,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import CardSales from "../../Admin/CardSales/CardSales";
 import { getAllUser } from "../../../redux/Actions/actions";
 
-
 export default function ProfileShopping() {
   const dispatch = useDispatch();
 
@@ -34,7 +33,7 @@ export default function ProfileShopping() {
   const allUsers = useSelector((state) => state.allUsers);
   const userDb = allUsers?.find((element) => element.eMail === user?.email);
 
-  const userShopping = userDb.myShopping
+  const userShopping = userDb.myShopping;
 
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 8;
@@ -82,13 +81,6 @@ export default function ProfileShopping() {
             </div>
           </Link>
 
-          <Link to="/profile/reviews">
-            <div className={style.filter}>
-              <MdRateReview />
-              <h3 className={style.myReviews}>MY REVIEWS</h3>
-            </div>
-          </Link>
-
           <Link to="/profile/favorites">
             <div className={style.filter}>
               <FaHeart />
@@ -129,9 +121,7 @@ export default function ProfileShopping() {
                 );
               })
             ) : (
-              <p className={style.loading}>
-                You didn't buy anything yet
-              </p>
+              <p className={style.loading}>You didn't buy anything yet</p>
             )}
           </div>
           <Paginate
