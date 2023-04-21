@@ -1,5 +1,5 @@
-@urlApi = https://sportsplanet-production.up.railway.app
-# @urlApi = http://localhost:5000
+# @urlApi = https://sportsplanet-production.up.railway.app
+@urlApi = http://localhost:5000
 
 
 ### get all products

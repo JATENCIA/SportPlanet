@@ -19,10 +19,11 @@ import { Paginate } from "../../Components/Paginate/Paginate";
 export default function SearchedProducts ()  {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const searchedProducts = useSelector((state) => state.filteredProducts);
+  let searchedProducts = useSelector((state) => state.filteredProducts);
   const { product } = useParams();
 
-    
+  searchedProducts = searchedProducts.filter(product => !product.baneado)
+
   useEffect(() => {
     dispatch(getSearchedProducts(product, navigate));
     //return para limpiar searchedProducts

@@ -3,6 +3,7 @@ const config = require("../config");
 
 class PaymentService {
   async createPayment(req, res) {
+    console.log(config.API_URL_BACK);
     const url = "https://api.mercadopago.com/checkout/preferences";
     const shoppingcart = req.body;
 
@@ -14,6 +15,10 @@ class PaymentService {
           : elem.price,
       quantity: elem.quantity,
       currency_id: "USD",
+      category_id: elem.id,
+      picture_url: elem.image,
+      description: elem.color,
+      id: elem.size,
     }));
 
     const body = {
