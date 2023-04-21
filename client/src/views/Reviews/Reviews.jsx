@@ -32,14 +32,26 @@ export default function Reviews() {
     const users = useSelector((state) => state.allUsers);
     const userDb = users?.find((elem) => elem.eMail === user?.email);
     const pendingReviews = userDb?.pendingReviews;
-    const pendingReviewsId = pendingReviews?.map((elem) => elem.category_id);
+    // const pendingReviewsId = pendingReviews?.map((elem) => elem.category_id);
+    // const pendingReviewsId = pendingReviews?.category_id;
+
+    const idsUnicos = [];
+    const filteredReviews = pendingReviews?.filter(review => {
+        if(idsUnicos.indexOf(review.category_id) !== -1){
+            return false;
+        } else {
+            return true;
+        }
+    })
+
+    const categoryIds = filteredReviews[0][0].category_id   
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const updateReview = {
             ...review,
-            product: pendingReviewsId,
+            product: categoryIds,
             user: userDb._id,
         };
 
