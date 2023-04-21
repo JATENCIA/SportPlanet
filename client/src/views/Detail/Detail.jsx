@@ -31,6 +31,7 @@ import Login from "../../Components/Navbar/Login";
 import SellerUser from "./SellerUser";
 import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
 
+
 export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
