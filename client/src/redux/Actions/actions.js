@@ -234,8 +234,6 @@ export const resetFilters = (payload) => {
   };
 };
 
-
-
 export const getAllReviews = () => {
   return async function (dispatch) {
     const reviews = await axios.get("/productReview");
@@ -252,4 +250,3 @@ export const resetFilters2 = (payload) => {
     payload: payload,
   };
 };
-

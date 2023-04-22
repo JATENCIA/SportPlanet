@@ -1,5 +1,5 @@
- @urlApi = https://sportsplanet-production.up.railway.app
-#  @urlApi = http://localhost:5000
+#  @urlApi = https://sportsplanet-production.up.railway.app
+ @urlApi = http://localhost:5000
 
 
 
@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ### get single user id
-GET {{urlApi}}/users/642383a9afc7672526531bdd
+GET {{urlApi}}/users/643354bab05a570e9f54140b
 
 ### banear single user
 POST {{urlApi}}/users/643354bab05a570e9f54140b
@@ -60,3 +60,24 @@ Content-Type: application/json
   "user":"642383a9afc7672526531bdd",
   "product":"6428c6f2d2af90595e140cea" 
 }
+### my cart
+POST {{urlApi}}/users/cart
+Content-Type: application/json
+
+[
+{"userID":"643354bab05a570e9f54140b",
+"prueba":"6"
+},
+{"userID":"643354bab05a570e9f54140b",
+"prueba":"7"
+},
+{"userID":"643354bab05a570e9f54140b",
+"prueba":"8"
+},
+{"userID":"643354bab05a570e9f54140b",
+"prueba":"9"
+},
+{"userID":"643354bab05a570e9f54140b",
+"prueba":"10"
+}
+]

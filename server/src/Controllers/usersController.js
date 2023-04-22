@@ -200,6 +200,25 @@ const postFavorite = async (req, res) => {
   }
 };
 
+const postCart = async (req, res) => {
+  try {
+    const cart = req.body;
+    if (!cart.length) return res.status(204).json({});
+    let user = await Users.findById(cart[0].userID);
+    if (!user) return res.status(204).json({});
+    let myCart = user.myCart;
+    myCart.splice(0);
+    cart?.map((elem) => {
+      myCart.push(elem);
+    });
+    await Users.updateOne({ _id: user._id }, { $set: myCart });
+    await user.save();
+    res.status(200).json(user.myCart);
+  } catch (error) {
+    res.status(500).send(`{message: ${error}}`);
+  }
+};
+
 module.exports = {
   getUsers,
   getUser,
@@ -208,4 +227,5 @@ module.exports = {
   updateUser,
   postFavorite,
   updateUserIsAdmin,
+  postCart,
 };
