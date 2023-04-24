@@ -22,8 +22,16 @@ import {
   ADD_REVIEW,
   GET_ALL_REVIEWS,
   RESET_FILTERS2,
+  ADD_TO_CARTDB,
 } from "../Actions";
 import { useDispatch } from "react-redux";
+
+const storedValue = window.localStorage.getItem("cart");
+let value = [];
+if (storedValue) {
+  value = JSON.parse(storedValue);
+  if (typeof value === "string") value = JSON.parse(value);
+}
 
 const initialState = {
   users: [],
@@ -40,14 +48,8 @@ const initialState = {
   shoppingCart: [],
   buttonPay: "",
   reviews: [],
+  cartDB: [],
 };
-
-const storedValue = window.localStorage.getItem("cart");
-let value = [];
-if (storedValue) {
-  value = JSON.parse(storedValue);
-  if (typeof value === "string") value = JSON.parse(value);
-}
 
 export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -62,6 +64,12 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         allUsers: action.payload,
         allUsers2: action.payload,
+      };
+    case ADD_TO_CARTDB:
+      return {
+        ...state,
+        cartDB: action.payload,
+        shoppingCart: [...state.shoppingCart, ...action.payload],
       };
 
     case ADMIN_SEARCH_USER:
@@ -237,8 +245,6 @@ export const rootReducer = (state = initialState, action) => {
         filteredProducts: action.payload,
         filteredProducts2: action.payload,
         filteredProducts3: action.payload,
-       
-
       };
 
     case CLEAN_SEARCHED_PRODUCTS:
@@ -335,14 +341,13 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredProducts: [...state.allProducts],
-       
       };
 
-      case RESET_FILTERS2:
-        return {
-          ...state,
-          filteredProducts: [...state.searchedProducts],
-        }
+    case RESET_FILTERS2:
+      return {
+        ...state,
+        filteredProducts: [...state.searchedProducts],
+      };
 
     case CLEAR_CART:
       return { ...state, shoppingCart: [] };
@@ -359,7 +364,6 @@ export const rootReducer = (state = initialState, action) => {
     default:
       return {
         ...state,
-        shoppingCart: value,
       };
   }
 };

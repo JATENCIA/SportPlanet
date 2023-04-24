@@ -6,6 +6,10 @@ class PaymentService {
     console.log(config.API_URL_BACK);
     const url = "https://api.mercadopago.com/checkout/preferences";
     const shoppingcart = req.body;
+    console.log(
+      "🚀 ~ file: paymentService.js:9 ~ PaymentService ~ createPayment ~ shoppingcart:",
+      shoppingcart
+    );
 
     const items_ml = shoppingcart?.map((elem) => ({
       title: elem.name,

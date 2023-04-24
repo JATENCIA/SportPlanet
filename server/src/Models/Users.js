@@ -73,6 +73,10 @@ const userSchema = mongoose.Schema(
       type: Array,
     },
 
+    myCart: {
+      type: Array,
+    },
+
     product: [
       {
         type: mongoose.Types.ObjectId,
