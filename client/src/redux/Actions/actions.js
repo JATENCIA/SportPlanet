@@ -24,6 +24,7 @@ import {
   ADMIN_SEARCH_PRODUCT,
   GET_ALL_REVIEWS,
   RESET_FILTERS2,
+  ADD_TO_CARTDB,
 } from "./actionsTypes";
 
 export const getAllUser = () => async (dispatch) => {
@@ -156,8 +157,13 @@ export const cleanSearchedProducts = () => {
 export const addToCart = (productCart) => {
   return {
     type: ADD_TO_CART,
-
     payload: productCart,
+  };
+};
+export const addToCartDB = (cart) => {
+  return {
+    type: ADD_TO_CARTDB,
+    payload: cart,
   };
 };
 

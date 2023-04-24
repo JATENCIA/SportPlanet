@@ -18,7 +18,7 @@ router.post("/favorite", postFavorite);
 /* `router.post("/favorite", postCart);` is defining a route for a POST request to "/favorite" and
 specifying that it should be handled by a function called `postCart`. The implementation of
 `postCart` is not shown in this code snippet. */
-router.post("/cart", postCart);
+router.post("/cart/:id", postCart);
 
 /* A route that is listening for a get request to the root of the server. */
 router.get("/", getUsers);

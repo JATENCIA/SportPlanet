@@ -12,20 +12,38 @@ import pumaLogo from "../../images/pumaLogo.jpeg";
 import underArmour from "../../images/underArmour.jpg";
 import filaLogo from "../../images/filaLogo.jpeg";
 import reebokLogo from "../../images/reebokLogo.jpg";
-import { getAllUser } from "../../redux/Actions";
-import { useDispatch } from "react-redux";
+import { addToCart, getAllUser } from "../../redux/Actions";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import ContinousText from "../../Components/ContinousText/ContinousText";
 import Footer from "../../Components/Footer/Footer";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Home = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const [userE, setUserE] = useState({});
+  const { isAuthenticated, user, logout } = useAuth0();
 
   useEffect(() => {
     dispatch(getAllUser());
   }, [dispatch, location]);
+
+  // const allUsers = useSelector((state) => state.allUsers);
+
+  // useEffect(() => {
+  //   if (user && isAuthenticated) {
+  //     const userDb = allUsers?.find((element) => element.eMail === user?.email);
+  //     userDb ? setUserE(userDb) : "";
+  //   }
+  // }, [user]);
+
+  // if (isAuthenticated) {
+  //   if (userE.myCart) {
+  //     dispatch(addToCart(userE.myCart[0]));
+  //   }
+  // }
 
   return (
     <div className={style.main}>

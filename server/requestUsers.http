@@ -61,23 +61,9 @@ Content-Type: application/json
   "product":"6428c6f2d2af90595e140cea" 
 }
 ### my cart
-POST {{urlApi}}/users/cart
+POST {{urlApi}}/users/cart/643354bab05a570e9f54140b
 Content-Type: application/json
 
 [
-{"userID":"643354bab05a570e9f54140b",
-"prueba":"6"
-},
-{"userID":"643354bab05a570e9f54140b",
-"prueba":"7"
-},
-{"userID":"643354bab05a570e9f54140b",
-"prueba":"8"
-},
-{"userID":"643354bab05a570e9f54140b",
-"prueba":"9"
-},
-{"userID":"643354bab05a570e9f54140b",
-"prueba":"10"
-}
+
 ]

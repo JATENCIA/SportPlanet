@@ -203,15 +203,9 @@ const postFavorite = async (req, res) => {
 const postCart = async (req, res) => {
   try {
     const cart = req.body;
-    if (!cart.length) return res.status(204).json({});
-    let user = await Users.findById(cart[0].userID);
+    let user = await Users.findById(req.params.id);
     if (!user) return res.status(204).json({});
-    let myCart = user.myCart;
-    myCart.splice(0);
-    cart?.map((elem) => {
-      myCart.push(elem);
-    });
-    await Users.updateOne({ _id: user._id }, { $set: myCart });
+    user.myCart = cart;
     await user.save();
     res.status(200).json(user.myCart);
   } catch (error) {
