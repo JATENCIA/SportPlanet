@@ -12,6 +12,7 @@ import {
   shop,
   addToCart,
   getAllUser,
+  addToCartDB,
 } from "../../redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -21,19 +22,30 @@ import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
 import { BiShoppingBag } from "react-icons/bi";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default function Cart() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(getAllProduct());
-  }, [dispatch]);
-
+  const [userE, setUserE] = useState({});
+  const { isAuthenticated, user, logout } = useAuth0();
+  const allUsers = useSelector((state) => state.allUsers);
   const [bPay, setBPay] = useState("");
   const [brand, setBrand] = useState(0);
   const cart = useSelector((state) => state.shoppingCart);
   const pay = useSelector((state) => state.buttonPay);
+
+  useEffect(() => {
+    dispatch(getAllProduct());
+    dispatch(getAllUser());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (user && isAuthenticated) {
+      const userDb = allUsers?.find((element) => element.eMail === user?.email);
+      userDb ? setUserE(userDb) : "";
+    }
+  }, [user]);
 
   useEffect(() => {
     setBPay(pay);
@@ -43,8 +55,27 @@ export default function Cart() {
     localStorage.setItem("cart", JSON.stringify(JSON.stringify(cart)));
   }, [cart]);
 
-  const storedValue = window.localStorage.getItem("cart");
-  let value = JSON.parse(storedValue);
+  useEffect(() => {
+    if (userE && userE.myCart) dispatch(addToCartDB(userE.myCart));
+  }, [userE]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const storedValue = window.localStorage.getItem("cart");
+      let value = [];
+      if (storedValue) {
+        value = JSON.parse(storedValue);
+        if (typeof value === "string") {
+          value = JSON.parse(value);
+        }
+      }
+      if (userE) {
+        const cartDB = await axios.post(`/users/cart/${userE._id}`, value);
+        dispatch(addToCartDB(cartDB));
+      }
+    }
+    fetchData();
+  }, [cart, userE]);
 
   let discount = 0;
   let shippingCost = 0;
@@ -53,22 +84,6 @@ export default function Cart() {
     discount += elem.quantity * (elem.price - preciDiscount);
     shippingCost += elem.price * elem.quantity;
   });
-
-  const [userE, setUserE] = useState({});
-  const { isAuthenticated, user, logout } = useAuth0();
-
-  useEffect(() => {
-    dispatch(getAllUser());
-  }, [dispatch]);
-
-  const allUsers = useSelector((state) => state.allUsers);
-
-  useEffect(() => {
-    if (user && isAuthenticated) {
-      const userDb = allUsers?.find((element) => element.eMail === user?.email);
-      userDb ? setUserE(userDb) : "";
-    }
-  }, [user]);
 
   const delFromCart = (id, color, size, UUID, all = false) => {
     if (all) {

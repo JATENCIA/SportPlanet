@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 function ItemsDentroCarrito() {
   const cart = useSelector((state) => state.shoppingCart);
   const { isAuthenticated, user, logout } = useAuth0();
-  const itemsCarrito = cart.reduce((acc, el) => acc + el.quantity, 0);
+  const itemsCarrito = cart?.reduce((acc, el) => acc + el.quantity, 0);
 
   return (
     <div className={styled.border}>

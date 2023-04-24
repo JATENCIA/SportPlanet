@@ -21,3 +21,4 @@ export const REMOVE_ONE_ITEM = "REMOVE_ONE_ITEM";
 export const RESET_FILTERS = "RESET_FILTERS";
 export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
 export const RESET_FILTERS2 = "RESET_FILTERS2";
+export const ADD_TO_CARTDB = "ADD_TO_CARTDB";

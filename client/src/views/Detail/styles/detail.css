@@ -12,7 +12,6 @@
   --Black: hsl(0, 0%, 0%);
 }
 
-
 main {
   display: flex;
   height: calc(100vh - 150px);
@@ -32,6 +31,8 @@ main {
 
 .container {
   margin-top: 5%;
+  width: 100%;
+  height: 100%;
 }
 
 .seller {
@@ -44,7 +45,6 @@ main {
   width: 1300px;
   height: 500px;
   /* object-fit: cover; */
-  
 }
 
 .loader {
@@ -69,7 +69,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .swiper-slide img {
@@ -164,7 +163,6 @@ main {
 .content {
   margin-left: 3rem;
   margin-bottom: 10%;
-  
 }
 
 .company {
@@ -216,38 +214,38 @@ main {
 }
 
 .content .sizes button {
-    width: 25px;
-    height: 25px;
-    border: 1px solid #333;
-    outline: none;
-    margin-right: 5px;
-    cursor: pointer;
-    border-radius: 10px;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #333;
+  outline: none;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 .sizes {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .content .sizes button:hover {
-    background-color: #000000;
-    color: #fff;
+  background-color: #000000;
+  color: #fff;
 }
 
 .cantidad {
-    display: flex;
-    align-items: center;
-    font-family: var(--font-family);
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family);
 }
 
 .cantidad h5 {
-    margin-left: 10%;
+  margin-left: 10%;
 }
 .content .colors button {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #333;
-    outline: none;
-    margin-right: 5px;
-    cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #333;
+  outline: none;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 .buttons {
@@ -256,7 +254,6 @@ main {
   width: 100%;
   margin-top: 2rem;
 }
-
 
 /* .add_btn {
   cursor: pointer;
@@ -276,23 +273,62 @@ main {
 } */
 
 .add_btn {
+  margin-top: -1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
   border-radius: 50px;
-  background-color: rgb(244, 244, 0);
+  background-color: rgba(244, 244, 0, 0.305);
   color: #000;
   font-size: 18px;
   font-weight: bold;
   padding: 12px 40px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 200ms ease;
   font-family: var(--font-family);
+}
+.buttonPay {
+  margin-top: 0.5rem;
+  background-color: rgba(244, 244, 0, 0.305);
+  color: black;
+  font-family: var(--font-family);
+  font-size: 18px;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 50px;
+  width: 75%;
+  height: 50px;
+  transition: all 200ms ease;
+}
+.buttonPay2 {
+  margin-top: 0.5rem;
+  background-color: rgb(2, 144, 246);
+  color: rgb(246, 244, 244);
+  font-family: var(--font-family);
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 18px;
+  width: 75%;
+  height: 50px;
+  transition: all 200ms ease;
+}
+
+.buttonPay:hover {
+  background-color: rgb(4, 109, 119);
+  color: rgb(255, 255, 255);
+  transition: all 200ms ease;
+}
+.buttonPay2:hover {
+  background-color: rgb(2, 36, 39);
+  color: rgb(255, 255, 255);
+  transition: all 200ms ease;
 }
 
 .add_btn:hover {
-  background-color: #c9d33e;
+  background-color: #eefb5b;
+  transition: all 200ms ease;
 }
 
 .add_btn img {
@@ -317,7 +353,7 @@ main {
   flex: 1;
   padding: 0 1rem;
   color: #fff;
-  background-color: #6096B4;
+  background-color: #6096b4;
   background-image: none;
   cursor: pointer;
 }
@@ -331,7 +367,7 @@ main {
   display: flex;
   width: 20em;
   height: 3em;
-  border-radius: .25em;
+  border-radius: 0.25em;
   overflow: hidden;
 }
 
@@ -342,14 +378,11 @@ main {
   opacity: 0.5;
 }
 
-
-
 .sizes:hover::after {
   color: #f39c12;
 }
 
 @media screen and (max-width: 700px) {
-
   /* visibility actions */
   .hidden {
     display: flex;
@@ -495,13 +528,13 @@ main {
 }
 
 .profile-username {
-	font-size: 1.3rem;
-	font-weight: 600;
-	margin-top: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
 }
 
 .profile-user-handle {
-	color: #7d8396;
+  color: #7d8396;
 }
 
 .color-btn {
@@ -554,7 +587,6 @@ main {
   border-color: #000;
   cursor: pointer;
 }
-
 
 .selected-size-btn {
   background-color: #000;

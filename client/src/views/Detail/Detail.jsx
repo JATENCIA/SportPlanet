@@ -26,7 +26,7 @@ import ButtonBack from "../../Components/ButtonBack/ButtonBack";
 import Footer from "../../Components/Footer/Footer";
 import Swal from "sweetalert2";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUser, getAllReviews } from "../../redux/Actions/actions";
+import { getAllUser, getAllReviews, shop } from "../../redux/Actions/actions";
 import Login from "../../Components/Navbar/Login";
 import SellerUser from "./SellerUser";
 import FilterNavBar from "../../Components/FilterNavBar/FilterNavBar";
@@ -36,7 +36,6 @@ export default function Detail() {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const { isAuthenticated, user, logout } = useAuth0();
-  
 
   useEffect(() => {
     dispatch(getProductDetail(id)).then(() => setIsLoading(false));
@@ -151,6 +150,7 @@ export default function Detail() {
       UUID: UUID,
       eMail: userE.eMail,
       userID: userE._id,
+      quantity: 1,
     };
   }
 
@@ -169,6 +169,34 @@ export default function Detail() {
       Swal.fire(`⚠️ SELECT COLOR AND SIZE`);
     }
   };
+  const pay = useSelector((state) => state.buttonPay);
+  const [brand, setBrand] = useState(0);
+  const [bPay, setBPay] = useState("");
+  useEffect(() => {
+    setBPay(pay);
+  }, [pay]);
+
+  const handleShop = async ([productCart]) => {
+    if (isAuthenticated) {
+      if (userE.baneado === false) {
+        if (Object.entries(productCart).length !== 0) {
+          dispatch(shop([productCart]));
+          setBrand(1);
+        } else {
+          Swal.fire(`NO PRODUCT SELECTED`);
+        }
+      } else {
+        Swal.fire(`🚫 BANNED USER`);
+      }
+    } else {
+      await Swal.fire(`⚠️ LOG IN`);
+      navigate("/home");
+    }
+  };
+  const handleClear = () => {
+    setBrand(0);
+    navigate("/home");
+  };
 
   ///--------------------------------------------------------------------Filtrado de productos relacionados--------------------------------------------------------------------------//
 
@@ -185,7 +213,7 @@ export default function Detail() {
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
   ///--------------------------------------------------------------------Promedio reviews---------------------------------------------------------------------------------------------//
-  
+
   const [average, setAverage] = useState(0);
   useEffect(() => {
     dispatch(getAllReviews());
@@ -194,7 +222,7 @@ export default function Detail() {
   const allReviews = useSelector((state) => state.reviews);
 
   const reviews = allReviews?.filter((r) => review?.includes(r._id));
-  
+
   let qualityTotal = 0;
   let comfortTotal = 0;
   let recommendTotal = 0;
@@ -210,10 +238,9 @@ export default function Detail() {
     }
     const prom = (qualityTotal + comfortTotal + recommendTotal) / 3;
     setAverage(prom);
-  }, [reviews])
-  
+  }, [reviews]);
+
   ///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-  
 
   const ShowProduct = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -338,8 +365,27 @@ export default function Detail() {
                   disabled={!size}
                 >
                   <GrCart />
-                  Add to cart
+                  ADD TO CART
                 </button>
+              </div>
+              <div>
+                <button
+                  className="buttonPay"
+                  onClick={() => handleShop([productCart])}
+                >
+                  CHECKOUT
+                </button>
+                {brand !== 0 ? (
+                  <a href={bPay} target="_blank">
+                    {" "}
+                    <button
+                      className="buttonPay2"
+                      onClick={() => handleClear()}
+                    >
+                      GO PAY
+                    </button>
+                  </a>
+                ) : null}
               </div>
             </section>
           </main>
